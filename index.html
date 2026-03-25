@@ -6,160 +6,34 @@
     <title>Elevare — Where Language Meets Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #e94560;
-            --accent-light: #ff6b6b;
-            --gold: #f4a261;
-            --teal: #2ec4b6;
-            --cream: #faf9f6;
-            --text: #2d3436;
-            --text-light: #636e72;
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
             --white: #ffffff;
-            --shadow: 0 20px 60px rgba(0,0,0,0.08);
-            --shadow-hover: 0 30px 80px rgba(0,0,0,0.15);
+            --text: #e0e1dd;
+            --text-light: #778da9;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
             color: var(--text);
             background: var(--cream);
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-        }
-
-        .animate-on-scroll.visible {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Logo */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(233,69,96,0.3);
-            transition: all 0.3s ease;
-        }
-
-        .logo-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .logo-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--white);
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            color: var(--accent);
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* Navigation */
         nav {
@@ -168,120 +42,66 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
+            background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
         }
 
         .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .nav-links {
+        .logo {
             display: flex;
-            gap: 32px;
             align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
+            gap: 12px;
             text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 14px;
-            transition: color 0.2s;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--accent);
-            color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(233,69,96,0.3);
-        }
-
-        .nav-cta:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(233,69,96,0.4);
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        /* Social Icons in Nav */
-        .nav-social {
-            display: flex;
-            gap: 16px;
-            margin-left: 24px;
-            padding-left: 24px;
-            border-left: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .nav-social a {
-            color: var(--text-light);
-            transition: all 0.3s ease;
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
             display: flex;
             align-items: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.03);
             justify-content: center;
         }
 
-        .nav-social a:hover {
-            color: var(--white);
-            background: var(--accent);
-            transform: translateY(-3px);
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            border-radius: 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
         }
 
-        .nav-social svg {
-            width: 18px;
-            height: 18px;
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--navy) !important;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
+            background: var(--navy);
             display: flex;
             align-items: center;
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--cream) 0%, #f0ece4 50%, #e8e4db 100%);
             position: relative;
             overflow: hidden;
         }
@@ -289,564 +109,261 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(46,196,182,0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        .hero-images {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 1;
-        }
-
-        .hero-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-hover);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image:nth-child(2) {
-            animation-delay: -2s;
-            width: 140px;
-            height: 140px;
-        }
-
-        .hero-image:nth-child(3) {
-            animation-delay: -4s;
-            width: 160px;
-            height: 160px;
-        }
-
-        .hero-image svg {
-            width: 60%;
-            height: 60%;
-            color: var(--white);
-            opacity: 0.9;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .hero-content {
-            max-width: 650px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            gap: 8px;
-            background: var(--white);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .tagline {
+            font-size: 12px;
             font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            animation: fadeInUp 0.8s ease forwards;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--teal);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(44px, 6vw, 68px);
-            font-weight: 700;
+        .hero-text h1 {
+            font-size: clamp(48px, 6vw, 72px);
+            color: var(--cream);
             line-height: 1.1;
-            color: var(--primary);
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-            opacity: 0;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
         }
 
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
+        .hero-text h1 span {
+            color: var(--gold);
+            display: block;
             font-style: italic;
-            color: var(--accent);
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease 0.3s forwards;
-            opacity: 0;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--text-light);
+        .hero-text .slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-bottom: 32px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: var(--text);
             margin-bottom: 40px;
-            max-width: 560px;
-            line-height: 1.7;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-            opacity: 0;
+            max-width: 500px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.5s forwards;
-            opacity: 0;
-        }
+        .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 50px;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 13px;
             font-weight: 600;
-            font-size: 15px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: var(--white);
-            box-shadow: 0 8px 30px rgba(233,69,96,0.3);
+            background: var(--gold);
+            color: var(--navy);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(233,69,96,0.4);
+            background: var(--gold-light);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            background: transparent;
+            border: 2px solid var(--cream);
+            color: var(--cream);
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
+            background: var(--cream);
+            color: var(--navy);
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 56px;
-            margin-top: 64px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-            opacity: 0;
-        }
-
-        .stat {
-            text-align: left;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Image Section */
-        .image-section {
-            padding: 0;
-            background: var(--white);
-            overflow: hidden;
-        }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-        }
-
-        .image-item {
-            height: 300px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-            padding: 40px;
-            transition: all 0.5s ease;
+        .hero-visual {
             position: relative;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .image-item::before {
+        .hero-card {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 20px;
+            padding: 48px;
+            position: relative;
+            max-width: 420px;
+        }
+
+        .hero-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
             opacity: 0.3;
         }
 
-        .image-item:hover {
-            flex: 1.5;
-        }
-
-        .image-item svg {
-            width: 60px;
-            height: 60px;
+        .hero-card h3 {
+            font-size: 28px;
+            color: var(--cream);
             margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
         }
 
-        .image-item h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
+        .hero-card p {
+            font-size: 15px;
+            color: var(--text);
+            margin-bottom: 24px;
         }
 
-        .image-item p {
-            font-size: 13px;
-            opacity: 0.8;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Values Section */
-        .values {
-            padding: 100px 0;
-            background: var(--primary);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .values::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .values .section-header {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 12px;
+        .hero-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        .values .section-label {
             color: var(--gold);
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 44px);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-
-        .values .section-title {
-            color: var(--white);
-        }
-
-        .section-desc {
+        .hero-card .price span {
             font-size: 16px;
             color: var(--text-light);
-            line-height: 1.7;
         }
 
-        .values .section-desc {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .value-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .value-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-8px);
-            border-color: rgba(233,69,96,0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .value-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover .value-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .value-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--white);
-        }
-
-        .value-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--white);
-        }
-
-        .value-card p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.7;
-        }
-
-        /* Pillars Section */
-        .pillars {
+        /* Millionaire Math Section */
+        .millionaire {
             padding: 120px 0;
-            background: var(--white);
-        }
-
-        .pillars-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 64px;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .pillar-card {
-            background: var(--cream);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
             position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid transparent;
         }
 
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+        .millionaire-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        .pillar-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(233,69,96,0.03) 0%, rgba(244,162,97,0.03) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
+        .millionaire-text .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
         }
 
-        .pillar-card:hover {
-            transform: translateY(-16px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(233,69,96,0.2);
+        .millionaire-text h2 {
+            font-size: clamp(36px, 4vw, 52px);
+            color: var(--cream);
+            line-height: 1.2;
+            margin-bottom: 24px;
         }
 
-        .pillar-card:hover::before {
-            transform: scaleX(1);
+        .millionaire-text h2 span {
+            color: var(--gold);
+            font-style: italic;
         }
 
-        .pillar-card:hover::after {
-            opacity: 1;
+        .millionaire-text p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 32px;
         }
 
-        .pillar-card:hover .pillar-icon {
-            transform: scale(1.15) rotate(8deg);
+        .math-formula {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
         }
 
-        .pillar-card:hover .pillar-cta {
-            background: var(--accent);
-            color: var(--white);
-            transform: translateY(4px);
-            box-shadow: 0 8px 20px rgba(233,69,96,0.3);
+        .formula {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 16px;
         }
 
-        .pillar-card:hover .pillar-cta svg {
-            transform: translateX(6px);
+        .formula span {
+            color: var(--gold);
+            font-weight: 700;
         }
 
-        .pillar-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 28px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 28px;
+        .formula-note {
+            font-size: 14px;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .millionaire-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .benefit-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 15px 40px rgba(233,69,96,0.25);
-            position: relative;
-            z-index: 1;
-        }
-
-        .pillar-icon.teal {
-            background: linear-gradient(135deg, var(--teal) 0%, #20a39e 100%);
-            box-shadow: 0 15px 40px rgba(46,196,182,0.25);
-        }
-
-        .pillar-icon.gold {
-            background: linear-gradient(135deg, var(--gold) 0%, #e76f51 100%);
-            box-shadow: 0 15px 40px rgba(244,162,97,0.25);
-        }
-
-        .pillar-icon svg {
-            width: 56px;
-            height: 56px;
-            color: var(--white);
-        }
-
-        .pillar-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .pillar-card .tagline {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent);
             margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
         }
 
-        .pillar-card p {
-            font-size: 15px;
+        .benefit-icon svg { width: 24px; height: 24px; color: var(--navy); }
+
+        .benefit-item h4 {
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .benefit-item p {
+            font-size: 13px;
             color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 28px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 0;
         }
 
-        .pillar-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            background: var(--cream);
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .pillar-cta svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease;
-        }
-
-        /* Programs Section */
-        .programs {
+        /* Products Section */
+        .products {
             padding: 120px 0;
             background: var(--cream);
         }
@@ -857,803 +374,372 @@
             margin: 0 auto 64px;
         }
 
-        .programs-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-        }
-
-        .program-block {
-            background: var(--white);
-            border-radius: 32px;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: var(--shadow);
-        }
-
-        .program-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
-        }
-
-        .program-block.teal::before {
-            background: linear-gradient(90deg, var(--teal) 0%, #20a39e 100%);
-        }
-
-        .program-block.gold::before {
-            background: linear-gradient(90deg, var(--gold) 0%, #e76f51 100%);
-        }
-
-        .program-header {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .program-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 10px 30px rgba(233,69,96,0.2);
-        }
-
-        .program-icon.teal {
-            background: linear-gradient(135deg, var(--teal) 0%, #20a39e 100%);
-            box-shadow: 0 10px 30px rgba(46,196,182,0.2);
-        }
-
-        .program-icon.gold {
-            background: linear-gradient(135deg, var(--gold) 0%, #e76f51 100%);
-            box-shadow: 0 10px 30px rgba(244,162,97,0.2);
-        }
-
-        .program-icon svg {
-            width: 40px;
-            height: 40px;
-            color: var(--white);
-        }
-
-        .program-title-group h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .program-title-group .tagline {
-            font-size: 14px;
+        .section-label {
+            font-size: 12px;
             font-weight: 600;
-            color: var(--accent);
+            letter-spacing: 4px;
+            color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .program-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .program-features-list {
-            list-style: none;
-        }
-
-        .program-features-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-size: 15px;
-            color: var(--text);
-            transition: all 0.3s ease;
-        }
-
-        .program-features-list li:hover {
-            padding-left: 12px;
-            background: rgba(233,69,96,0.02);
-        }
-
-        .program-features-list li:last-child {
-            border-bottom: none;
-        }
-
-        .program-features-list li svg {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            color: var(--teal);
-        }
-
-        .program-pricing {
-            background: var(--cream);
-            border-radius: 20px;
-            padding: 36px;
-            text-align: center;
-            position: sticky;
-            top: 100px;
-        }
-
-        .program-pricing h4 {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-light);
             margin-bottom: 16px;
         }
 
-        .pricing-amount {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            gap: 4px;
-            margin-bottom: 24px;
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
+            margin-bottom: 16px;
         }
 
-        .pricing-amount .currency {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .pricing-amount .price {
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .pricing-amount .period {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .program-pricing .btn {
-            width: 100%;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .payment-note {
-            font-size: 12px;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .payment-note svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Flex Nexus Section */
-        .flex-nexus {
-            padding: 120px 0;
-            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
-        }
-
-        .nexus-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .nexus-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 44px);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .nexus-text > .section-label {
-            color: var(--accent);
-        }
-
-        .nexus-text p {
+        .section-desc {
             font-size: 16px;
             color: var(--text-light);
-            margin-bottom: 24px;
-            line-height: 1.7;
         }
 
-        .nexus-stats-grid {
+        .pillars-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
-        .nexus-stat {
-            background: var(--white);
-            padding: 28px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
+        .pillar-card {
+            background: var(--navy);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid transparent;
         }
 
-        .nexus-stat:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
+        .pillar-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
-        .nexus-stat-value {
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--accent);
+        .pillar-header {
+            padding: 40px 32px;
+            text-align: center;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .pillar-icon svg { width: 40px; height: 40px; color: var(--navy); }
+
+        .pillar-header h3 {
+            font-size: 28px;
+            color: var(--cream);
             margin-bottom: 8px;
         }
 
-        .nexus-stat-label {
-            font-size: 13px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .nexus-visual {
-            position: relative;
-        }
-
-        .nexus-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--shadow-hover);
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .nexus-card::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            opacity: 0.1;
-            border-radius: 50%;
-        }
-
-        .nexus-card-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .nexus-card-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nexus-card-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--white);
-        }
-
-        .nexus-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nexus-card-subtitle {
-            font-size: 13px;
-            color: var(--text-light);
-        }
-
-        .nexus-modules {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .nexus-module {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px;
-            background: var(--cream);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .nexus-module:hover {
-            background: rgba(233,69,96,0.05);
-            transform: translateX(8px);
-        }
-
-        .module-number {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            color: var(--white);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .module-text {
+        .pillar-header .tagline {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 14px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .nexus-cta {
-            margin-top: 32px;
-            text-align: center;
-        }
-
-        .nexus-cta .btn {
-            width: 100%;
-            justify-content: center;
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Tutor & Consulting Section */
-        .tutors {
-            padding: 120px 0;
-            background: var(--primary);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tutors::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .tutors .section-label {
+            font-style: italic;
             color: var(--gold);
         }
 
-        .tutors .section-title {
-            color: var(--white);
-        }
-
-        .tutors .section-desc {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 48px;
-        }
-
-        .tutor-consulting-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 48px;
-        }
-
-        .tutor-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .tutor-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 28px;
-            transition: all 0.3s ease;
-        }
-
-        .tutor-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-6px);
-            border-color: rgba(233,69,96,0.3);
-        }
-
-        .tutor-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--accent) 100%);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .tutor-name {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .tutor-langs {
-            font-size: 12px;
-            color: var(--teal);
-            margin-bottom: 12px;
-        }
-
-        .tutor-details {
-            font-size: 13px;
-            opacity: 0.7;
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-
-        .tutor-rate {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .tutor-price {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .tutor-price span {
-            font-size: 12px;
-            opacity: 0.6;
-            font-weight: 400;
-        }
-
-        .tutor-rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .tutor-rating svg {
-            color: var(--gold);
-        }
-
-        /* Consulting Sidebar */
-        .consulting-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
+        .pillar-body {
             padding: 32px;
-            height: fit-content;
         }
 
-        .consulting-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        .pillar-body h4 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .product-list {
+            list-style: none;
             margin-bottom: 24px;
         }
 
-        .consulting-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold) 0%, #e76f51 100%);
-            border-radius: 12px;
+        .product-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .product-list li svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+
+        .pillar-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .pillar-price .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .pillar-price .btn {
+            padding: 12px 24px;
+            font-size: 11px;
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .pillar-price .btn:hover {
+            background: var(--gold-light);
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 120px 0;
+            background: var(--navy-light);
+        }
+
+        .programs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .program-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 48px;
+            align-items: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            border-color: var(--gold);
+        }
+
+        .program-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .consulting-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--white);
+        .program-icon svg { width: 48px; height: 48px; color: var(--navy); }
+
+        .program-info h3 {
+            font-size: 28px;
+            color: var(--cream);
+            margin-bottom: 8px;
         }
 
-        .consulting-header h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .consulting-packages {
-            list-style: none;
-        }
-
-        .consulting-packages li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        .program-info .tagline {
             font-size: 14px;
-            transition: all 0.3s ease;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 12px;
         }
 
-        .consulting-packages li:hover {
-            padding-left: 8px;
+        .program-info p {
+            font-size: 14px;
+            color: var(--text);
         }
 
-        .consulting-packages li:last-child {
-            border-bottom: none;
+        .program-pricing {
+            text-align: center;
         }
 
-        .pkg-price {
+        .program-pricing .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
             font-weight: 700;
             color: var(--gold);
         }
 
-        .tutors-cta {
-            text-align: center;
-            margin-top: 48px;
-        }
-
-        .tutors-cta .btn {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .tutors-cta .btn:hover {
-            background: var(--gold);
+        .program-pricing .period {
+            font-size: 14px;
+            color: var(--text-light);
         }
 
         /* Resources Section */
         .resources {
             padding: 120px 0;
-            background: var(--white);
+            background: var(--cream);
         }
 
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 48px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
 
         .resource-card {
-            background: var(--cream);
-            border-radius: 20px;
-            padding: 36px;
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 32px;
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            transition: all 0.3s;
+            border: 1px solid transparent;
         }
 
         .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .resource-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-8px);
+            border-color: var(--gold);
         }
 
         .resource-icon {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 18px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            transition: all 0.3s ease;
+            margin: 0 auto 20px;
         }
 
-        .resource-card:hover .resource-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .resource-icon svg { width: 32px; height: 32px; color: var(--navy); }
 
-        .resource-icon svg {
-            width: 36px;
-            height: 36px;
-            color: var(--white);
-        }
-
-        .resource-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .resource-card p {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 24px;
-        }
-
-        .resource-card .btn {
-            font-size: 13px;
-            padding: 12px 24px;
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .resource-card .btn:hover {
-            background: var(--accent);
-        }
-
-        /* Outcomes Section */
-        .outcomes {
-            padding: 120px 0;
-            background: var(--cream);
-        }
-
-        .outcomes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .outcome-card {
-            text-align: center;
-            padding: 48px 32px;
-            background: var(--white);
-            border-radius: 24px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .outcome-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 0 0 4px 4px;
-        }
-
-        .outcome-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .outcome-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            transition: all 0.3s ease;
-        }
-
-        .outcome-card:hover .outcome-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .outcome-icon svg {
-            width: 40px;
-            height: 40px;
-            color: var(--white);
-        }
-
-        .outcome-value {
-            font-size: 52px;
-            font-weight: 800;
-            color: var(--primary);
+        .resource-card h4 {
+            font-size: 18px;
+            color: var(--cream);
             margin-bottom: 8px;
         }
 
-        .outcome-label {
-            font-size: 16px;
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .outcome-note {
+        .resource-card p {
             font-size: 13px;
             color: var(--text-light);
-            opacity: 0.7;
-            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .resource-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* Tutors Section */
+        .tutors {
+            padding: 120px 0;
+            background: var(--navy);
+        }
+
+        .tutors .section-title { color: var(--cream); }
+
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .tutor-card {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tutor-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .tutor-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .tutor-card h4 {
+            font-size: 22px;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .tutor-card .specialty {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .tutor-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .tutor-card .rate {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
         }
 
         /* CTA Section */
         .cta {
             padding: 120px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 24px;
+            font-size: clamp(36px, 4vw, 52px);
+            color: var(--navy);
+            margin-bottom: 20px;
         }
 
         .cta p {
             font-size: 18px;
+            color: var(--navy);
             opacity: 0.8;
             margin-bottom: 40px;
-            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta .btn {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: var(--white);
-            padding: 20px 48px;
-            font-size: 16px;
+            background: var(--navy);
+            color: var(--cream);
         }
 
         .cta .btn:hover {
-            transform: translateY(-3px);
+            background: var(--navy-light);
         }
 
         /* Footer */
         footer {
             padding: 80px 0 40px;
-            background: var(--primary);
-            color: var(--white);
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
         }
 
         .footer-grid {
@@ -1663,245 +749,110 @@
             margin-bottom: 64px;
         }
 
-        .footer-brand {
-            max-width: 300px;
-        }
+        .footer-brand .logo { margin-bottom: 20px; }
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .footer-logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--white);
-        }
-
-        .footer-logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            font-weight: 700;
-        }
-
-        .footer-desc {
+        .footer-brand p {
             font-size: 14px;
-            opacity: 0.7;
-            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 24px;
         }
 
         .footer-social {
             display: flex;
             gap: 12px;
-            margin-top: 24px;
         }
 
         .footer-social a {
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            transition: all 0.3s ease;
+            color: var(--gold);
+            transition: all 0.3s;
         }
 
         .footer-social a:hover {
-            background: var(--accent);
-            transform: translateY(-4px);
+            background: var(--gold);
+            color: var(--navy);
         }
 
-        .footer-social svg {
-            width: 20px;
-            height: 20px;
-        }
+        .footer-social svg { width: 20px; height: 20px; }
 
         .footer-title {
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--cream);
             margin-bottom: 24px;
-            color: var(--white);
         }
 
         .footer-links {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
+        .footer-links li { margin-bottom: 12px; }
         .footer-links a {
-            color: rgba(255,255,255,0.7);
+            color: var(--text);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
-        .footer-links a:hover {
-            color: var(--accent);
-        }
+        .footer-links a:hover { color: var(--gold); }
 
         .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             padding-top: 32px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 13px;
-            opacity: 0.6;
+            font-size: 14px;
+            color: var(--text-light);
         }
 
-        /* Mobile */
+        /* Responsive */
         @media (max-width: 992px) {
-            .hero-images {
-                display: none;
-            }
-
-            .tutor-consulting-grid,
-            .program-content,
-            .nexus-content {
-                grid-template-columns: 1fr;
-            }
-
-            .consulting-card {
-                order: -1;
-            }
-
-            .tutor-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pillars-grid,
-            .resources-grid,
-            .outcomes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .image-item {
-                height: 250px;
-            }
-
-            .image-item:hover {
-                flex: none;
-            }
+            .hero-content, .millionaire-content { grid-template-columns: 1fr; }
+            .hero-visual { order: -1; }
+            .pillars-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .resources-grid { grid-template-columns: repeat(2, 1fr); }
+            .tutors-grid { grid-template-columns: repeat(2, 1fr); }
+            .program-card { grid-template-columns: 1fr; text-align: center; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .nav-links,
-            .nav-social {
-                display: none;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .values-grid,
-            .pillars-grid,
-            .tutor-grid,
-            .resources-grid,
-            .outcomes-grid,
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
-
-            .program-block {
-                padding: 32px;
-            }
-
-            .program-header {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
+            .nav-links { display: none; }
+            .pillars-grid, .resources-grid, .tutors-grid { grid-template-columns: 1fr; }
+            .millionaire-benefits { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="logo-wrapper">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <span class="logo-text">Elevare<span>.</span></span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="lingua.html">Lingua</a></li>
-                <li><a href="rise.html">Rise</a></li>
-                <li><a href="flexnexus.html">Flex Nexus</a></li>
-                <li><a href="#tutors">Tutors</a></li>
-                <li><a href="#cta" class="nav-cta">Get Started</a></li>
-            </ul>
-            <div class="nav-social">
-                <a href="https://facebook.com" target="_blank" title="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
                 </a>
-                <a href="https://instagram.com" target="_blank" title="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
-                </a>
-                <a href="https://linkedin.com" target="_blank" title="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" title="Twitter/X">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lingua.html">Lingua</a></li>
+                    <li><a href="rise.html">Rise</a></li>
+                    <li><a href="flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="#tutors" class="nav-cta">Get Started</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -1909,385 +860,145 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span>
-                    Now Enrolling for 2025 Cohorts
-                </div>
-                <h1>Where Language<br><span class="highlight">Meets Life.</span></h1>
-                <p class="hero-tagline">Be Seen. Be Heard. Be Unstuck.</p>
-                <p>Elevare combines expert language fluency training with confidence-building coaching through our integrated Lingua, Rise, and Flex Nexus programs. Real outcomes. Measurable progress. 100% online — learn from anywhere in the world.</p>
-                <div class="hero-buttons">
-                    <a href="#programs" class="btn btn-primary">
-                        Start Your Journey
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="#pillars" class="btn btn-secondary">Explore Our Pillars</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value">30%</div>
-                        <div class="stat-label">CEFR Sub-Level Gain</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">40%</div>
-                        <div class="stat-label">Confidence Boost</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">200+</div>
-                        <div class="stat-label">Global Tutors</div>
+                <div class="hero-text">
+                    <div class="tagline">Where Language Meets Life</div>
+                    <h1>Elevate Your <span>Future</span></h1>
+                    <p class="slogan">"Unlimited Time = Unlimited Wealth"</p>
+                    <p>Transform language skills into unlimited income. One product, infinite reach. Build wealth through coaching, courses, and mentorship.</p>
+                    <div class="hero-buttons">
+                        <a href="#pillars" class="btn btn-primary">Explore Programs</a>
+                        <a href="#millionaire" class="btn btn-secondary">Learn Millionaire Math</a>
                     </div>
                 </div>
-            </div>
-            <div class="hero-images">
-                <div class="hero-image">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                </div>
-                <div class="hero-image">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </div>
-                <div class="hero-image">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <h3>Start Your Journey</h3>
+                        <p>Join thousands who have transformed their language skills into thriving businesses.</p>
+                        <div class="price">$15 <span>/hour session</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="image-section">
-        <div class="image-grid">
-            <div class="image-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                <h3>Lingua</h3>
-                <p>Language Fluency</p>
-            </div>
-            <div class="image-item" style="background: linear-gradient(135deg, var(--teal) 0%, #20a39e 100%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                <h3>Rise</h3>
-                <p>Confidence Building</p>
-            </div>
-            <div class="image-item" style="background: linear-gradient(135deg, var(--gold) 0%, #e76f51 100%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <h3>Flex Nexus</h3>
-                <p>Hybrid Excellence</p>
-            </div>
-            <div class="image-item" style="background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <h3>Global</h3>
-                <p>Learn Anywhere</p>
+    <section class="millionaire" id="millionaire">
+        <div class="container">
+            <div class="millionaire-content">
+                <div class="millionaire-text">
+                    <div class="label">The Business Model</div>
+                    <h2>The <span>Millionaire Math</span> Formula</h2>
+                    <p>Why create once and sell forever? In the language and personal development space, your knowledge becomes your greatest asset. Every course you build, every guide you write, every session you record — becomes a product that sells while you sleep.</p>
+                    <div class="math-formula">
+                        <div class="formula"><span>1</span> Product × <span>∞</span> Sales = <span>∞</span> Wealth</div>
+                        <div class="formula-note">One-time creation. Infinite passive income.</div>
+                    </div>
+                </div>
+                <div class="millionaire-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h4>Create Once, Earn Forever</h4>
+                        <p>Ebooks, courses, and guides that sell on autopilot.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4>Scale Without Limits</h4>
+                        <p>Coach 1-on-1 or reach thousands simultaneously.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        </div>
+                        <h4>Your Knowledge = Product</h4>
+                        <p>Package expertise into digital products that scale.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h4>Multiple Income Streams</h4>
+                        <p>Coaching, courses, ebooks, mentorship — all aligned.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="values" id="values">
+    <section class="products" id="pillars">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">What We Stand For</span>
-                <h2 class="section-title">Our Core Values</h2>
-                <p class="section-desc">These principles guide everything we do — from how we build our curriculum to how we support our community.</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <h3>Learner-Centered Measurement</h3>
-                    <p>We prioritize evidence-based progress with monthly tracking and CEFR-aligned assessments to guarantee a one-sublevel improvement in 12 weeks.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3>Community Integration</h3>
-                    <p>We believe in the power of interconnected ecosystems, actively building partnerships with universities and global learning communities.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                    </div>
-                    <h3>Transparent Pricing</h3>
-                    <p>We maintain ethical financial structures, ensuring lesson rates remain competitive ($15–17/hour) with fair pay for vetted tutors. No hidden fees.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                    </div>
-                    <h3>Integrated Excellence</h3>
-                    <p>We reject fragmented learning. Every hour of language study is supported by professional soft-skills coaching and real-life context.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pillars" id="pillars">
-        <div class="container">
-            <div class="pillars-header">
-                <span class="section-label">The Elevare Ecosystem</span>
-                <h2 class="section-title">Our Three Core Pillars</h2>
-                <p class="section-desc">Each pillar represents a vital component of our integrated approach. Click to explore each pillar's dedicated page.</p>
+                <div class="section-label">Your Transformation</div>
+                <h2 class="section-title">Choose Your Path</h2>
+                <p class="section-desc">Three pillars, one destination: fluent, confident communication.</p>
             </div>
             <div class="pillars-grid">
-                <div class="pillar-card" onclick="location.href='lingua.html'">
-                    <div class="pillar-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                            <path d="M8 7h8M8 11h8M8 15h5"/>
-                        </svg>
-                    </div>
-                    <h3>Lingua</h3>
-                    <p class="tagline">Language Fluency. Measurable Results.</p>
-                    <p>Expert-led language instruction with CEFR-aligned curriculum. Our vetted tutors deliver personalized lessons that produce measurable progress.</p>
-                    <a href="lingua.html" class="pillar-cta">
-                        Explore Lingua
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="pillar-card" onclick="location.href='rise.html'">
-                    <div class="pillar-icon teal">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                    </div>
-                    <h3>Rise</h3>
-                    <p class="tagline">Be Seen. Be Heard. Be Unstuck.</p>
-                    <p>Mental-health-informed coaching that builds unshakeable confidence. Rise addresses the psychological barriers between learning and real-world communication.</p>
-                    <a href="rise.html" class="pillar-cta">
-                        Explore Rise
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="pillar-card" onclick="location.href='flexnexus.html'">
-                    <div class="pillar-icon gold">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                        </svg>
-                    </div>
-                    <h3>Flex Nexus</h3>
-                    <p class="tagline">Where Language Meets Confidence</p>
-                    <p>Our flagship 12-week hybrid program combining expert language instruction with confidence-building coaching for complete transformation.</p>
-                    <a href="flexnexus.html" class="pillar-cta">
-                        Explore Flex Nexus
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="programs" id="programs">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Our Programs</span>
-                <h2 class="section-title">Learning That Fits Your Life</h2>
-                <p class="section-desc">Choose the pillar that fits your goals, schedule, and budget.</p>
-            </div>
-            <div class="programs-grid">
-                <div class="program-block" id="lingua">
-                    <div class="program-header">
-                        <div class="program-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                            </svg>
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                         </div>
-                        <div class="program-title-group">
-                            <h3>Lingua</h3>
-                            <p class="tagline">Language Fluency. Measurable Results.</p>
-                        </div>
+                        <h3>Lingua</h3>
+                        <div class="tagline">Language Fluency. Measurable Results.</div>
                     </div>
-                    <div class="program-content">
-                        <ul class="program-features-list">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Expert-led language instruction with native-speaking tutors
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                CEFR-aligned curriculum for measurable progress
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                1-on-1 personalized sessions at $15–17/hour
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Flexible scheduling for global learners
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Progress tracking with monthly assessments
-                            </li>
+                    <div class="pillar-body">
+                        <h4>Products & Services</h4>
+                        <ul class="product-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Language Learning Ebooks</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Video Course Library</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1-on-1 Coaching</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Study Guides & Templates</li>
                         </ul>
-                        <div class="program-pricing">
-                            <h4>Starting Price</h4>
-                            <div class="pricing-amount">
-                                <span class="currency">$</span><span class="price">15</span>
-                                <span class="period">/hour</span>
-                            </div>
-                            <a href="lingua.html" class="btn btn-primary">Book a Session</a>
-                            <p class="payment-note">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                Secure payment via Stripe
-                            </p>
+                        <div class="pillar-price">
+                            <div class="amount">$15/hr</div>
+                            <a href="lingua.html" class="btn">Learn More</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-block teal" id="rise">
-                    <div class="program-header">
-                        <div class="program-icon teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                            </svg>
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                         </div>
-                        <div class="program-title-group">
-                            <h3>Rise</h3>
-                            <p class="tagline" style="color: var(--teal);">Be Seen. Be Heard. Be Unstuck.</p>
-                        </div>
+                        <h3>Rise</h3>
+                        <div class="tagline">Be Seen. Be Heard. Be Unstuck.</div>
                     </div>
-                    <div class="program-content">
-                        <ul class="program-features-list">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Mental-health-informed confidence coaching
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Overcome speaking anxiety and self-doubt
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Build unshakeable professional presence
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                1-on-1 sessions with certified coaches
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Practical tools for real-world scenarios
-                            </li>
+                    <div class="pillar-body">
+                        <h4>Products & Services</h4>
+                        <ul class="product-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Personal Development Course</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Confidence Coaching</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mastermind Programs</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mentorship Subscriptions</li>
                         </ul>
-                        <div class="program-pricing">
-                            <h4>Starting Price</h4>
-                            <div class="pricing-amount">
-                                <span class="currency">$</span><span class="price">39</span>
-                                <span class="period">/month</span>
-                            </div>
-                            <a href="rise.html" class="btn btn-primary" style="background: linear-gradient(135deg, var(--teal) 0%, #20a39e 100%);">Start Rising</a>
-                            <p class="payment-note">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                Secure payment via Stripe
-                            </p>
+                        <div class="pillar-price">
+                            <div class="amount">$39/mo</div>
+                            <a href="rise.html" class="btn">Learn More</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-block gold" id="flexnexus">
-                    <div class="program-header">
-                        <div class="program-icon gold">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                            </svg>
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         </div>
-                        <div class="program-title-group">
-                            <h3>Flex Nexus</h3>
-                            <p class="tagline" style="color: var(--gold);">Where Language Meets Confidence</p>
-                        </div>
+                        <h3>Flex Nexus</h3>
+                        <div class="tagline">Where Language Meets Confidence</div>
                     </div>
-                    <div class="program-content">
-                        <ul class="program-features-list">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                12-week hybrid program combining Lingua + Rise
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                24 live coaching sessions with expert tutors
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Small cohort (max 50 learners) for personalized attention
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                1:1 progress check-ins throughout the program
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                Certificate of completion + job placement support
-                            </li>
+                    <div class="pillar-body">
+                        <h4>Products & Services</h4>
+                        <ul class="product-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Professional Guides</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Business Communication</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 12-Week Intensive</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Certification Program</li>
                         </ul>
-                        <div class="program-pricing">
-                            <h4>Program Price</h4>
-                            <div class="pricing-amount">
-                                <span class="currency">$</span><span class="price">227</span>
-                                <span class="period">/12 weeks</span>
-                            </div>
-                            <a href="flexnexus.html" class="btn btn-primary" style="background: linear-gradient(135deg, var(--gold) 0%, #e76f51 100%);">Join Cohort</a>
-                            <p class="payment-note">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                Secure payment via Stripe
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="flex-nexus" id="nexus">
-        <div class="container">
-            <div class="nexus-content">
-                <div class="nexus-text">
-                    <span class="section-label">The Elevare Difference</span>
-                    <h2>Flex Nexus: Where Language Meets Confidence</h2>
-                    <p>Most language apps teach you words. Elevare teaches you to own the room. Flex Nexus is our signature 12-week hybrid program that pairs expert language instruction with confidence-building coaching — because fluency without confidence is only half the equation.</p>
-                    <p>Whether you're preparing for international business, navigating life as an expat, or simply want to speak up in meetings, Flex Nexus transforms how you show up.</p>
-                    <div class="nexus-stats-grid">
-                        <div class="nexus-stat">
-                            <div class="nexus-stat-value">30%</div>
-                            <div class="nexus-stat-label">Avg. CEFR Sub-Level Improvement</div>
-                        </div>
-                        <div class="nexus-stat">
-                            <div class="nexus-stat-value">40%</div>
-                            <div class="nexus-stat-label">Confidence Score Increase</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nexus-visual">
-                    <div class="nexus-card">
-                        <div class="nexus-card-header">
-                            <div class="nexus-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            </div>
-                            <div>
-                                <div class="nexus-card-title">Flex Nexus Curriculum</div>
-                                <div class="nexus-card-subtitle">12-Week Transformation Program</div>
-                            </div>
-                        </div>
-                        <div class="nexus-modules">
-                            <div class="nexus-module">
-                                <span class="module-number">1</span>
-                                <span class="module-text">Foundation & Pronunciation Mastery</span>
-                            </div>
-                            <div class="nexus-module">
-                                <span class="module-number">2</span>
-                                <span class="module-text">Conversational Fluency & Context</span>
-                            </div>
-                            <div class="nexus-module">
-                                <span class="module-number">3</span>
-                                <span class="module-text">Professional Presentation Skills</span>
-                            </div>
-                            <div class="nexus-module">
-                                <span class="module-number">4</span>
-                                <span class="module-text">Cultural Fluency & Real-World Practice</span>
-                            </div>
-                            <div class="nexus-module">
-                                <span class="module-number">5</span>
-                                <span class="module-text">Integration & Long-Term Success</span>
-                            </div>
-                        </div>
-                        <div class="nexus-cta">
+                        <div class="pillar-price">
+                            <div class="amount">$227</div>
                             <a href="flexnexus.html" class="btn">Learn More</a>
                         </div>
                     </div>
@@ -2296,183 +1007,144 @@
         </div>
     </section>
 
-    <section class="tutors" id="tutors">
+    <section class="programs" id="programs">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Global Tutor Network</span>
-                <h2 class="section-title">Learn From The Best. Anywhere.</h2>
-                <p class="section-desc">Our vetted network of native-speaking tutors combines language expertise with international experience. Plus, explore our consulting packages for personalized career support.</p>
+                <div class="section-label">Invest In Yourself</div>
+                <h2 class="section-title">Program Pricing</h2>
+                <p class="section-desc">Choose the investment that matches your goals.</p>
             </div>
-            <div class="tutor-consulting-grid">
-                <div class="tutor-grid">
-                    <div class="tutor-card">
-                        <div class="tutor-avatar">MC</div>
-                        <div class="tutor-name">María Cristina</div>
-                        <div class="tutor-langs">Spanish • English</div>
-                        <div class="tutor-details">Former corporate trainer with 8+ years experience. Specializes in business communication and accent refinement.</div>
-                        <div class="tutor-rate">
-                            <div class="tutor-price">$17<span>/hr</span></div>
-                            <div class="tutor-rating">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                4.9
-                            </div>
-                        </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     </div>
-                    <div class="tutor-card">
-                        <div class="tutor-avatar">YK</div>
-                        <div class="tutor-name">Yuki Tanaka</div>
-                        <div class="tutor-langs">Japanese • English</div>
-                        <div class="tutor-details">University professor and JLPT certified instructor. Expert in structured curriculum and exam preparation.</div>
-                        <div class="tutor-rate">
-                            <div class="tutor-price">$16<span>/hr</span></div>
-                            <div class="tutor-rating">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                4.8
-                            </div>
-                        </div>
+                    <div class="program-info">
+                        <h3>Lingua Sessions</h3>
+                        <div class="tagline">Language Fluency. Measurable Results.</div>
+                        <p>Personalized language coaching with expert tutors. Build fluency through conversation, grammar, and cultural understanding.</p>
                     </div>
-                    <div class="tutor-card">
-                        <div class="tutor-avatar">AM</div>
-                        <div class="tutor-name">Alex Müller</div>
-                        <div class="tutor-langs">German • English</div>
-                        <div class="tutor-details">Expat coach and fluency specialist. Helps professionals navigate German business culture with confidence.</div>
-                        <div class="tutor-rate">
-                            <div class="tutor-price">$18<span>/hr</span></div>
-                            <div class="tutor-rating">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                5.0
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tutor-card">
-                        <div class="tutor-avatar">SL</div>
-                        <div class="tutor-name">Sophie Laurent</div>
-                        <div class="tutor-langs">French • English</div>
-                        <div class="tutor-details">Certified DELF examiner and communications coach. Makes grammar intuitive and conversation natural.</div>
-                        <div class="tutor-rate">
-                            <div class="tutor-price">$15<span>/hr</span></div>
-                            <div class="tutor-rating">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                4.9
-                            </div>
-                        </div>
+                    <div class="program-pricing">
+                        <div class="amount">$15</div>
+                        <div class="period">per hour</div>
                     </div>
                 </div>
-                <div class="consulting-card">
-                    <div class="consulting-header">
-                        <div class="consulting-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        </div>
-                        <h3>Tutor Consulting</h3>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
-                    <ul class="consulting-packages">
-                        <li>
-                            <span>Career Starter Package</span>
-                            <span class="pkg-price">$297</span>
-                        </li>
-                        <li>
-                            <span>Full Tutoring Suite</span>
-                            <span class="pkg-price">$1,197</span>
-                        </li>
-                        <li>
-                            <span>Premium Placement Package</span>
-                            <span class="pkg-price">$1,600</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn" style="margin-top: 20px; width: 100%; justify-content: center; background: var(--gold); color: var(--primary);">Explore Packages</a>
+                    <div class="program-info">
+                        <h3>Rise Membership</h3>
+                        <div class="tagline">Be Seen. Be Heard. Be Unstuck.</div>
+                        <p>Monthly coaching and mentorship. Mental-health-informed approach to building unshakeable confidence.</p>
+                    </div>
+                    <div class="program-pricing">
+                        <div class="amount">$39</div>
+                        <div class="period">per month</div>
+                    </div>
                 </div>
-            </div>
-            <div class="tutors-cta">
-                <a href="#" class="btn">
-                    Browse All Tutors
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div class="program-info">
+                        <h3>Flex Nexus Intensive</h3>
+                        <div class="tagline">Where Language Meets Confidence</div>
+                        <p>12-week comprehensive program combining language mastery with professional presence and executive skills.</p>
+                    </div>
+                    <div class="program-pricing">
+                        <div class="amount">$227</div>
+                        <div class="period">12 weeks</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="resources" id="resources">
+    <section class="resources">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Learn & Grow</span>
-                <h2 class="section-title">Free Resources</h2>
-                <p class="section-desc">Access guides, tips, and tools to support your language learning journey — completely free.</p>
+                <div class="section-label">Free Resources</div>
+                <h2 class="section-title">Start Learning Today</h2>
+                <p class="section-desc">Free materials to begin your journey.</p>
             </div>
             <div class="resources-grid">
                 <div class="resource-card">
                     <div class="resource-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                    </div>
-                    <h3>Blog</h3>
-                    <p>Tips, stories, and insights on language learning and professional growth.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                     </div>
-                    <h3>Free Guides</h3>
-                    <p>Downloadable resources to accelerate your fluency journey.</p>
-                    <a href="#" class="btn">Download</a>
+                    <h4>Free Guides</h4>
+                    <p>Downloadable study materials and quick-start guides.</p>
+                    <div class="price">Free</div>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                     </div>
-                    <h3>Webinars</h3>
-                    <p>Join live sessions with expert tutors and coaches.</p>
-                    <a href="#" class="btn">Register Free</a>
+                    <h4>Webinars</h4>
+                    <p>Watch recorded workshops on language and confidence.</p>
+                    <div class="price">Free</div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h4>Community</h4>
+                    <p>Join our Discord for daily practice and support.</p>
+                    <div class="price">Free</div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h4>Consultation</h4>
+                    <p>Book a free 15-minute discovery call with our team.</p>
+                    <div class="price">Free</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="outcomes">
+    <section class="tutors" id="tutors">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Proven Results</span>
-                <h2 class="section-title">We Measure What Matters</h2>
-                <p class="section-desc">Unlike other platforms that leave you guessing, Elevare tracks your progress with concrete metrics. Our 30% CEFR improvement target sets us apart.</p>
+                <div class="section-label">Expert Team</div>
+                <h2 class="section-title">Your Coaches & Mentors</h2>
+                <p class="section-desc">Learn from professionals who've walked the path.</p>
             </div>
-            <div class="outcomes-grid">
-                <div class="outcome-card">
-                    <div class="outcome-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="outcome-value">30%</div>
-                    <div class="outcome-label">Average CEFR Sub-Level Improvement</div>
-                    <div class="outcome-note">After 12 weeks in Flex Nexus</div>
+            <div class="tutors-grid">
+                <div class="tutor-card">
+                    <div class="tutor-avatar">AM</div>
+                    <h4>Amara M.</h4>
+                    <div class="specialty">Lingua Specialist</div>
+                    <p>Fluent in 5 languages with 8+ years teaching experience. Specializes in conversational fluency.</p>
+                    <div class="rate">$15/hr</div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    </div>
-                    <div class="outcome-value">40%</div>
-                    <div class="outcome-label">Increase in Confidence Scores</div>
-                    <div class="outcome-note">Based on validated self-assessment surveys</div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">JC</div>
+                    <h4>James C.</h4>
+                    <div class="specialty">Rise Coach</div>
+                    <p>Certified life coach with expertise in confidence building and public speaking.</p>
+                    <div class="rate">$39/mo</div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                    <div class="outcome-value">12</div>
-                    <div class="outcome-label">Weeks to Measurable Fluency</div>
-                    <div class="outcome-note">With consistent participation</div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">SN</div>
+                    <h4>Sarah N.</h4>
+                    <div class="specialty">Flex Nexus Lead</div>
+                    <p>Former executive at Fortune 500 company. Expert in professional communication.</p>
+                    <div class="rate">$227/program</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta" id="cta">
+    <section class="cta">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Future?</h2>
-                <p>Join thousands of learners who are mastering languages and building the confidence to match. Your next level starts here.</p>
-                <a href="#programs" class="btn">
-                    Start Your Journey
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Your transformation begins with a single step. Choose your path and join thousands who've elevated their lives through language and confidence.</p>
+            <a href="#pillars" class="btn">Explore Programs</a>
         </div>
     </section>
 
@@ -2480,111 +1152,55 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                                 <path d="M2 17l10 5 10-5"/>
                                 <path d="M2 12l10 5 10-5"/>
                             </svg>
                         </div>
-                        <span class="footer-logo-text">Elevare<span style="color: var(--accent)">.</span></span>
-                    </div>
-                    <p class="footer-desc">Where Language Meets Life. The global online studio for language fluency + personal transformation.</p>
+                        <span class="logo-text">ELEVARE<span>.</span></span>
+                    </a>
+                    <p>Where Language Meets Life. Transform your communication, elevate your future.</p>
                     <div class="footer-social">
-                        <a href="https://facebook.com" target="_blank" title="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" title="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" title="Twitter/X">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </a>
+                        <a href="https://facebook.com" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="https://instagram.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg></a>
+                        <a href="https://linkedin.com" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="https://twitter.com" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                     </div>
                 </div>
-                <div class="footer-col">
+                <div>
                     <h4 class="footer-title">Programs</h4>
                     <ul class="footer-links">
                         <li><a href="lingua.html">Lingua</a></li>
                         <li><a href="rise.html">Rise</a></li>
                         <li><a href="flexnexus.html">Flex Nexus</a></li>
-                        <li><a href="#tutors">1:1 Tutoring</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">Resources</h4>
+                <div>
+                    <h4 class="footer-title">Products</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Free Guides</a></li>
-                        <li><a href="#">Webinars</a></li>
-                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Ebooks</a></li>
+                        <li><a href="#">Video Courses</a></li>
+                        <li><a href="#">Coaching</a></li>
+                        <li><a href="#">Mentorship</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
+                <div>
                     <h4 class="footer-title">Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#values">Core Values</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Become a Tutor</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Elevare. All rights reserved.</p>
+                <p>&copy; 2025 Elevare. All rights reserved. | "Unlimited Time = Unlimited Wealth"</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.pillar-card, .value-card, .outcome-card, .tutor-card, .resource-card, .program-block, .nexus-stat').forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
-            observer.observe(el);
-        });
-
-        // Nav scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>

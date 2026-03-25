@@ -6,35 +6,32 @@
     <title>Lingua — Language Fluency. Measurable Results. | Elevare</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #e94560;
-            --accent-light: #ff6b6b;
-            --gold: #f4a261;
-            --teal: #2ec4b6;
-            --cream: #faf9f6;
-            --text: #2d3436;
-            --text-light: #636e72;
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
             --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
             color: var(--text);
             background: var(--cream);
             overflow-x: hidden;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
@@ -44,21 +41,19 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
+            background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
         }
 
         .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .logo-wrapper {
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -68,52 +63,57 @@
         .logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .logo-icon svg { width: 24px; height: 24px; color: var(--white); }
-        .logo-text { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--primary); }
-        .logo-text span { color: var(--accent); }
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
 
-        .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 14px; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links a.active { color: var(--accent); font-weight: 600; }
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
 
         .nav-cta {
-            background: var(--accent);
-            color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 50px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            border-radius: 0;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+            transition: all 0.3s;
+            letter-spacing: 1px;
         }
 
-        .nav-cta:hover { transform: translateY(-2px); }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--navy) !important;
+        }
 
-        /* Hero */
         .hero {
-            padding: 160px 0 100px;
-            background: linear-gradient(135deg, var(--cream) 0%, #f0ece4 100%);
+            min-height: 60vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 120px 0 80px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .hero-content {
@@ -121,146 +121,94 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            padding: 8px 16px;
-            border-radius: 50px;
+        .hero-text .tagline {
             font-size: 12px;
             font-weight: 600;
-            color: var(--accent);
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
+        .hero-text h1 {
+            font-size: clamp(42px, 5vw, 60px);
+            color: var(--cream);
             line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
         }
 
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .hero-text h1 span { color: var(--gold); }
 
-        .hero-tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
+        .hero-text .slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
             font-style: italic;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 48px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.12);
-            position: relative;
-        }
-
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 50%;
-            opacity: 0.2;
-        }
-
-        .hero-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: var(--gold-light);
             margin-bottom: 24px;
         }
 
-        .hero-icon svg { width: 50px; height: 50px; color: var(--white); }
+        .hero-text p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
 
-        .hero-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 12px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .hero-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .hero-card .price span {
+            font-size: 18px;
+            color: var(--text-light);
         }
 
         .hero-card p {
-            font-size: 15px;
-            color: var(--text-light);
-            margin-bottom: 0;
-        }
-
-        /* Stats */
-        .stats {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 32px;
-            background: var(--cream);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        }
-
-        .stat-value {
-            font-size: 42px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
             font-size: 14px;
-            color: var(--text-light);
-            font-weight: 500;
+            color: var(--text);
+            margin-top: 16px;
         }
 
-        /* Features */
-        .features {
+        .section {
             padding: 100px 0;
-            background: var(--cream);
         }
 
         .section-header {
@@ -270,27 +218,87 @@
         }
 
         .section-label {
-            display: inline-block;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
             margin-bottom: 16px;
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 700;
-            color: var(--primary);
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
             margin-bottom: 16px;
         }
 
         .section-desc {
             font-size: 16px;
             color: var(--text-light);
-            line-height: 1.7;
+        }
+
+        .products {
+            background: var(--navy);
+        }
+
+        .products .section-title { color: var(--cream); }
+        .products .section-desc { color: var(--text); }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .product-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            gap: 24px;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .product-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .product-icon svg { width: 32px; height: 32px; color: var(--navy); }
+
+        .product-info h4 {
+            font-size: 22px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .features {
+            background: var(--cream);
         }
 
         .features-grid {
@@ -300,56 +308,48 @@
         }
 
         .feature-card {
-            background: var(--white);
-            border-radius: 24px;
+            background: var(--navy);
+            border-radius: 20px;
             padding: 40px;
             text-align: center;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
+            transition: all 0.3s;
+            border: 1px solid transparent;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(233,69,96,0.2);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+            transform: translateY(-8px);
         }
 
         .feature-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 18px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
-            transition: all 0.3s ease;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .feature-icon svg { width: 36px; height: 36px; color: var(--navy); }
 
-        .feature-icon svg { width: 36px; height: 36px; color: var(--white); }
-
-        .feature-card h3 {
+        .feature-card h4 {
             font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
+            color: var(--cream);
             margin-bottom: 12px;
         }
 
         .feature-card p {
             font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.6;
+            color: var(--text);
         }
 
-        /* Pricing */
         .pricing {
-            padding: 100px 0;
-            background: var(--white);
+            background: var(--navy-light);
         }
+
+        .pricing .section-title { color: var(--cream); }
 
         .pricing-content {
             display: grid;
@@ -364,22 +364,20 @@
 
         .pricing-features li {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 16px;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             font-size: 16px;
             color: var(--text);
         }
 
-        .pricing-features li:last-child { border-bottom: none; }
-        .pricing-features li svg { flex-shrink: 0; width: 24px; height: 24px; color: var(--teal); }
+        .pricing-features li svg { width: 24px; height: 24px; color: var(--gold); flex-shrink: 0; }
 
         .pricing-card {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 24px;
-            padding: 40px;
-            color: var(--white);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 20px;
+            padding: 48px;
             text-align: center;
             position: sticky;
             top: 100px;
@@ -388,94 +386,86 @@
         .pricing-card h4 {
             font-size: 14px;
             font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.9;
+            color: var(--navy);
             margin-bottom: 16px;
         }
 
-        .pricing-amount {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            gap: 4px;
-            margin-bottom: 24px;
+        .pricing-card .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--navy);
         }
 
-        .pricing-amount .currency { font-size: 24px; font-weight: 600; }
-        .pricing-amount .price { font-size: 64px; font-weight: 800; }
-        .pricing-amount .period { font-size: 16px; opacity: 0.8; }
+        .pricing-card .amount span {
+            font-size: 24px;
+        }
+
+        .pricing-card .per {
+            font-size: 14px;
+            color: var(--navy);
+            opacity: 0.8;
+            margin-bottom: 32px;
+        }
 
         .pricing-card .btn {
             width: 100%;
             justify-content: center;
-            background: var(--white);
-            color: var(--accent);
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
+            background: var(--navy);
+            color: var(--cream);
         }
 
         .pricing-card .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: var(--navy-light);
         }
 
-        /* CTA */
         .cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
+            background: var(--cream);
+        }
+
+        .cta-content {
+            background: var(--navy);
+            border-radius: 24px;
+            padding: 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 44px);
-            font-weight: 700;
-            margin-bottom: 20px;
+        .cta-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .cta p {
-            font-size: 18px;
-            opacity: 0.8;
+        .cta-content h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-content p {
+            font-size: 16px;
+            color: var(--text);
             margin-bottom: 32px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
         }
 
-        .cta .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent);
-            color: var(--white);
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cta .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233,69,96,0.4);
-        }
-
-        /* Footer */
         footer {
             padding: 60px 0 40px;
-            background: var(--primary);
-            color: var(--white);
+            background: var(--navy);
             text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
         }
 
         .footer-logo {
@@ -486,247 +476,245 @@
             margin-bottom: 16px;
         }
 
-        .footer-logo-icon {
+        .footer-logo .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .footer-logo-icon svg { width: 22px; height: 22px; color: var(--white); }
-        .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
+        .footer-logo .logo-icon svg { width: 22px; height: 22px; }
 
-        footer p { font-size: 14px; opacity: 0.6; }
+        .footer-logo .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--cream);
+        }
 
-        footer a { color: var(--accent); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        .footer-logo .logo-text span { color: var(--gold); }
+
+        footer p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         @media (max-width: 992px) {
-            .hero-content, .pricing-content { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-content { grid-template-columns: 1fr; }
             .hero-visual { order: -1; }
+            .products-grid, .features-grid { grid-template-columns: 1fr; }
+            .pricing-content { grid-template-columns: 1fr; }
+            .pricing-card { position: static; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .stats-grid, .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="logo-wrapper">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <span class="logo-text">Elevare<span>.</span></span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="lingua.html" class="active">Lingua</a></li>
-                <li><a href="rise.html">Rise</a></li>
-                <li><a href="flexnexus.html">Flex Nexus</a></li>
-                <li><a href="index.html#tutors">Tutors</a></li>
-                <li><a href="#pricing" class="nav-cta">Get Started</a></li>
-            </ul>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lingua.html" class="active">Lingua</a></li>
+                    <li><a href="rise.html">Rise</a></li>
+                    <li><a href="flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="#pricing" class="nav-cta">Get Started</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div>
-                    <div class="hero-badge">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                        Lingua Pillar
-                    </div>
+                <div class="hero-text">
+                    <div class="tagline">Lingua Pillar</div>
                     <h1>Language Fluency.<br><span>Measurable Results.</span></h1>
-                    <p class="hero-tagline">Be Seen. Be Heard. Be Unstuck.</p>
-                    <p>Expert-led language instruction with CEFR-aligned curriculum. Our vetted tutors deliver personalized lessons that produce measurable progress — guaranteed one sub-level improvement in 12 weeks.</p>
-                    <a href="#pricing" class="btn" style="display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--white); padding: 16px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
-                        Start Learning
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
+                    <p class="slogan">Master any language with our proven methodology</p>
+                    <p>From beginner to fluent in record time. Our expert tutors combine proven methodologies with personalized coaching to help you achieve real, measurable language proficiency.</p>
+                    <a href="#pricing" class="btn btn-primary">Start Learning</a>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-card">
-                        <div class="hero-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                                <path d="M8 7h8M8 11h8M8 15h5"/>
-                            </svg>
-                        </div>
-                        <h3>Your Language Journey Starts Here</h3>
-                        <p>Learn from native-speaking tutors who understand your goals and adapt to your learning style.</p>
+                        <div class="price">$15<span>/hour</span></div>
+                        <p>1-on-1 personalized coaching</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <section class="section products" id="products">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">200+</div>
-                    <div class="stat-label">Native-Speaking Tutors</div>
+            <div class="section-header">
+                <div class="section-label">Millionaire Math</div>
+                <h2 class="section-title">Products & Services</h2>
+                <p class="section-desc">One expertise, multiple income streams. Learn once, teach forever.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Language Learning Ebooks</h4>
+                        <p>Comprehensive guides covering grammar, vocabulary, and cultural insights for self-paced learning.</p>
+                        <div class="product-price">$19 - $49</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">15+</div>
-                    <div class="stat-label">Languages Offered</div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Video Course Library</h4>
+                        <p>Hours of structured video lessons with practical exercises and real-life conversation practice.</p>
+                        <div class="product-price">$79 - $149</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">30%</div>
-                    <div class="stat-label">CEFR Improvement</div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>1-on-1 Coaching Sessions</h4>
+                        <p>Personalized tutoring with native-speaking experts. Tailored lesson plans for your goals.</p>
+                        <div class="product-price">$15/hour</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">4.9</div>
-                    <div class="stat-label">Average Rating</div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Study Guides & Templates</h4>
+                        <p>Ready-to-use worksheets, flashcards, and practice templates for efficient learning.</p>
+                        <div class="product-price">$9 - $29</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <section class="section features">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">What You Get</span>
-                <h2 class="section-title">Everything You Need to Achieve Fluency</h2>
-                <p class="section-desc">Our comprehensive approach combines expert instruction, proven methodology, and personalized attention.</p>
+                <div class="section-label">Why Lingua</div>
+                <h2 class="section-title">What Makes Us Different</h2>
+                <p class="section-desc">A methodology built on results, not just theory.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3>Native-Speaking Tutors</h3>
-                    <p>Learn from vetted tutors who are native speakers with professional teaching credentials and international experience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
-                    <h3>CEFR-Aligned Curriculum</h3>
-                    <p>Our structured curriculum follows the Common European Framework of Reference for guaranteed measurable progress.</p>
+                    <h4>Proven Results</h4>
+                    <p>95% of our students report measurable improvement within 30 days.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     </div>
-                    <h3>Flexible Scheduling</h3>
-                    <p>Book sessions that fit your timezone and schedule. Learn at your own pace from anywhere in the world.</p>
+                    <h4>Native Speakers</h4>
+                    <p>Learn from tutors who speak the language as their first language.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     </div>
-                    <h3>Personalized Sessions</h3>
-                    <p>1-on-1 instruction tailored to your goals, whether business communication, travel, or daily conversation.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                    </div>
-                    <h3>Progress Tracking</h3>
-                    <p>Monthly assessments and detailed progress reports to track your journey from beginner to fluent speaker.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
-                    <h3>Real-World Practice</h3>
-                    <p>Focus on practical, everyday language that you can use immediately in professional and personal contexts.</p>
+                    <h4>Personalized Path</h4>
+                    <p>Your curriculum adapts to your learning style and goals.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
+    <section class="section pricing" id="pricing">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Investment</span>
-                <h2 class="section-title">Simple, Transparent Pricing</h2>
-                <p class="section-desc">No hidden fees. No contracts. Pay only for what you need.</p>
+                <div class="section-label">Investment</div>
+                <h2 class="section-title">Start Your Journey</h2>
+                <p class="section-desc">Choose the plan that fits your goals and budget.</p>
             </div>
             <div class="pricing-content">
                 <div>
-                    <h3 style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 32px;">What's Included</h3>
+                    <h4 style="font-size: 20px; color: var(--cream); margin-bottom: 24px;">What's Included</h4>
                     <ul class="pricing-features">
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            1-on-1 sessions with native-speaking tutors
+                            Personalized lesson plans
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            CEFR-aligned lesson plans tailored to your level
+                            Native speaker coaching
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Personalized feedback and pronunciation correction
+                            Cultural immersion content
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Access to learning materials and resources
+                            Progress tracking & feedback
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Progress tracking and monthly assessments
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Flexible rescheduling up to 24 hours before
+                            Flexible scheduling
                         </li>
                     </ul>
                 </div>
                 <div class="pricing-card">
-                    <h4>Starting From</h4>
-                    <div class="pricing-amount">
-                        <span class="currency">$</span>
-                        <span class="price">15</span>
-                        <span class="period">/hour</span>
-                    </div>
-                    <a href="#" class="btn">
-                        Book Your First Session
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <p style="font-size: 12px; opacity: 0.8; margin-top: 12px;">Secure payment via Stripe</p>
+                    <h4>Hourly Rate</h4>
+                    <div class="amount">$15<span>/hr</span></div>
+                    <div class="per">Personalized 1-on-1 session</div>
+                    <a href="#" class="btn">Book a Session</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta">
+    <section class="section cta">
         <div class="container">
-            <h2>Ready to Start Your Language Journey?</h2>
-            <p>Join thousands of learners who are achieving fluency with Elevare. Your transformation starts with a single session.</p>
-            <a href="#" class="btn">
-                Book a Free Trial
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            <div class="cta-content">
+                <h2>Ready to Become Fluent?</h2>
+                <p>Join thousands who have transformed their communication through Lingua. Your fluency journey starts here.</p>
+                <a href="#" class="btn btn-primary">Start Today</a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <div class="footer-logo-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <span class="footer-logo-text">Elevare<span style="color: var(--accent)">.</span></span>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
             </div>
             <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a></p>
         </div>
