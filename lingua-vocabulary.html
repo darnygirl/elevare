@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Workbook | Elevare Lingua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --teal: #2ec4b6;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--navy); }
+
+        .header {
+            background: var(--navy);
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .header h1 { color: var(--cream); font-size: 48px; margin-bottom: 16px; }
+        .header h1 span { color: var(--gold); }
+        .header p { color: var(--text); font-size: 18px; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 16px; height: 16px; }
+
+        .category {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .category-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-icon svg { width: 28px; height: 28px; color: var(--navy); }
+
+        .category h2 {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .category .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .word-card {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .word-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .word-card .word {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .word-card .pronunciation {
+            font-size: 13px;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .word-card .definition {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .word-card .example {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .word-grid { grid-template-columns: repeat(2, 1fr); }
+            .category { padding: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .word-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Lingua <span>Vocabulary</span></h1>
+            <p>Essential words organized by topic with definitions and examples</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="lingua-resources.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Resources
+        </a>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                    <h2>Daily Life</h2>
+                    <div class="subtitle">Words for everyday conversations</div>
+                </div>
+            </div>
+            <div class="word-grid">
+                <div class="word-card">
+                    <div class="word">Schedule</div>
+                    <div class="pronunciation">/ˈʃedjuːl/</div>
+                    <div class="definition">A plan for carrying out a process</div>
+                    <div class="example">"I check my schedule every morning."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Appointments</div>
+                    <div class="pronunciation">/əˈpɔɪntmənts/</div>
+                    <div class="definition">Arranged meetings at set times</div>
+                    <div class="example">"I have an appointment at 3pm."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Errands</div>
+                    <div class="pronunciation">/ˈerəndz/</div>
+                    <div class="definition">Short trips for practical purposes</div>
+                    <div class="example">"I need to run some errands."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Household</div>
+                    <div class="pronunciation">/ˈhaʊshəʊld/</div>
+                    <div class="definition">People living together as a unit</div>
+                    <div class="example">"Our household has four people."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Routine</div>
+                    <div class="pronunciation">/ruːˈtiːn/</div>
+                    <div class="definition">A regular way of doing things</div>
+                    <div class="example">"I follow a morning routine."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Chores</div>
+                    <div class="pronunciation">/ˈtʃɔːrz/</div>
+                    <div class="definition">Regular domestic tasks</div>
+                    <div class="example">"I do household chores on weekends."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div>
+                    <h2>Business & Work</h2>
+                    <div class="subtitle">Professional vocabulary</div>
+                </div>
+            </div>
+            <div class="word-grid">
+                <div class="word-card">
+                    <div class="word">Deadline</div>
+                    <div class="pronunciation">/ˈdedlaɪn/</div>
+                    <div class="definition">The latest time to complete something</div>
+                    <div class="example">"The deadline is Friday."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Colleague</div>
+                    <div class="pronunciation">/ˈkɒliːɡ/</div>
+                    <div class="definition">A person with whom one works</div>
+                    <div class="example">"She's my colleague."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Negotiate</div>
+                    <div class="pronunciation">/nɪˈɡəʊʃieɪt/</div>
+                    <div class="definition">To discuss to reach an agreement</div>
+                    <div class="example">"We need to negotiate the price."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Collaborate</div>
+                    <div class="pronunciation">/kəˈlæbəreɪt/</div>
+                    <div class="definition">To work jointly on an activity</div>
+                    <div class="example">"Let's collaborate on this project."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Delegate</div>
+                    <div class="pronunciation">/ˈdelɪɡeɪt/</div>
+                    <div class="definition">To entrust tasks to others</div>
+                    <div class="example">"I need to delegate some tasks."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Productivity</div>
+                    <div class="pronunciation">/ˌprɒdʌkˈtɪvəti/</div>
+                    <div class="definition">Effectiveness of productive effort</div>
+                    <div class="example">"We need to boost productivity."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                    <h2>Travel & Directions</h2>
+                    <div class="subtitle">Navigation and transportation</div>
+                </div>
+            </div>
+            <div class="word-grid">
+                <div class="word-card">
+                    <div class="word">Itinerary</div>
+                    <div class="pronunciation">/aɪˈtɪnərəri/</div>
+                    <div class="definition">A planned route of a journey</div>
+                    <div class="example">"Check your itinerary before traveling."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Boarding Pass</div>
+                    <div class="pronunciation">/ˈbɔːrdɪŋ pæs/</div>
+                    <div class="definition">Document to board a plane or train</div>
+                    <div class="example">"Show your boarding pass."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Immigration</div>
+                    <div class="pronunciation">/ˌɪmɪˈɡreɪʃn/</div>
+                    <div class="definition">Process of entering another country</div>
+                    <div class="example">"Go through immigration here."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Accommodation</div>
+                    <div class="pronunciation">/əˌkɒməˈdeɪʃn/</div>
+                    <div class="definition">Place to stay or live</div>
+                    <div class="example">"Book your accommodation early."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Scenic</div>
+                    <div class="pronunciation">/ˈsiːnɪk/</div>
+                    <div class="definition">Having beautiful natural views</div>
+                    <div class="example">"It's a scenic route."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Commute</div>
+                    <div class="pronunciation">/kəˈmjuːt/</div>
+                    <div class="definition">To travel regularly to work</div>
+                    <div class="example">"I commute by train."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <div>
+                    <h2>Emotions & Feelings</h2>
+                    <div class="subtitle">Express your emotions</div>
+                </div>
+            </div>
+            <div class="word-grid">
+                <div class="word-card">
+                    <div class="word">Anxious</div>
+                    <div class="pronunciation">/ˈæŋkʃəs/</div>
+                    <div class="definition">Feeling worried or uneasy</div>
+                    <div class="example">"I feel anxious about the exam."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Grateful</div>
+                    <div class="pronunciation">/ˈɡreɪtfl/</div>
+                    <div class="definition">Feeling thankful</div>
+                    <div class="example">"I'm grateful for your help."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Overwhelmed</div>
+                    <div class="pronunciation">/ˌəʊvəˈwelmd/</div>
+                    <div class="definition">Feeling unable to cope</div>
+                    <div class="example">"I'm overwhelmed with work."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Content</div>
+                    <div class="pronunciation">/kənˈtent/</div>
+                    <div class="definition">Happy and satisfied</div>
+                    <div class="example">"I feel content with my life."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Nostalgic</div>
+                    <div class="pronunciation">/nɒˈstældʒɪk/</div>
+                    <div class="definition">Sentimental about the past</div>
+                    <div class="example">"Looking at old photos makes me nostalgic."</div>
+                </div>
+                <div class="word-card">
+                    <div class="word">Optimistic</div>
+                    <div class="pronunciation">/ˌɒptɪˈmɪstɪk/</div>
+                    <div class="definition">Hopeful about the future</div>
+                    <div class="example">"Stay optimistic about your goals."</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a> | <a href="lingua-resources.html">More Resources</a></p>
+    </footer>
+</body>
+</html>

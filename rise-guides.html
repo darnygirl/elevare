@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Growth Guides — Elevare Rise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--navy);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .guide-content {
+            padding: 140px 0 80px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .breadcrumb span { color: var(--text-light); margin: 0 8px; }
+
+        .chapter-nav {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--navy-light);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .chapter-nav a {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .chapter-nav a:hover, .chapter-nav a.active {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        .guide-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .guide-header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .guide-header h1 {
+            font-size: clamp(36px, 5vw, 48px);
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .guide-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .chapter {
+            margin-bottom: 64px;
+            scroll-margin-top: 100px;
+        }
+
+        .chapter h2 {
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .chapter h3 {
+            font-size: 24px;
+            color: var(--gold);
+            margin: 32px 0 16px;
+        }
+
+        .chapter p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: rgba(201, 162, 39, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        .exercise-box {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+
+        .exercise-box h4 {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .exercise-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exercise-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .exercise-box li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .tip-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .tip-box h4 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box p { margin-bottom: 0; font-size: 14px; }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        footer p { font-size: 14px; color: var(--text-light); }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .chapter-nav { gap: 8px; }
+            .chapter-nav a { padding: 8px 12px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rise.html">Rise</a></li>
+                <li><a href="rise-resources.html">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="rise-resources.html">Rise Resources</a>
+                <span>›</span>
+                Personal Growth Guides
+            </div>
+
+            <nav class="chapter-nav">
+                <a href="#chapter1" class="active">Mindset</a>
+                <a href="#chapter2">Confidence</a>
+                <a href="#chapter3">Communication</a>
+                <a href="#chapter4">Breaking Barriers</a>
+                <a href="#chapter5">Habit Building</a>
+                <a href="#chapter6">Taking Action</a>
+            </nav>
+
+            <div class="guide-header">
+                <div class="label">Rise Personal Development Series</div>
+                <h1>The Complete Guide to Unshakeable Confidence</h1>
+                <p>A comprehensive journey through the mindset shifts and practical strategies that transform how you see yourself and interact with the world.</p>
+            </div>
+
+            <div class="chapter" id="chapter1">
+                <h2>Chapter 1: The Power of Mindset</h2>
+                
+                <p>Your mindset is the foundation upon which everything else is built. Before you can change your circumstances, you must change how you think about yourself and what's possible for you.</p>
+
+                <h3>Fixed vs. Growth Mindset</h3>
+                <p>Carol Dweck's groundbreaking research revealed two fundamental mindsets that shape our lives:</p>
+                <p><strong>Fixed Mindset:</strong> "My abilities are set in stone. I'm either good at something or I'm not. Failure defines me."</p>
+                <p><strong>Growth Mindset:</strong> "My abilities can be developed through dedication and hard work. Failure is a learning opportunity, not a permanent state."</p>
+
+                <div class="highlight-box">
+                    <p>"The view you adopt for yourself profoundly affects the way you lead your life. It can determine whether you become the person you want to be and whether you accomplish the things you value." — Carol Dweck</p>
+                </div>
+
+                <h3>The Three Pillars of a Growth Mindset</h3>
+                <p><strong>1. Embrace Challenges:</strong> Instead of avoiding difficulty, seek it out. Every challenge is an opportunity to grow.</p>
+                <p><strong>2. Learn from Criticism:</strong> Feedback is information, not judgment. Use it to improve rather than defend against it.</p>
+                <p><strong>3. Find Inspiration in Others' Success:</strong> Others' achievements don't diminish your potential—they show what's possible.</p>
+
+                <div class="exercise-box">
+                    <h4>Quick Exercise: Mindset Check</h4>
+                    <p>Reflect on a recent setback. Ask yourself:</p>
+                    <ul>
+                        <li>What did this teach me that I didn't know before?</li>
+                        <li>How can I approach a similar situation differently next time?</li>
+                        <li>What's one small step I can take this week to grow from this?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter2">
+                <h2>Chapter 2: Building Authentic Confidence</h2>
+
+                <p>Confidence isn't about being the loudest person in the room or pretending you have all the answers. True confidence comes from knowing yourself deeply and trusting your ability to handle whatever comes your way.</p>
+
+                <h3>The Confidence Formula</h3>
+                <p>Confidence = Self-Awareness + Competence + Action</p>
+                <p>You need all three elements working together:</p>
+                <p><strong>Self-Awareness:</strong> Understanding your strengths, weaknesses, values, and patterns.</p>
+                <p><strong>Competence:</strong> Developing real skills and knowledge in areas that matter to you.</p>
+                <p><strong>Action:</strong> Taking consistent steps forward, even when you don't feel ready.</p>
+
+                <div class="tip-box">
+                    <h4>Remember</h4>
+                    <p>Confidence is a skill that can be developed. Just like learning a language or playing an instrument, it requires practice, patience, and persistence.</p>
+                </div>
+
+                <h3>Practical Confidence Builders</h3>
+                <p><strong>Body Language:</strong> Stand tall, make eye contact, speak clearly. Your body influences your mind.</p>
+                <p><strong>Start Before You're Ready:</strong> You'll never feel 100% prepared. Action creates confidence, not the other way around.</p>
+                <p><strong>Celebrate Small Wins:</strong> Each step forward builds momentum and proves to your brain that you can do hard things.</p>
+
+                <div class="exercise-box">
+                    <h4>Daily Confidence Practice</h4>
+                    <ul>
+                        <li>Morning: Look in the mirror, make eye contact with yourself, and name three things you appreciate about yourself</li>
+                        <li>Midday: Do one thing that scares you a little—speak up in a meeting, try something new, say no to something that doesn't serve you</li>
+                        <li>Evening: Write down three wins from your day, no matter how small</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter3">
+                <h2>Chapter 3: The Art of Communication</h2>
+
+                <p>How you communicate—both with others and with yourself—shapes your relationships, career, and self-image. Learning to express yourself clearly and listen deeply is one of the most powerful confidence-building tools.</p>
+
+                <h3>The Inner Dialogue</h3>
+                <p>Before you can communicate effectively with others, you must become aware of how you talk to yourself. That voice in your head is shaping your reality.</p>
+                <p>Notice when you're engaged in negative self-talk. Challenge those thoughts. Ask: Is this thought helping me or hurting me? Would I say this to a friend?</p>
+
+                <div class="highlight-box">
+                    <p>"The words you choose to describe yourself become the story you tell about yourself—and that story shapes your reality."</p>
+                </div>
+
+                <h3>Speaking Your Truth</h3>
+                <p><strong>Be Direct:</strong> Say what you mean. Avoid passive-aggressive communication or hinting at what you want.</p>
+                <p><strong>Use "I" Statements:</strong> "I feel frustrated when..." instead of "You always..."</p>
+                <p><strong>Set Boundaries:</strong> Saying no is a complete sentence. Your needs matter.</p>
+
+                <div class="tip-box">
+                    <h4>Communication Tip</h4>
+                    <p>Active listening is just as important as speaking. Focus on understanding, not preparing your response. Ask clarifying questions. Paraphrase back what you heard.</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter4">
+                <h2>Chapter 4: Breaking Through Limiting Beliefs</h2>
+
+                <p>We all carry beliefs about ourselves that limit our potential. These beliefs often form in childhood and continue operating in the background unless we consciously examine and update them.</p>
+
+                <h3>Common Limiting Beliefs</h3>
+                <p>"I'm not good enough." / "I don't deserve success." / "People will judge me." / "It's too late to change." / "I have to be perfect."</p>
+
+                <h3>The Belief Change Process</h3>
+                <p><strong>1. Identify:</strong> Write down the beliefs that hold you back. Get specific.</p>
+                <p><strong>2. Examine:</strong> Where did this belief come from? Is it actually true?</p>
+                <p><strong>3. Challenge:</strong> What evidence contradicts this belief? What would I believe instead?</p>
+                <p><strong>4. Replace:</strong> Create a new, empowering belief. Write it down daily.</p>
+                <p><strong>5. Reinforce:</strong> Take actions that prove your new belief true.</p>
+
+                <div class="exercise-box">
+                    <h4>Belief Investigation</h4>
+                    <p>Choose one limiting belief and work through these questions:</p>
+                    <ul>
+                        <li>When did I first start believing this?</li>
+                        <li>Who taught me this belief?</li>
+                        <li>What's the worst that would happen if this belief were false?</li>
+                        <li>Write a new belief that serves me better:</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter5">
+                <h2>Chapter 5: Building Habits That Stick</h2>
+
+                <p>Personal growth isn't about dramatic transformations—it's about consistent, small actions that compound over time. The key is building systems that make the right behavior automatic.</p>
+
+                <h3>The Power of Tiny Habits</h3>
+                <p>Make it so small you can't say no. Want to exercise? Start with 5 push-ups. Want to meditate? Start with one breath. Once you've started, you'll often do more—but even if you don't, you're building the identity of someone who does.</p>
+
+                <h3>Habit Stacking</h3>
+                <p>Attach new habits to existing ones: "After I [CURRENT HABIT], I will [NEW HABIT]."</p>
+                <p>Example: "After I pour my morning coffee, I will write three things I'm grateful for."</p>
+
+                <div class="tip-box">
+                    <h4>Environment Design</h4>
+                    <p>Your environment shapes your behavior. Make good habits easy and bad habits hard. Want to read more? Put a book on your pillow. Want to eat healthier? Don't keep junk food in the house.</p>
+                </div>
+
+                <h3>The Two-Day Rule</h3>
+                <p>Never miss two days in a row. Life will interrupt your routine—but you can always get back on track. Missing one day is fine. Missing two is the beginning of giving up.</p>
+
+                <div class="exercise-box">
+                    <h4>30-Day Habit Tracker</h4>
+                    <p>Choose one new habit to develop this month:</p>
+                    <ul>
+                        <li>My new habit: _________________</li>
+                        <li>I'll do it after: _________________</li>
+                        <li>I'll track it by: _________________</li>
+                        <li>My reward for completing 30 days: _________________</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter6">
+                <h2>Chapter 6: Taking Massive Action</h2>
+
+                <p>Knowledge without action is just entertainment. The final piece of the confidence puzzle is learning to take bold, decisive action—even when fear is present.</p>
+
+                <h3>Understanding Fear</h3>
+                <p>Fear is not the opposite of confidence—it's a sign that you're growing. Every time you step outside your comfort zone, fear shows up. The difference between confident people and others is not the absence of fear, but the presence of courage.</p>
+
+                <div class="highlight-box">
+                    <p>"Courage is not the absence of fear, but rather the judgment that something is more important than fear." — Ambrose Redmoon</p>
+                </div>
+
+                <h3>The 5-Second Rule</h3>
+                <p>Mel Robbins popularized this powerful technique: When you have an impulse to act on a goal, you must physically move within 5 seconds or your brain will kill the idea. Count: 5-4-3-2-1-GO!</p>
+
+                <h3>Reframing Failure</h3>
+                <p>Failure is not the end—it's data. Each "failure" teaches you what doesn't work, bringing you closer to what does. Thomas Edison didn't fail 10,000 times—he found 10,000 ways that don't work.</p>
+
+                <div class="exercise-box">
+                    <h4>Your Action Plan</h4>
+                    <p>What's one thing you've been putting off because of fear?</p>
+                    <ul>
+                        <li>What I'm avoiding: _________________</li>
+                        <li>What's the worst that could happen? _________________</li>
+                        <li>What's the best that could happen? _________________</li>
+                        <li>What's one tiny step I can take in the next 24 hours? _________________</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life. | <a href="rise-resources.html">Back to Resources</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.chapter-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.chapter-nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.chapter-nav a').forEach(l => l.classList.remove('active'));
+                    const id = entry.target.getAttribute('id');
+                    document.querySelector(`.chapter-nav a[href="#${id}"]`)?.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.chapter').forEach(ch => observer.observe(ch));
+    </script>
+</body>
+</html>

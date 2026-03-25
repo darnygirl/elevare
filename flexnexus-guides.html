@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Guides — Elevare Flex Nexus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--navy);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .guide-content {
+            padding: 140px 0 80px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .breadcrumb span { color: var(--text-light); margin: 0 8px; }
+
+        .chapter-nav {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--navy-light);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .chapter-nav a {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .chapter-nav a:hover, .chapter-nav a.active {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        .guide-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .guide-header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .guide-header h1 {
+            font-size: clamp(36px, 5vw, 48px);
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .guide-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .chapter {
+            margin-bottom: 64px;
+            scroll-margin-top: 100px;
+        }
+
+        .chapter h2 {
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .chapter h3 {
+            font-size: 24px;
+            color: var(--gold);
+            margin: 32px 0 16px;
+        }
+
+        .chapter p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: rgba(201, 162, 39, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        .tip-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .tip-box h4 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .tip-box p { margin-bottom: 0; font-size: 14px; }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+        }
+
+        .tip-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .tip-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .script-box {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .script-box h4 {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .script-box .script {
+            font-style: italic;
+            color: var(--cream);
+            padding: 16px;
+            background: var(--navy);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .script-box .context {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        footer p { font-size: 14px; color: var(--text-light); }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .chapter-nav { gap: 8px; }
+            .chapter-nav a { padding: 8px 12px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="flexnexus.html">Flex Nexus</a></li>
+                <li><a href="flexnexus-resources.html">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="flexnexus-resources.html">Flex Nexus Resources</a>
+                <span>›</span>
+                Professional Guides
+            </div>
+
+            <nav class="chapter-nav">
+                <a href="#chapter1" class="active">Executive Presence</a>
+                <a href="#chapter2">Presentations</a>
+                <a href="#chapter3">Meetings</a>
+                <a href="#chapter4">Negotiation</a>
+                <a href="#chapter5">Networking</a>
+                <a href="#chapter6">Leadership</a>
+            </nav>
+
+            <div class="guide-header">
+                <div class="label">Flex Nexus Professional Series</div>
+                <h1>The Executive Communication Playbook</h1>
+                <p>Master the art of professional communication and develop the executive presence that commands respect and advances careers.</p>
+            </div>
+
+            <div class="chapter" id="chapter1">
+                <h2>Chapter 1: Understanding Executive Presence</h2>
+                
+                <p>Executive presence is that ineffable quality that makes people take you seriously, trust your judgment, and want to follow your lead. It's not about being loud or dominating a room—it's about authenticity combined with gravitas.</p>
+
+                <h3>The Three Pillars of Executive Presence</h3>
+                <p><strong>1. Gravitas:</strong> The quality of being serious and dignified. You demonstrate judgment, decisiveness, and emotional maturity.</p>
+                <p><strong>2. Communication:</strong> The ability to articulate ideas clearly and persuasively. You listen actively and speak with confidence.</p>
+                <p><strong>3. Appearance:</strong> How you present yourself visually. Not about vanity, but about showing respect for your role and audience.</p>
+
+                <div class="highlight-box">
+                    <p>"Executive presence is not about fitting a stereotype—it's about bringing the most effective version of yourself to every professional interaction."</p>
+                </div>
+
+                <h3>Assessing Your Current Presence</h3>
+                <p>Ask yourself:</p>
+                <ul class="tip-list">
+                    <li>When I enter a room, do people notice? Do they seem to adjust their behavior?</li>
+                    <li>Do people come to me for decisions and guidance?</li>
+                    <li>Am I comfortable with silence and comfortable using it strategically?</li>
+                    <li>Do I speak with conviction, even when expressing uncertainty?</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h4>Quick Win: The Power Pose</h4>
+                    <p>Before important meetings, stand in a power pose for 2 minutes. Feet shoulder-width apart, hands on hips or arms raised. Research shows this can increase confidence hormones and reduce stress hormones.</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter2">
+                <h2>Chapter 2: Delivering Powerful Presentations</h2>
+
+                <p>Whether presenting to two people or two hundred, the principles of effective delivery remain the same: clarity, engagement, and authenticity.</p>
+
+                <h3>The PREP Framework</h3>
+                <p><strong>P</strong>oint: State your main point first. Don't bury the lede.</p>
+                <p><strong>R</strong>eason: Provide the reasoning or evidence supporting your point.</p>
+                <p><strong>E</strong>xample: Illustrate with a concrete example or story.</p>
+                <p><strong>P</strong>oint: Restate your main point to reinforce it.</p>
+
+                <div class="script-box">
+                    <h4>Script Example: Presenting a Proposal</h4>
+                    <div class="script">"I recommend we implement the new customer feedback system. The data shows our competitors are already using similar tools, and customer satisfaction scores have improved by 23% in comparable implementations. For example, when Acme Corp adopted this system, their retention rate increased within 90 days. Given these factors, I believe this investment will directly impact our retention goals."</div>
+                    <div class="context">Notice: Clear recommendation → Data → Example → Restatement</div>
+                </div>
+
+                <h3>Managing Nerves</h3>
+                <p>Reframe your physical symptoms of nervousness as excitement. Your body can't distinguish between fear and excitement—both produce adrenaline. Tell yourself "I'm excited" rather than "I'm nervous."</p>
+
+                <div class="tip-box">
+                    <h4>The 10-Second Rule</h4>
+                    <p>If you stumble or lose your place, it's okay. The 10-second rule means audiences won't remember a brief stumble, but they will remember your overall message. Recover gracefully and continue.</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter3">
+                <h2>Chapter 3: Leading Effective Meetings</h2>
+
+                <p>Meetings are where professional presence is tested in real-time. The ability to guide discussions, mediate conflicts, and drive outcomes is a key differentiator for leaders.</p>
+
+                <h3>Before the Meeting</h3>
+                <p><strong>Set a clear agenda:</strong> Every meeting should have a documented purpose and expected outcomes.</p>
+                <p><strong>Assign pre-work:</strong> When attendees come prepared, meetings are twice as productive.</p>
+                <p><strong>Consider room dynamics:</strong> Who needs to speak first? Who might resist? Plan accordingly.</p>
+
+                <h3>During the Meeting</h3>
+                <p><strong>Start with the end:</strong> "By the end of this meeting, we will have..."</p>
+                <p><strong>Use silence strategically:</strong> After asking a question, wait. People need time to think.</p>
+                <p><strong>Summarize and redirect:</strong> "So what I'm hearing is..." helps ensure understanding.</p>
+
+                <div class="script-box">
+                    <h4>Script: Handling Dominant Speakers</h4>
+                    <div class="script">"Thank you for that perspective, Michael. I'd like to hear from others who haven't spoken yet. Sarah, what's your take on this?"</div>
+                    <div class="context">Acknowledge → Redirect → Direct invitation</div>
+                </div>
+
+                <div class="script-box">
+                    <h4>Script: Redirecting Off-Topic Discussion</h4>
+                    <div class="script">"That's an important point that we should address separately. For today, let's stay focused on [topic]. I've added this to the agenda for our next meeting."</div>
+                    <div class="context">Validate → Redirect → Document for later</div>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter4">
+                <h2>Chapter 4: Negotiation Essentials</h2>
+
+                <p>Negotiation isn't just for big deals—it's a daily skill. Every conversation involving competing interests is a negotiation.</p>
+
+                <h3>The Interest-Based Approach</h3>
+                <p>Focus on interests (why someone wants something) rather than positions (what they're asking for). Often, the stated position doesn't reflect the underlying interest.</p>
+
+                <div class="highlight-box">
+                    <p>"The goal of negotiation is not to win—it's to reach an agreement that works for everyone involved and preserves the relationship."</p>
+                </div>
+
+                <h3>Preparation Framework</h3>
+                <p><strong>Your BATNA:</strong> Best Alternative to a Negotiated Agreement. Know your walk-away point.</p>
+                <p><strong>Their interests:</strong> What do they really need? What's their BATNA?</p>
+                <p><strong>Zone of Possible Agreement:</strong> Where can both parties land?</p>
+                <p><strong>Your opening:</strong> Start higher (but reasonable) than your target.</p>
+
+                <div class="tip-box">
+                    <h4>The Flinch</h4>
+                    <p>When someone makes an offer, don't react immediately. Use the flinch—a surprised or concerned expression. This often leads to improved offers without negotiation.</p>
+                </div>
+
+                <div class="script-box">
+                    <h4>Script: Accepting with Conditions</h4>
+                    <div class="script">"I appreciate the offer. I think we're close, but I'd like to discuss [specific point]. If we can address that, I'm confident we can move forward together."</div>
+                    <div class="context">Express appreciation → Acknowledge gap → Specific ask → Positive framing</div>
+                </div>
+            </div>
+
+            <div class="chapter" id="chapter5">
+                <h2>Chapter 5: Strategic Networking</h2>
+
+                <p>Networking isn't about collecting business cards—it's about building genuine relationships that create mutual value over time.</p>
+
+                <h3>The Give-First Approach</h3>
+                <p>Think about what you can offer before what you can get. Share resources, make introductions, celebrate others' wins. The law of reciprocity ensures this comes back.</p>
+
+                <h3>Memorable Introductions</h3>
+                <p>When meeting someone new, have a 30-second "commercial" ready that:</p>
+                <ul class="tip-list">
+                    <li>States your name clearly</li>
+                    <li>Describes what you do in a way that creates curiosity</li>
+                    <li>Ends with a question that invites conversation</li>
+                </ul>
+
+                <div class="script-box">
+                    <h4>Elevator Pitch Template</h4>
+                    <div class="script">"I help [target audience] to [achieve outcome]. Right now I'm working on [current project]. What keeps you busy these days?"</div>
+                    <div class="script">"I'm a communications coach specializing in executive presence. I just finished working with a tech startup on their Series B pitch presentations. It's fascinating how much confidence can shift with the right framework. How did you get into [their field]?"</div>
+                    <div class="context">Two versions: formulaic and conversational</div>
+                </div>
+
+                <h3>Following Up</h3>
+                <p>The meeting is just the beginning. Follow up within 48 hours with something of value—a relevant article, a connection to someone they mentioned, or a recap of how you might work together.</p>
+            </div>
+
+            <div class="chapter" id="chapter6">
+                <h2>Chapter 6: Leadership Communication</h2>
+
+                <p>As you advance, communication becomes your primary leadership tool. The way you speak, listen, and message determines your effectiveness.</p>
+
+                <h3>Clarity Over Cleverness</h3>
+                <p>Leaders often confuse complexity with intelligence. The best communicators make complex ideas simple. If you can't explain it simply, you don't understand it well enough.</p>
+
+                <div class="highlight-box">
+                    <p>"Leadership is not about being in charge. It's about taking care of those in your charge." — Simon Sinek</p>
+                </div>
+
+                <h3>The Four Styles of Leadership Communication</h3>
+                <p><strong>Direct:</strong> For urgent decisions, clear expectations. "We need to cut budget by 20%."</p>
+                <p><strong>Visionary:</strong> For inspiring change, long-term goals. "We're building the future of education."</p>
+                <p><strong>Coaching:</strong> For development, long-term growth. "Let's discuss your career goals."</p>
+                <p><strong>Democratic:</strong> For gathering input, building buy-in. "What do you think we should prioritize?"</p>
+
+                <div class="tip-box">
+                    <h4>Code-Switching Awareness</h4>
+                    <p>Effective leaders adapt their communication style to their audience while staying authentic. This isn't being fake—it's being respectful and effective.</p>
+                </div>
+
+                <h3>Delivering Difficult Messages</h3>
+                <p>When delivering unwelcome news: Be direct, acknowledge the impact, explain the reasoning, focus on the future, and offer support where possible.</p>
+
+                <div class="script-box">
+                    <h4>Script: Delivering Difficult News</h4>
+                    <div class="script">"I have difficult news to share. [State the decision clearly.] I understand this will impact [specific people/teams]. The reason for this decision is [brief explanation]. Here's what's happening next [timeline/process]. I want to be available to discuss this with anyone affected. [Support resources if applicable.]"</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life. | <a href="flexnexus-resources.html">Back to Resources</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.chapter-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.chapter-nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.chapter-nav a').forEach(l => l.classList.remove('active'));
+                    const id = entry.target.getAttribute('id');
+                    document.querySelector(`.chapter-nav a[href="#${id}"]`)?.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.chapter').forEach(ch => observer.observe(ch));
+    </script>
+</body>
+</html>

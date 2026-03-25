@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Flashcards — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--navy);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .flashcard-container {
+            min-height: 100vh;
+            padding: 120px 24px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 4px;
+            background: var(--navy-light);
+            border-radius: 2px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .card-wrapper {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin-bottom: 40px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+            transform: rotateY(180deg);
+        }
+
+        .card-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .card-front .card-label { color: var(--gold); }
+        .card-back .card-label { color: var(--navy); opacity: 0.7; }
+
+        .card-term {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .card-back .card-term {
+            color: var(--navy);
+            font-size: 24px;
+        }
+
+        .card-hint {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 16px;
+        }
+
+        .card-back .card-hint { color: var(--navy); opacity: 0.6; }
+
+        .controls {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn svg { width: 18px; height: 18px; }
+
+        .btn-prev {
+            background: var(--navy-light);
+            color: var(--cream);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            border-color: var(--gold);
+        }
+
+        .btn-next {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-next:hover {
+            background: var(--gold-light);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-shuffle {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-shuffle:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .completion {
+            text-align: center;
+            display: none;
+        }
+
+        .completion.show {
+            display: block;
+        }
+
+        .completion h2 {
+            font-size: 36px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .completion p {
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer p { font-size: 14px; color: var(--text-light); }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .card-wrapper { height: 250px; }
+            .card-term { font-size: 26px; }
+            .card-back .card-term { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rise-resources.html">Rise Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="flashcard-container">
+        <div class="header">
+            <div class="label">Rise Flashcards</div>
+            <h1>Confidence & Personal Growth</h1>
+            <p>Click the card to reveal the definition</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">Card 1 of 10</div>
+
+        <div class="card-wrapper" id="cardWrapper">
+            <div class="flashcard" id="flashcard">
+                <div class="card-face card-front">
+                    <div class="card-label">Term</div>
+                    <div class="card-term" id="cardTerm"></div>
+                    <div class="card-hint">Click to flip</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-label">Definition</div>
+                    <div class="card-term" id="cardDefinition"></div>
+                    <div class="card-hint">Click to flip back</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls" id="controls">
+            <button class="btn btn-prev" id="prevBtn" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Previous
+            </button>
+            <button class="btn btn-shuffle" id="shuffleBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                Shuffle
+            </button>
+            <button class="btn btn-next" id="nextBtn">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <div class="completion" id="completion">
+            <h2>Well Done!</h2>
+            <p>You've completed all the flashcards. Keep practicing!</p>
+            <button class="btn btn-next" id="restartBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                Start Over
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life. | <a href="rise-resources.html">Back to Resources</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const cards = [
+            { term: "Growth Mindset", definition: "The belief that your abilities and intelligence can be developed through dedication, hard work, and learning from feedback." },
+            { term: "Fixed Mindset", definition: "The belief that your abilities are static and cannot change. Leads to avoiding challenges and seeing failure as definitive." },
+            { term: "Self-Efficacy", definition: "Your belief in your own ability to succeed in specific situations. A key component of genuine confidence." },
+            { term: "Limiting Belief", definition: "A thought or belief about yourself that constrains your potential, often formed from past experiences or others' opinions." },
+            { term: "Cognitive Reframing", definition: "The technique of changing how you perceive a situation by altering your interpretation, not the facts." },
+            { term: "Comfort Zone", definition: "A psychological space where familiar activities cause little stress. Growth happens when you expand beyond it." },
+            { term: "Neuroplasticity", definition: "Your brain's ability to form new neural connections throughout life. This means you can literally change your thinking patterns." },
+            { term: "Intrinsic Motivation", definition: "Doing something because it's personally rewarding, not for external rewards. Key to sustainable personal growth." },
+            { term: "Feedback Loop", definition: "A cycle where your actions create results, which inform your future actions. Used to accelerate learning and improvement." },
+            { term: "Identity-Based Habit", definition: "Building habits based on who you want to become, not just what you want to achieve. Example: 'I am someone who exercises' instead of 'I want to exercise.'" }
+        ];
+
+        let currentIndex = 0;
+        let shuffledCards = [...cards];
+
+        const flashcard = document.getElementById('flashcard');
+        const cardTerm = document.getElementById('cardTerm');
+        const cardDefinition = document.getElementById('cardDefinition');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const cardWrapper = document.getElementById('cardWrapper');
+        const controls = document.getElementById('controls');
+        const completion = document.getElementById('completion');
+
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function updateCard() {
+            const card = shuffledCards[currentIndex];
+            cardTerm.textContent = card.term;
+            cardDefinition.textContent = card.definition;
+            
+            const progress = ((currentIndex + 1) / shuffledCards.length) * 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = `Card ${currentIndex + 1} of ${shuffledCards.length}`;
+            
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === shuffledCards.length - 1;
+            
+            flashcard.classList.remove('flipped');
+        }
+
+        function showCompletion() {
+            cardWrapper.style.display = 'none';
+            controls.style.display = 'none';
+            progressText.style.display = 'none';
+            progressFill.parentElement.style.display = 'none';
+            completion.classList.add('show');
+        }
+
+        function hideCompletion() {
+            cardWrapper.style.display = 'block';
+            controls.style.display = 'flex';
+            progressText.style.display = 'block';
+            progressFill.parentElement.style.display = 'block';
+            completion.classList.remove('show');
+        }
+
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('flipped');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < shuffledCards.length - 1) {
+                currentIndex++;
+                updateCard();
+            } else {
+                showCompletion();
+            }
+        });
+
+        shuffleBtn.addEventListener('click', () => {
+            shuffledCards = shuffleArray(cards);
+            currentIndex = 0;
+            hideCompletion();
+            updateCard();
+        });
+
+        restartBtn.addEventListener('click', () => {
+            shuffledCards = shuffleArray(cards);
+            currentIndex = 0;
+            hideCompletion();
+            updateCard();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextBtn.click();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === ' ') {
+                e.preventDefault();
+                flashcard.classList.toggle('flipped');
+            }
+        });
+
+        updateCard();
+    </script>
+</body>
+</html>

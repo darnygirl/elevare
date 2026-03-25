@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Worksheets | Elevare Lingua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-dark: #a88b1c;
+            --teal: #2ec4b6;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--navy); }
+
+        .header {
+            background: var(--navy);
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .header h1 { color: var(--cream); font-size: 48px; margin-bottom: 16px; }
+        .header h1 span { color: var(--gold); }
+        .header p { color: var(--text); font-size: 18px; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 16px; height: 16px; }
+
+        .worksheet {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .worksheet-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .worksheet-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .worksheet-icon svg { width: 28px; height: 28px; color: var(--navy); }
+
+        .worksheet h2 {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .instructions {
+            background: rgba(201, 162, 39, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 16px 24px;
+            margin-bottom: 32px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .instructions p {
+            color: var(--navy);
+            font-size: 15px;
+        }
+
+        .exercise {
+            margin-bottom: 32px;
+        }
+
+        .exercise h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+
+        .fill-blank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--cream);
+            border-radius: 12px;
+        }
+
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .word {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .blank-line {
+            display: inline-block;
+            width: 120px;
+            border-bottom: 2px solid var(--navy);
+            margin: 0 4px;
+            text-align: center;
+            padding-bottom: 4px;
+        }
+
+        .sentence {
+            font-size: 16px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .matching-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .match-number {
+            width: 32px;
+            height: 32px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .answer-line {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .answer-box {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .worksheet { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Practice <span>Worksheets</span></h1>
+            <p>Exercises to practice your English skills</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="lingua-resources.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Resources
+        </a>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <div class="worksheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
+                <div>
+                    <h2>Fill in the Blanks</h2>
+                    <p style="color: var(--text-light); font-size: 14px;">Choose the correct word to complete each sentence</p>
+                </div>
+            </div>
+
+            <div class="word-bank">
+                <span class="word">schedule</span>
+                <span class="word">deadline</span>
+                <span class="word">proficient</span>
+                <span class="word">negotiate</span>
+                <span class="word">meticulous</span>
+            </div>
+
+            <div class="exercise">
+                <div class="sentence">1. I need to check my __________ for tomorrow's meetings.</div>
+                <div class="sentence">2. The __________ for this project is next Friday.</div>
+                <div class="sentence">3. She is __________ in three different programming languages.</div>
+                <div class="sentence">4. Let's __________ the terms before we sign the contract.</div>
+                <div class="sentence">5. He's very __________ about his work, checking every detail.</div>
+            </div>
+        </div>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <div class="worksheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <div>
+                    <h2>Rewrite the Sentence</h2>
+                    <p style="color: var(--text-light); font-size: 14px;">Rewrite each sentence using the word in brackets</p>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <div class="sentence">1. She manages the team's work schedule. <span style="color: var(--gold);">[coordinate]</span></div>
+                <div class="sentence">→ ________________________________________________</div>
+                <br>
+                <div class="sentence">2. The project must be finished by Friday. <span style="color: var(--gold);">[deadline]</span></div>
+                <div class="sentence">→ ________________________________________________</div>
+                <br>
+                <div class="sentence">3. He's very skilled at public speaking. <span style="color: var(--gold);">[proficient]</span></div>
+                <div class="sentence">→ ________________________________________________</div>
+                <br>
+                <div class="sentence">4. We discussed the price to reach an agreement. <span style="color: var(--gold);">[negotiate]</span></div>
+                <div class="sentence">→ ________________________________________________</div>
+            </div>
+        </div>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <div class="worksheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div>
+                    <h2>Choose the Correct Answer</h2>
+                    <p style="color: var(--text-light); font-size: 14px;">Select A, B, C, or D for each question</p>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px; font-weight: 600;">1. What does "collaborate" mean?</p>
+                <div class="matching-item">
+                    <span class="match-number">A</span>
+                    <span class="answer-line">To work alone on a project</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">B</span>
+                    <span class="answer-line">To work jointly with others</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">C</span>
+                    <span class="answer-line">To give orders to others</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">D</span>
+                    <span class="answer-line">To avoid working with others</span>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px; font-weight: 600;">2. Which word means "showing great attention to detail"?</p>
+                <div class="matching-item">
+                    <span class="match-number">A</span>
+                    <span class="answer-line">Careless</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">B</span>
+                    <span class="answer-line">Meticulous</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">C</span>
+                    <span class="answer-line">Hasty</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">D</span>
+                    <span class="answer-line">General</span>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px; font-weight: 600;">3. "Delegate" means to:</p>
+                <div class="matching-item">
+                    <span class="match-number">A</span>
+                    <span class="answer-line">Do everything yourself</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">B</span>
+                    <span class="answer-line">Entrust tasks to another person</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">C</span>
+                    <span class="answer-line">Refuse to work</span>
+                </div>
+                <div class="matching-item">
+                    <span class="match-number">D</span>
+                    <span class="answer-line">Delay taking action</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <div class="worksheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div>
+                    <h2>Write Your Own Sentences</h2>
+                    <p style="color: var(--text-light); font-size: 14px;">Use each word in a sentence of your own</p>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px;">1. schedule</p>
+                <div class="sentence">→ _______________________________________________________________</div>
+                <div class="sentence" style="height: 60px; border-bottom: 1px solid var(--text-light);"></div>
+                <br>
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px;">2. deadline</p>
+                <div class="sentence">→ _______________________________________________________________</div>
+                <div class="sentence" style="height: 60px; border-bottom: 1px solid var(--text-light);"></div>
+                <br>
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px;">3. negotiate</p>
+                <div class="sentence">→ _______________________________________________________________</div>
+                <div class="sentence" style="height: 60px; border-bottom: 1px solid var(--text-light);"></div>
+                <br>
+                <p style="font-size: 16px; color: var(--navy); margin-bottom: 16px;">4. proficient</p>
+                <div class="sentence">→ _______________________________________________________________</div>
+                <div class="sentence" style="height: 60px; border-bottom: 1px solid var(--text-light);"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a> | <a href="lingua-resources.html">More Resources</a></p>
+    </footer>
+</body>
+</html>

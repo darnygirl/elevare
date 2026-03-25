@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Scripts | Elevare Lingua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-dark: #a88b1c;
+            --teal: #2ec4b6;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--navy); }
+
+        .header {
+            background: var(--navy);
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .header h1 { color: var(--cream); font-size: 48px; margin-bottom: 16px; }
+        .header h1 span { color: var(--gold); }
+        .header p { color: var(--text); font-size: 18px; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 16px; height: 16px; }
+
+        .situation {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .situation-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .situation-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .situation-icon svg { width: 28px; height: 28px; color: var(--navy); }
+
+        .situation h2 {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .situation .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .dialogue {
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dialogue-line:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .speaker {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .speaker.person-a { color: var(--gold); }
+        .speaker.person-b { color: var(--teal); }
+
+        .dialogue-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--cream);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .translation {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .situation { padding: 24px; }
+            .dialogue { padding: 24px; }
+            .dialogue-text { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Conversation <span>Scripts</span></h1>
+            <p>Real-life dialogues for common situations</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="lingua-resources.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Resources
+        </a>
+
+        <div class="situation">
+            <div class="situation-header">
+                <div class="situation-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                    <h2>Meeting Someone New</h2>
+                    <div class="subtitle">Introducing yourself and making small talk</div>
+                </div>
+            </div>
+            <div class="dialogue">
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Person A</div>
+                    <div class="dialogue-text">"Hi there! My name is Sarah. Nice to meet you!"</div>
+                    <div class="translation">打招呼並自我介紹</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Person B</div>
+                    <div class="dialogue-text">"Hello, Sarah. It's nice to meet you too. I'm Michael."</div>
+                    <div class="translation">礼貌地回應自我介紹</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Person A</div>
+                    <div class="dialogue-text">"Where are you from, Michael?"</div>
+                    <div class="translation">詢問對方來自哪裡</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Person B</div>
+                    <div class="dialogue-text">"I'm from Toronto, Canada. And you? Where are you from?"</div>
+                    <div class="translation">回答並反問</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Person A</div>
+                    <div class="dialogue-text">"I'm from London. It's great to meet someone from North America!"</div>
+                    <div class="translation">分享並表達友好</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="situation">
+            <div class="situation-header">
+                <div class="situation-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div>
+                    <h2>At a Coffee Shop</h2>
+                    <div class="subtitle">Ordering food and drinks</div>
+                </div>
+            </div>
+            <div class="dialogue">
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Barista</div>
+                    <div class="dialogue-text">"Good morning! Welcome to Blue Sky Cafe. What can I get for you today?"</div>
+                    <div class="translation">服務員招呼</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Customer</div>
+                    <div class="dialogue-text">"Good morning! I'd like a medium latte, please."</div>
+                    <div class="translation">點飲料</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Barista</div>
+                    <div class="dialogue-text">"Would you like that hot or iced?"</div>
+                    <div class="translation">服務員詢問溫度</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Customer</div>
+                    <div class="dialogue-text">"Hot, please. Also, do you have any pastries today?"</div>
+                    <div class="translation">回答並追加詢問</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Barista</div>
+                    <div class="dialogue-text">"Yes! We have fresh croissants and blueberry muffins."</div>
+                    <div class="translation">服務員介紹糕點</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Customer</div>
+                    <div class="dialogue-text">"Perfect! I'll have a croissant too. That's everything, thank you!"</div>
+                    <div class="translation">完成點單</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="situation">
+            <div class="situation-header">
+                <div class="situation-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div>
+                    <h2>At the Office</h2>
+                    <div class="subtitle">Asking for help and scheduling meetings</div>
+                </div>
+            </div>
+            <div class="dialogue">
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Colleague</div>
+                    <div class="dialogue-text">"Excuse me, do you have a moment? I need some help with this project."</div>
+                    <div class="translation">礼貌地打斷並請求幫助</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">You</div>
+                    <div class="dialogue-text">"Of course! I'd be happy to help. What seems to be the problem?"</div>
+                    <div class="translation">積極回應</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Colleague</div>
+                    <div class="dialogue-text">"I'm having trouble with the formatting. Would you be able to take a look?"</div>
+                    <div class="translation">說明具體問題</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">You</div>
+                    <div class="dialogue-text">"Sure, let me see... Ah, I see the issue. Click on the Layout tab and choose the centered option."</div>
+                    <div class="translation">提供解決方案</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Colleague</div>
+                    <div class="dialogue-text">"Oh, that's perfect! Thank you so much for your help!"</div>
+                    <div class="translation">表達感謝</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">You</div>
+                    <div class="dialogue-text">"No problem at all! Let me know if you need anything else. I'm free tomorrow if you want to schedule a meeting to discuss this further."</div>
+                    <div class="translation">主動提供後續幫助</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="situation">
+            <div class="situation-header">
+                <div class="situation-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                    <h2>Asking for Directions</h2>
+                    <div class="subtitle">Getting around in a new place</div>
+                </div>
+            </div>
+            <div class="dialogue">
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Tourist</div>
+                    <div class="dialogue-text">"Excuse me, could you help me? I'm looking for the train station."</div>
+                    <div class="translation">禮貌地詢問方向</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Local</div>
+                    <div class="dialogue-text">"Of course! The train station is about a ten-minute walk from here."</div>
+                    <div class="translation">確認並給出距離</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Tourist</div>
+                    <div class="dialogue-text">"Great, thanks! Could you tell me how to get there?"</div>
+                    <div class="translation">詢問具體路線</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Local</div>
+                    <div class="dialogue-text">"Sure! Go straight ahead on this street until you reach the traffic lights. Then turn left. The station is on your right, next to the big library."</div>
+                    <div class="translation">提供詳細指示</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-a">Tourist</div>
+                    <div class="dialogue-text">"I understand. Straight to the lights, then left. Thank you so much for your help!"</div>
+                    <div class="translation">重複確認並感謝</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="speaker person-b">Local</div>
+                    <div class="dialogue-text">"You're welcome! Have a great day and good luck!"</div>
+                    <div class="translation">友好地結束對話</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a> | <a href="lingua-resources.html">More Resources</a></p>
+    </footer>
+</body>
+</html>

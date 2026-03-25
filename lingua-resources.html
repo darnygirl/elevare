@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingua Resources — Free Learning Materials | Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+            --teal: #2ec4b6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            border-radius: 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--navy) !important;
+        }
+
+        .hero {
+            min-height: 50vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content .tagline {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            color: var(--cream);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 span { color: var(--gold); }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .downloads {
+            background: var(--navy);
+        }
+
+        .downloads .section-title { color: var(--cream); }
+        .downloads .section-desc { color: var(--text); }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .download-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .download-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .download-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .download-icon svg { width: 40px; height: 40px; color: var(--navy); }
+
+        .download-card h3 {
+            font-size: 24px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .download-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .download-btn svg { width: 18px; height: 18px; }
+
+        .interactive {
+            background: var(--cream);
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .interactive-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            text-decoration: none;
+            display: block;
+        }
+
+        .interactive-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-8px);
+        }
+
+        .interactive-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--teal) 0%, #20a39e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .interactive-icon svg { width: 40px; height: 40px; color: var(--white); }
+
+        .interactive-card h3 {
+            font-size: 24px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .interactive-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .interactive-card .start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover .start-btn {
+            background: var(--white);
+            color: var(--teal);
+        }
+
+        .start-btn svg { width: 16px; height: 16px; }
+
+        .featured {
+            background: var(--navy-light);
+        }
+
+        .featured .section-title { color: var(--cream); }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .featured-card {
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .featured-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .featured-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .featured-icon svg { width: 28px; height: 28px; color: var(--gold); }
+
+        .featured-card h4 {
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .featured-card p {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            background: var(--navy);
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-logo .logo-icon svg { width: 22px; height: 22px; }
+
+        .footer-logo .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .footer-logo .logo-text span { color: var(--gold); }
+
+        footer p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .downloads-grid, .interactive-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .featured-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lingua.html">Lingua</a></li>
+                    <li><a href="lingua-resources.html" class="active">Resources</a></li>
+                    <li><a href="rise.html">Rise</a></li>
+                    <li><a href="flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="lingua.html" class="nav-cta">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="tagline">Free Learning Materials</div>
+                <h1>Lingua <span>Resources</span></h1>
+                <p>Downloadable guides, interactive tools, and practice materials to accelerate your language learning journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section downloads">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">PDF Downloads</div>
+                <h2 class="section-title">Free Learning Guides</h2>
+                <p class="section-desc">Comprehensive materials you can download and study offline.</p>
+            </div>
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h3>Complete Grammar Guide</h3>
+                    <p>50+ pages covering all essential grammar rules with examples and exercises. Perfect for self-study.</p>
+                    <a href="lingua-grammar-guide.html" class="download-btn" target="_blank">
+                        View Guide
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Vocabulary Workbook</h3>
+                    <p>2000+ essential words organized by topic with definitions, examples, and practice exercises.</p>
+                    <a href="lingua-vocabulary.html" class="download-btn" target="_blank">
+                        View Workbook
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Conversation Scripts</h3>
+                    <p>Real-life dialogues and conversations for common situations: greetings, business, travel, and more.</p>
+                    <a href="lingua-conversations.html" class="download-btn" target="_blank">
+                        View Scripts
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h3>Practice Worksheets</h3>
+                    <p>Fill-in-the-blank, matching, and writing exercises for all skill levels.</p>
+                    <a href="lingua-worksheets.html" class="download-btn" target="_blank">
+                        View Worksheets
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section interactive">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Interactive Tools</div>
+                <h2 class="section-title">Practice Online</h2>
+                <p class="section-desc">Interactive tools to test your knowledge and track your progress.</p>
+            </div>
+            <div class="interactive-grid">
+                <a href="lingua-flashcards.html" class="interactive-card">
+                    <div class="interactive-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01"/></svg>
+                    </div>
+                    <h3>Flashcard System</h3>
+                    <p>500+ vocabulary flashcards with audio pronunciation and spaced repetition learning.</p>
+                    <div class="start-btn">
+                        Start Learning
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+                <a href="lingua-quiz.html" class="interactive-card">
+                    <div class="interactive-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Vocabulary Quiz</h3>
+                    <p>Test your knowledge with multiple choice quizzes. Track your progress as you improve.</p>
+                    <div class="start-btn">
+                        Take Quiz
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section featured">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Quick Access</div>
+                <h2 class="section-title">More Resources</h2>
+                <p class="section-desc">Additional materials to support your learning.</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <h4>Pronunciation Guide</h4>
+                    <p>Audio examples and tips</p>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                    </div>
+                    <h4>Language Games</h4>
+                    <p>Fun ways to practice</p>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h4> idiom Dictionary</h4>
+                    <p>Common phrases explained</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+            </div>
+            <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a> | <a href="lingua.html">Back to Lingua</a></p>
+        </div>
+    </footer>
+</body>
+</html>

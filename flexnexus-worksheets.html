@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Nexus Practice Templates — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--navy);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .worksheet-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 24px 80px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: var(--text-light); margin: 0 8px; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .worksheet-section {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+        }
+
+        .worksheet-section h2 {
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .worksheet-section .subtitle {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .worksheet-section p {
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .template-box {
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .template-box h4 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .template-box pre {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--cream);
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .template-box .example {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .template-box .example-label {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 16px;
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .input-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .input-row .input-group {
+            margin-bottom: 0;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(201, 162, 39, 0.5);
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .checkbox:hover {
+            border-color: var(--gold);
+        }
+
+        .checkbox.checked {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .checkbox.checked::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid var(--navy);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .checklist-text {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .grid-item {
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .grid-item h4 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .grid-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .grid-item textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+        }
+
+        .btn svg { width: 18px; height: 18px; }
+
+        .actions {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        footer p { font-size: 14px; color: var(--text-light); }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .input-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="flexnexus-resources.html">Flex Nexus Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="worksheet-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="flexnexus-resources.html">Flex Nexus Resources</a>
+            <span>›</span>
+            Practice Templates
+        </div>
+
+        <div class="header">
+            <div class="label">Flex Nexus Practice Templates</div>
+            <h1>Workplace Communication Tools</h1>
+            <p>Professional templates and exercises to sharpen your business communication skills.</p>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Template 1: Elevator Pitch</h2>
+            <div class="subtitle">The 30-Second Introduction</div>
+            <p>Use this template to create a memorable introduction that opens doors to new opportunities.</p>
+
+            <div class="template-box">
+                <h4>Formula</h4>
+<pre>I help [target audience] to [achieve outcome]. Currently, I'm working on [current project or focus]. What I find most rewarding is [what excites you about your work].</pre>
+                
+                <div class="example">
+                    <div class="example-label">Example</div>
+<pre>"I help marketing teams streamline their content workflow so they can focus on strategy instead of logistics. Currently, I'm leading a project to implement a new content calendar system. What I love most is finding ways to save teams hours every week without adding complexity."</pre>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Your Elevator Pitch</label>
+                <textarea placeholder="Write your 30-second pitch using the formula above..."></textarea>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Target Audience</label>
+                    <textarea placeholder="Who do you help?"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Key Outcome</label>
+                    <textarea placeholder="What result do you create?"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Template 2: PREP Presentation Framework</h2>
+            <div class="subtitle">Structure Any Business Communication</div>
+            <p>The PREP framework ensures your message is clear, convincing, and memorable.</p>
+
+            <div class="template-box">
+                <h4>The Four Steps</h4>
+<pre><strong>P</strong>oint:      State your main point first. Be direct.
+<strong>R</strong>eason:     Provide the reasoning, data, or evidence.
+<strong>E</strong>xample:    Add a concrete example or case study.
+<strong>P</strong>oint:      Restate your main point to reinforce it.</pre>
+            </div>
+
+            <div class="grid-2">
+                <div class="grid-item">
+                    <h4>P - Your Point</h4>
+                    <textarea placeholder="What do you want them to know/do/believe?"></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>R - Your Reason</h4>
+                    <textarea placeholder="Why should they care? What data supports this?"></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>E - Your Example</h4>
+                    <textarea placeholder="Tell a story or share a specific case..."></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>P - Restate Point</h4>
+                    <textarea placeholder="How will you wrap up to reinforce your message?"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Template 3: Meeting Agenda</h2>
+            <div class="subtitle">Run More Effective Meetings</div>
+            <p>Use this structure to ensure every meeting has purpose and produces results.</p>
+
+            <div class="template-box">
+                <h4>Meeting Planning Template</h4>
+<pre><strong>Purpose:</strong> Why are we meeting?
+<strong>Outcome:</strong> What will we achieve by the end?
+<strong>Pre-Work:</strong> What should attendees do beforehand?
+<strong>Agenda:</strong>
+  1. [Topic] - [Time] - [Owner]
+  2. [Topic] - [Time] - [Owner]
+  3. [Topic] - [Time] - [Owner]
+<strong>Next Steps:</strong> What happens after this meeting?</pre>
+            </div>
+
+            <div class="input-group">
+                <label>Your Meeting Purpose</label>
+                <textarea placeholder="Why does this meeting need to happen?"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Your Desired Outcome</label>
+                <textarea placeholder="What does success look like?"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Agenda Items</label>
+                <textarea placeholder="List your agenda items with time allocations..."></textarea>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Template 4: Negotiation Preparation</h2>
+            <div class="subtitle">Prepare for High-Stakes Conversations</div>
+            <p>Use this worksheet to prepare for important negotiations or difficult conversations.</p>
+
+            <div class="template-box">
+                <h4>Preparation Checklist</h4>
+                <ul class="checklist" id="negotiationChecklist">
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Define your goal (what do you want?)</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Know your BATNA (walk-away alternative)</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Research the other party's interests</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Identify potential trade-offs</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Prepare your opening position</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Practice your key talking points</span></li>
+                    <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Anticipate objections and prepare responses</span></li>
+                </ul>
+            </div>
+
+            <div class="input-group">
+                <label>Your Goal</label>
+                <textarea placeholder="What specific outcome are you seeking?"></textarea>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Your BATNA</label>
+                    <textarea placeholder="What will you do if this doesn't work?"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Their Likely Interests</label>
+                    <textarea placeholder="What do they probably want?"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Template 5: Feedback Framework</h2>
+            <div class="subtitle">Deliver Feedback That Drives Growth</div>
+            <p>Use the SBI model (Situation-Behavior-Impact) for effective, non-threatening feedback.</p>
+
+            <div class="template-box">
+                <h4>The SBI Model</h4>
+<pre><strong>S</strong>ituation:  "In the client meeting yesterday..."
+<strong>B</strong>ehavior:   "You interrupted Sarah twice while she was presenting..."
+<strong>I</strong>mpact:      "This made it difficult for her to maintain her train of thought, and the client seemed confused about who to address."</pre>
+                
+                <div class="example">
+                    <div class="example-label">Constructive Feedback Example</div>
+<pre>"In last week's team standup, when John presented the timeline delay, you responded with 'That's not how we usually handle this.' This made John defensive and derailed the problem-solving discussion. In the future, could we try asking 'What challenges came up?' first? That might help us find solutions faster."</pre>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="grid-item">
+                    <h4>S - Situation</h4>
+                    <textarea placeholder="When and where did this happen?"></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>B - Behavior</h4>
+                    <textarea placeholder="What specifically did they do or not do?"></textarea>
+                </div>
+                <div class="grid-item" style="grid-column: span 2;">
+                    <h4>I - Impact</h4>
+                    <textarea placeholder="What was the effect of their behavior?"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="flexnexus-resources.html" class="btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Resources
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life. | <a href="flexnexus-resources.html">Back to Resources</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+    </script>
+</body>
+</html>

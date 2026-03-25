@@ -241,117 +241,6 @@
             color: var(--text-light);
         }
 
-        /* Millionaire Math Section */
-        .millionaire {
-            padding: 120px 0;
-            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
-            position: relative;
-        }
-
-        .millionaire-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .millionaire-text .label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .millionaire-text h2 {
-            font-size: clamp(36px, 4vw, 52px);
-            color: var(--cream);
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-
-        .millionaire-text h2 span {
-            color: var(--gold);
-            font-style: italic;
-        }
-
-        .millionaire-text p {
-            font-size: 16px;
-            color: var(--text);
-            margin-bottom: 32px;
-        }
-
-        .math-formula {
-            background: rgba(201, 162, 39, 0.1);
-            border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .formula {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            color: var(--cream);
-            margin-bottom: 16px;
-        }
-
-        .formula span {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .formula-note {
-            font-size: 14px;
-            color: var(--gold);
-            font-style: italic;
-        }
-
-        .millionaire-benefits {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .benefit-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(201, 162, 39, 0.2);
-            border-radius: 12px;
-            padding: 28px;
-            transition: all 0.3s;
-        }
-
-        .benefit-item:hover {
-            border-color: var(--gold);
-            transform: translateY(-4px);
-        }
-
-        .benefit-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .benefit-icon svg { width: 24px; height: 24px; color: var(--navy); }
-
-        .benefit-item h4 {
-            font-size: 18px;
-            color: var(--cream);
-            margin-bottom: 8px;
-        }
-
-        .benefit-item p {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 0;
-        }
-
         /* Pillars Section */
         .pillars {
             padding: 120px 0;
@@ -822,7 +711,7 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero-content, .millionaire-content { grid-template-columns: 1fr; }
+            .hero-content { grid-template-columns: 1fr; }
             .hero-visual { order: -1; }
             .pillars-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
             .library-grid { grid-template-columns: repeat(2, 1fr); }
@@ -834,7 +723,6 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .pillars-grid, .library-grid, .tutors-grid { grid-template-columns: 1fr; }
-            .millionaire-benefits { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -874,7 +762,7 @@
                     <p>Transform language skills into unlimited income. One product, infinite reach. Build wealth through coaching, courses, and mentorship.</p>
                     <div class="hero-buttons">
                         <a href="#pillars" class="btn btn-primary">Explore Programs</a>
-                        <a href="#millionaire" class="btn btn-secondary">Learn Millionaire Math</a>
+                        <a href="#library" class="btn btn-secondary">Free Resources</a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -882,52 +770,6 @@
                         <h3>Start Your Journey</h3>
                         <p>Join thousands who have transformed their language skills into thriving businesses.</p>
                         <div class="price">$15 <span>/hour session</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="millionaire" id="millionaire">
-        <div class="container">
-            <div class="millionaire-content">
-                <div class="millionaire-text">
-                    <div class="label">The Business Model</div>
-                    <h2>The <span>Millionaire Math</span> Formula</h2>
-                    <p>Why create once and sell forever? In the language and personal development space, your knowledge becomes your greatest asset. Every course you build, every guide you write, every session you record — becomes a product that sells while you sleep.</p>
-                    <div class="math-formula">
-                        <div class="formula"><span>1</span> Product × <span>∞</span> Sales = <span>∞</span> Wealth</div>
-                        <div class="formula-note">One-time creation. Infinite passive income.</div>
-                    </div>
-                </div>
-                <div class="millionaire-benefits">
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        </div>
-                        <h4>Create Once, Earn Forever</h4>
-                        <p>Ebooks, courses, and guides that sell on autopilot.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h4>Scale Without Limits</h4>
-                        <p>Coach 1-on-1 or reach thousands simultaneously.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                        </div>
-                        <h4>Your Knowledge = Product</h4>
-                        <p>Package expertise into digital products that scale.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        </div>
-                        <h4>Multiple Income Streams</h4>
-                        <p>Coaching, courses, ebooks, mentorship — all aligned.</p>
                     </div>
                 </div>
             </div>
@@ -1028,38 +870,38 @@
                 <p class="section-desc">Free materials to begin your journey. Teaching plans, ebooks, quizzes, games, and more.</p>
             </div>
             <div class="library-grid">
-                <div class="library-card">
-                    <div class="library-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    </div>
-                    <h4>Teaching Plans</h4>
-                    <p>Comprehensive lesson plans for educators and self-learners.</p>
-                    <div class="free">Free</div>
-                </div>
-                <div class="library-card">
+                <a href="lingua-resources.html" class="library-card" style="text-decoration: none;">
                     <div class="library-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     </div>
-                    <h4>Ebooks</h4>
-                    <p>Downloadable guides and handbooks for self-paced learning.</p>
+                    <h4>Lingua Resources</h4>
+                    <p>Grammar guides, vocabulary builders, flashcards, and conversation practice.</p>
                     <div class="free">Free</div>
-                </div>
-                <div class="library-card">
+                </a>
+                <a href="rise-resources.html" class="library-card" style="text-decoration: none;">
                     <div class="library-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
-                    <h4>Quizzes</h4>
-                    <p>Interactive assessments to track your progress.</p>
+                    <h4>Rise Resources</h4>
+                    <p>Personal growth guides, confidence flashcards, and self-reflection worksheets.</p>
                     <div class="free">Free</div>
-                </div>
-                <div class="library-card">
+                </a>
+                <a href="flexnexus-resources.html" class="library-card" style="text-decoration: none;">
                     <div class="library-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <h4>Games</h4>
-                    <p>Fun language games to make learning enjoyable.</p>
+                    <h4>Flex Nexus Resources</h4>
+                    <p>Professional guides, business vocabulary, and workplace templates.</p>
                     <div class="free">Free</div>
-                </div>
+                </a>
+                <a href="lingua-flashcards.html" class="library-card" style="text-decoration: none;">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                    </div>
+                    <h4>Interactive Flashcards</h4>
+                    <p>Flip cards for Lingua, Rise, and Flex Nexus vocabulary and concepts.</p>
+                    <div class="free">Free</div>
+                </a>
             </div>
         </div>
     </section>
@@ -1192,12 +1034,12 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">Library</h4>
+                    <h4 class="footer-title">Free Resources</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Teaching Plans</a></li>
-                        <li><a href="#">Ebooks</a></li>
-                        <li><a href="#">Quizzes</a></li>
-                        <li><a href="#">Games</a></li>
+                        <li><a href="lingua-resources.html">Lingua Hub</a></li>
+                        <li><a href="rise-resources.html">Rise Hub</a></li>
+                        <li><a href="flexnexus-resources.html">Flex Nexus Hub</a></li>
+                        <li><a href="lingua-quiz.html">Quizzes</a></li>
                     </ul>
                 </div>
                 <div>

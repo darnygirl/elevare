@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Practice Worksheets — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--navy);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .worksheet-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 24px 80px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: var(--text-light); margin: 0 8px; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .worksheet-section {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+        }
+
+        .worksheet-section h2 {
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .worksheet-section .subtitle {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .worksheet-section p {
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .prompt {
+            background: var(--navy);
+            border-left: 4px solid var(--gold);
+            padding: 20px 24px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .prompt p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 16px;
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .input-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .input-row .input-group {
+            margin-bottom: 0;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(201, 162, 39, 0.5);
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .checkbox:hover {
+            border-color: var(--gold);
+        }
+
+        .checkbox.checked {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .checkbox.checked::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid var(--navy);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .checklist-text {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .grid-item {
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .grid-item h4 {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .grid-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .grid-item textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+        }
+
+        .btn svg { width: 18px; height: 18px; }
+
+        .actions {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        footer p { font-size: 14px; color: var(--text-light); }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .input-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rise-resources.html">Rise Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="worksheet-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="rise-resources.html">Rise Resources</a>
+            <span>›</span>
+            Practice Worksheets
+        </div>
+
+        <div class="header">
+            <div class="label">Rise Practice Worksheets</div>
+            <h1>Self-Reflection & Growth Exercises</h1>
+            <p>Use these interactive worksheets to deepen your self-awareness and track your growth journey.</p>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Worksheet 1: Limiting Belief Audit</h2>
+            <div class="subtitle">Identify and Transform Your Inner Critic</div>
+            <p>Limiting beliefs are thoughts that hold you back from reaching your potential. This worksheet helps you identify, examine, and replace them with empowering beliefs.</p>
+            
+            <div class="prompt">
+                <p>Think of a belief about yourself that has held you back. It might sound like "I'm not good enough," "I don't deserve success," or "I'm bad at..."</p>
+            </div>
+
+            <div class="input-group">
+                <label>1. The Limiting Belief</label>
+                <textarea placeholder="Write the exact belief here..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>2. Where Did This Belief Come From?</label>
+                <textarea placeholder="When did you first start believing this? Who taught you this?"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>3. Is This Belief Actually True?</label>
+                <textarea placeholder="What evidence contradicts this belief? Would you say this to a friend?"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>4. The New Empowering Belief</label>
+                <textarea placeholder="Write a new belief that serves you better..."></textarea>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Worksheet 2: 30-Day Confidence Challenge</h2>
+            <div class="subtitle">Build One New Confidence-Building Habit</div>
+            <p>Small, consistent actions lead to big transformations. Choose one new habit to develop over the next 30 days.</p>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>My New Habit</label>
+                    <textarea placeholder="What will you do? Make it specific and tiny."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>I'll Do It After</label>
+                    <textarea placeholder="Attach it to an existing habit..."></textarea>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>My Why</label>
+                <textarea placeholder="Why does this habit matter to you?"></textarea>
+            </div>
+
+            <label style="display: block; font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 16px; letter-spacing: 1px;">Daily Tracking (Check each day you complete)</label>
+            <ul class="checklist" id="habitChecklist">
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 1</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 2</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 3</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 4</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 5</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 6</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 7</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 8</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 9</span></li>
+                <li><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span class="checklist-text">Day 10</span></li>
+            </ul>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">Continue tracking days 11-30 on your own!</p>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Worksheet 3: Self-Talk Transformation</h2>
+            <div class="subtitle">Become Aware of Your Inner Dialogue</div>
+            <p>The way you talk to yourself shapes your reality. This exercise helps you catch and reframe negative self-talk.</p>
+
+            <div class="prompt">
+                <p>Pay attention to your thoughts for one day. When you notice negative self-talk, write it below, then transform it.</p>
+            </div>
+
+            <label style="display: block; font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 16px; letter-spacing: 1px;">The Three-Column Technique</label>
+            
+            <div class="grid-3">
+                <div class="grid-item">
+                    <h4>Negative Thought</h4>
+                    <textarea placeholder="What did you think?"></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>Challenge</h4>
+                    <textarea placeholder="Is this true?"></textarea>
+                </div>
+                <div class="grid-item">
+                    <h4>New Thought</h4>
+                    <textarea placeholder="Reframe it..."></textarea>
+                </div>
+            </div>
+
+            <div class="input-group" style="margin-top: 24px;">
+                <label>Example Entry</label>
+                <textarea style="min-height: 80px; background: rgba(201, 162, 39, 0.1);">Negative: "I messed up the presentation. I'm so stupid."
+Challenge: "One mistake doesn't define my intelligence. Everyone makes mistakes."
+New Thought: "I made an error, but I also recovered. I'm learning and improving."</textarea>
+            </div>
+        </div>
+
+        <div class="worksheet-section">
+            <h2>Worksheet 4: Values & Boundaries</h2>
+            <div class="subtitle">Define What Matters and Protect Your Time</div>
+            <p>Clear values and healthy boundaries are essential for confidence. This worksheet helps you clarify both.</p>
+
+            <div class="input-group">
+                <label>My Top 5 Values (e.g., Growth, Family, Freedom, Creativity, Integrity)</label>
+                <textarea placeholder="1. 
+2. 
+3. 
+4. 
+5. "></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>One Boundary I Need to Set</label>
+                <textarea placeholder="What limit do you need to establish or reinforce?"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>How I'll Communicate This Boundary</label>
+                <textarea placeholder="What will you say? Practice the words out loud..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>When I Honor This Boundary, I Feel...</label>
+                <textarea placeholder="How will protecting this boundary make you feel?"></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="rise-resources.html" class="btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Resources
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life. | <a href="rise-resources.html">Back to Resources</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+    </script>
+</body>
+</html>

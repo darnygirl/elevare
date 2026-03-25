@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Grammar Guide | Elevare Lingua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--navy); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+        .header {
+            background: var(--navy);
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .header h1 { color: var(--cream); font-size: 48px; margin-bottom: 16px; }
+        .header h1 span { color: var(--gold); }
+        .header p { color: var(--text); font-size: 18px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 16px; height: 16px; }
+
+        .chapter {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .chapter-number {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .chapter h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .chapter h3 {
+            font-size: 22px;
+            margin: 32px 0 16px;
+            color: var(--navy);
+        }
+
+        .chapter p {
+            margin-bottom: 16px;
+            color: var(--text-light);
+        }
+
+        .example {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 24px 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            border-left: 4px solid var(--gold);
+        }
+
+        .example .label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .example p {
+            color: var(--cream);
+            font-size: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 8px;
+        }
+
+        .example .translation {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .tip {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .tip .label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .rule {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+        }
+
+        .rule h4 {
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .chapter { padding: 32px 24px; }
+            .header h1 { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Lingua <span>Grammar Guide</span></h1>
+            <p>Your comprehensive guide to mastering English grammar</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="lingua-resources.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Resources
+        </a>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 1</div>
+            <h2>Nouns and Articles</h2>
+            
+            <h3>Types of Nouns</h3>
+            <p>Nouns are words that name people, places, things, or ideas.</p>
+            
+            <div class="rule">
+                <h4>Common Nouns</h4>
+                <p>General names for people, places, or things: <em>dog, city, teacher</em></p>
+            </div>
+            
+            <div class="rule">
+                <h4>Proper Nouns</h4>
+                <p>Specific names that always start with capital letters: <em>London, John, Monday</em></p>
+            </div>
+            
+            <div class="rule">
+                <h4>Countable vs Uncountable Nouns</h4>
+                <p><strong>Countable:</strong> one apple, two apples<br>
+                <strong>Uncountable:</strong> water, information, advice</p>
+            </div>
+
+            <h3>Articles: A, An, The</h3>
+            
+            <div class="example">
+                <div class="label">Example</div>
+                <p>I saw <strong>a</strong> cat. (one cat, first mention)</p>
+                <p><strong>The</strong> cat was black. (same cat, known)</p>
+                <p>She is <strong>an</strong> engineer. (vowel sound)</p>
+                <p>He is <strong>a</strong> university student. (consonant sound)</p>
+            </div>
+
+            <div class="tip">
+                <div class="label">Remember</div>
+                <p>Use <strong>a</strong> before consonant sounds and <strong>an</strong> before vowel sounds. It's about the sound, not the letter!</p>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 2</div>
+            <h2>Verbs and Tenses</h2>
+            
+            <h3>The Present Tense</h3>
+            
+            <div class="example">
+                <div class="label">Simple Present</div>
+                <p>I <strong>work</strong> every day. (habit)</p>
+                <p>She <strong>works</strong> every day. (+ s for he/she/it)</p>
+                <p class="translation">Used for habits, facts, and regular actions</p>
+            </div>
+
+            <div class="example">
+                <div class="label">Present Continuous</div>
+                <p>I <strong>am working</strong> right now.</p>
+                <p>She <strong>is working</strong> at the office.</p>
+                <p class="translation">Used for actions happening at this moment</p>
+            </div>
+
+            <div class="example">
+                <div class="label">Present Perfect</div>
+                <p>I <strong>have finished</strong> my homework.</p>
+                <p>She <strong>has lived</strong> here for 5 years.</p>
+                <p class="translation">Used for actions that started in the past and continue to now</p>
+            </div>
+
+            <h3>The Past Tense</h3>
+            
+            <div class="example">
+                <div class="label">Simple Past</div>
+                <p>I <strong>worked</strong> yesterday.</p>
+                <p>She <strong>studied</strong> all night.</p>
+                <p class="translation">Used for completed actions in the past</p>
+            </div>
+
+            <div class="tip">
+                <div class="label">Grammar Tip</div>
+                <p>Regular verbs add <strong>-ed</strong> (worked, studied).<br>
+                Irregular verbs change their form (go → went, see → saw, eat → ate).</p>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 3</div>
+            <h2>Adjectives and Adverbs</h2>
+            
+            <h3>Adjectives</h3>
+            <p>Adjectives describe nouns. They answer: What kind? Which one? How many?</p>
+            
+            <div class="example">
+                <div class="label">Example</div>
+                <p>The <strong>beautiful</strong> flower is red.</p>
+                <p>She has <strong>three</strong> cats.</p>
+                <p>This is <strong>my</strong> book.</p>
+            </div>
+
+            <h3>Adjective Order</h3>
+            <p>When using multiple adjectives, follow this order:</p>
+            <p style="text-align: center; font-size: 18px; color: var(--navy);">
+                <strong>Opinion → Size → Age → Shape → Color → Origin → Material → Purpose</strong>
+            </p>
+            
+            <div class="example">
+                <div class="label">Example</div>
+                <p>She bought a <strong>beautiful small old rectangular brown Italian leather handbag</strong>.</p>
+            </div>
+
+            <h3>Adverbs</h3>
+            <p>Adverbs describe verbs, adjectives, or other adverbs. They often end in <strong>-ly</strong>.</p>
+            
+            <div class="example">
+                <div class="label">Example</div>
+                <p>She speaks <strong>fluently</strong>. (how)</p>
+                <p>He arrived <strong>yesterday</strong>. (when)</p>
+                <p>They sat <strong>there</strong>. (where)</p>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 4</div>
+            <h2>Prepositions</h2>
+            
+            <h3>Common Prepositions</h3>
+            
+            <div class="rule">
+                <h4>Time: at, in, on</h4>
+                <p>at 3 o'clock | in the morning | on Monday</p>
+                <p>at night | in December | on the weekend</p>
+            </div>
+
+            <div class="rule">
+                <h4>Place: at, in, on</h4>
+                <p>at the door | in the box | on the wall</p>
+                <p>at home | in London | on the table</p>
+            </div>
+
+            <div class="rule">
+                <h4>Movement: to, from, through</h4>
+                <p>go to school | leave from home | walk through the park</p>
+            </div>
+
+            <div class="tip">
+                <div class="label">Remember</div>
+                <p><strong>At</strong> = specific point | <strong>In</strong> = enclosed space | <strong>On</strong> = surface</p>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 5</div>
+            <h2>Question Formation</h2>
+            
+            <h3>Yes/No Questions</h3>
+            <p>Use auxiliary verbs at the beginning:</p>
+            
+            <div class="example">
+                <div class="label">Example</div>
+                <p>Statement: You <strong>are</strong> a student.</p>
+                <p>Question: <strong>Are</strong> you a student?</p>
+                <br>
+                <p>Statement: They <strong>have</strong> finished.</p>
+                <p>Question: <strong>Have</strong> they finished?</p>
+            </div>
+
+            <h3>Wh- Questions</h3>
+            
+            <div class="rule">
+                <h4>Who, What, Where, When, Why, How</h4>
+                <p><strong>Who</strong> did you meet? (person)</p>
+                <p><strong>What</strong> is your name? (thing)</p>
+                <p><strong>Where</strong> do you live? (place)</p>
+                <p><strong>When</strong> did it happen? (time)</p>
+                <p><strong>Why</strong> are you sad? (reason)</p>
+                <p><strong>How</strong> are you? (manner)</p>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-number">Chapter 6</div>
+            <h2>Conditionals</h2>
+            
+            <div class="rule">
+                <h4>Zero Conditional (Facts)</h4>
+                <p>If + present, present</p>
+                <p><em>If you heat water, it boils.</em></p>
+            </div>
+
+            <div class="rule">
+                <h4>First Conditional (Real Possibilities)</h4>
+                <p>If + present, will + base verb</p>
+                <p><em>If it rains, I will stay home.</em></p>
+            </div>
+
+            <div class="rule">
+                <h4>Second Conditional (Imaginary)</h4>
+                <p>If + past, would + base verb</p>
+                <p><em>If I won the lottery, I would travel.</em></p>
+            </div>
+
+            <div class="rule">
+                <h4>Third Conditional (Past Imagination)</h4>
+                <p>If + had + past participle, would have + past participle</p>
+                <p><em>If I had studied, I would have passed.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Elevare. <a href="index.html">Back to Home</a> | <a href="lingua-resources.html">More Resources</a></p>
+    </footer>
+</body>
+</html>
