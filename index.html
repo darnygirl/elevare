@@ -456,7 +456,130 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 20px;
             font-weight: 700;
-            color: var(--teal);
+            color: var(--gold);
+        }
+
+        /* Complete Resource Library */
+        .resource-category {
+            margin-bottom: 48px;
+        }
+
+        .resource-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--navy);
+        }
+
+        .category-header h3 {
+            font-size: 28px;
+            color: var(--cream);
+            margin: 0;
+        }
+
+        .category-tag {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .resource-item:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .resource-icon-small {
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .resource-icon-small svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+        }
+
+        .resource-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .resource-info h4 {
+            font-size: 15px;
+            color: var(--cream);
+            margin-bottom: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .resource-info p {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .resource-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold);
+            flex-shrink: 0;
         }
 
         /* Programs Section */
@@ -868,43 +991,188 @@
     <section class="library" id="library">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Free Resources</div>
-                <h2 class="section-title">Resource Library</h2>
-                <p class="section-desc">Free materials to begin your journey. Teaching plans, ebooks, quizzes, games, and more.</p>
+                <div class="section-label">Your Learning Hub</div>
+                <h2 class="section-title">Complete Resource Library</h2>
+                <p class="section-desc">All resources for Lingua, Rise, and Flex Nexus — free and paid. Click any resource to access it.</p>
             </div>
-            <div class="library-grid">
-                <a href="lingua-resources.html" class="library-card" style="text-decoration: none;">
-                    <div class="library-icon">
+
+            <!-- Lingua Resources -->
+            <div class="resource-category">
+                <div class="category-header">
+                    <div class="category-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     </div>
-                    <h4>Lingua Resources</h4>
-                    <p>Grammar guides, vocabulary builders, flashcards, and conversation practice.</p>
-                    <div class="free">Free</div>
-                </a>
-                <a href="rise-resources.html" class="library-card" style="text-decoration: none;">
-                    <div class="library-icon">
+                    <h3>Lingua</h3>
+                    <span class="category-tag">Language Fluency</span>
+                </div>
+                <div class="resources-grid">
+                    <a href="lingua-grammar-guide.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Grammar Guide</h4>
+                            <p>6 chapters of comprehensive grammar</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="lingua-vocabulary.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Vocabulary Workbook</h4>
+                            <p>4 categories, 24+ essential words</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="lingua-flashcards.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Flashcards</h4>
+                            <p>Interactive flip cards with 10+ terms</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="lingua-quiz.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Vocabulary Quiz</h4>
+                            <p>5-question interactive assessment</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="lingua-conversations.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Conversation Scripts</h4>
+                            <p>4 real-life dialogue situations</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="lingua-worksheets.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Practice Worksheets</h4>
+                            <p>4 exercise types for all levels</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rise Resources -->
+            <div class="resource-category">
+                <div class="category-header">
+                    <div class="category-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
-                    <h4>Rise Resources</h4>
-                    <p>Personal growth guides, confidence flashcards, and self-reflection worksheets.</p>
-                    <div class="free">Free</div>
-                </a>
-                <a href="flexnexus-resources.html" class="library-card" style="text-decoration: none;">
-                    <div class="library-icon">
+                    <h3>Rise</h3>
+                    <span class="category-tag">Personal Development</span>
+                </div>
+                <div class="resources-grid">
+                    <a href="rise-guides.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Personal Growth Guides</h4>
+                            <p>6 chapters: mindset, confidence, communication</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="rise-flashcards.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Confidence Flashcards</h4>
+                            <p>10 key concepts with flip animation</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="rise-quiz.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Self-Assessment Quiz</h4>
+                            <p>Discover your confidence level</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="rise-worksheets.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Practice Worksheets</h4>
+                            <p>4 self-reflection exercises</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flex Nexus Resources -->
+            <div class="resource-category">
+                <div class="category-header">
+                    <div class="category-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <h4>Flex Nexus Resources</h4>
-                    <p>Professional guides, business vocabulary, and workplace templates.</p>
-                    <div class="free">Free</div>
-                </a>
-                <a href="lingua-flashcards.html" class="library-card" style="text-decoration: none;">
-                    <div class="library-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
-                    </div>
-                    <h4>Interactive Flashcards</h4>
-                    <p>Flip cards for Lingua, Rise, and Flex Nexus vocabulary and concepts.</p>
-                    <div class="free">Free</div>
-                </a>
+                    <h3>Flex Nexus</h3>
+                    <span class="category-tag">Professional Communication</span>
+                </div>
+                <div class="resources-grid">
+                    <a href="flexnexus-guides.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Professional Guides</h4>
+                            <p>6 chapters: executive presence, negotiation</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="flexnexus-flashcards.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Business Vocabulary</h4>
+                            <p>10 professional terms with definitions</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="flexnexus-quiz.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Professional Skills Quiz</h4>
+                            <p>Assess your communication style</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                    <a href="flexnexus-worksheets.html" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Practice Templates</h4>
+                            <p>5 workplace templates & scripts</p>
+                        </div>
+                        <div class="resource-price">Free</div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
