@@ -97,7 +97,7 @@
         }
 
         .hero {
-            min-height: 60vh;
+            min-height: 70vh;
             background: var(--navy);
             display: flex;
             align-items: center;
@@ -155,7 +155,28 @@
         .hero-text p {
             font-size: 16px;
             color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero-text ul {
+            list-style: none;
             margin-bottom: 32px;
+        }
+
+        .hero-text ul li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-text ul li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
         }
 
         .btn {
@@ -213,7 +234,7 @@
 
         .section-header {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 64px;
         }
 
@@ -297,9 +318,68 @@
             color: var(--gold);
         }
 
-        .features {
+        .library {
             background: var(--cream);
         }
+
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .library-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .library-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+
+        .library-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .library-icon svg { width: 36px; height: 36px; color: var(--navy); }
+
+        .library-card h4 {
+            font-size: 20px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .library-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .library-card .free {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2ec4b6;
+        }
+
+        .features {
+            background: var(--navy-light);
+        }
+
+        .features .section-title { color: var(--cream); }
+        .features .section-desc { color: var(--text); }
 
         .features-grid {
             display: grid;
@@ -346,10 +426,8 @@
         }
 
         .pricing {
-            background: var(--navy-light);
+            background: var(--cream);
         }
-
-        .pricing .section-title { color: var(--cream); }
 
         .pricing-content {
             display: grid;
@@ -367,9 +445,9 @@
             align-items: center;
             gap: 16px;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             font-size: 16px;
-            color: var(--text);
+            color: var(--navy);
         }
 
         .pricing-features li svg { width: 24px; height: 24px; color: var(--gold); flex-shrink: 0; }
@@ -422,33 +500,23 @@
         }
 
         .cta {
-            background: var(--cream);
+            background: var(--navy);
         }
 
         .cta-content {
-            background: var(--navy);
+            background: var(--navy-light);
             border-radius: 24px;
             padding: 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .cta-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            border: 1px solid rgba(201, 162, 39, 0.2);
         }
 
         .cta-content h2 {
             font-size: clamp(28px, 4vw, 40px);
             color: var(--cream);
             margin-bottom: 16px;
-            position: relative;
         }
 
         .cta-content p {
@@ -458,7 +526,6 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            position: relative;
         }
 
         footer {
@@ -509,7 +576,7 @@
         @media (max-width: 992px) {
             .hero-content { grid-template-columns: 1fr; }
             .hero-visual { order: -1; }
-            .products-grid, .features-grid { grid-template-columns: 1fr; }
+            .products-grid, .features-grid, .library-grid { grid-template-columns: 1fr; }
             .pricing-content { grid-template-columns: 1fr; }
             .pricing-card { position: static; }
         }
@@ -552,6 +619,12 @@
                     <h1>Be Seen. Be Heard.<br><span>Be Unstuck.</span></h1>
                     <p class="slogan">Mental-health-informed coaching</p>
                     <p>Break through the barriers holding you back. Our mental-health-informed approach helps you overcome anxiety, build unshakeable confidence, and own your voice in any situation.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Anxiety management techniques</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Professional presence training</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mindset transformation</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ongoing mentorship support</li>
+                    </ul>
                     <a href="#pricing" class="btn btn-primary">Start Rising</a>
                 </div>
                 <div class="hero-visual">
@@ -578,7 +651,7 @@
                     </div>
                     <div class="product-info">
                         <h4>Personal Development Course</h4>
-                        <p>Comprehensive video course on building confidence, overcoming fear, and developing executive presence.</p>
+                        <p>Comprehensive video course on building confidence, overcoming fear, and developing executive presence. 20+ modules with actionable exercises.</p>
                         <div class="product-price">$99 - $199</div>
                     </div>
                 </div>
@@ -588,7 +661,7 @@
                     </div>
                     <div class="product-info">
                         <h4>Confidence Coaching</h4>
-                        <p>1-on-1 sessions focused on your specific challenges. Personalized strategies for lasting change.</p>
+                        <p>1-on-1 sessions focused on your specific challenges. Personalized strategies for lasting change and growth.</p>
                         <div class="product-price">$75/session</div>
                     </div>
                 </div>
@@ -598,7 +671,7 @@
                     </div>
                     <div class="product-info">
                         <h4>Mastermind Programs</h4>
-                        <p>Small group coaching with peers. Accountability, support, and collective growth.</p>
+                        <p>Small group coaching with peers. Accountability, support, and collective growth in a community of like-minded individuals.</p>
                         <div class="product-price">$197/month</div>
                     </div>
                 </div>
@@ -608,9 +681,65 @@
                     </div>
                     <div class="product-info">
                         <h4>Mentorship Subscriptions</h4>
-                        <p>Monthly access to guidance, resources, and direct support from experienced mentors.</p>
+                        <p>Monthly access to guidance, resources, and direct support from experienced mentors who have been where you are.</p>
                         <div class="product-price">$39/month</div>
                     </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Self-Help Guides & Workbooks</h4>
+                        <p>Downloadable guides and workbooks for self-paced development. Includes exercises, journaling prompts, and action plans.</p>
+                        <div class="product-price">$19 - $49</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Webinar Series</h4>
+                        <p>Live and recorded workshops on specific topics like public speaking, overcoming social anxiety, and body language.</p>
+                        <div class="product-price">$29 - $79</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section library" id="library">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Free Resources</div>
+                <h2 class="section-title">Resource Library</h2>
+                <p class="section-desc">Free guides, worksheets, and exercises to start your growth journey.</p>
+            </div>
+            <div class="library-grid">
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h4>Free Guides</h4>
+                    <p>Downloadable self-help guides on confidence building, overcoming fear, and personal growth strategies.</p>
+                    <div class="free">Free</div>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <h4>Worksheets</h4>
+                    <p>Practical worksheets for self-reflection, goal setting, and tracking your confidence-building journey.</p>
+                    <div class="free">Free</div>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <h4>Webinars</h4>
+                    <p>Free recorded workshops on public speaking, body language, and building unshakeable confidence.</p>
+                    <div class="free">Free</div>
                 </div>
             </div>
         </div>
@@ -629,21 +758,21 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
                     <h4>Mental-Health-Informed</h4>
-                    <p>Our approach acknowledges the emotional aspects of communication anxiety.</p>
+                    <p>Our approach acknowledges the emotional aspects of communication anxiety. We work with your mindset, not against it.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
                     <h4>Evidence-Based</h4>
-                    <p>Techniques grounded in psychology and proven communication research.</p>
+                    <p>Techniques grounded in psychology and proven communication research. Every method has scientific backing.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
                     </div>
                     <h4>Holistic Approach</h4>
-                    <p>We address mindset, skills, and behavior for lasting transformation.</p>
+                    <p>We address mindset, skills, and behavior for lasting transformation. True change comes from within.</p>
                 </div>
             </div>
         </div>
@@ -658,7 +787,7 @@
             </div>
             <div class="pricing-content">
                 <div>
-                    <h4 style="font-size: 20px; color: var(--cream); margin-bottom: 24px;">What's Included</h4>
+                    <h4 style="font-size: 20px; color: var(--navy); margin-bottom: 24px;">What's Included</h4>
                     <ul class="pricing-features">
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>

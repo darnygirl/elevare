@@ -97,7 +97,7 @@
         }
 
         .hero {
-            min-height: 60vh;
+            min-height: 70vh;
             background: var(--navy);
             display: flex;
             align-items: center;
@@ -155,7 +155,28 @@
         .hero-text p {
             font-size: 16px;
             color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero-text ul {
+            list-style: none;
             margin-bottom: 32px;
+        }
+
+        .hero-text ul li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-text ul li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
         }
 
         .btn {
@@ -213,7 +234,7 @@
 
         .section-header {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 64px;
         }
 
@@ -237,6 +258,7 @@
             color: var(--text-light);
         }
 
+        /* Products Section */
         .products {
             background: var(--navy);
         }
@@ -297,9 +319,77 @@
             color: var(--gold);
         }
 
-        .features {
+        /* Library Section */
+        .library {
             background: var(--cream);
         }
+
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .library-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .library-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+
+        .library-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .library-icon svg { width: 36px; height: 36px; color: var(--navy); }
+
+        .library-card h4 {
+            font-size: 20px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .library-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .library-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .library-card .free {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2ec4b6;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--navy-light);
+        }
+
+        .features .section-title { color: var(--cream); }
+        .features .section-desc { color: var(--text); }
 
         .features-grid {
             display: grid;
@@ -345,11 +435,10 @@
             color: var(--text);
         }
 
+        /* Pricing Section */
         .pricing {
-            background: var(--navy-light);
+            background: var(--cream);
         }
-
-        .pricing .section-title { color: var(--cream); }
 
         .pricing-content {
             display: grid;
@@ -367,9 +456,9 @@
             align-items: center;
             gap: 16px;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             font-size: 16px;
-            color: var(--text);
+            color: var(--navy);
         }
 
         .pricing-features li svg { width: 24px; height: 24px; color: var(--gold); flex-shrink: 0; }
@@ -421,34 +510,25 @@
             background: var(--navy-light);
         }
 
+        /* CTA Section */
         .cta {
-            background: var(--cream);
+            background: var(--navy);
         }
 
         .cta-content {
-            background: var(--navy);
+            background: var(--navy-light);
             border-radius: 24px;
             padding: 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .cta-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            border: 1px solid rgba(201, 162, 39, 0.2);
         }
 
         .cta-content h2 {
             font-size: clamp(28px, 4vw, 40px);
             color: var(--cream);
             margin-bottom: 16px;
-            position: relative;
         }
 
         .cta-content p {
@@ -458,7 +538,6 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            position: relative;
         }
 
         footer {
@@ -509,7 +588,7 @@
         @media (max-width: 992px) {
             .hero-content { grid-template-columns: 1fr; }
             .hero-visual { order: -1; }
-            .products-grid, .features-grid { grid-template-columns: 1fr; }
+            .products-grid, .features-grid, .library-grid { grid-template-columns: 1fr; }
             .pricing-content { grid-template-columns: 1fr; }
             .pricing-card { position: static; }
         }
@@ -552,6 +631,12 @@
                     <h1>Language Fluency.<br><span>Measurable Results.</span></h1>
                     <p class="slogan">Master any language with our proven methodology</p>
                     <p>From beginner to fluent in record time. Our expert tutors combine proven methodologies with personalized coaching to help you achieve real, measurable language proficiency.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Native speaker instructors</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Personalized learning plans</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Cultural immersion content</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Progress tracking system</li>
+                    </ul>
                     <a href="#pricing" class="btn btn-primary">Start Learning</a>
                 </div>
                 <div class="hero-visual">
@@ -578,7 +663,7 @@
                     </div>
                     <div class="product-info">
                         <h4>Language Learning Ebooks</h4>
-                        <p>Comprehensive guides covering grammar, vocabulary, and cultural insights for self-paced learning.</p>
+                        <p>Comprehensive guides covering grammar, vocabulary, and cultural insights for self-paced learning. Perfect for beginners to intermediate learners.</p>
                         <div class="product-price">$19 - $49</div>
                     </div>
                 </div>
@@ -588,7 +673,7 @@
                     </div>
                     <div class="product-info">
                         <h4>Video Course Library</h4>
-                        <p>Hours of structured video lessons with practical exercises and real-life conversation practice.</p>
+                        <p>Hours of structured video lessons with practical exercises and real-life conversation practice. Learn at your own pace anytime.</p>
                         <div class="product-price">$79 - $149</div>
                     </div>
                 </div>
@@ -598,19 +683,75 @@
                     </div>
                     <div class="product-info">
                         <h4>1-on-1 Coaching Sessions</h4>
-                        <p>Personalized tutoring with native-speaking experts. Tailored lesson plans for your goals.</p>
+                        <p>Personalized tutoring with native-speaking experts. Tailored lesson plans for your specific goals and learning pace.</p>
                         <div class="product-price">$15/hour</div>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                     </div>
                     <div class="product-info">
-                        <h4>Study Guides & Templates</h4>
-                        <p>Ready-to-use worksheets, flashcards, and practice templates for efficient learning.</p>
+                        <h4>Teaching Plans & Curriculum</h4>
+                        <p>Complete lesson plans for educators. Includes objectives, activities, worksheets, and assessment tools for effective teaching.</p>
+                        <div class="product-price">$29 - $79</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Quizzes & Assessments</h4>
+                        <p>Interactive quizzes to test your knowledge and track progress. Includes listening, reading, writing, and speaking assessments.</p>
                         <div class="product-price">$9 - $29</div>
                     </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                    </div>
+                    <div class="product-info">
+                        <h4>Language Games & Activities</h4>
+                        <p>Fun, engaging games to make learning enjoyable. Vocabulary games, conversation cards, and interactive activities for all levels.</p>
+                        <div class="product-price">$9 - $19</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section library" id="library">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Free Resources</div>
+                <h2 class="section-title">Resource Library</h2>
+                <p class="section-desc">Free teaching plans, ebooks, quizzes, and games to get you started.</p>
+            </div>
+            <div class="library-grid">
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h4>Teaching Plans</h4>
+                    <p>Comprehensive lesson plans for educators. Structured curriculum guides for effective language teaching.</p>
+                    <div class="free">Free</div>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h4>Free Ebooks</h4>
+                    <p>Downloadable introductory guides and vocabulary lists to kickstart your language learning journey.</p>
+                    <div class="free">Free</div>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h4>Quizzes</h4>
+                    <p>Free online quizzes to assess your current level and track your progress over time.</p>
+                    <div class="free">Free</div>
                 </div>
             </div>
         </div>
@@ -629,21 +770,21 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
                     <h4>Proven Results</h4>
-                    <p>95% of our students report measurable improvement within 30 days.</p>
+                    <p>95% of our students report measurable improvement within 30 days of starting their program.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     </div>
                     <h4>Native Speakers</h4>
-                    <p>Learn from tutors who speak the language as their first language.</p>
+                    <p>Learn from tutors who speak the language as their first language. Authentic pronunciation and cultural insights.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     </div>
                     <h4>Personalized Path</h4>
-                    <p>Your curriculum adapts to your learning style and goals.</p>
+                    <p>Your curriculum adapts to your learning style, goals, and pace. No one-size-fits-all approaches.</p>
                 </div>
             </div>
         </div>
@@ -658,7 +799,7 @@
             </div>
             <div class="pricing-content">
                 <div>
-                    <h4 style="font-size: 20px; color: var(--cream); margin-bottom: 24px;">What's Included</h4>
+                    <h4 style="font-size: 20px; color: var(--navy); margin-bottom: 24px;">What's Included</h4>
                     <ul class="pricing-features">
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -679,6 +820,10 @@
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                             Flexible scheduling
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Access to resource library
                         </li>
                     </ul>
                 </div>
