@@ -582,6 +582,40 @@
             flex-shrink: 0;
         }
 
+        .resource-price.paid {
+            color: var(--cream);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .resource-divider {
+            border: none;
+            border-top: 1px dashed rgba(201, 162, 39, 0.3);
+            margin: 24px 0;
+        }
+
+        .paid-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+
+        .paid-section-header h4 {
+            font-size: 14px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .paid-section-header svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-light);
+        }
+
         /* Programs Section */
         .programs {
             padding: 120px 0;
@@ -884,8 +918,7 @@
                 <div class="hero-text">
                     <div class="tagline">Where Language Meets Life</div>
                     <h1>Elevate Your <span>Future</span></h1>
-                    <p class="slogan">"Unlimited Time = Unlimited Wealth"</p>
-                    <p>Transform language skills into unlimited income. One product, infinite reach. Build wealth through coaching, courses, and mentorship.</p>
+                    <p>Master language, build confidence, and advance your career. Free resources and expert coaching for every step of your journey.</p>
                     <div class="hero-buttons">
                         <a href="#pillars" class="btn btn-primary">Explore Programs</a>
                         <a href="#library" class="btn btn-secondary">Free Resources</a>
@@ -993,7 +1026,7 @@
             <div class="section-header">
                 <div class="section-label">Your Learning Hub</div>
                 <h2 class="section-title">Complete Resource Library</h2>
-                <p class="section-desc">All resources for Lingua, Rise, and Flex Nexus — free and paid. Click any resource to access it.</p>
+                <p class="section-desc">Free and premium resources for Lingua, Rise, and Flex Nexus. Click any resource to learn more or purchase.</p>
             </div>
 
             <!-- Lingua Resources -->
@@ -1067,6 +1100,52 @@
                         <div class="resource-price">Free</div>
                     </a>
                 </div>
+                <div class="paid-section-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <h4>Premium Resources</h4>
+                </div>
+                <div class="resources-grid">
+                    <a href="lingua.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Complete Video Course</h4>
+                            <p>Full language mastery program</p>
+                        </div>
+                        <div class="resource-price paid">$149</div>
+                    </a>
+                    <a href="lingua.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Advanced Quizzes Bundle</h4>
+                            <p>Listening, reading, writing, speaking</p>
+                        </div>
+                        <div class="resource-price paid">$29</div>
+                    </a>
+                    <a href="lingua.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Language Games Pack</h4>
+                            <p>Vocabulary games & conversation cards</p>
+                        </div>
+                        <div class="resource-price paid">$19</div>
+                    </a>
+                    <a href="lingua.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>1-on-1 Coaching</h4>
+                            <p>Personalized sessions with expert tutor</p>
+                        </div>
+                        <div class="resource-price paid">$15/hr</div>
+                    </a>
+                </div>
             </div>
 
             <!-- Rise Resources -->
@@ -1120,6 +1199,52 @@
                         <div class="resource-price">Free</div>
                     </a>
                 </div>
+                <div class="paid-section-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <h4>Premium Resources</h4>
+                </div>
+                <div class="resources-grid">
+                    <a href="rise.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Rise Membership</h4>
+                            <p>Monthly coaching & mentorship</p>
+                        </div>
+                        <div class="resource-price paid">$39/mo</div>
+                    </a>
+                    <a href="rise.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Webinar Series</h4>
+                            <p>Live workshops on confidence topics</p>
+                        </div>
+                        <div class="resource-price paid">$29-$79</div>
+                    </a>
+                    <a href="rise.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Mastermind Program</h4>
+                            <p>Group coaching & community</p>
+                        </div>
+                        <div class="resource-price paid">$97/mo</div>
+                    </a>
+                    <a href="rise.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Personal Development Course</h4>
+                            <p>Comprehensive confidence program</p>
+                        </div>
+                        <div class="resource-price paid">$197</div>
+                    </a>
+                </div>
             </div>
 
             <!-- Flex Nexus Resources -->
@@ -1171,6 +1296,52 @@
                             <p>5 workplace templates & scripts</p>
                         </div>
                         <div class="resource-price">Free</div>
+                    </a>
+                </div>
+                <div class="paid-section-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <h4>Premium Resources</h4>
+                </div>
+                <div class="resources-grid">
+                    <a href="flexnexus.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>12-Week Intensive</h4>
+                            <p>Full professional program</p>
+                        </div>
+                        <div class="resource-price paid">$227</div>
+                    </a>
+                    <a href="flexnexus.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Professional Guides Bundle</h4>
+                            <p>Complete business communication set</p>
+                        </div>
+                        <div class="resource-price paid">$79</div>
+                    </a>
+                    <a href="flexnexus.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Certification Program</h4>
+                            <p>Professional certification</p>
+                        </div>
+                        <div class="resource-price paid">$397</div>
+                    </a>
+                    <a href="flexnexus.html#pricing" class="resource-item">
+                        <div class="resource-icon-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Workplace Templates Pack</h4>
+                            <p>Emails, presentations, meetings</p>
+                        </div>
+                        <div class="resource-price paid">$49</div>
                     </a>
                 </div>
             </div>
@@ -1324,7 +1495,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Elevare. All rights reserved. | "Unlimited Time = Unlimited Wealth"</p>
+                <p>&copy; 2025 Elevare. All rights reserved.</p>
             </div>
         </div>
     </footer>
