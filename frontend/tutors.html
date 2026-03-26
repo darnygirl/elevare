@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            border-radius: 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--navy) !important;
+        }
+
+        .page-header {
+            padding: 160px 0 80px;
+            background: var(--navy);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .page-header .label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section.navy {
+            background: var(--navy);
+        }
+
+        .section.navy-light {
+            background: var(--navy-light);
+        }
+
+        .section.cream {
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .section.cream .section-title {
+            color: var(--cream);
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .tutor-card {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tutor-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .tutor-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .tutor-card h3 {
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .tutor-card .specialty {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .tutor-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .tutor-card .rate {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--navy);
+            opacity: 0.8;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-navy {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
+        .btn-navy:hover {
+            background: var(--navy-light);
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 992px) {
+            .tutors-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="lingua.html">Lingua</a></li>
+                    <li><a href="rise.html">Rise</a></li>
+                    <li><a href="flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="https://calendly.com/elevareworkplace" target="_blank" class="nav-cta">Book a Call</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="label">Expert Team</div>
+            <h1>Your Coaches & Mentors</h1>
+            <p>Learn from professionals who've walked the path. Our team combines expertise with genuine passion for helping you succeed.</p>
+        </div>
+    </header>
+
+    <section class="section navy">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Lingua</div>
+                <h2 class="section-title" style="color: var(--cream);">Language Specialists</h2>
+                <p class="section-desc">Native-speaking experts dedicated to your language mastery journey.</p>
+            </div>
+            <div class="tutors-grid">
+                <div class="tutor-card">
+                    <div class="tutor-avatar">AM</div>
+                    <h3>Amara M.</h3>
+                    <div class="specialty">Lingua Specialist</div>
+                    <p>Fluent in 5 languages with 8+ years teaching experience. Specializes in conversational fluency and cultural immersion.</p>
+                    <div class="rate">$15/hr</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">MR</div>
+                    <h3>Marco R.</h3>
+                    <div class="specialty">Business Language Expert</div>
+                    <p>Former translator for Fortune 500 companies. Expert in professional communication and business writing in multiple languages.</p>
+                    <div class="rate">$20/hr</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">YH</div>
+                    <h3>Yuki H.</h3>
+                    <div class="specialty">Pronunciation Coach</div>
+                    <p>Certified speech pathologist with 10+ years helping professionals achieve native-like pronunciation and accent reduction.</p>
+                    <div class="rate">$25/hr</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section navy-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Rise</div>
+                <h2 class="section-title" style="color: var(--cream);">Confidence Coaches</h2>
+                <p class="section-desc">Certified professionals dedicated to your personal transformation.</p>
+            </div>
+            <div class="tutors-grid">
+                <div class="tutor-card">
+                    <div class="tutor-avatar">JC</div>
+                    <h3>James C.</h3>
+                    <div class="specialty">Rise Coach</div>
+                    <p>Certified life coach with expertise in confidence building, public speaking, and overcoming social anxiety.</p>
+                    <div class="rate">$39/mo</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">LT</div>
+                    <h3>Luna T.</h3>
+                    <div class="specialty">Mindset Specialist</div>
+                    <p>Former competitive athlete turned mindset coach. Specializes in performance psychology and mental resilience training.</p>
+                    <div class="rate">$49/mo</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">DK</div>
+                    <h3>David K.</h3>
+                    <div class="specialty">Communication Coach</div>
+                    <p>15+ years helping executives and entrepreneurs master the art of persuasive communication and leadership presence.</p>
+                    <div class="rate">$59/mo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section navy">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Flex Nexus</div>
+                <h2 class="section-title" style="color: var(--cream);">Professional Development</h2>
+                <p class="section-desc">Industry veterans ready to accelerate your career growth.</p>
+            </div>
+            <div class="tutors-grid">
+                <div class="tutor-card">
+                    <div class="tutor-avatar">SN</div>
+                    <h3>Sarah N.</h3>
+                    <div class="specialty">Flex Nexus Lead</div>
+                    <p>Former executive at Fortune 500 company. Expert in professional communication and executive presence.</p>
+                    <div class="rate">$227/program</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">RM</div>
+                    <h3>Robert M.</h3>
+                    <div class="specialty">Negotiation Expert</div>
+                    <p>Harvard-trained negotiator with 20+ years closing multi-million dollar deals. Author of "The Art of Professional Influence."</p>
+                    <div class="rate">$299/program</div>
+                </div>
+                <div class="tutor-card">
+                    <div class="tutor-avatar">AP</div>
+                    <h3>Aisha P.</h3>
+                    <div class="specialty">Leadership Coach</div>
+                    <p>Executive coach specializing in emerging leaders. Helped 500+ professionals advance to senior positions.</p>
+                    <div class="rate">$249/program</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Book a free consultation call and find the perfect coach for your goals.</p>
+            <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-navy">Book a Free Call</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elevare. Where Language Meets Life. | <a href="../index.html" style="color: var(--gold); text-decoration: none;">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
