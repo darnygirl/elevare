@@ -759,6 +759,166 @@
             color: var(--gold);
         }
 
+        /* Tutor Consultancy Section */
+        .tutor-consultancy {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+        }
+
+        .tutor-consultancy .section-title { color: var(--cream); }
+
+        .consultancy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .consultancy-text h3 {
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 20px;
+        }
+
+        .consultancy-text h3 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .consultancy-text p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .consultancy-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 32px;
+        }
+
+        .consultancy-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .consultancy-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .consultancy-features li span {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .consultancy-card {
+            background: rgba(201, 162, 39, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .consultancy-card h4 {
+            font-size: 24px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .consultancy-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .consultancy-card .price span {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .consultancy-card p {
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .consultancy-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Partner Section */
+        .partner-section {
+            padding: 120px 0;
+            background: var(--cream);
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .partner-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .partner-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .partner-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--navy);
+        }
+
+        .partner-card h4 {
+            font-size: 20px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .partner-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .partner-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
         /* CTA Section */
         .cta {
             padding: 120px 0;
@@ -1423,6 +1583,105 @@
                     <div class="specialty">Flex Nexus Lead</div>
                     <p>Former executive at Fortune 500 company. Expert in professional communication.</p>
                     <div class="rate">$227/program</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tutor-consultancy">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">For Tutors & Coaches</div>
+                <h2 class="section-title">Elevate Your Teaching</h2>
+                <p class="section-desc">Join our network of expert tutors and coaches. Get training, resources, and support to grow your practice.</p>
+            </div>
+            <div class="consultancy-content">
+                <div class="consultancy-text">
+                    <h3>Become an <span>Elevare Partner</span></h3>
+                    <p>Partner with Elevare to access our proven methodologies, marketing support, and continuous professional development. We've helped hundreds of tutors build thriving coaching businesses.</p>
+                    <ul class="consultancy-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Access to proven curriculum and teaching frameworks</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Marketing materials and lead generation tools</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Monthly coaching calls and peer community</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Certification in Elevare methodology</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Competitive rates and flexible scheduling</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:debbynickryanz@gmail.com?subject=Tutor%20Partnership%20Inquiry" class="btn btn-primary">Apply to Partner</a>
+                </div>
+                <div class="consultancy-card">
+                    <h4>Tutor Consultancy</h4>
+                    <div class="price">$97<span>/month</span></div>
+                    <p>One-on-one mentorship for tutors wanting to build a successful coaching business</p>
+                    <ul class="consultancy-features" style="text-align: left;">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Weekly strategy calls</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Business development guidance</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Marketing and pricing strategy</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Resource library access</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:debbynickryanz@gmail.com?subject=Tutor%20Consultancy%20Enrollment" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partner-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Grow Together</div>
+                <h2 class="section-title">Tutor Partnership Programs</h2>
+                <p class="section-desc">Choose the partnership level that fits your goals.</p>
+            </div>
+            <div class="partner-grid">
+                <div class="partner-card">
+                    <div class="partner-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>Associate Partner</h4>
+                    <p>Start your journey with basic training and community access.</p>
+                    <div class="price">$29/mo</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h4>Certified Partner</h4>
+                    <p>Full training, marketing tools, and priority client referrals.</p>
+                    <div class="price">$79/mo</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h4>Master Partner</h4>
+                    <p>Premium support, exclusive resources, and revenue sharing.</p>
+                    <div class="price">$149/mo</div>
                 </div>
             </div>
         </div>
