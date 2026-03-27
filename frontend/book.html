@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            border-radius: 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--navy) !important;
+        }
+
+        .hero {
+            min-height: 50vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 0 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section.navy {
+            background: var(--navy);
+        }
+
+        .section.cream {
+            background: var(--cream);
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .booking-card {
+            background: var(--navy-light);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .booking-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .booking-card.featured {
+            border-color: var(--gold);
+            position: relative;
+        }
+
+        .booking-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 6px 20px;
+            border-radius: 20px;
+        }
+
+        .booking-card .icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .booking-card .icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--navy);
+        }
+
+        .booking-card h3 {
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .booking-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .booking-card .duration {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .booking-card p {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 24px;
+            min-height: 60px;
+        }
+
+        .booking-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .booking-card li {
+            font-size: 13px;
+            color: var(--text);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .booking-card li::before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .calendly-section {
+            background: var(--navy);
+            padding: 80px 0;
+        }
+
+        .calendly-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--navy-light);
+            border-radius: 24px;
+            padding: 60px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        .calendly-container h2 {
+            font-size: 36px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .calendly-container p {
+            color: var(--text);
+            margin-bottom: 40px;
+        }
+
+        .calendly-inline-widget {
+            min-height: 630px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: var(--navy);
+            opacity: 0.8;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .booking-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .calendly-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="lingua.html">Lingua</a></li>
+                    <li><a href="rise.html">Rise</a></li>
+                    <li><a href="flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="tutors.html">Team</a></li>
+                    <li><a href="https://calendly.com/elevareworkplace" target="_blank" class="nav-cta">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Book Your <span>Session</span></h1>
+                <p>Choose the perfect session for your goals. From free consultations to intensive programs, we're here to guide your journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cream">
+        <div class="container">
+            <div class="booking-grid">
+                <div class="booking-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Free Consultation</h3>
+                    <div class="price">$0</div>
+                    <div class="duration">30 minutes</div>
+                    <p>Get to know us and explore how we can help you achieve your language and personal development goals.</p>
+                    <ul>
+                        <li>Discuss your goals</li>
+                        <li>Get personalized recommendations</li>
+                        <li>Learn about our programs</li>
+                        <li>No commitment required</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace/consultation" target="_blank" class="btn btn-outline">Book Free Call</a>
+                </div>
+                <div class="booking-card featured">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h3>1-on-1 Coaching</h3>
+                    <div class="price">$97</div>
+                    <div class="duration">60 minutes</div>
+                    <p>Personalized coaching session tailored to your specific needs and learning pace.</p>
+                    <ul>
+                        <li>Private video session</li>
+                        <li>Customized lesson plan</li>
+                        <li>Follow-up resources</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace/one-on-one" target="_blank" class="btn btn-gold">Book Session</a>
+                </div>
+                <div class="booking-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Group Workshop</h3>
+                    <div class="price">$47</div>
+                    <div class="duration">90 minutes</div>
+                    <p>Join a small group session with others at your level. Learn from peers and collaborate.</p>
+                    <ul>
+                        <li>Up to 8 participants</li>
+                        <li>Interactive activities</li>
+                        <li>Group discussions</li>
+                        <li>Shared resources</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace/group" target="_blank" class="btn btn-outline">Book Workshop</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calendly-section">
+        <div class="container">
+            <div class="calendly-container">
+                <h2>Schedule Your Appointment</h2>
+                <p>Select a time that works for you. You'll receive a confirmation email with all the details.</p>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/elevareworkplace?hide_gdpr_banner=1&background_color=1b263b&text_color=faf8f5&primary_color=c9a227"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Not Sure Which Session Is Right?</h2>
+            <p>Start with a free consultation and we'll help you find the perfect path.</p>
+            <a href="https://calendly.com/elevareworkplace/consultation" target="_blank" class="btn btn-navy">Book Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="../index.html">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
