@@ -95,6 +95,30 @@
             color: var(--navy) !important;
         }
 
+        #google_translate_element {
+            position: relative;
+        }
+
+        #google_translate_element select {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 12px;
+            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #google_translate_element select:focus {
+            outline: none;
+        }
+
+        #google_translate_element option {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
         .hero {
             min-height: 100vh;
             background: var(--navy);
@@ -1067,6 +1091,7 @@
                     <li><a href="frontend/rise.html">Rise</a></li>
                     <li><a href="frontend/flexnexus.html">Flex Nexus</a></li>
                     <li><a href="frontend/tutors.html">Team</a></li>
+                    <li><div id="google_translate_element"></div></li>
                     <li><a href="https://calendly.com/elevareworkplace" target="_blank" class="nav-cta">Book a Call</a></li>
                 </ul>
             </div>
@@ -1724,5 +1749,18 @@
             </div>
         </div>
     </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,fr,de,zh-CN,ja,ko,pt,ar,hi,ru,nl,pl,tr,vi,th,id,ms,sv,da,no,fi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                gaTrack: false,
+                gaId: 'YOUR_GA_ID'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
