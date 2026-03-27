@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team — Elevare</title>
+    <title>Tutor Portal — Elevare</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -179,13 +179,168 @@
             color: var(--text-light);
         }
 
-        .tutors-grid {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 48px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--navy);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .service-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-navy {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
+        .btn-navy:hover {
+            background: var(--navy-light);
+        }
+
+        .registration-form {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 48px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .training-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
 
-        .tutor-card {
+        .training-card {
             background: var(--navy-light);
             border-radius: 20px;
             padding: 40px;
@@ -194,50 +349,124 @@
             transition: all 0.3s;
         }
 
-        .tutor-card:hover {
+        .training-card:hover {
             border-color: var(--gold);
             transform: translateY(-8px);
         }
 
-        .tutor-avatar {
-            width: 100px;
-            height: 100px;
+        .training-card .icon {
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
             border-radius: 50%;
             margin: 0 auto 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            font-weight: 700;
+        }
+
+        .training-card .icon svg {
+            width: 40px;
+            height: 40px;
             color: var(--navy);
         }
 
-        .tutor-card h3 {
-            font-size: 26px;
+        .training-card h3 {
+            font-size: 24px;
             color: var(--cream);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
-        .tutor-card .specialty {
-            font-size: 12px;
-            color: var(--gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .tutor-card p {
+        .training-card p {
             font-size: 14px;
             color: var(--text);
             margin-bottom: 20px;
         }
 
-        .tutor-card .rate {
+        .training-card .duration {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .consulting-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .consulting-card {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .consulting-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .consulting-card.featured {
+            border-color: var(--gold);
+            position: relative;
+        }
+
+        .consulting-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        .consulting-card h3 {
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .consulting-card .price {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 700;
             color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .consulting-card .price span {
+            font-size: 16px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .consulting-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .consulting-card li {
+            font-size: 14px;
+            color: var(--text);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .consulting-card li::before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 10px;
         }
 
         .cta-section {
@@ -262,28 +491,6 @@
             margin-right: auto;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .btn-navy {
-            background: var(--navy);
-            color: var(--cream);
-        }
-
-        .btn-navy:hover {
-            background: var(--navy-light);
-        }
-
         footer {
             padding: 60px 0 40px;
             background: var(--navy);
@@ -298,8 +505,32 @@
             color: var(--text-light);
         }
 
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .existing-tutor {
+            background: var(--navy-light);
+            border-radius: 12px;
+            padding: 20px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .existing-tutor a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
         @media (max-width: 992px) {
-            .tutors-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .services-grid { grid-template-columns: 1fr; }
+            .training-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .consulting-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .form-row { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -334,106 +565,269 @@
 
     <header class="page-header">
         <div class="container">
-            <div class="label">Expert Team</div>
-            <h1>Your Coaches & Mentors</h1>
-            <p>Learn from professionals who've walked the path. Our team combines expertise with genuine passion for helping you succeed.</p>
+            <div class="label">For Tutors & Coaches</div>
+            <h1>Join Our Global Network</h1>
+            <p>Register your services, access training, share resources, and explore international placement opportunities.</p>
         </div>
     </header>
 
     <section class="section navy">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Lingua</div>
-                <h2 class="section-title" style="color: var(--cream);">Language Specialists</h2>
-                <p class="section-desc">Native-speaking experts dedicated to your language mastery journey.</p>
+                <div class="section-label">Get Started</div>
+                <h2 class="section-title" style="color: var(--cream);">Register Your Services</h2>
+                <p class="section-desc">Join our network of expert tutors and coaches. Create your profile, set your rates, and start helping students worldwide.</p>
             </div>
-            <div class="tutors-grid">
-                <div class="tutor-card">
-                    <div class="tutor-avatar">AM</div>
-                    <h3>Amara M.</h3>
-                    <div class="specialty">Lingua Specialist</div>
-                    <p>Fluent in 5 languages with 8+ years teaching experience. Specializes in conversational fluency and cultural immersion.</p>
-                    <div class="rate">$15/hr</div>
-                </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">MR</div>
-                    <h3>Marco R.</h3>
-                    <div class="specialty">Business Language Expert</div>
-                    <p>Former translator for Fortune 500 companies. Expert in professional communication and business writing in multiple languages.</p>
-                    <div class="rate">$20/hr</div>
-                </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">YH</div>
-                    <h3>Yuki H.</h3>
-                    <div class="specialty">Pronunciation Coach</div>
-                    <p>Certified speech pathologist with 10+ years helping professionals achieve native-like pronunciation and accent reduction.</p>
-                    <div class="rate">$25/hr</div>
+            <div class="registration-form">
+                <form id="tutorRegistration">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" placeholder="Your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Pillar Specialization</label>
+                            <select required>
+                                <option value="">Select a pillar</option>
+                                <option value="lingua">Lingua — Language Tutoring</option>
+                                <option value="rise">Rise — Life Coaching</option>
+                                <option value="flexnexus">Flex Nexus — Professional Development</option>
+                                <option value="multiple">Multiple Pillars</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Languages Spoken</label>
+                            <input type="text" placeholder="English, Spanish, French...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Years of Experience</label>
+                        <select>
+                            <option value="">Select experience level</option>
+                            <option value="0-1">0-1 years</option>
+                            <option value="2-5">2-5 years</option>
+                            <option value="6-10">6-10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tell Us About Yourself</label>
+                        <textarea placeholder="Describe your teaching style, specialties, and what makes your approach unique..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Service Format</label>
+                        <select>
+                            <option value="">Select format</option>
+                            <option value="one-on-one">1-on-1 Sessions</option>
+                            <option value="group">Group Sessions</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Application</button>
+                </form>
+                <div class="existing-tutor">
+                    <span style="color: var(--text);">Already registered?</span>
+                    <a href="tutor-portal.html">Access Your Dashboard →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section navy-light">
+    <section class="section cream">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Rise</div>
-                <h2 class="section-title" style="color: var(--cream);">Confidence Coaches</h2>
-                <p class="section-desc">Certified professionals dedicated to your personal transformation.</p>
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title" style="color: var(--navy);">Everything You Need to Succeed</h2>
+                <p class="section-desc">From training to resources to international opportunities, we support our tutors at every stage of their journey.</p>
             </div>
-            <div class="tutors-grid">
-                <div class="tutor-card">
-                    <div class="tutor-avatar">JC</div>
-                    <h3>James C.</h3>
-                    <div class="specialty">Rise Coach</div>
-                    <p>Certified life coach with expertise in confidence building, public speaking, and overcoming social anxiety.</p>
-                    <div class="rate">$39/mo</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Resource Library</h3>
+                    <p>Access our curated collection of teaching materials, lesson plans, worksheets, and interactive resources. Share your own creations with the community.</p>
+                    <div class="price">Included Free</div>
+                    <a href="#resources" class="btn btn-outline">Browse Resources</a>
                 </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">LT</div>
-                    <h3>Luna T.</h3>
-                    <div class="specialty">Mindset Specialist</div>
-                    <p>Former competitive athlete turned mindset coach. Specializes in performance psychology and mental resilience training.</p>
-                    <div class="rate">$49/mo</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <h3>Training & Development</h3>
+                    <p>Professional development modules to enhance your teaching skills, learn new methodologies, and earn certifications that boost your credibility.</p>
+                    <div class="price">Included Free</div>
+                    <a href="#training" class="btn btn-outline">View Training</a>
                 </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">DK</div>
-                    <h3>David K.</h3>
-                    <div class="specialty">Communication Coach</div>
-                    <p>15+ years helping executives and entrepreneurs master the art of persuasive communication and leadership presence.</p>
-                    <div class="rate">$59/mo</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>International Placements</h3>
+                    <p>Consulting services for tutors interested in teaching abroad, corporate training partnerships, and visa & relocation support.</p>
+                    <div class="price">From $97/mo</div>
+                    <a href="#placements" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3>Student Management</h3>
+                    <p>Tools to manage your student roster, schedule sessions, track progress, and communicate effectively—all from your dashboard.</p>
+                    <div class="price">Included Free</div>
+                    <a href="tutor-portal.html" class="btn btn-outline">Go to Dashboard</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section navy">
+    <section class="section navy" id="training">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Flex Nexus</div>
-                <h2 class="section-title" style="color: var(--cream);">Professional Development</h2>
-                <p class="section-desc">Industry veterans ready to accelerate your career growth.</p>
+                <div class="section-label">Professional Growth</div>
+                <h2 class="section-title" style="color: var(--cream);">Training Modules</h2>
+                <p class="section-desc">Enhance your teaching practice with our comprehensive professional development courses.</p>
             </div>
-            <div class="tutors-grid">
-                <div class="tutor-card">
-                    <div class="tutor-avatar">SN</div>
-                    <h3>Sarah N.</h3>
-                    <div class="specialty">Flex Nexus Lead</div>
-                    <p>Former executive at Fortune 500 company. Expert in professional communication and executive presence.</p>
-                    <div class="rate">$227/program</div>
+            <div class="training-grid">
+                <div class="training-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Student Engagement</h3>
+                    <p>Learn proven techniques to keep students motivated and engaged throughout their learning journey.</p>
+                    <div class="duration">4 Hours</div>
                 </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">RM</div>
-                    <h3>Robert M.</h3>
-                    <div class="specialty">Negotiation Expert</div>
-                    <p>Harvard-trained negotiator with 20+ years closing multi-million dollar deals. Author of "The Art of Professional Influence."</p>
-                    <div class="rate">$299/program</div>
+                <div class="training-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h3>Curriculum Design</h3>
+                    <p>Create effective lesson plans and curricula tailored to different learning styles and goals.</p>
+                    <div class="duration">6 Hours</div>
                 </div>
-                <div class="tutor-card">
-                    <div class="tutor-avatar">AP</div>
-                    <h3>Aisha P.</h3>
-                    <div class="specialty">Leadership Coach</div>
-                    <p>Executive coach specializing in emerging leaders. Helped 500+ professionals advance to senior positions.</p>
-                    <div class="rate">$249/program</div>
+                <div class="training-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Cross-Cultural Communication</h3>
+                    <p>Develop skills to effectively teach and communicate across different cultural backgrounds.</p>
+                    <div class="duration">3 Hours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section navy-light" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Teaching Tools</div>
+                <h2 class="section-title" style="color: var(--cream);">Resource Library</h2>
+                <p class="section-desc">Access and share teaching materials across all three pillars.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>📚 Lingua Resources</h3>
+                    <p>Grammar guides, vocabulary worksheets, conversation prompts, flashcards, and quiz templates.</p>
+                    <a href="lingua-resources.html" class="btn btn-outline">Browse Lingua</a>
+                </div>
+                <div class="service-card">
+                    <h3>🌱 Rise Resources</h3>
+                    <p>Coaching guides, mindset exercises, confidence-building worksheets, and webinar materials.</p>
+                    <a href="rise-resources.html" class="btn btn-outline">Browse Rise</a>
+                </div>
+                <div class="service-card">
+                    <h3>💼 Flex Nexus Resources</h3>
+                    <p>Professional development guides, negotiation templates, leadership exercises, and career tools.</p>
+                    <a href="flexnexus-resources.html" class="btn btn-outline">Browse Flex Nexus</a>
+                </div>
+                <div class="service-card">
+                    <h3>✨ Share Your Own</h3>
+                    <p>Contribute your teaching materials to the community and earn recognition as a contributor.</p>
+                    <button class="btn btn-outline">Upload Resources</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section navy" id="placements">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Global Opportunities</div>
+                <h2 class="section-title" style="color: var(--cream);">International Placement Consulting</h2>
+                <p class="section-desc">For tutors seeking global opportunities—we provide guidance on international teaching, corporate partnerships, and relocation.</p>
+            </div>
+            <div class="consulting-grid">
+                <div class="consulting-card">
+                    <h3>International Student Placement</h3>
+                    <div class="price">$97<span>/month</span></div>
+                    <ul>
+                        <li>匹配全球学生资源</li>
+                        <li>International student matching</li>
+                        <li>Visa requirements guidance</li>
+                        <li>Cross-border payment support</li>
+                        <li>Cultural onboarding assistance</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-outline" style="width: 100%;">Get Started</a>
+                </div>
+                <div class="consulting-card featured">
+                    <h3>Corporate Training Partnership</h3>
+                    <div class="price">$147<span>/month</span></div>
+                    <ul>
+                        <li>Corporate client introductions</li>
+                        <li>Custom curriculum development</li>
+                        <li>Business English certification</li>
+                        <li>Executive coaching placement</li>
+                        <li>Contract negotiation support</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-gold" style="width: 100%;">Get Started</a>
+                </div>
+                <div class="consulting-card">
+                    <h3>Visa & Relocation Consulting</h3>
+                    <div class="price">$197<span>/month</span></div>
+                    <ul>
+                        <li>Work visa application support</li>
+                        <li>Relocation planning assistance</li>
+                        <li>Legal documentation review</li>
+                        <li>Housing and area research</li>
+                        <li>Settlement support services</li>
+                    </ul>
+                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-outline" style="width: 100%;">Get Started</a>
                 </div>
             </div>
         </div>
@@ -441,18 +835,25 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Book a free consultation call and find the perfect coach for your goals.</p>
-            <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-navy">Book a Free Call</a>
+            <h2>Ready to Transform Lives Worldwide?</h2>
+            <p>Join our global network of tutors and coaches making a difference every day.</p>
+            <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-navy">Apply Now</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2025 Elevare. Where Language Meets Life. | <a href="../index.html" style="color: var(--gold); text-decoration: none;">Back to Home</a></p>
+                <p>&copy; 2025 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="../index.html">Back to Home</a></p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('tutorRegistration').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! We will review it and get back to you within 24-48 hours.');
+        });
+    </script>
 </body>
 </html>
