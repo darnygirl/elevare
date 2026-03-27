@@ -531,6 +531,7 @@
             .training-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .consulting-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .form-row { grid-template-columns: 1fr; }
+            .resources-grid { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 768px) {
@@ -758,29 +759,79 @@
             <div class="section-header">
                 <div class="section-label">Teaching Tools</div>
                 <h2 class="section-title" style="color: var(--cream);">Resource Library</h2>
-                <p class="section-desc">Access and share teaching materials across all three pillars.</p>
+                <p class="section-desc">Download teaching materials and share your own resources with the community.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>📚 Lingua Resources</h3>
-                    <p>Grammar guides, vocabulary worksheets, conversation prompts, flashcards, and quiz templates.</p>
-                    <a href="lingua-resources.html" class="btn btn-outline">Browse Lingua</a>
+            <div class="resources-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px;">
+                <div class="service-card" style="padding: 32px;">
+                    <h3 style="color: var(--gold); font-size: 16px; margin-bottom: 16px;">📚 LINGUA</h3>
+                    <ul style="list-style: none; font-size: 14px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="lingua-grammar-guide.html" style="color: var(--text); text-decoration: none;">📄 Grammar Guide</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="lingua-vocabulary.html" style="color: var(--text); text-decoration: none;">📄 Vocabulary Builder</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="lingua-flashcards.html" style="color: var(--text); text-decoration: none;">📇 Flashcards Pack</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="lingua-quiz.html" style="color: var(--text); text-decoration: none;">📝 Quiz Templates</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="lingua-conversations.html" style="color: var(--text); text-decoration: none;">💬 Conversation Prompts</a>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="lingua-worksheets.html" style="color: var(--text); text-decoration: none;">📋 Worksheets</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <h3>🌱 Rise Resources</h3>
-                    <p>Coaching guides, mindset exercises, confidence-building worksheets, and webinar materials.</p>
-                    <a href="rise-resources.html" class="btn btn-outline">Browse Rise</a>
+                <div class="service-card" style="padding: 32px;">
+                    <h3 style="color: var(--gold); font-size: 16px; margin-bottom: 16px;">🌱 RISE</h3>
+                    <ul style="list-style: none; font-size: 14px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="rise-guides.html" style="color: var(--text); text-decoration: none;">📄 Coaching Guides</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="rise-flashcards.html" style="color: var(--text); text-decoration: none;">📇 Mindset Flashcards</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="rise-quiz.html" style="color: var(--text); text-decoration: none;">📝 Self-Assessment Quizzes</a>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="rise-worksheets.html" style="color: var(--text); text-decoration: none;">📋 Worksheets & Exercises</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <h3>💼 Flex Nexus Resources</h3>
-                    <p>Professional development guides, negotiation templates, leadership exercises, and career tools.</p>
-                    <a href="flexnexus-resources.html" class="btn btn-outline">Browse Flex Nexus</a>
+                <div class="service-card" style="padding: 32px;">
+                    <h3 style="color: var(--gold); font-size: 16px; margin-bottom: 16px;">💼 FLEX NEXUS</h3>
+                    <ul style="list-style: none; font-size: 14px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="flexnexus-guides.html" style="color: var(--text); text-decoration: none;">📄 Professional Guides</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="flexnexus-flashcards.html" style="color: var(--text); text-decoration: none;">📇 Skill Flashcards</a>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <a href="flexnexus-quiz.html" style="color: var(--text); text-decoration: none;">📝 Career Quizzes</a>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="flexnexus-worksheets.html" style="color: var(--text); text-decoration: none;">📋 Professional Worksheets</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <h3>✨ Share Your Own</h3>
-                    <p>Contribute your teaching materials to the community and earn recognition as a contributor.</p>
-                    <button class="btn btn-outline">Upload Resources</button>
-                </div>
+            </div>
+            <div style="text-align: center; background: var(--navy-light); border-radius: 16px; padding: 40px; border: 1px solid rgba(201, 162, 39, 0.2);">
+                <h3 style="color: var(--cream); font-size: 24px; margin-bottom: 12px;">✨ Share Your Resources</h3>
+                <p style="color: var(--text); font-size: 15px; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto;">Upload your teaching materials to share with the community. All contributors will be credited and featured on our resources page.</p>
+                <a href="https://drive.google.com/drive/folders/YOUR_UPLOAD_FOLDER_ID" target="_blank" class="btn btn-gold" style="padding: 16px 40px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Upload Resources
+                </a>
+                <p style="color: var(--text-light); font-size: 12px; margin-top: 12px;">Supported formats: PDF, DOCX, PPT, PNG, JPG</p>
             </div>
         </div>
     </section>
@@ -797,7 +848,6 @@
                     <h3>International Student Placement</h3>
                     <div class="price">$97<span>/month</span></div>
                     <ul>
-                        <li>匹配全球学生资源</li>
                         <li>International student matching</li>
                         <li>Visa requirements guidance</li>
                         <li>Cross-border payment support</li>
