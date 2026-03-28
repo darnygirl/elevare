@@ -1,0 +1,62 @@
+<!-- ============================================
+     ELEVARE AI CHAT WIDGET - LUNA
+     Add this before </body> tag in all HTML files
+     ============================================ -->
+
+<!-- OPTION 1: CRISP CHAT (Recommended - Free) -->
+<!-- Sign up at https://crisp.chat/en/ and get your Website ID -->
+<!-- Replace YOUR_CRISP_WEBSITE_ID below -->
+<!--
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="YOUR_CRISP_WEBSITE_ID";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+-->
+
+<!-- OPTION 2: TIDIO CHAT (Alternative - Free) -->
+<!-- Sign up at https://www.tidio.com/ and get your Public Key -->
+<!-- Replace YOUR_TIDIO_KEY below -->
+<!--
+<script src="//code.tidio.co/YOUR_TIDIO_KEY.js" async></script>
+-->
+
+<!-- OPTION 3: CHAPORT (Another option - Free) -->
+<!-- Sign up at https://www.chaport.com/ and get your Widget ID -->
+<!-- Replace YOUR_CHAPORT_ID below -->
+<!--
+<script type="text/javascript">(function(w,d,u){var s=d.createElement('script');s.async=1;s.src=u+'/'+w+'/进门/chaport.js';var h=d.getElementsByTagName('head')[0];h.appendChild(s);})(window,'YOUR_CHAPORT_ID','https://store.chaport.com');</script>
+-->
+
+<!-- ============================================
+     ELEVARE ADMIN DASHBOARD - ATLAS
+     Simple admin panel for monitoring
+     ============================================ -->
+
+<!-- Admin Dashboard Link (shown to admin only - hide in production) -->
+<div id="admin-dashboard" style="display:none; position:fixed; bottom:80px; right:20px; z-index:9999;">
+    <a href="admin.html" style="background:var(--gold); color:var(--navy); padding:12px 24px; text-decoration:none; font-weight:600; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+        📊 Admin Dashboard
+    </a>
+</div>
+
+<!-- Debug Mode Toggle (remove in production) -->
+<script>
+    // Uncomment to show admin link (for testing)
+    // document.getElementById('admin-dashboard').style.display = 'block';
+    
+    // Luna Chatbot - Auto-response configuration
+    window.lunaResponses = {
+        greeting: "Hi! 👋 I'm Luna, your Elevare assistant. How can I help you today?",
+        hours: "Our team is available Monday-Friday, 9AM-6PM. We'll respond to messages outside these hours within 24 hours.",
+        programs: {
+            lingua: "Lingua is our language learning program. We tutor 15+ languages at $15/hour. Would you like to book a free consultation?",
+            rise: "Rise is our confidence and personal development program. Membership starts at $39/month. Want to learn more?",
+            flexnexus: "Flex Nexus is our professional development program. Prices start at $47. We focus on business communication and executive skills."
+        },
+        booking: "You can book a session here: https://darnygirl.github.io/elevare/frontend/book.html",
+        tutors: "Interested in joining our tutor network? Apply here: https://darnygirl.github.io/elevare/frontend/tutors.html",
+        pricing: "Our prices vary by program:\n- Lingua: From $15/hour\n- Rise: From $39/month\n- Flex Nexus: From $47\n\nWe offer free consultations!"
+    };
+    
+    // Log for debugging
+    console.log('Elevare AI Agent System loaded');
+    console.log('Luna (Chatbot) ready');
+    console.log('Atlas (Automation) ready');
+</script>

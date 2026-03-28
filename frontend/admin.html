@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --green: #4caf50;
+            --red: #e53935;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            background: var(--navy);
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-text { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 24px; 
+            font-weight: 700; 
+            color: var(--cream); 
+            letter-spacing: 2px; 
+        }
+        .logo-text span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+
+        .dashboard-header {
+            padding: 40px 0;
+            background: var(--navy);
+        }
+
+        .dashboard-header h1 {
+            font-size: 36px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .dashboard-header p {
+            color: var(--text-light);
+        }
+
+        .section {
+            padding: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-card .change {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .stat-card .change.positive { color: var(--green); }
+        .stat-card .change.negative { color: var(--red); }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card-header h3 {
+            font-size: 20px;
+            color: var(--cream);
+        }
+
+        .card-header a {
+            font-size: 12px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .activity-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-content h4 {
+            font-size: 14px;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .activity-content p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .activity-time {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--navy);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .quick-action:hover {
+            border-color: var(--gold);
+        }
+
+        .quick-action .icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-action .icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+        }
+
+        .quick-action span {
+            color: var(--cream);
+            font-size: 14px;
+        }
+
+        .agent-status {
+            margin-top: 24px;
+        }
+
+        .agent-card {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .agent-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .agent-info {
+            flex: 1;
+        }
+
+        .agent-info h4 {
+            font-size: 16px;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .agent-info p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .agent-status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .agent-status-badge.online {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--green);
+        }
+
+        .agent-status-badge.idle {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .agent-status-badge.offline {
+            background: rgba(158, 158, 158, 0.2);
+            color: #9e9e9e;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            margin-top: 40px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ELEVARE<span>.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Website</a></li>
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Tutors</a></li>
+                <li><a href="#">Payments</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="dashboard-header">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <p>Monitor your AI agents and manage Elevare operations</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="label">Total Students</div>
+                    <div class="value">47</div>
+                    <div class="change positive">↑ 12% this month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Active Tutors</div>
+                    <div class="value">18</div>
+                    <div class="change positive">↑ 3 new this week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Sessions This Week</div>
+                    <div class="value">89</div>
+                    <div class="change positive">↑ 23% vs last week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Monthly Revenue</div>
+                    <div class="value">$4,280</div>
+                    <div class="change positive">↑ 18% vs last month</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                        <a href="#">View All →</a>
+                    </div>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="8.5" cy="7" r="4"/>
+                                    <line x1="20" y1="8" x2="20" y2="14"/>
+                                    <line x1="23" y1="11" x2="17" y2="11"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New student enrolled</h4>
+                                <p>Sarah Mitchell joined Lingua program</p>
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Session booked</h4>
+                                <p>Spanish lesson with Amara M. tomorrow at 10 AM</p>
+                                <div class="activity-time">15 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New tutor application</h4>
+                                <p>Marco R. applied for Business Language Expert</p>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Payment received</h4>
+                                <p>$97 from David K. for Rise membership</p>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Session completed</h4>
+                                <p>Confidence coaching with James C. finished</p>
+                                <div class="activity-time">3 hours ago</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <a href="#" class="quick-action">
+                                <div class="icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="8.5" cy="7" r="4"/>
+                                        <line x1="20" y1="8" x2="20" y2="14"/>
+                                        <line x1="23" y1="11" x2="17" y2="11"/>
+                                    </svg>
+                                </div>
+                                <span>Add New Student</span>
+                            </a>
+                            <a href="#" class="quick-action">
+                                <div class="icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>Add New Tutor</span>
+                            </a>
+                            <a href="#" class="quick-action">
+                                <div class="icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                </div>
+                                <span>Schedule Session</span>
+                            </a>
+                            <a href="#" class="quick-action">
+                                <div class="icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <span>Process Payout</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card agent-status">
+                        <div class="card-header">
+                            <h3>AI Agent Status</h3>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-avatar">🌙</div>
+                            <div class="agent-info">
+                                <h4>Luna</h4>
+                                <p>Student Success Chatbot</p>
+                            </div>
+                            <div class="agent-status-badge online">Online</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-avatar">🏛️</div>
+                            <div class="agent-info">
+                                <h4>Atlas</h4>
+                                <p>Tutor Operations Agent</p>
+                            </div>
+                            <div class="agent-status-badge online">Online</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-avatar">🦉</div>
+                            <div class="agent-info">
+                                <h4>Athena</h4>
+                                <p>Customer Support AI</p>
+                            </div>
+                            <div class="agent-status-badge idle">Idle</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 <a href="index.html">Elevare</a>. Admin Dashboard | <a href="#">Settings</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
