@@ -19,6 +19,7 @@
             --white: #ffffff;
             --text: #e0e1dd;
             --text-light: #778da9;
+            --green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -279,68 +280,165 @@
             background: var(--gold-light);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+        .btn-whatsapp {
+            background: var(--green);
+            color: white;
         }
 
-        .btn-outline:hover {
-            background: var(--gold);
-            color: var(--navy);
+        .btn-whatsapp:hover {
+            background: #20bd5a;
         }
 
-        .calendly-section {
+        .booking-form-section {
             background: var(--navy);
             padding: 80px 0;
         }
 
-        .calendly-container {
-            max-width: 900px;
+        .booking-form-container {
+            max-width: 700px;
             margin: 0 auto;
             background: var(--navy-light);
             border-radius: 24px;
-            padding: 60px;
+            padding: 48px;
             border: 1px solid rgba(201, 162, 39, 0.2);
-            text-align: center;
         }
 
-        .calendly-container h2 {
+        .booking-form-container h2 {
             font-size: 36px;
             color: var(--cream);
-            margin-bottom: 16px;
+            text-align: center;
+            margin-bottom: 12px;
         }
 
-        .calendly-container p {
+        .booking-form-container > p {
+            text-align: center;
             color: var(--text);
             margin-bottom: 40px;
         }
 
-        .calendly-inline-widget {
-            min-height: 630px;
-            border-radius: 16px;
-            overflow: hidden;
+        .form-group {
+            margin-bottom: 24px;
         }
 
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--navy);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .or-divider {
             text-align: center;
+            margin: 32px 0;
+            position: relative;
         }
 
-        .cta-section h2 {
-            font-size: 36px;
-            color: var(--navy);
+        .or-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .or-divider span {
+            background: var(--navy-light);
+            padding: 0 20px;
+            position: relative;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .whatsapp-booking {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .whatsapp-booking p {
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: var(--green);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20bd5a;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-size: 28px;
+            color: var(--gold);
             margin-bottom: 16px;
         }
 
-        .cta-section p {
-            color: var(--navy);
-            opacity: 0.8;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+        .success-message p {
+            color: var(--text);
+            margin-bottom: 24px;
         }
 
         footer {
@@ -364,11 +462,12 @@
 
         @media (max-width: 992px) {
             .booking-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .form-row { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .calendly-container { padding: 30px; }
+            .booking-form-container { padding: 30px; }
         }
     </style>
 </head>
@@ -392,7 +491,6 @@
                     <li><a href="rise.html">Rise</a></li>
                     <li><a href="flexnexus.html">Flex Nexus</a></li>
                     <li><a href="tutors.html">Team</a></li>
-                    <li><a href="live-classroom.html">Live Class</a></li>
                     <li><a href="book.html" class="nav-cta">Book</a></li>
                 </ul>
             </div>
@@ -403,7 +501,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Book Your <span>Session</span></h1>
-                <p>Choose the perfect session for your goals. From free consultations to intensive programs, we're here to guide your journey.</p>
+                <p>Fill out the form below or message us directly on WhatsApp. We'll get back to you within 24 hours!</p>
             </div>
         </div>
     </section>
@@ -420,14 +518,13 @@
                     <h3>Free Consultation</h3>
                     <div class="price">$0</div>
                     <div class="duration">30 minutes</div>
-                    <p>Get to know us and explore how we can help you achieve your language and personal development goals.</p>
+                    <p>Get to know us and explore how we can help you.</p>
                     <ul>
                         <li>Discuss your goals</li>
-                        <li>Get personalized recommendations</li>
-                        <li>Learn about our programs</li>
-                        <li>No commitment required</li>
+                        <li>Get recommendations</li>
+                        <li>Learn about programs</li>
+                        <li>No commitment</li>
                     </ul>
-                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-outline">Book Free Call</a>
                 </div>
                 <div class="booking-card featured">
                     <div class="icon">
@@ -438,14 +535,13 @@
                     <h3>1-on-1 Coaching</h3>
                     <div class="price">$97</div>
                     <div class="duration">60 minutes</div>
-                    <p>Personalized coaching session tailored to your specific needs and learning pace.</p>
+                    <p>Personalized coaching tailored to your needs.</p>
                     <ul>
                         <li>Private video session</li>
-                        <li>Customized lesson plan</li>
+                        <li>Custom lesson plan</li>
                         <li>Follow-up resources</li>
                         <li>Progress tracking</li>
                     </ul>
-                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-gold">Book Session</a>
                 </div>
                 <div class="booking-card">
                     <div class="icon">
@@ -459,36 +555,83 @@
                     <h3>Group Workshop</h3>
                     <div class="price">$47</div>
                     <div class="duration">90 minutes</div>
-                    <p>Join a small group session with others at your level. Learn from peers and collaborate.</p>
+                    <p>Learn with others at your level.</p>
                     <ul>
                         <li>Up to 8 participants</li>
                         <li>Interactive activities</li>
                         <li>Group discussions</li>
                         <li>Shared resources</li>
                     </ul>
-                    <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-outline">Book Workshop</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="calendly-section">
+    <section class="booking-form-section">
         <div class="container">
-            <div class="calendly-container">
-                <h2>Schedule Your Appointment</h2>
-                <p>Select a time that works for you. You'll receive a confirmation email with all the details.</p>
-                <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/elevareworkplace" style="min-width:320px;height:630px;"></div>
-                <!-- Calendly inline widget end -->
-            </div>
-        </div>
-    </section>
+            <div class="booking-form-container">
+                <h2>Request a Session</h2>
+                <p>Fill out the form below and we'll contact you within 24 hours to confirm your booking.</p>
+                
+                <form id="bookingForm" action="mailto:debbynickryanz@gmail.com" method="POST" enctype="text/plain">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="First Name" placeholder="Your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="Last Name" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="Email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="Phone" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Program Interest</label>
+                            <select name="Program" required>
+                                <option value="">Select a program</option>
+                                <option value="Free Consultation">Free Consultation</option>
+                                <option value="Lingua - 1-on-1 Coaching">Lingua - 1-on-1 Coaching ($97)</option>
+                                <option value="Rise - 1-on-1 Coaching">Rise - 1-on-1 Coaching ($97)</option>
+                                <option value="Flex Nexus - 1-on-1 Coaching">Flex Nexus - 1-on-1 Coaching ($97)</option>
+                                <option value="Group Workshop">Group Workshop ($47)</option>
+                                <option value="Lingua Membership">Lingua Membership ($39/mo)</option>
+                                <option value="Rise Membership">Rise Membership ($39/mo)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <input type="text" name="Preferred Time" placeholder="e.g., Weekdays 10AM-2PM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="Message" placeholder="Tell us about your goals and what you'd like to achieve..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold">Send Booking Request</button>
+                </form>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2>Not Sure Which Session Is Right?</h2>
-            <p>Start with a free consultation and we'll help you find the perfect path.</p>
-            <a href="https://calendly.com/elevareworkplace" target="_blank" class="btn btn-navy">Book Free Consultation</a>
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="whatsapp-booking">
+                    <p>Prefer to chat? Message us directly on WhatsApp!</p>
+                    <a href="https://wa.me/601111612082?text=Hi%20Elevare!%20I%27d%20like%20to%20book%20a%20session.%20Please%20help%20me%20schedule." target="_blank" class="whatsapp-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Book via WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -500,6 +643,40 @@
         </div>
     </footer>
 
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/601111612082?text=Hi%20Elevare!%20I%27d%20like%20to%20book%20a%20session." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+    </style>
 </body>
 </html>
