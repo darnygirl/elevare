@@ -64,16 +64,13 @@
         }
 
         .logo-icon {
-            width: 44px;
-            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .logo-icon svg { width: 40px; height: 40px; }
-        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
-        .logo-text span { color: var(--gold); }
+        .logo-icon svg { height: 50px; width: auto; }
+        .logo-text { display: none; }
 
         .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
@@ -1250,13 +1247,15 @@
         <div class="container">
             <div class="nav-inner">
                 <a href="index.html" class="logo">
-                    <div class="logo-icon">
-                        <svg viewBox="0 0 50 50" fill="none">
-                            <path d="M8 8 L8 42 L42 42 L42 36 L16 36 L16 28 L38 28 L38 22 L16 22 L16 14 L42 14 L42 8 L8 8 Z" stroke="#c9a227" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-                            <circle cx="42" cy="42" r="4" fill="#c9a227"/>
+                    <span class="logo-icon">
+                        <svg viewBox="0 0 220 50" fill="none">
+                            <text x="0" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="700" fill="#c9a227">E</text>
+                            <text x="30" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="400" fill="#c9a227" opacity="0.7">LEV</text>
+                            <text x="108" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="700" fill="#c9a227">ARE</text>
+                            <circle cx="205" cy="42" r="4" fill="#c9a227"/>
+                            <path d="M0 48 L210 48" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
                         </svg>
-                    </div>
-                    <span class="logo-text">ELEVARE<span>.</span></span>
+                    </span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -1937,13 +1936,15 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <div class="logo-icon">
-                            <svg viewBox="0 0 50 50" fill="none">
-                                <path d="M8 8 L8 42 L42 42 L42 36 L16 36 L16 28 L38 28 L38 22 L16 22 L16 14 L42 14 L42 8 L8 8 Z" stroke="#c9a227" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-                                <circle cx="42" cy="42" r="4" fill="#c9a227"/>
+                        <span class="logo-icon">
+                            <svg viewBox="0 0 220 50" fill="none">
+                                <text x="0" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="700" fill="#c9a227">E</text>
+                                <text x="30" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="400" fill="#c9a227" opacity="0.7">LEV</text>
+                                <text x="108" y="38" font-family="Cormorant Garamond, serif" font-size="42" font-weight="700" fill="#c9a227">ARE</text>
+                                <circle cx="205" cy="42" r="4" fill="#c9a227"/>
+                                <path d="M0 48 L210 48" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
                             </svg>
-                        </div>
-                        <span class="logo-text">ELEVARE<span>.</span></span>
+                        </span>
                     </a>
                     <p>Where Language Meets Life.</p>
                     <div class="footer-social">
