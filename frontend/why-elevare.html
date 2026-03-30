@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Elevare — Elevare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b3a5c;
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --cream: #faf8f5;
+            --text: #2d3748;
+            --text-light: #718096;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+        }
+        
+        .nav {
+            background: var(--navy);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover { color: var(--gold); }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero {
+            background: var(--navy);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-label {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .comparison {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 27, 42, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+        
+        th {
+            background: var(--navy);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        th:first-child { color: var(--gold); }
+        
+        tr:last-child td { border-bottom: none; }
+        
+        tr:hover { background: rgba(201, 162, 39, 0.05); }
+        
+        .feature-name {
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .check {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .cross {
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .partial {
+            color: var(--gold);
+            font-size: 14px;
+        }
+        
+        .guarantee {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .guarantee h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+        
+        .guarantee p {
+            font-size: 20px;
+            color: var(--navy);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .guarantee-badge {
+            display: inline-block;
+            background: white;
+            padding: 32px 48px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.2);
+        }
+        
+        .guarantee-badge .big {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .guarantee-badge span {
+            display: block;
+            font-size: 18px;
+            color: var(--text);
+            margin-top: 8px;
+        }
+        
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 48px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--navy);
+            padding: 48px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        footer a:hover { text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .comparison-table { overflow-x: auto; }
+            table { min-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html">← Back to Home</a>
+            <a href="book.html">Book a Session</a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-label">Why Choose Elevare</div>
+            <h1>Not Just Another Learning App</h1>
+            <p>See how Elevare's human-centered coaching approach beats apps, courses, and self-study every time.</p>
+        </div>
+    </section>
+    
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>Elevare vs. The Alternatives</h2>
+                <p>We've compared the different ways to improve your communication skills.</p>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Elevare ✓</th>
+                            <th>Apps (Duolingo)</th>
+                            <th>Online Courses (Udemy)</th>
+                            <th>Self-Study</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Human 1-on-1 Coaching</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Addresses Your Specific Anxiety</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Personalized Learning Path</td>
+                            <td class="check">✓</td>
+                            <td class="partial">Generic</td>
+                            <td class="partial">Generic</td>
+                            <td class="partial">DIY</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Mental Health Support</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Confidence Building</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Professional Skills</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="partial">Limited</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Measurable 30-Day Results</td>
+                            <td class="check">✓</td>
+                            <td class="partial">Months</td>
+                            <td class="cross">✗</td>
+                            <td class="partial">Unclear</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Real Human Connection</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Flexible Scheduling</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Affordable Human Coaching</td>
+                            <td class="check">✓</td>
+                            <td class="check">Free</td>
+                            <td class="partial">$10-200</td>
+                            <td class="check">Free</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Community Support</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">WhatsApp Support</td>
+                            <td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <section class="guarantee">
+        <div class="container">
+            <h2>Our 30-Day Promise</h2>
+            <p>We're so confident in our approach that we guarantee you'll see measurable improvement within 30 days—or we'll work with you until you do.</p>
+            <div class="guarantee-badge">
+                <div class="big">30</div>
+                <span>Day Results Guarantee</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Communication?</h2>
+            <p>Join thousands who've already made the switch from apps to human coaching.</p>
+            <a href="book.html" class="btn">Start Your Free Consultation</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="index.html">Elevare</a>. Where Language Meets Life.</p>
+        </div>
+    </footer>
+</body>
+</html>

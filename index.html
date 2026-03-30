@@ -1315,6 +1315,181 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* CTA Section */
+        .cta .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            padding: 16px 24px;
+            border-radius: 50px;
+            margin-top: 24px;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+        }
+
+        .cta .guarantee-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--navy);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .cta .guarantee-text {
+            font-size: 14px;
+            color: var(--navy);
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .cta .compare-link {
+            margin-top: 20px;
+        }
+
+        .cta .compare-link a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .cta .compare-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .progress-card {
+            text-align: center;
+            padding: 32px;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .progress-card .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .progress-card h4 {
+            font-size: 16px;
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .progress-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .progress-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mini Course Section */
+        .mini-course {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .mini-course-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mini-course-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .mini-course h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .mini-course p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .mini-course-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .mini-course-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mini-course-features svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .mini-course .btn {
+            margin-bottom: 16px;
+        }
+
+        .mini-course-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+            .mini-course h2 {
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1353,7 +1528,7 @@
                     <li><a href="frontend/rise.html">Rise</a></li>
                     <li><a href="frontend/flexnexus.html">Flex Nexus</a></li>
                     <li><a href="frontend/tutors.html">Team</a></li>
-                    <li><a href="frontend/live-classroom.html">Live Class</a></li>
+                    <li><a href="frontend/why-elevare.html">Why Elevare</a></li>
                     <li><a href="frontend/book.html" class="nav-cta">Book a Session</a></li>
                 </ul>
             </div>
@@ -1850,6 +2025,25 @@
         </div>
     </section>
 
+    <section class="mini-course">
+        <div class="container">
+            <div class="mini-course-content">
+                <div class="mini-course-badge">FREE</div>
+                <h2>Start Your Transformation Today</h2>
+                <p>Get our free 5-day "Confidence Kickstart" mini-course. Learn the exact techniques that will help you speak with confidence in just 5 days.</p>
+                <ul class="mini-course-features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 1: Overcome speaking anxiety</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 2: Build confident body language</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 3: Master your first impression</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 4: Practice with real exercises</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 5: Create your action plan</li>
+                </ul>
+                <a href="#signup" class="btn btn-primary">Get Free Access</a>
+                <p class="mini-course-note">Join 2,000+ students already enrolled</p>
+            </div>
+        </div>
+    </section>
+
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
@@ -1890,6 +2084,39 @@
             <div class="testimonial-cta">
                 <p>Want to share your Elevare story?</p>
                 <a href="frontend/contact.html" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Results That Matter</div>
+                <h2 class="section-title">Track Your Transformation</h2>
+                <p class="section-desc">We measure success by your growth, not just completion certificates</p>
+            </div>
+            
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <div class="number">30</div>
+                    <h4>Days to Results</h4>
+                    <p>95% of students report measurable improvement within 30 days</p>
+                </div>
+                <div class="progress-card">
+                    <div class="number">95%</div>
+                    <h4>Satisfaction Rate</h4>
+                    <p>Our students recommend Elevare to friends and colleagues</p>
+                </div>
+                <div class="progress-card">
+                    <div class="number">∞</div>
+                    <h4>Growth Potential</h4>
+                    <p>Language, confidence, and professional skills that last a lifetime</p>
+                </div>
+                <div class="progress-card">
+                    <div class="number">24/7</div>
+                    <h4>Support Access</h4>
+                    <p>WhatsApp support and community access whenever you need</p>
+                </div>
             </div>
         </div>
     </section>
@@ -2070,6 +2297,11 @@
             <h2>Ready to Start Your Journey?</h2>
             <p>Your transformation begins with a single step. Book a free consultation call and let's discuss your goals.</p>
             <a href="frontend/book.html" class="btn">Book a Free Call</a>
+            <div class="guarantee-badge">
+                <span class="guarantee-icon">✓</span>
+                <span class="guarantee-text"><strong>30-Day Results Guarantee</strong><br>We guarantee measurable improvement within 30 days</span>
+            </div>
+            <p class="compare-link"><a href="frontend/why-elevare.html">See why we're different from apps →</a></p>
         </div>
     </section>
 
