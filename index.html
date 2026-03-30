@@ -168,6 +168,137 @@
             }
         }
 
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            color: var(--cream);
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 span {
+            color: var(--gold);
+            display: block;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 32px;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-trust span {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-trust span::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border: 2px solid rgba(201, 162, 39, 0.4);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            max-width: 380px;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-card-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-card h3 {
+            font-size: 24px;
+            color: var(--cream);
+            margin-bottom: 12px;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .hero-card > p {
+            font-size: 14px;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .hero-card-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .hero-card-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .hero-card-features li:last-child {
+            border-bottom: none;
+        }
+
+        .hero-card-features svg {
+            width: 16px;
+            height: 16px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
         .hero-text .tagline {
             font-size: 12px;
             font-weight: 600;
@@ -1241,13 +1372,40 @@
         /* Email Signup Section */
         .email-signup {
             padding: 100px 0;
-            background: var(--navy);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-signup::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .email-signup-content {
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .email-signup-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
         .email-signup-text h2 {
@@ -1296,14 +1454,15 @@
         }
 
         .email-signup-form .btn {
-            padding: 16px 32px;
+            padding: 18px 36px;
             font-size: 16px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
         }
 
         .email-signup-form .btn:hover {
-            box-shadow: 0 6px 25px rgba(201, 162, 39, 0.5);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5);
+            transform: translateY(-2px);
         }
 
         .email-note {
@@ -1644,12 +1803,32 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="tagline">Where Language Meets Life</div>
-                    <h1>Master Language. <span>Build Confidence.</span></h1>
-                    <p>Free resources and expert coaching for every step of your journey.</p>
+                    <div class="hero-badge">🌟 Join 2,000+ Students Worldwide</div>
+                    <h1>Speak Confidently in English <span>in Just 30 Days</span></h1>
+                    <p class="hero-subtitle">Even if you feel anxious or stuck right now. Get free access to our 5-day Confidence Kickstart and start your transformation today.</p>
                     <div class="hero-buttons">
-                        <a href="frontend/book.html" class="btn btn-primary">Book a Call</a>
-                        <a href="#library" class="btn btn-secondary">Free Resources</a>
+                        <a href="#signup" class="btn btn-primary">Get Free 5-Day Course</a>
+                        <a href="#programs" class="btn btn-secondary">View Programs</a>
+                    </div>
+                    <div class="hero-trust">
+                        <span>✓ No credit card required</span>
+                        <span>✓ Instant access</span>
+                        <span>✓ 30-day results guarantee</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-card-badge">FREE</div>
+                        <h3>5-Day Confidence Kickstart</h3>
+                        <p>Learn the exact techniques to speak with confidence</p>
+                        <ul class="hero-card-features">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 1: Overcome speaking anxiety</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 2: Build confident body language</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 3: Master your first impression</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 4: Practice with real exercises</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 5: Create your action plan</li>
+                        </ul>
+                        <a href="#signup" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Free Now</a>
                     </div>
                 </div>
             </div>
@@ -2229,19 +2408,22 @@
     <section class="email-signup" id="signup">
         <div class="container">
             <div class="email-signup-content">
+                <div class="email-signup-badge">100% FREE</div>
                 <div class="email-signup-text">
-                    <h2>Stay Connected with Elevare</h2>
-                    <p>Get language tips, confidence insights, and exclusive resources delivered to your inbox. No spam, just valuable content to support your journey.</p>
+                    <h2>Get Your Free 5-Day Confidence Kickstart</h2>
+                    <p>Join 2,000+ students who've transformed their communication skills. Enter your details below and get instant access to our proven mini-course delivered straight to your inbox.</p>
                 </div>
-                <form class="email-signup-form" action="mailto:debbynickryanz@gmail.com" method="POST" enctype="text/plain">
+                <form class="email-signup-form" action="https://formspree.io/f/xwpkvgpn" method="POST">
                     <div class="form-row">
                         <input type="text" name="First Name" placeholder="First Name" required>
                         <input type="text" name="Last Name" placeholder="Last Name" required>
                     </div>
                     <input type="email" name="Email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <input type="hidden" name="_subject" value="New Signup: 5-Day Confidence Kickstart">
+                    <input type="hidden" name="Message" value="User signed up for the free mini-course">
+                    <button type="submit" class="btn btn-primary">Send Me The Free Course →</button>
                 </form>
-                <p class="email-note">We'll send you occasional emails. Unsubscribe anytime.</p>
+                <p class="email-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
             </div>
         </div>
     </section>
