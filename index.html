@@ -2632,14 +2632,22 @@
         }
     </style>
 
+    <!-- Google Analytics 4 -->
+    <!-- Replace 'G-YOUR_MEASUREMENT_ID' with your actual GA4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YOUR_MEASUREMENT_ID');
+    </script>
+
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
                 includedLanguages: 'en,es,fr,de,zh-CN,ja,ko,pt,ar,hi,ru,nl,pl,tr,vi,th,id,ms,sv,da,no,fi',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                gaTrack: false,
-                gaId: 'YOUR_GA_ID'
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
 
