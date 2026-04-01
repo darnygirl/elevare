@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://darnygirl.github.io/elevare/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://darnygirl.github.io/elevare/frontend/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -41,9 +46,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/why-elevare.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://darnygirl.github.io/elevare/frontend/live-classroom.html</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/tutor-portal.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://darnygirl.github.io/elevare/frontend/privacy.html</loc>
@@ -54,5 +69,26 @@
     <loc>https://darnygirl.github.io/elevare/frontend/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/chat-widget.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- Resource Pages -->
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/lingua-resources.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/rise-resources.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/flexnexus-resources.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

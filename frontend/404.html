@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Elevare</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230d1b2a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --text: #e0e1dd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            padding: 24px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .illustration {
+            margin-bottom: 32px;
+        }
+
+        .illustration svg {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="illustration">
+            <svg viewBox="0 0 100 100" fill="none">
+                <rect fill="#0d1b2a" width="100" height="100" rx="20"/>
+                <path stroke="#c9a227" stroke-width="2" fill="none" d="M50 20L30 35l20 10 20-10L50 20zm-20 25l20 10 20-10v15l-20 10-20-10V45z"/>
+                <circle cx="35" cy="70" r="3" fill="#c9a227"/>
+                <circle cx="50" cy="70" r="3" fill="#c9a227" opacity="0.6"/>
+                <circle cx="65" cy="70" r="3" fill="#c9a227" opacity="0.3"/>
+            </svg>
+        </div>
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>Oops! The page you're looking for seems to have wandered off. Let's get you back on track with your transformation.</p>
+        <a href="https://darnygirl.github.io/elevare/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
