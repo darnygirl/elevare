@@ -462,6 +462,25 @@
             text-decoration: none;
         }
 
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--text);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
+        }
+
         @media (max-width: 992px) {
             .booking-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .form-row { grid-template-columns: 1fr; }
@@ -577,7 +596,7 @@
                 <h2>Request a Session</h2>
                 <p>Fill out the form below and we'll contact you within 24 hours to confirm your booking and provide payment details via Skrill.</p>
                 
-                <form id="bookingForm" action="mailto:debbynickryanz@gmail.com" method="POST" enctype="text/plain">
+                <form id="bookingForm" action="https://formspree.io/f/xwpkvgpn" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label>First Name</label>
@@ -619,6 +638,7 @@
                         <label>Message</label>
                         <textarea name="Message" placeholder="Tell us about your goals and what you'd like to achieve..."></textarea>
                     </div>
+                    <input type="hidden" name="_subject" value="New Booking Request">
                     <button type="submit" class="btn btn-gold">Send Booking Request</button>
                 </form>
 
@@ -641,8 +661,17 @@
 
     <footer>
         <div class="container">
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="lingua.html">Lingua</a>
+                <a href="rise.html">Rise</a>
+                <a href="flexnexus.html">Flex Nexus</a>
+                <a href="tutors.html">Team</a>
+                <a href="book.html">Book</a>
+                <a href="contact.html">Contact</a>
+            </nav>
             <div class="footer-bottom">
-                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="../index.html">Back to Home</a></p>
+                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
             </div>
         </div>
     </footer>

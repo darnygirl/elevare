@@ -643,6 +643,30 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
         }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--text);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -701,7 +725,7 @@
     <section class="section products" id="products">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Millionaire Math</div>
+                <div class="section-label">Career Tools</div>
                 <h2 class="section-title">Products & Services</h2>
                 <p class="section-desc">Professional materials that advance careers and build expertise.</p>
             </div>
@@ -921,7 +945,18 @@
                     <span class="logo-text">ELEVARE<span>.</span></span>
                 </a>
             </div>
-            <p>&copy; 2026 Elevare. <a href="../index.html">Back to Home</a></p>
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="lingua.html">Lingua</a>
+                <a href="rise.html">Rise</a>
+                <a href="flexnexus.html">Flex Nexus</a>
+                <a href="tutors.html">Team</a>
+                <a href="book.html">Book</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+            </div>
         </div>
     </footer>
 </body>
