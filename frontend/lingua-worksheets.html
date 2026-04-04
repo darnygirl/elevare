@@ -211,6 +211,22 @@
         @media (max-width: 768px) {
             .worksheet { padding: 32px 24px; }
         }
+
+        @media print {
+            body { background: white; }
+            nav, footer { display: none; }
+            .header { background: white; padding: 20px 0; }
+            .header h1 { color: #0d1b2a; }
+            .header h1 span { color: #c9a227; }
+            .worksheet { 
+                background: white; 
+                box-shadow: none; 
+                border: 2px solid #ddd;
+                page-break-inside: avoid;
+            }
+            .exercise { page-break-inside: avoid; }
+            .sentence { min-height: 40px; }
+        }
     </style>
 </head>
 <body>

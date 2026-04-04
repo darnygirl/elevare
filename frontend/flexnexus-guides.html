@@ -278,6 +278,25 @@
             .chapter-nav { gap: 8px; }
             .chapter-nav a { padding: 8px 12px; font-size: 12px; }
         }
+
+        @media print {
+            body { background: white; color: black; }
+            nav, footer, .chapter-nav, .breadcrumb { display: none; }
+            .guide-content { padding: 20px 0; }
+            .container { max-width: 100%; }
+            .chapter { page-break-inside: avoid; margin-bottom: 30px; }
+            .chapter h2 { color: #0d1b2a; border-bottom-color: #c9a227; }
+            .chapter h3 { color: #c9a227; }
+            .chapter p, .tip-box p, .highlight-box p { color: #333; }
+            .highlight-box { background: #f5f5f5; border-left-color: #c9a227; }
+            .script-box { background: #f9f9f9; border: 1px solid #ddd; }
+            .script-box h4 { color: #0d1b2a; }
+            .script-box .script { background: white; color: black; }
+            .tip-box { background: #fafafa; }
+            .tip-box h4 { color: #0d1b2a; }
+            .guide-header { border-bottom: 2px solid #c9a227; }
+            .guide-header h1 { color: #0d1b2a; }
+        }
     </style>
 </head>
 <body>

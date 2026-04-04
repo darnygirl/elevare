@@ -298,6 +298,34 @@
             .controls { flex-wrap: wrap; }
             .stats { gap: 24px; }
         }
+
+        @media print {
+            body { background: white; }
+            nav { display: none; }
+            .container { max-width: 100%; padding: 20px; }
+            .flashcard-container { display: block; }
+            .flashcard {
+                transform: none !important;
+                min-height: auto;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+                box-shadow: none;
+                border: 2px solid #333;
+            }
+            .card-face {
+                position: relative;
+                min-height: auto;
+                padding: 30px;
+                page-break-after: always;
+            }
+            .card-front { background: #0d1b2a !important; color: white !important; }
+            .card-back { background: #c9a227 !important; color: #0d1b2a !important; transform: none !important; }
+            .card-word { color: inherit !important; font-size: 32px; }
+            .card-label, .card-pronunciation, .card-hint { color: inherit !important; opacity: 1 !important; }
+            .controls, .stats, .completion-message, .progress-bar { display: none; }
+            .header h1 { color: #0d1b2a; }
+            .header h1 span { color: #c9a227; }
+        }
     </style>
 </head>
 <body>
