@@ -598,6 +598,77 @@
             text-transform: uppercase;
         }
 
+        .resource-quick-access {
+            margin-top: 32px;
+            padding: 24px;
+            background: var(--navy);
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .resource-quick-access h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .resource-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--navy-light);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .resource-link-item:hover {
+            background: rgba(201, 162, 39, 0.1);
+            transform: translateX(4px);
+        }
+
+        .resource-link-item .resource-icon-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .resource-link-item div {
+            flex: 1;
+        }
+
+        .resource-link-item span {
+            display: block;
+            font-size: 14px;
+            color: var(--cream);
+            font-weight: 500;
+        }
+
+        .resource-link-item small {
+            display: block;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .resource-link-item > svg {
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+
         .btn-outline {
             background: transparent;
             border: 2px solid var(--gold);
@@ -968,6 +1039,69 @@
                         <a href="https://wa.me/601111612082?text=Hi%20Elevare!%20I%27m%20a%20tutor%20and%20need%20to%20set%20up%20my%20classroom." target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 16px; justify-content: center;">
                             Need Help Setting Up?
                         </a>
+                    </div>
+                    
+                    <div class="resource-quick-access">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                            Quick Resources
+                        </h3>
+                        <p style="font-size: 12px; color: var(--text-light); margin-bottom: 16px;">Links to share with students during class</p>
+                        <div class="resource-links">
+                            <a href="lingua-resources.html" target="_blank" class="resource-link-item">
+                                <span class="resource-icon-small" style="background: rgba(46, 196, 182, 0.2);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ec4b6" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                                </span>
+                                <div>
+                                    <span>Lingua Hub</span>
+                                    <small>Flashcards, Grammar, Quizzes</small>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="rise-resources.html" target="_blank" class="resource-link-item">
+                                <span class="resource-icon-small" style="background: rgba(201, 162, 39, 0.2);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                </span>
+                                <div>
+                                    <span>Rise Hub</span>
+                                    <small>Guides, Worksheets, Quizzes</small>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="flexnexus-resources.html" target="_blank" class="resource-link-item">
+                                <span class="resource-icon-small" style="background: rgba(113, 128, 150, 0.2);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#778da9" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </span>
+                                <div>
+                                    <span>Flex Nexus Hub</span>
+                                    <small>Business Vocab, Templates</small>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="lingua-flashcards.html" target="_blank" class="resource-link-item">
+                                <span class="resource-icon-small" style="background: rgba(46, 196, 182, 0.2);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ec4b6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01"/></svg>
+                                </span>
+                                <div>
+                                    <span>Flashcards</span>
+                                    <small>Interactive vocabulary cards</small>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="lingua-worksheets.html" target="_blank" class="resource-link-item">
+                                <span class="resource-icon-small" style="background: rgba(201, 162, 39, 0.2);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </span>
+                                <div>
+                                    <span>Worksheets</span>
+                                    <small>Practice exercises</small>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
