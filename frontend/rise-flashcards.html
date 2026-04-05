@@ -401,7 +401,23 @@
             { term: "Identity-Based Habit", definition: "Building habits based on who you want to become, not just what you want to achieve. Example: 'I am someone who exercises' instead of 'I want to exercise.'" }
         ];
 
+        const storageKey = 'elevare_rise_flashcards';
+
+        function loadProgress() {
+            const saved = localStorage.getItem(storageKey);
+            if (saved) {
+                const data = JSON.parse(saved);
+                return { currentIndex: data.currentIndex || 0, masteredCount: data.masteredCount || 0 };
+            }
+            return { currentIndex: 0, masteredCount: 0 };
+        }
+
+        function saveProgress() {
+            localStorage.setItem(storageKey, JSON.stringify({ currentIndex, masteredCount }));
+        }
+
         let currentIndex = 0;
+        let masteredCount = 0;
         let shuffledCards = [...cards];
 
         const flashcard = document.getElementById('flashcard');
@@ -439,6 +455,7 @@
             nextBtn.disabled = currentIndex === shuffledCards.length - 1;
             
             flashcard.classList.remove('flipped');
+            saveProgress();
         }
 
         function showCompletion() {
@@ -480,6 +497,7 @@
         shuffleBtn.addEventListener('click', () => {
             shuffledCards = shuffleArray(cards);
             currentIndex = 0;
+            localStorage.removeItem(storageKey);
             hideCompletion();
             updateCard();
         });
@@ -487,6 +505,8 @@
         restartBtn.addEventListener('click', () => {
             shuffledCards = shuffleArray(cards);
             currentIndex = 0;
+            masteredCount = 0;
+            localStorage.removeItem(storageKey);
             hideCompletion();
             updateCard();
         });
@@ -500,6 +520,9 @@
             }
         });
 
+        const progress = loadProgress();
+        currentIndex = progress.currentIndex;
+        masteredCount = progress.masteredCount;
         updateCard();
     </script>
 </body>

@@ -335,10 +335,68 @@
             height: 20px;
         }
 
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--navy-light);
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success h3 {
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .form-success p {
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .form-error {
+            display: none;
+            padding: 12px 16px;
+            background: rgba(220, 53, 69, 0.2);
+            border: 1px solid rgba(220, 53, 69, 0.5);
+            border-radius: 8px;
+            color: #f8d7da;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
         footer {
             padding: 60px 0 40px;
             background: var(--navy);
             border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--text);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
         }
 
         .footer-bottom {
@@ -445,7 +503,8 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form id="contactForm" action="mailto:debbynickryanz@gmail.com" method="POST" enctype="text/plain">
+                    <div id="formError" class="form-error"></div>
+                    <form id="contactForm" action="https://formspree.io/f/xwpkvgpn" method="POST">
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" name="name" placeholder="Your name" required>
@@ -469,8 +528,14 @@
                             <label>Message</label>
                             <textarea name="message" placeholder="How can we help you?" required></textarea>
                         </div>
+                        <input type="hidden" name="_subject" value="New Contact Form Message">
                         <button type="submit" class="btn btn-gold">Send Message</button>
                     </form>
+                    <div id="formSuccess" class="form-success">
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                        <button type="button" class="btn btn-gold" onclick="resetContactForm()">Send Another Message</button>
+                    </div>
                     <p style="font-size: 12px; color: var(--text-light); margin-top: 16px; text-align: center;">
                         Or email us directly at <a href="mailto:debbynickryanz@gmail.com" style="color: var(--gold);">debbynickryanz@gmail.com</a>
                     </p>
@@ -514,11 +579,59 @@
 
     <footer>
         <div class="container">
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="lingua.html">Lingua</a>
+                <a href="rise.html">Rise</a>
+                <a href="flexnexus.html">Flex Nexus</a>
+                <a href="tutors.html">Team</a>
+                <a href="book.html">Book</a>
+                <a href="contact.html">Contact</a>
+            </nav>
             <div class="footer-bottom">
-                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="../index.html">Back to Home</a></p>
+                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Where Language Meets Life. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
             </div>
         </div>
     </footer>
     <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formError.classList.remove('show');
+            
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formError.textContent = 'There was an error sending your message. Please try again or email us directly.';
+                formError.classList.add('show');
+            }
+        });
+
+        function resetContactForm() {
+            contactForm.reset();
+            contactForm.style.display = 'block';
+            formSuccess.classList.remove('show');
+            formError.classList.remove('show');
+        }
+    </script>
 </body>
 </html>

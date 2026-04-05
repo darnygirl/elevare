@@ -512,6 +512,7 @@
                     <li><a href="rise.html">Rise</a></li>
                     <li><a href="flexnexus.html">Flex Nexus</a></li>
                     <li><a href="tutors.html">Team</a></li>
+                    <li><a href="live-classroom.html">Live Class</a></li>
                     <li><a href="book.html" class="nav-cta">Book</a></li>
                 </ul>
             </div>
@@ -554,13 +555,13 @@
                         </svg>
                     </div>
                     <h3>1-on-1 Coaching</h3>
-                    <div class="price">$97</div>
+                    <div class="price">$15<span style="font-size: 16px;">/hour</span></div>
                     <div class="duration">60 minutes</div>
                     <p>Personalized coaching tailored to your needs.</p>
                     <ul>
                         <li>Private video session</li>
+                        <li>Native speaker tutor</li>
                         <li>Custom lesson plan</li>
-                        <li>Follow-up resources</li>
                         <li>Progress tracking</li>
                     </ul>
                     <a href="https://skrill.com/r/debbynickryanz@gmail.com" target="_blank" class="btn">Pay with Skrill</a>
@@ -621,11 +622,11 @@
                             <select name="Program" required>
                                 <option value="">Select a program</option>
                                 <option value="Free Consultation">Free Consultation</option>
-                                <option value="Lingua - 1-on-1 Coaching">Lingua - 1-on-1 Coaching ($97)</option>
-                                <option value="Rise - 1-on-1 Coaching">Rise - 1-on-1 Coaching ($97)</option>
-                                <option value="Flex Nexus - 1-on-1 Coaching">Flex Nexus - 1-on-1 Coaching ($97)</option>
+                                <option value="Lingua - 1-on-1 Coaching">Lingua - 1-on-1 Coaching ($15/hr)</option>
+                                <option value="Rise - 1-on-1 Coaching">Rise - 1-on-1 Coaching ($75/session)</option>
+                                <option value="Flex Nexus - 1-on-1 Coaching">Flex Nexus - 1-on-1 Coaching ($75/session)</option>
                                 <option value="Group Workshop">Group Workshop ($47)</option>
-                                <option value="Lingua Membership">Lingua Membership ($39/mo)</option>
+                                <option value="Lingua Membership">Lingua Membership ($15/hr coaching)</option>
                                 <option value="Rise Membership">Rise Membership ($39/mo)</option>
                             </select>
                         </div>
@@ -712,5 +713,45 @@
         }
     </style>
     <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
+    <script>
+        const bookingForm = document.getElementById('bookingForm');
+        
+        bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(bookingForm);
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch(bookingForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    bookingForm.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px;">
+                            <h3 style="color: var(--gold); font-size: 28px; margin-bottom: 16px;">Booking Request Sent!</h3>
+                            <p style="color: var(--text); margin-bottom: 24px;">Thank you for your booking request. We'll contact you within 24 hours to confirm your session and provide payment details.</p>
+                            <a href="book.html" class="btn btn-gold" style="display: inline-block; text-decoration: none;">Book Another Session</a>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('There was an error sending your booking request. Please try again or contact us via WhatsApp.');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -424,6 +424,21 @@
             { word: "Proficient", pronunciation: "/prəˈfɪʃnt/", definition: "Competent or skilled in something", example: "She is proficient in three languages." }
         ];
 
+        const storageKey = 'elevare_lingua_flashcards';
+        
+        function loadProgress() {
+            const saved = localStorage.getItem(storageKey);
+            if (saved) {
+                const data = JSON.parse(saved);
+                return { currentIndex: data.currentIndex || 0, masteredCount: data.masteredCount || 0 };
+            }
+            return { currentIndex: 0, masteredCount: 0 };
+        }
+
+        function saveProgress() {
+            localStorage.setItem(storageKey, JSON.stringify({ currentIndex, masteredCount }));
+        }
+
         let currentIndex = 0;
         let masteredCount = 0;
 
@@ -446,6 +461,8 @@
             } else {
                 document.getElementById('completionMessage').classList.remove('show');
             }
+            
+            saveProgress();
         }
 
         function flipCard() {
@@ -470,9 +487,13 @@
         function restartCards() {
             currentIndex = 0;
             masteredCount = 0;
+            localStorage.removeItem(storageKey);
             updateCard();
         }
 
+        const progress = loadProgress();
+        currentIndex = progress.currentIndex;
+        masteredCount = progress.masteredCount;
         updateCard();
     </script>
 </body>
