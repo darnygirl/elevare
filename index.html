@@ -221,16 +221,31 @@
         }
 
         .hero-badge {
-            display: inline-block;
-            background: rgba(201, 162, 39, 0.15);
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid #22c55e;
+            color: #22c55e;
             font-size: 12px;
             font-weight: 600;
             padding: 8px 16px;
             border-radius: 20px;
             margin-bottom: 20px;
             letter-spacing: 1px;
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .guarantee-highlight {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
         .hero-text h1 {
@@ -927,6 +942,75 @@
             font-size: 28px;
             font-weight: 700;
             color: var(--gold);
+        }
+
+        .tutors-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .tutor-preview-card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tutor-preview-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201, 162, 39, 0.1) 100%);
+        }
+
+        .tutor-preview-avatar {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tutor-preview-avatar svg {
+            width: 36px;
+            height: 36px;
+            color: var(--navy);
+        }
+
+        .tutor-preview-card h4 {
+            font-size: 20px;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .tutor-preview-specialty {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .tutor-preview-card p {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .tutor-preview-focus {
+            font-size: 11px;
+            color: var(--text-light);
+            padding: 6px 12px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 20px;
+            display: inline-block;
         }
 
         /* Tutor Consultancy Section */
@@ -1661,15 +1745,22 @@
         }
 
         .mini-course-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--navy);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #22c55e;
+            color: white;
             font-size: 12px;
             font-weight: 700;
             padding: 6px 16px;
             border-radius: 20px;
             margin-bottom: 20px;
             letter-spacing: 2px;
+        }
+
+        .mini-course-badge svg {
+            width: 14px;
+            height: 14px;
         }
 
         .mini-course h2 {
@@ -1781,24 +1872,27 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="hero-badge">🌟 Join 2,000+ Students Worldwide</div>
-                    <h1>Speak Confidently in English <span>in Just 30 Days</span></h1>
-                    <p class="hero-subtitle">Even if you feel anxious or stuck right now. Get free access to our 5-day Confidence Kickstart and start your transformation today.</p>
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Our 30-Day Promise
+                    </div>
+                    <h1>Real Results in <span>30 Days</span> — Or We Work With You Until You Get Them</h1>
+                    <p class="hero-subtitle">We don't just teach language. We address what's <em>really</em> holding you back — anxiety, fear, self-doubt — with coaching that understands the psychology behind communication.</p>
                     <div class="hero-buttons">
-                        <a href="#signup" class="btn btn-primary">Get Free 5-Day Course</a>
-                        <a href="#programs" class="btn btn-secondary">View Programs</a>
+                        <a href="#signup" class="btn btn-primary">Start Your Free 5-Day Course</a>
+                        <a href="#programs" class="btn btn-secondary">See How It Works</a>
                     </div>
                     <div class="hero-trust">
-                        <span>✓ No credit card required</span>
-                        <span>✓ Instant access</span>
-                        <span>✓ 30-day results guarantee</span>
+                        <span>✓ Guaranteed results or your money back</span>
+                        <span>✓ Mental-health-informed approach</span>
+                        <span>✓ Personal coaching, not AI apps</span>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-card">
-                        <div class="hero-card-badge">FREE</div>
-                        <h3>5-Day Confidence Kickstart</h3>
-                        <p>Learn the exact techniques to speak with confidence</p>
+                        <div class="hero-card-badge">30-DAY GUARANTEE</div>
+                        <h3>Your Transformation Starts Free</h3>
+                        <p>5-Day Confidence Kickstart — no credit card required</p>
                         <ul class="hero-card-features">
                             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 1: Overcome speaking anxiety</li>
                             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 2: Build confident body language</li>
@@ -2267,22 +2361,72 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="complete-package" style="margin-top: 64px; padding: 48px; background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%); border-radius: 24px; border: 2px solid var(--gold); text-align: center;">
+                <div class="section-label" style="margin-bottom: 8px;">Most Popular</div>
+                <h3 style="font-size: 32px; color: var(--cream); margin-bottom: 8px;">The Complete Communicator</h3>
+                <p style="color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; margin-bottom: 24px;">Language + Confidence + Professional Presence</p>
+                <p style="color: var(--text); max-width: 600px; margin: 0 auto 32px; font-size: 15px;">For those who want the full transformation. Get all three pillars working together — fluency, confidence, and executive presence — at a package price that saves you over 30%.</p>
+                <div style="display: flex; justify-content: center; gap: 48px; margin-bottom: 32px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 4px;">Lingua + Rise + Flex Nexus</div>
+                        <div style="font-size: 36px; font-weight: 700; color: var(--gold);">$197</div>
+                        <div style="font-size: 13px; color: var(--text-light);">/month</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 4px;">Save vs. Individual</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #22c55e;">$109/month</div>
+                        <div style="font-size: 13px; color: var(--text-light);">value</div>
+                    </div>
+                </div>
+                <a href="#signup" class="btn btn-primary" style="padding: 16px 48px; font-size: 14px;">Start Your Complete Transformation</a>
+                <p style="margin-top: 16px; font-size: 13px; color: var(--text-light);">30-day results guarantee • Cancel anytime</p>
+            </div>
         </div>
     </section>
 
     <section class="tutors" id="tutors">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Expert Team</div>
-                <h2 class="section-title">Your Coaches & Mentors</h2>
-                <p class="section-desc">Learn from professionals who've walked the path.</p>
+                <div class="section-label">Your Coaches</div>
+                <h2 class="section-title">Meet Your Transformation Team</h2>
+                <p class="section-desc">Real humans who've helped thousands overcome communication barriers. Not trainers — your personal coaches.</p>
             </div>
-            <div style="text-align: center; padding: 60px 0;">
-                <a href="frontend/tutors.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 12px; padding: 20px 48px; font-size: 14px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    Meet Our Full Team
+            <div class="tutors-preview-grid">
+                <div class="tutor-preview-card">
+                    <div class="tutor-preview-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>Amara M.</h4>
+                    <div class="tutor-preview-specialty">Language Coach — Lingua</div>
+                    <p>"I help students find their voice in a new language. My approach combines cultural immersion with real conversation practice that builds fluency naturally."</p>
+                    <div class="tutor-preview-focus">Spanish • French • Cultural Fluency</div>
+                </div>
+                <div class="tutor-preview-card featured">
+                    <div class="tutor-preview-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>James C.</h4>
+                    <div class="tutor-preview-specialty">Confidence Coach — Rise</div>
+                    <p>"I used to be terrified of public speaking. Now I help others overcome the same fear. We work on the mindset blocks that language apps can't address."</p>
+                    <div class="tutor-preview-focus">Speaking Anxiety • Executive Presence • Mindset</div>
+                </div>
+                <div class="tutor-preview-card">
+                    <div class="tutor-preview-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>David K.</h4>
+                    <div class="tutor-preview-specialty">Business Coach — Flex Nexus</div>
+                    <p>"Corporate communication isn't about jargon — it's about clarity. I help professionals land deals, lead meetings, and present with confidence."</p>
+                    <div class="tutor-preview-focus">Negotiation • Presentations • Executive Skills</div>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 48px 0 0;">
+                <a href="frontend/tutors.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 36px; font-size: 13px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Meet All 15+ Coaches
                 </a>
-                <p style="margin-top: 20px; color: var(--text-light); font-size: 14px;">Click to see all coaches across Lingua, Rise, and Flex Nexus</p>
+                <p style="margin-top: 16px; color: var(--text-light); font-size: 13px;">Native speakers • Certified • Personally matched to your goals</p>
             </div>
         </div>
     </section>
@@ -2290,18 +2434,21 @@
     <section class="mini-course">
         <div class="container">
             <div class="mini-course-content">
-                <div class="mini-course-badge">FREE</div>
-                <h2>Start Your Transformation Today</h2>
-                <p>Get our free 5-day "Confidence Kickstart" mini-course. Learn the exact techniques that will help you speak with confidence in just 5 days.</p>
+                <div class="mini-course-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    FREE • NO CREDIT CARD REQUIRED
+                </div>
+                <h2>The Free 5-Day Confidence Kickstart</h2>
+                <p>Our signature methodology — distilled into a free mini-course. This isn't just language tips. It's the same mental-health-informed approach that has helped 2,000+ students overcome speaking anxiety and build lasting confidence.</p>
                 <ul class="mini-course-features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 1: Overcome speaking anxiety</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 2: Build confident body language</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 3: Master your first impression</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 4: Practice with real exercises</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 5: Create your action plan</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 1: The psychology behind speaking anxiety — and how to rewire it</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 2: Body language secrets that instantly boost confidence</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 3: How to make any first impression memorable</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 4: Real exercises used by our 1-on-1 coaching clients</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Day 5: Your personal action plan for lasting transformation</li>
                 </ul>
-                <a href="#signup" class="btn btn-primary">Get Free Access</a>
-                <p class="mini-course-note">Join 2,000+ students already enrolled</p>
+                <a href="#signup" class="btn btn-primary" style="padding: 16px 48px; font-size: 14px;">Get Instant Access — It's Free</a>
+                <p class="mini-course-note">Join thousands who've started their transformation • 30-day guarantee applies after enrollment</p>
             </div>
         </div>
     </section>
