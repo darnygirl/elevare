@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Marketing Agent</title>
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --cream: #faf8f5;
+            --text: #e0e1dd;
+            --success: #22c55e;
+            --error: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        header {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: var(--cream);
+        }
+
+        h1 span { color: var(--gold); }
+
+        .status-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--navy);
+            padding: 4px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px 16px;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover { color: var(--gold); }
+
+        .tab.active {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--cream);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        textarea { min-height: 120px; resize: vertical; }
+
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover { background: var(--gold-light); }
+
+        .btn-secondary {
+            background: var(--navy);
+            color: var(--cream);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover { border-color: var(--gold); }
+
+        .output-area {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 300px;
+            margin-top: 20px;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .output-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+        .generated-content {
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            color: var(--cream);
+        }
+
+        .hashtags {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hashtag-tag {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 4px 4px 4px 0;
+        }
+
+        .platform-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .platform-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--navy);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .platform-btn:hover { border-color: var(--gold); }
+
+        .platform-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            background: var(--navy);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-day:hover { background: var(--navy-light); }
+
+        .calendar-day.best {
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--gold);
+        }
+
+        .calendar-day .time {
+            font-size: 10px;
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        .calendar-header {
+            grid-column: span 7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .calendar-nav {
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--cream);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--navy);
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .schedule-time {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold);
+            min-width: 60px;
+        }
+
+        .schedule-content {
+            flex: 1;
+        }
+
+        .schedule-platform {
+            font-size: 11px;
+            color: var(--text);
+        }
+
+        .schedule-title {
+            font-size: 13px;
+            color: var(--cream);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .analytics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .stat-card {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--navy);
+            border-radius: 8px;
+        }
+
+        .api-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--error);
+        }
+
+        .api-dot.connected { background: var(--success); }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.show { display: block; }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(201, 162, 39, 0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Elevate <span>Marketing</span> Agent</h1>
+            <div class="status-badge">AI Content Ready</div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('create')">Content Create</button>
+            <button class="tab" onclick="showSection('calendar')">Post Calendar</button>
+            <button class="tab" onclick="showSection('analytics')">Analytics</button>
+            <button class="tab" onclick="showSection('settings')">Settings</button>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Content Generator</span>
+                </div>
+
+                <div class="form-group">
+                    <label>CONTENT TYPE</label>
+                    <select id="contentType">
+                        <option value="social">Social Media Post</option>
+                        <option value="email">Email Newsletter</option>
+                        <option value="story">Instagram/FB Story</option>
+                        <option value="ad">Ad Copy</option>
+                        <option value="whatsapp">WhatsApp Broadcast</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>PLATFORM</label>
+                    <select id="platform">
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="twitter">X (Twitter)</option>
+                        <option value="youtube">YouTube</option>
+                        <option value="email">Email</option>
+                        <option value="whatsapp">WhatsApp</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>PROGRAM/FOCUS</label>
+                    <select id="program">
+                        <option value="lingua">Lingua (Language)</option>
+                        <option value="rise">Rise (Confidence)</option>
+                        <option value="flexnexus">Flex Nexus (Business)</option>
+                        <option value="general">General Brand</option>
+                        <option value="testimonial">Student Success</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>TONE</label>
+                    <select id="tone">
+                        <option value="professional">Professional</option>
+                        <option value="casual">Casual & Friendly</option>
+                        <option value="motivational">Motivational</option>
+                        <option value="educational">Educational</option>
+                        <option value="urgent">Urgent/Limited Time</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>CUSTOM PROMPT (Optional)</label>
+                    <textarea id="customPrompt" placeholder="Add specific details, keywords, or focus areas..."></textarea>
+                </div>
+
+                <button class="btn" onclick="generateContent()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    Generate Content
+                </button>
+
+                <div class="output-area">
+                    <div class="output-header">
+                        <span class="output-title">Generated Content</span>
+                        <button class="copy-btn" onclick="copyContent()">Copy</button>
+                    </div>
+                    <div class="generated-content" id="outputContent">
+                        Your generated content will appear here...
+
+                        Use the options on the left to create:
+                        • Social media posts
+                        • Email newsletters
+                        • Ad copy
+                        • WhatsApp broadcasts
+
+                        Content is tailored to Elevare's voice and your specific programs.
+                    </div>
+                    <div class="hashtags" id="hashtags"></div>
+                    <div class="platform-icons" id="platformIcons">
+                        <button class="platform-btn" title="Post to LinkedIn" onclick="postToPlatform('linkedin')">
+                            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </button>
+                        <button class="platform-btn" title="Post to Instagram" onclick="postToPlatform('instagram')">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
+                        </button>
+                        <button class="platform-btn" title="Post to Twitter/X" onclick="postToPlatform('twitter')">
+                            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <!-- Content Section: Create -->
+                <div class="content-section active" id="section-create">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Content Queue</span>
+                            <button class="btn-secondary" style="width: auto; padding: 8px 16px;" onclick="saveToQueue()">Save to Queue</button>
+                        </div>
+                        <div id="contentQueue">
+                            <div style="text-align: center; padding: 40px; color: var(--text);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity: 0.5; margin-bottom: 16px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                <p>Your generated content will appear here</p>
+                                <p style="font-size: 12px; margin-top: 8px;">Create content and save to schedule posts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section: Calendar -->
+                <div class="content-section" id="section-calendar">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Best Times to Post</span>
+                        </div>
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="changeMonth(-1)">←</button>
+                            <span id="calendarMonth">April 2026</span>
+                            <button class="calendar-nav" onclick="changeMonth(1)">→</button>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 11px; color: var(--text); margin-bottom: 8px;">
+                            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                    </div>
+
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">Scheduled Posts</span>
+                        </div>
+                        <div id="scheduledPosts">
+                            <div class="schedule-item">
+                                <div class="schedule-time">9:00 AM</div>
+                                <div class="schedule-content">
+                                    <div class="schedule-platform">LinkedIn</div>
+                                    <div class="schedule-title">Rise program announcement</div>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">12:30 PM</div>
+                                <div class="schedule-content">
+                                    <div class="schedule-platform">Instagram</div>
+                                    <div class="schedule-title">Student success story</div>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">6:00 PM</div>
+                                <div class="schedule-content">
+                                    <div class="schedule-platform">Email</div>
+                                    <div class="schedule-title">Weekly newsletter</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section: Analytics -->
+                <div class="content-section" id="section-analytics">
+                    <div class="analytics-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="statReach">2.4K</div>
+                            <div class="stat-label">Weekly Reach</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="statEngagement">4.8%</div>
+                            <div class="stat-label">Engagement</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="statClicks">156</div>
+                            <div class="stat-label">Link Clicks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="statLeads">12</div>
+                            <div class="stat-label">New Leads</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Platform Performance</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                            <div style="background: var(--navy); padding: 16px; border-radius: 10px; text-align: center;">
+                                <div style="font-size: 24px; font-weight: 700; color: #0A66C2;">LinkedIn</div>
+                                <div style="font-size: 12px; color: var(--text); margin-top: 4px;">1.2K impressions</div>
+                            </div>
+                            <div style="background: var(--navy); padding: 16px; border-radius: 10px; text-align: center;">
+                                <div style="font-size: 24px; font-weight: 700; color: #E1306C;">Instagram</div>
+                                <div style="font-size: 12px; color: var(--text); margin-top: 4px;">890 impressions</div>
+                            </div>
+                            <div style="background: var(--navy); padding: 16px; border-radius: 10px; text-align: center;">
+                                <div style="font-size: 24px; font-weight: 700; color: #25D366;">WhatsApp</div>
+                                <div style="font-size: 12px; color: var(--text); margin-top: 4px;">45 broadcasts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section: Settings -->
+                <div class="content-section" id="section-settings">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">API Configuration</span>
+                        </div>
+
+                        <div class="api-status">
+                            <div class="api-dot" id="mailchimpStatus"></div>
+                            <span>Mailchimp - Not Connected</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>MAILCHIMP API KEY</label>
+                            <input type="password" id="mailchimpKey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-us1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>MAILCHIMP AUDIENCE ID</label>
+                            <input type="text" id="mailchimpAudience" placeholder="abc123def">
+                        </div>
+
+                        <div class="api-status">
+                            <div class="api-dot" id="bufferStatus"></div>
+                            <span>Buffer - Not Connected</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>BUFFER ACCESS TOKEN</label>
+                            <input type="password" id="bufferToken" placeholder="xxxxxxxxxx/xxxxxx">
+                        </div>
+
+                        <div class="api-status">
+                            <div class="api-dot" id="sendgridStatus"></div>
+                            <span>SendGrid - Not Connected</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>SENDGRID API KEY</label>
+                            <input type="password" id="sendgridKey" placeholder="SG.xxxxxxxxxx.xxxxxxxxxx">
+                        </div>
+
+                        <button class="btn" onclick="saveApiSettings()">Save Settings</button>
+                    </div>
+
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">Brand Voice Settings</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>BRAND NAME</label>
+                            <input type="text" id="brandName" value="Elevare">
+                        </div>
+
+                        <div class="form-group">
+                            <label>TAGLINE</label>
+                            <input type="text" id="brandTagline" value="Where Language Meets Life">
+                        </div>
+
+                        <div class="form-group">
+                            <label>WEBSITE</label>
+                            <input type="text" id="brandWebsite" value="darnygirl.github.io/elevare">
+                        </div>
+
+                        <button class="btn-secondary" style="margin-top: 8px;" onclick="saveBrandSettings()">Save Brand Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Generating content...</p>
+    </div>
+
+    <script>
+        // Content Generation Templates
+        const contentTemplates = {
+            linkedin: {
+                lingua: {
+                    professional: [
+                        "Language barriers shouldn't hold you back from your dreams. At Elevare, our native-speaking tutors help you achieve fluency through personalized coaching that adapts to your learning style.\n\nWhether you're learning for business, travel, or personal growth — we build real communication skills, not just textbook phrases.\n\nReady to start your fluency journey? Link in comments.",
+                        "The difference between 'studying a language' and actually SPEAKING it is having the right coach.\n\nAt Elevare, we don't just teach — we mentor. Our Lingua program combines cultural immersion with practical conversation practice.\n\nResults in 30 days or we work with you until you get them.\n\nWhat's holding you back from fluency?",
+                        "Communication is the #1 skill for career growth. Yet many professionals struggle because they learned grammar but never learned to speak confidently.\n\nOur Lingua program changes that — native speakers, personalized plans, real conversations.\n\nBook your free consultation via the link in our profile."
+                    ],
+                    motivational: [
+                        "You don't have a language barrier. You have a coaching gap.\n\nThe fluency you're dreaming of? It's absolutely achievable with the right support. Our Lingua students average measurable improvement in just 30 days.\n\nThis isn't about memorizing vocabulary. It's about building the confidence to speak.\n\nYour voice deserves to be heard. Let's make that happen.",
+                        "Every conversation is a chance to connect, to grow, to be understood.\n\nWhat would change in your life if you spoke English — or any language — without hesitation?\n\nAt Elevare, we believe fluency is for everyone. Not just 'talented' people. Not just people with time. Everyone.\n\nYour fluency journey starts with one conversation."
+                    ]
+                },
+                rise: {
+                    professional: [
+                        "Confidence isn't a personality trait. It's a skill you can build.\n\nAt Elevare's Rise program, we address the psychology behind communication anxiety — not just the mechanics. Our mental-health-informed approach helps you rewire the inner critic that's been holding you back.\n\nReal results. Evidence-based methods. Personalized coaching.\n\n30-day confidence guarantee.",
+                        "The most successful people aren't the ones without fears. They're the ones who learned to communicate despite them.\n\nRise by Elevare combines mindset work with practical communication training — for transformation that actually sticks.\n\nLimited spots available. Link in comments to learn more."
+                    ],
+                    motivational: [
+                        "You have valuable things to say. The world needs to hear them.\n\nIf anxiety, self-doubt, or fear of judgment has kept you quiet — it's time to change that story.\n\nRise isn't just coaching. It's a complete transformation of how you see yourself.\n\nYou deserve to be seen. You deserve to be heard.\n\nStart your journey today.",
+                        "Stop waiting to feel confident before you speak. Start speaking, and confidence follows.\n\nRise by Elevare helps you break through the mental barriers that keep you stuck — using evidence-based techniques that actually work.\n\nThis isn't motivation. It's methodology.\n\nYour confident voice is already inside you. We just help you find it."
+                    ]
+                },
+                flexnexus: {
+                    professional: [
+                        "Technical skills will get you the interview. Communication skills will get you the promotion.\n\nElevare's Flex Nexus program bridges language learning with executive presence — so you can lead meetings, land deals, and present with authority.\n\nIndustry experts who've been there. Real-world skills. Measurable results.",
+                        "In global business, communication isn't just a soft skill. It's your competitive advantage.\n\nFlex Nexus by Elevare combines professional communication training with executive presence coaching — for leaders who want to be heard AND respected.\n\n12-week intensive. Small cohorts. Personalized feedback.\n\nYour next career milestone starts here."
+                    ],
+                    educational: [
+                        "What's the difference between a good presenter and a great one? It usually comes down to two things: structure and presence.\n\nIn Flex Nexus, we teach both — plus the language skills to match your expertise.\n\nThis week, try this: In your next meeting, lead with a question instead of a statement. See what changes.\n\nElevate your communication. Elevate your career."
+                    ]
+                },
+                testimonial: {
+                    professional: [
+                        "Student Spotlight: Sarah joined Rise feeling anxious about speaking up in meetings. 6 weeks later, she led her first team presentation.\n\n'The mental-health-informed approach was exactly what I needed. They didn't just teach me techniques — they helped me understand why I was stuck and how to move forward.'\n\nReal transformation. Measurable results.\n\nReady to write your success story?",
+                        "From hesitant speaker to confident communicator — our students prove it's possible.\n\nJames achieved fluency in Spanish in 6 months. Maria built the confidence to lead meetings. Aisha landed her dream job after Flex Nexus.\n\nThe common thread? They chose coaching over apps. Human connection over algorithms.\n\nYour transformation could be next."
+                    ]
+                }
+            },
+            instagram: {
+                lingua: [
+                    "Language learning that actually works ✨\n\nNo more textbook phrases. No more fear of speaking.\n\nJust real conversations, native speakers, and results in 30 days.\n\nLink in bio to start your free trial! 👆",
+                    "What would change if you could speak English confidently? 🌟\n\nYour career? Your relationships? Your opportunities?\n\nWe help you get there — not with apps, but with actual coaching.\n\n💬 Comment 'FLUENT' and let's talk",
+                    "Fluent doesn't mean perfect. It means FREE. ✅\n\nFree to express yourself. Free to connect. Free to be understood.\n\nThat's what Lingua by Elevare gives you.\n\nYour fluency journey starts with one message."
+                ],
+                rise: [
+                    "You deserve to be heard. 💛\n\nNot someday. Not when you're 'ready.' Now.\n\nRise transforms how you see yourself — from the inside out.",
+                    "Speaking anxiety is real. But it's also fixable. ✅\n\nWe don't just teach confidence. We help you rebuild it from the ground up.\n\n30-day guarantee. Results that last.",
+                    "Stop shrinking. Start taking up space. ✨\n\nRise helps professionals like you find their voice and own it.\n\nYour ideas deserve to be heard."
+                ],
+                flexnexus: [
+                    "Professional presence isn't born. It's built. 💼\n\nFlex Nexus gives you the communication skills to lead, persuade, and inspire.\n\n12 weeks. Real results. Career-changing.",
+                    "Executive presence = career multiplier. ✅\n\nLearn to command rooms, deliver presentations, and negotiate with authority.\n\nYour next promotion starts here."
+                ]
+            },
+            email: {
+                weekly: (program) => `Subject: Your Weekly Communication Boost from Elevare 🌟
+
+Hey [Name],
+
+Every great communicator was once exactly where you are.
+
+This week, we're sharing our top tip for building confidence in [language/professional] communication:
+
+🎯 THE SHIFT: 
+Stop practicing in your head. Start speaking out loud — even if it's just to yourself.
+
+Speak your next thought out loud before you type it. Notice where you hesitate. That's where growth happens.
+
+📚 THIS WEEK'S RESOURCES:
+• [Program] Free Guide: [Resource Name]
+• Quick Win: [Actionable tip]
+• Community: Join the conversation in our WhatsApp group
+
+🎯 YOUR NEXT STEP:
+Book a free 15-min consultation this week. No commitment — just clarity.
+
+[Schedule Here]
+
+To your communication success,
+Elevare Team
+
+---
+You're receiving this because you joined Elevare. Manage preferences | Unsubscribe`,
+                welcome: `Subject: Welcome to Elevare! 🎉
+
+Hi [Name],
+
+Welcome to a community of people committed to transforming how they communicate.
+
+Here's what happens next:
+
+📅 Day 1-3: Explore our free resources (links below)
+📅 Day 4-7: Book your free consultation
+📅 Day 8+: Start your transformation journey
+
+Your free resources:
+• 5-Day Confidence Kickstart (for all new members)
+• Lingua Flashcards App
+• Rise Self-Assessment Quiz
+• Flex Nexus Career Templates
+
+Need guidance? Reply to this email or WhatsApp us.
+
+Let's begin,
+Elevare Team`
+            }
+        };
+
+        const hashtagBank = {
+            lingua: ['#LanguageLearning', '#SpeakConfidently', '#ESL', '#LanguageCoaching', '#FluencyJourney', '#LearnEnglish', '#LanguageSkills', '#Communication', '#Elevare'],
+            rise: ['#ConfidenceBuilding', '#PublicSpeaking', '#MentalHealth', '#PersonalGrowth', '#SelfImprovement', '#CommunicationSkills', '#Mindset', '#ElevateYourLife', '#Rise'],
+            flexnexus: ['#ExecutivePresence', '#BusinessCommunication', '#ProfessionalDevelopment', '#CareerGrowth', '#LeadershipSkills', '#WorkplaceCommunication', '#FlexNexus', '#Elevate'],
+            general: ['#Elevare', '#CommunicationSkills', '#PersonalGrowth', '#LanguageLearning', '#ConfidenceBuilding', '#Coaching', '#Transformation'],
+            testimonial: ['#StudentSuccess', '#TransformationStory', '#RealResults', '#ElevareWorks', '#CommunicationSkills']
+        };
+
+        let currentContent = '';
+        let currentHashtags = '';
+        let savedContent = [];
+
+        function showSection(section) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('section-' + section).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function generateContent() {
+            const contentType = document.getElementById('contentType').value;
+            const platform = document.getElementById('platform').value;
+            const program = document.getElementById('program').value;
+            const tone = document.getElementById('tone').value;
+            const customPrompt = document.getElementById('customPrompt').value;
+
+            document.getElementById('loading').classList.add('show');
+
+            setTimeout(() => {
+                let content = '';
+                let hashtags = hashtagBank[program].slice(0, 5).join(' ');
+
+                // Generate content based on templates or AI-like generation
+                if (contentType === 'social') {
+                    const templates = contentTemplates.linkedin[program]?.[tone] || contentTemplates.linkedin.general;
+                    content = templates[Math.floor(Math.random() * templates.length)];
+                    
+                    if (platform === 'instagram') {
+                        content = content.substring(0, 200) + '...\n\n' + content.substring(0, 100);
+                    }
+                } else if (contentType === 'email') {
+                    content = contentTemplates.email.weekly(program);
+                } else if (contentType === 'whatsapp') {
+                    content = `Hey! 👋 Elevare here with your [${program}] update!\n\n${customPrompt || 'Check out our latest resources and tips for improving your communication skills.'}\n\nReply STOP to unsubscribe`;
+                } else if (contentType === 'ad') {
+                    content = `${program === 'lingua' ? 'Master any language in 30 days' : program === 'rise' ? 'Build unshakeable confidence' : 'Develop executive presence'} — with human coaching that actually works.\n\n✓ Personalized coaching\n✓ Mental-health-informed approach\n✓ 30-day results guarantee\n\nStart free: [LINK]`;
+                } else {
+                    content = contentTemplates.linkedin[program]?.[tone]?.[0] || 'Elevate your communication with Elevare.';
+                }
+
+                // Add custom prompt influence if provided
+                if (customPrompt && contentType === 'social') {
+                    content += '\n\n' + customPrompt;
+                }
+
+                currentContent = content;
+                currentHashtags = hashtags;
+
+                document.getElementById('outputContent').textContent = content;
+                document.getElementById('hashtags').innerHTML = '<span style="font-size: 11px; color: var(--text); display: block; margin-bottom: 8px;">Suggested Hashtags:</span>' +
+                    hashtagBank[program].map(h => `<span class="hashtag-tag">${h}</span>`).join('');
+
+                document.getElementById('loading').classList.remove('show');
+            }, 1200);
+        }
+
+        function copyContent() {
+            navigator.clipboard.writeText(currentContent).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function saveToQueue() {
+            if (!currentContent) {
+                alert('Generate content first!');
+                return;
+            }
+
+            const platform = document.getElementById('platform').value;
+            const content = {
+                id: Date.now(),
+                platform: platform,
+                content: currentContent,
+                hashtags: currentHashtags,
+                time: '9:00 AM',
+                date: new Date().toLocaleDateString()
+            };
+
+            savedContent.push(content);
+            renderContentQueue();
+
+            alert('Content saved to queue!');
+        }
+
+        function renderContentQueue() {
+            if (savedContent.length === 0) return;
+
+            const html = savedContent.map(item => `
+                <div class="schedule-item" onclick="loadContent(${item.id})">
+                    <div class="schedule-platform">${item.platform}</div>
+                    <div class="schedule-content">
+                        <div class="schedule-title">${item.content.substring(0, 50)}...</div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('contentQueue').innerHTML = html;
+        }
+
+        function loadContent(id) {
+            const item = savedContent.find(c => c.id === id);
+            if (item) {
+                currentContent = item.content;
+                currentHashtags = item.hashtags;
+                document.getElementById('outputContent').textContent = item.content;
+            }
+        }
+
+        function postToPlatform(platform) {
+            alert(`To enable auto-posting:\n\n1. Go to Settings\n2. Add your ${platform.charAt(0).toUpperCase() + platform.slice(1)} API key\n3. Click Connect\n\nFor now, copy the content and post manually!`);
+        }
+
+        function saveApiSettings() {
+            const settings = {
+                mailchimpKey: document.getElementById('mailchimpKey').value,
+                mailchimpAudience: document.getElementById('mailchimpAudience').value,
+                bufferToken: document.getElementById('bufferToken').value,
+                sendgridKey: document.getElementById('sendgridKey').value
+            };
+
+            localStorage.setItem('elevare_marketing_api', JSON.stringify(settings));
+
+            // Update status dots
+            if (settings.mailchimpKey) document.getElementById('mailchimpStatus').classList.add('connected');
+            if (settings.bufferToken) document.getElementById('bufferStatus').classList.add('connected');
+            if (settings.sendgridKey) document.getElementById('sendgridStatus').classList.add('connected');
+
+            alert('API settings saved!');
+        }
+
+        function saveBrandSettings() {
+            const brand = {
+                name: document.getElementById('brandName').value,
+                tagline: document.getElementById('brandTagline').value,
+                website: document.getElementById('brandWebsite').value
+            };
+
+            localStorage.setItem('elevare_brand', JSON.stringify(brand));
+            alert('Brand settings saved!');
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const bestTimes = {
+                0: [], // Sun
+                1: ['9:00 AM', '7:00 PM'], // Mon
+                2: ['8:00 AM', '12:00 PM', '6:00 PM'], // Tue
+                3: ['8:00 AM', '12:00 PM', '5:00 PM'], // Wed
+                4: ['9:00 AM', '12:00 PM', '6:00 PM'], // Thu
+                5: ['10:00 AM', '3:00 PM'], // Fri
+                6: [] // Sat
+            };
+
+            let html = '';
+            for (let i = 0; i < 35; i++) {
+                const day = i - 3; // Offset to start from appropriate day
+                const dayOfWeek = new Date(2026, 3, day).getDay();
+                const isBest = bestTimes[dayOfWeek]?.length > 0;
+
+                html += `<div class="calendar-day ${isBest ? 'best' : ''}">
+                    ${day > 0 && day <= 30 ? day : ''}
+                    ${isBest ? `<span class="time">${bestTimes[dayOfWeek][0]}</span>` : ''}
+                </div>`;
+            }
+            grid.innerHTML = html;
+        }
+
+        function changeMonth(dir) {
+            // Simple month navigation
+            alert('Calendar view: Navigate to view/schedule posts for specific dates');
+        }
+
+        // Load saved settings on page load
+        window.onload = function() {
+            renderCalendar();
+
+            const savedApi = localStorage.getItem('elevare_marketing_api');
+            if (savedApi) {
+                const settings = JSON.parse(savedApi);
+                if (settings.mailchimpKey) {
+                    document.getElementById('mailchimpKey').value = settings.mailchimpKey;
+                    document.getElementById('mailchimpStatus').classList.add('connected');
+                }
+                if (settings.bufferToken) {
+                    document.getElementById('bufferToken').value = settings.bufferToken;
+                    document.getElementById('bufferStatus').classList.add('connected');
+                }
+                if (settings.sendgridKey) {
+                    document.getElementById('sendgridKey').value = settings.sendgridKey;
+                    document.getElementById('sendgridStatus').classList.add('connected');
+                }
+            }
+
+            const savedBrand = localStorage.getItem('elevare_brand');
+            if (savedBrand) {
+                const brand = JSON.parse(savedBrand);
+                document.getElementById('brandName').value = brand.name || 'Elevare';
+                document.getElementById('brandTagline').value = brand.tagline || 'Where Language Meets Life';
+                document.getElementById('brandWebsite').value = brand.website || 'darnygirl.github.io/elevare';
+            }
+        };
+    </script>
+</body>
+</html>
