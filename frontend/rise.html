@@ -501,6 +501,26 @@
             background: var(--navy-light);
         }
 
+        .pricing-card .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .pricing-card .btn-gold:hover {
+            background: var(--gold-light);
+        }
+
+        .pricing-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .pricing-cards-row .pricing-card {
+            position: static;
+        }
+
         .cta {
             background: var(--navy);
         }
@@ -802,7 +822,7 @@
                     <ul class="pricing-features">
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Weekly coaching sessions
+                            Weekly group coaching sessions
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -820,13 +840,26 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                             Ongoing support & resources
                         </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Access to community
+                        </li>
                     </ul>
                 </div>
+            </div>
+            <div class="pricing-cards-row">
+                <div class="pricing-card" style="background: var(--navy-light);">
+                    <h4 style="color: var(--cream);">1-on-1 Coaching</h4>
+                    <div class="amount" style="color: var(--cream);">$75<span style="color: var(--cream);">/session</span></div>
+                    <div class="per" style="color: var(--text-light);">Intensive focused work on your specific challenges</div>
+                    <a href="https://skrill.com/r/debbynickryanz@gmail.com" target="_blank" class="btn" style="background: var(--gold); color: var(--navy);">Book a Session</a>
+                </div>
                 <div class="pricing-card">
-                    <h4>Monthly Plan</h4>
+                    <div style="background: var(--navy); color: var(--gold); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 12px;">MOST POPULAR</div>
+                    <h4 style="color: var(--navy);">Monthly Membership</h4>
                     <div class="amount">$39<span>/mo</span></div>
-                    <div class="per">Full coaching membership</div>
-                    <a href="https://skrill.com/r/debbynickryanz@gmail.com" target="_blank" class="btn">Join & Pay</a>
+                    <div class="per">Weekly group sessions + all resources</div>
+                    <a href="https://skrill.com/r/debbynickryanz@gmail.com" target="_blank" class="btn btn-gold">Join Membership</a>
                 </div>
             </div>
         </div>
