@@ -411,6 +411,56 @@
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
+
+        .recording { animation: pulse 1s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .recording-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .library-item {
+            background: var(--navy);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .library-item audio {
+            flex: 1;
+            height: 40px;
+        }
+        .library-item-actions {
+            display: flex;
+            gap: 4px;
+        }
+        .library-item-actions button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text);
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .library-item-actions button:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
     </style>
 </head>
 <body>
@@ -422,6 +472,8 @@
 
         <div class="tabs">
             <button class="tab active" onclick="showSection('create')">Content Create</button>
+            <button class="tab" onclick="showSection('voiceover')">🎙️ Voiceover</button>
+            <button class="tab" onclick="showSection('voiceless')">📱 Voiceless Ads</button>
             <button class="tab" onclick="showSection('calendar')">Post Calendar</button>
             <button class="tab" onclick="showSection('analytics')">Analytics</button>
             <button class="tab" onclick="showSection('settings')">Settings</button>
@@ -517,10 +569,127 @@
                             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </button>
                     </div>
-                </div>
-            </div>
+</div>
+            </div><!-- end .grid -->
 
-            <div>
+            <!-- Content Section: Voice Studio -->
+            <div class="content-section" id="section-voiceover">
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">Voice Studio</span>
+                            <span class="status-badge" style="background: rgba(34, 197, 94, 0.2); color: var(--success);">100% Free - Your Voice, Your Ads</span>
+                        </div>
+
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 20px;">
+                            Record your voice once, then use it to record ads with AI-generated scripts. No external services needed!
+                        </p>
+
+                        <!-- Voice Sample Section -->
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px; font-size: 14px;">🎤 Your Voice Sample</h4>
+                            <p style="color: var(--text); font-size: 12px; margin-bottom: 16px;">Record a 10-30 second sample of yourself speaking naturally. This helps you match your tone when recording ads. For best quality: speak close to your mic, avoid background noise, and speak at your normal pace.</p>
+                            
+                            <div id="voiceSampleRecorder" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                                <button class="btn" id="recordSampleBtn" onclick="toggleVoiceSample()" style="width: auto; padding: 12px 24px;">
+                                    <span id="recordSampleIcon">●</span>
+                                    <span id="recordSampleText">Record Sample</span>
+                                </button>
+                                <audio id="samplePlayback" controls style="flex: 1; min-width: 200px; display: none;"></audio>
+                                <button class="btn-secondary" id="saveSampleBtn" onclick="saveVoiceSample()" style="width: auto; padding: 12px 20px; display: none;">Save Sample</button>
+                            </div>
+                            <div id="sampleStatus" style="font-size: 12px; color: var(--text); margin-top: 8px;"></div>
+                            
+                            <div id="audioQualityIndicator" style="margin-top: 12px; display: none;">
+                                <label style="font-size: 11px; color: var(--text);">Audio Quality:</label>
+                                <div style="display: flex; gap: 4px; margin-top: 4px;">
+                                    <div id="qualityBar1" style="width: 20px; height: 6px; background: #333; border-radius: 3px;"></div>
+                                    <div id="qualityBar2" style="width: 20px; height: 6px; background: #333; border-radius: 3px;"></div>
+                                    <div id="qualityBar3" style="width: 20px; height: 6px; background: #333; border-radius: 3px;"></div>
+                                    <div id="qualityBar4" style="width: 20px; height: 6px; background: #333; border-radius: 3px;"></div>
+                                    <div id="qualityBar5" style="width: 20px; height: 6px; background: #333; border-radius: 3px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Script Generation -->
+                        <div class="card-header" style="margin-bottom: 16px;">
+                            <span class="card-title">📝 AI Ad Script</span>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label>PROGRAM</label>
+                                <select id="adProgram">
+                                    <option value="lingua">Lingua (Language)</option>
+                                    <option value="rise">Rise (Confidence)</option>
+                                    <option value="flexnexus">Flex Nexus (Business)</option>
+                                    <option value="general">General Brand</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label>AD LENGTH</label>
+                                <select id="adLength">
+                                    <option value="short">15-30 sec (Short)</option>
+                                    <option value="medium" selected>30-60 sec (Medium)</option>
+                                    <option value="long">60-90 sec (Long)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>CUSTOM NOTES (Optional)</label>
+                            <textarea id="adNotes" placeholder="Any specific words, phrases, or emphasis you want..." style="min-height: 60px;"></textarea>
+                        </div>
+
+                        <button class="btn" onclick="generateAdScript()" style="margin-bottom: 16px;">
+                            ✨ Generate Ad Script
+                        </button>
+
+                        <div class="output-area" style="margin-top: 0;">
+                            <div class="output-header">
+                                <span class="output-title">Your Ad Script</span>
+                                <button class="copy-btn" onclick="copyScript()">Copy</button>
+                            </div>
+                            <textarea id="adScript" placeholder="Click 'Generate Ad Script' or write your own script here..." style="width: 100%; min-height: 150px; background: var(--navy); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px; color: var(--cream); font-size: 14px; resize: vertical;"></textarea>
+                        </div>
+
+                        <!-- Recording Section -->
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px; margin-top: 20px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px; font-size: 14px;">🎙️ Record Your Ad</h4>
+                            
+                            <div id="recordingControls" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+                                <button class="btn" id="recordAdBtn" onclick="toggleAdRecording()" style="width: auto; padding: 16px 32px; font-size: 16px;">
+                                    <span id="recordAdIcon">●</span>
+                                    <span id="recordAdText">Record Ad</span>
+                                </button>
+                                <div id="recordingTimer" style="font-size: 24px; font-weight: bold; color: var(--gold); font-family: monospace; display: none;">00:00</div>
+                            </div>
+
+                            <div id="adPlaybackArea" style="display: none;">
+                                <audio id="adPlayback" controls style="width: 100%; margin-bottom: 12px;"></audio>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button class="btn-secondary" onclick="reRecordAd()" style="width: auto; padding: 8px 16px;">🔄 Re-record</button>
+                                    <button class="btn" onclick="downloadAd()" style="width: auto; padding: 8px 20px;">⬇ Download</button>
+                                    <button class="btn-secondary" onclick="saveToLibrary()" style="width: auto; padding: 8px 16px;">💾 Save to Library</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saved Recordings Library -->
+                        <div style="margin-top: 24px;">
+                            <div class="card-header" style="margin-bottom: 12px;">
+                                <span class="card-title">📚 Your Ad Library</span>
+                            </div>
+                            <div id="adLibrary">
+                                <div style="text-align: center; padding: 32px; color: var(--text); font-size: 13px; background: var(--navy); border-radius: 10px;">
+                                    <p>No recordings yet</p>
+                                    <p style="font-size: 11px; margin-top: 4px; opacity: 0.7;">Record your first ad to see it here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Content Section: Create -->
                 <div class="content-section active" id="section-create">
                     <div class="card">
@@ -534,6 +703,123 @@
                                 <p>Your generated content will appear here</p>
                                 <p style="font-size: 12px; margin-top: 8px;">Create content and save to schedule posts</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section: Voiceless Ads -->
+                <div class="content-section" id="section-voiceless">
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">📱 Voiceless Video Ad Generator</span>
+                            <span class="status-badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">High Engagement</span>
+                        </div>
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 20px;">
+                            Create text-overlay video ads that stop the scroll. Perfect for Instagram, TikTok, LinkedIn, and Facebook - where 80% watch with sound OFF.
+                        </p>
+
+                        <div class="form-group">
+                            <label>PROGRAM / PRODUCT</label>
+                            <select id="voicelessProgram">
+                                <option value="lingua">Lingua - Language Learning</option>
+                                <option value="rise">Rise - Confidence Building</option>
+                                <option value="flexnexus">Flex Nexus - Business Communication</option>
+                                <option value="bundle">Complete Bundle</option>
+                                <option value="free">Free Trial / Lead Magnet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>AD LENGTH</label>
+                            <select id="voicelessLength">
+                                <option value="short">5-10 sec (Quick Hook)</option>
+                                <option value="medium" selected>15-30 sec (Story)</option>
+                                <option value="long">30-60 sec (Deep)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>AD PLATFORM</label>
+                            <select id="voicelessPlatform">
+                                <option value="instagram">Instagram Reels/Stories</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="youtube">YouTube Shorts</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>KEY MESSAGE / OFFER</label>
+                            <input type="text" id="voicelessOffer" placeholder="e.g., 30-day guarantee, 50% off first month, Free trial">
+                        </div>
+
+                        <button class="btn" onclick="generateVoicelessAd()" style="margin-bottom: 16px;">
+                            ✨ Generate Voiceless Ad
+                        </button>
+                    </div>
+
+                    <!-- Generated Ad Output -->
+                    <div class="card" id="voicelessOutput" style="display: none;">
+                        <div class="card-header">
+                            <span class="card-title">📋 Your Voiceless Ad Package</span>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">🎬 HOOK (First 2-3 seconds)</h4>
+                            <div id="voicelessHook" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--gold); font-size: 18px; font-weight: 700; text-align: center; border: 2px solid var(--gold);"></div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">📝 SCENE 1 - Text Overlays</h4>
+                            <div id="voicelessScene1" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--text); font-size: 14px;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">📝 SCENE 2 - Text Overlays</h4>
+                            <div id="voicelessScene2" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--text); font-size: 14px;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">📝 SCENE 3 - Text Overlays</h4>
+                            <div id="voicelessScene3" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--text); font-size: 14px;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">💪 CALL TO ACTION</h4>
+                            <div id="voicelessCta" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--success); font-size: 16px; font-weight: 600; text-align: center;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px;">🎨 VISUAL SUGGESTIONS</h4>
+                            <div id="voicelessVisual" style="background: var(--navy); padding: 16px; border-radius: 10px; color: var(--text); font-size: 14px;"></div>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <button class="btn" onclick="copyVoicelessAd('all')">📋 Copy All</button>
+                            <button class="btn-secondary" onclick="downloadVoicelessScript()">⬇ Download Script</button>
+                            <button class="btn-secondary" onclick="saveVoicelessToCalendar()">📅 Save to Calendar</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Templates -->
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">⚡ Quick Templates</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                            <button class="btn-secondary" style="padding: 16px; text-align: left;" onclick="useVoicelessTemplate('problem')">
+                                <div style="font-size: 14px; font-weight: 600;">😤 Problem Agitation</div>
+                                <div style="font-size: 11px; opacity: 0.7; margin-top: 4px;">Show the pain, then the solution</div>
+                            </button>
+                            <button class="btn-secondary" style="padding: 16px; text-align: left;" onclick="useVoicelessTemplate('social')">
+                                <div style="font-size: 14px; font-weight: 600;">👥 Social Proof</div>
+                                <div style="font-size: 11px; opacity: 0.7; margin-top: 4px;">"Join 2,000+ students..."</div>
+                            </button>
+                            <button class="btn-secondary" style="padding: 16px; text-align: left;" onclick="useVoicelessTemplate('transformation')">
+                                <div style="font-size: 14px; font-weight: 600;">🔥 Transformation</div>
+                                <div style="font-size: 11px; opacity: 0.7; margin-top: 4px;">Before → After story</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -667,6 +953,27 @@
                         <div class="form-group">
                             <label>SENDGRID API KEY</label>
                             <input type="password" id="sendgridKey" placeholder="SG.xxxxxxxxxx.xxxxxxxxxx">
+                        </div>
+
+                        <div class="api-status" style="margin-top: 20px;">
+                            <div class="api-dot" id="resembleStatus"></div>
+                            <span>Resemble.ai - Not Connected</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>RESEMBLE API TOKEN</label>
+                            <input type="password" id="resembleKey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxx">
+                            <small style="color: var(--text); font-size: 11px; margin-top: 4px; display: block;">
+                                Get from app.resemble.ai/account/api
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>VOICE UUID (Your Cloned Voice)</label>
+                            <input type="text" id="resembleVoiceId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                            <small style="color: var(--text); font-size: 11px; margin-top: 4px; display: block;">
+                                Find in Voice Cloning section - click on your voice to see UUID
+                            </small>
                         </div>
 
                         <button class="btn" onclick="saveApiSettings()">Save Settings</button>
@@ -828,10 +1135,27 @@ Elevare Team`
         let savedContent = [];
 
         function showSection(section) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('section-' + section).classList.add('active');
-            event.target.classList.add('active');
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(s => s.style.display = 'none');
+            
+            // Remove active from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Show target section
+            const target = document.getElementById('section-' + section);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('active');
+            }
+            
+            // Activate correct tab
+            tabs.forEach(tab => {
+                if (tab.getAttribute('onclick').includes("'" + section + "'")) {
+                    tab.classList.add('active');
+                }
+            });
         }
 
         function generateContent() {
@@ -939,12 +1263,291 @@ Elevare Team`
             alert(`To enable auto-posting:\n\n1. Go to Settings\n2. Add your ${platform.charAt(0).toUpperCase() + platform.slice(1)} API key\n3. Click Connect\n\nFor now, copy the content and post manually!`);
         }
 
+        // Voiceless Video Ad Generator
+        const voicelessAds = {
+            lingua: {
+                short: {
+                    hook: "You studied English for YEARS but can't hold a conversation?",
+                    scenes: [
+                        "Text: 'Tried apps? ✓ Studied textbooks? ✓ Still can't speak? ✓'",
+                        "Text: 'Lingua replaces textbooks with REAL conversations'",
+                        "Text: 'Native tutors. Real fluency. 30-day guarantee.'"
+                    ],
+                    cta: "Link in bio → Start your FREE trial today",
+                    visual: "Person struggling with textbook → Person laughing in conversation → Elevare logo"
+                },
+                medium: {
+                    hook: "What if you could speak English confidently in just 30 days?",
+                    scenes: [
+                        "Text: 'Most apps teach you to PASS tests, not HOLD conversations'",
+                        "Text: 'At Elevare Lingua, native tutors guide you through real conversations'",
+                        "Text: 'No textbooks. No memorization. Just results.'",
+                        "Text: 'Join thousands who've transformed their communication'"
+                    ],
+                    cta: "Comment 'FLUENT' → I'll send you a free strategy call",
+                    visual: "Clock showing time passing → Two people having animated conversation → Student testimonials"
+                },
+                long: {
+                    hook: "I wasted 5 years learning English wrong. Don't make my mistake.",
+                    scenes: [
+                        "Text: 'I studied grammar rules. Memorized vocabulary. Watched videos.'",
+                        "Text: 'But when someone asked me a question... silence.'",
+                        "Text: 'Then I discovered Elevare Lingua.'",
+                        "Text: 'Personalized coaching. Real conversations. Native tutors.'",
+                        "Text: 'In 30 days, I was communicating with confidence.'",
+                        "Text: 'Now it's YOUR turn. 30-day guarantee.'",
+                        "Text: 'Limited spots. 15 tutors. 15 languages.'"
+                    ],
+                    cta: "Tap the link → Book your FREE consultation",
+                    visual: "Journey montage: confused → learning → confident → celebrating"
+                }
+            },
+            rise: {
+                short: {
+                    hook: "You have great ideas. But anxiety steals your voice.",
+                    scenes: [
+                        "Text: 'Sound familiar? Speaking up in meetings... panic.'",
+                        "Text: 'Presenting to clients... panic.'",
+                        "Text: 'Rise by Elevare addresses what's REALLY holding you back.'"
+                    ],
+                    cta: "Link in bio → Start your confidence journey",
+                    visual: "Person with mouth taped shut → Speaking confidently → Group cheering"
+                },
+                medium: {
+                    hook: "What if you could speak up without your anxiety winning?",
+                    scenes: [
+                        "Text: 'Your ideas MATTER. But anxiety says otherwise.'",
+                        "Text: 'Rise uses mental-health-informed coaching to break through.'",
+                        "Text: 'Not just techniques. Understanding WHY you\'re stuck.'",
+                        "Text: 'Build unshakeable confidence in 30 days. Guaranteed.'"
+                    ],
+                    cta: "Comment 'BRAVE' → Get a free confidence assessment",
+                    visual: "Person hands shaking → Presenting boldly → Standing ovation"
+                },
+                long: {
+                    hook: "For 10 years I stayed silent. Then I found Rise.",
+                    scenes: [
+                        "Text: 'I had the knowledge. The skills. The ideas.'",
+                        "Text: 'But every time I tried to speak up... my mind went blank.'",
+                        "Text: 'I thought I was broken.'",
+                        "Text: 'Then I discovered Rise by Elevare.'",
+                        "Text: 'They didn\'t just teach me to speak. They helped me understand WHY.'",
+                        "Text: 'Now I lead meetings. Present to executives. Advocate for my team.'",
+                        "Text: 'You can do this too. 30-day guarantee.'"
+                    ],
+                    cta: "Tap the link → Book your FREE confidence consultation",
+                    visual: "Journey: silent bystander → small voice → confident leader"
+                }
+            },
+            flexnexus: {
+                short: {
+                    hook: "Technical skills got you hired. Communication skills get you promoted.",
+                    scenes: [
+                        "Text: 'You crushed the interview. Nailed the job. But plateaued?'",
+                        "Text: 'Flex Nexus builds your executive presence and professional communication.'",
+                    ],
+                    cta: "Link in bio → Transform your career",
+                    visual: "Suit closet → Boardroom presentation → Promotion celebration"
+                },
+                medium: {
+                    hook: "Why do some professionals climb faster? It's not what you know.",
+                    scenes: [
+                        "Text: 'Technical skills get you in the door.'",
+                        "Text: 'Communication skills get you to the top.'",
+                        "Text: 'Flex Nexus: 12-week intensive in executive presence, leadership, negotiation.'",
+                        "Text: 'Industry experts. Real-world skills. Measurable results.'"
+                    ],
+                    cta: "Comment 'LEAD' → Get our free career growth guide",
+                    visual: "Technical work → Leadership meeting → Team addressing CEO"
+                },
+                long: {
+                    hook: "I had the skills for the job. But I was passed over for promotion. Again.",
+                    scenes: [
+                        "Text: 'I was technically excellent. But professionally... invisible.'",
+                        "Text: 'Then I joined Flex Nexus.'",
+                        "Text: 'Executive presence training. Professional communication. Leadership skills.',",
+                        "Text: '12 weeks that transformed how people see me.'",
+                        "Text: 'Now I present to C-suite. Lead teams. Negotiate deals.'",
+                        "Text: 'Your career deserves this investment.'"
+                    ],
+                    cta: "Tap link → Apply for Flex Nexus (limited spots)",
+                    visual: "Passed over for promotion → Training sessions → Leading board meeting"
+                }
+            },
+            bundle: {
+                short: {
+                    hook: "One subscription. Complete communication transformation.",
+                    scenes: [
+                        "Text: 'Lingua (language) + Rise (confidence) + Flex Nexus (leadership)'",
+                        "Text: '$99/month. Complete bundle. Everything you need.'
+                    ],
+                    cta: "Link in bio → Start your Complete Bundle",
+                    visual: "Three program icons merging into one shield"
+                }
+            },
+            free: {
+                short: {
+                    hook: "Your transformation starts with a FREE session.",
+                    scenes: [
+                        "Text: 'No credit card. No commitment. Just you and a coach.',
+                        "Text: 'Book your free consultation at elevare.work'
+                    ],
+                    cta: "Link in bio → Book your FREE session",
+                    visual: "Calendar open → Happy coaching session → Transformation beginning"
+                }
+            }
+        };
+
+        function generateVoicelessAd() {
+            const program = document.getElementById('voicelessProgram').value;
+            const length = document.getElementById('voicelessLength').value;
+            const platform = document.getElementById('voicelessPlatform').value;
+            const offer = document.getElementById('voicelessOffer').value;
+
+            const adData = voicelessAds[program]?.[length] || voicelessAds[program]?.short || voicelessAds.lingua.short;
+
+            let hook = adData.hook;
+            let cta = adData.cta;
+
+            if (offer) {
+                hook = hook.replace(/[\.\!]$/, ', ') + offer + '.';
+                cta = 'Link in bio → ' + offer;
+            }
+
+            // Adjust for platform
+            let platformNote = '';
+            if (platform === 'instagram' || platform === 'tiktok') {
+                platformNote = '\n\n📱 ' + platform.charAt(0).toUpperCase() + platform.slice(1) + ' tip: Use bold text, high contrast, and fast cuts.';
+            } else if (platform === 'linkedin') {
+                platformNote = '\n\n💼 LinkedIn tip: Keep it professional, use subtle animations.';
+            }
+
+            document.getElementById('voicelessHook').textContent = hook;
+            document.getElementById('voicelessScene1').textContent = adData.scenes[0] + platformNote;
+            document.getElementById('voicelessScene2').textContent = adData.scenes[1] || adData.scenes[0];
+            document.getElementById('voicelessScene3').textContent = adData.scenes[2] || adData.scenes[0];
+            document.getElementById('voicelessCta').textContent = cta;
+            document.getElementById('voicelessVisual').textContent = adData.visual;
+
+            document.getElementById('voicelessOutput').style.display = 'block';
+        }
+
+        function useVoicelessTemplate(type) {
+            const templates = {
+                problem: {
+                    hook: "STOP scrolling if you've ever felt this way...",
+                    scenes: [
+                        "Text: [Show the PROBLEM painfully - e.g., 'You nod along in meetings even though you have NO idea what's happening']",
+                        "Text: '[Escalate - e.g., 'Your ideas get silenced because you can't articulate under pressure']",
+                        "Text: '[Solution reveal - e.g., 'But what if you could speak with CONFIDENCE?']"
+                    ],
+                    cta: "Save this. Share with someone who needs this. Comment 'HELP' →",
+                    visual: "Close-up stressed face → Person in professional setting → Transformation"
+                },
+                social: {
+                    hook: "2,000+ students transformed. This could be you.",
+                    scenes: [
+                        "Text: 'RESULTS that speak: [Insert 1-2 powerful testimonials or stats]",
+                        "Text: 'Real people. Real transformations. Real communication skills.',
+                        "Text: 'Your turn is coming. Limited spots available.'
+                    ],
+                    cta: "Join them → Link in bio",
+                    visual: "Student success montage → Multiple testimonials → Enrollment CTA"
+                },
+                transformation: {
+                    hook: "Before Elevare. After Elevare. Your transformation.",
+                    scenes: [
+                        "Text: 'BEFORE: [Show the struggle - hesitation, doubt, silence]',
+                        "Text: 'DURING: [Show the journey - coaching, practice, breakthrough']",
+                        "Text: 'AFTER: [Show the result - confident, articulate, promoted/achieved]'"
+                    ],
+                    cta: "Your transformation starts today. Link in bio →",
+                    visual: "Split screen: before/after transformation montage"
+                }
+            };
+
+            const t = templates[type];
+            document.getElementById('voicelessHook').textContent = t.hook;
+            document.getElementById('voicelessScene1').textContent = t.scenes[0];
+            document.getElementById('voicelessScene2').textContent = t.scenes[1];
+            document.getElementById('voicelessScene3').textContent = t.scenes[2];
+            document.getElementById('voicelessCta').textContent = t.cta;
+            document.getElementById('voicelessVisual').textContent = t.visual;
+
+            document.getElementById('voicelessOutput').style.display = 'block';
+        }
+
+        function copyVoicelessAd(scope) {
+            let text = '';
+            
+            if (scope === 'all' || scope === 'hook') {
+                text += '🎬 HOOK:\n' + document.getElementById('voicelessHook').textContent + '\n\n';
+            }
+            if (scope === 'all' || scope === 'scenes') {
+                text += '📝 SCENES:\n';
+                text += 'Scene 1: ' + document.getElementById('voicelessScene1').textContent + '\n\n';
+                text += 'Scene 2: ' + document.getElementById('voicelessScene2').textContent + '\n\n';
+                text += 'Scene 3: ' + document.getElementById('voicelessScene3').textContent + '\n\n';
+            }
+            if (scope === 'all' || scope === 'cta') {
+                text += '💪 CALL TO ACTION:\n' + document.getElementById('voicelessCta').textContent + '\n\n';
+            }
+            if (scope === 'all') {
+                text += '🎨 VISUALS:\n' + document.getElementById('voicelessVisual').textContent;
+            }
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+
+        function downloadVoicelessScript() {
+            const content = `
+🎬 VOICELESS VIDEO AD SCRIPT
+=============================
+
+🎬 HOOK:
+${document.getElementById('voicelessHook').textContent}
+
+📝 SCENE 1:
+${document.getElementById('voicelessScene1').textContent}
+
+📝 SCENE 2:
+${document.getElementById('voicelessScene2').textContent}
+
+📝 SCENE 3:
+${document.getElementById('voicelessScene3').textContent}
+
+💪 CALL TO ACTION:
+${document.getElementById('voicelessCta').textContent}
+
+🎨 VISUAL SUGGESTIONS:
+${document.getElementById('voicelessVisual').textContent}
+
+=============================
+Generated by Elevare Marketing Agent
+            `;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `elevare-voiceless-ad-${Date.now()}.txt`;
+            a.click();
+        }
+
+        function saveVoicelessToCalendar() {
+            alert('Ad saved to calendar! (Feature coming soon - for now, use the Download option)');
+        }
+
         function saveApiSettings() {
             const settings = {
                 mailchimpKey: document.getElementById('mailchimpKey').value,
                 mailchimpAudience: document.getElementById('mailchimpAudience').value,
                 bufferToken: document.getElementById('bufferToken').value,
-                sendgridKey: document.getElementById('sendgridKey').value
+                sendgridKey: document.getElementById('sendgridKey').value,
+                resembleKey: document.getElementById('resembleKey').value,
+                resembleVoiceId: document.getElementById('resembleVoiceId').value
             };
 
             localStorage.setItem('elevare_marketing_api', JSON.stringify(settings));
@@ -953,6 +1556,13 @@ Elevare Team`
             if (settings.mailchimpKey) document.getElementById('mailchimpStatus').classList.add('connected');
             if (settings.bufferToken) document.getElementById('bufferStatus').classList.add('connected');
             if (settings.sendgridKey) document.getElementById('sendgridStatus').classList.add('connected');
+            if (settings.resembleKey) document.getElementById('resembleStatus').classList.add('connected');
+
+            // Update voice status badge
+            if (settings.resembleKey) {
+                document.getElementById('voiceStatus').textContent = 'Ready';
+                document.getElementById('voiceStatus').style.background = 'rgba(34, 197, 94, 0.2)';
+            }
 
             alert('API settings saved!');
         }
@@ -966,6 +1576,435 @@ Elevare Team`
 
             localStorage.setItem('elevare_brand', JSON.stringify(brand));
             alert('Brand settings saved!');
+        }
+
+        // Voice Studio Functions - Record your own voice for ads
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecordingSample = false;
+        let isRecordingAd = false;
+        let voiceSampleBlob = null;
+        let voiceSampleUrl = null;
+        let currentAdBlob = null;
+        let currentAdUrl = null;
+        let recordingTimer = null;
+        let recordingSeconds = 0;
+        let adLibrary = [];
+
+        const adScripts = {
+            lingua: {
+                short: "Ready to speak English confidently? At Elevare, we help you achieve real fluency through personalized coaching. No textbooks. Just real conversations. Try it free today!",
+                medium: "Are you tired of studying English but still can't speak confidently? At Elevare, our native tutors help you achieve real fluency in just 30 days. We don't just teach grammar. We build real communication skills through personalized coaching that adapts to your style. Join thousands who've transformed their communication. Start your free trial today at elevare.work",
+                long: "Are you tired of studying English but still can't speak confidently? At Elevare, our native tutors help you achieve real fluency in just 30 days. We don't just teach grammar rules and vocabulary lists. We build real communication skills through personalized coaching that adapts to your unique learning style. Whether you're learning for business, travel, or personal growth, our mental-health-informed approach ensures you feel supported every step of the way. We offer flexible options: pay as you go at just $15 per hour, or our membership at $79 per month for 4 sessions plus exclusive resources. Join thousands who've transformed how they communicate. Your fluency journey starts with one conversation. Visit elevare.work today!"
+            },
+            rise: {
+                short: "You deserve to be heard. If anxiety has held you back from speaking up, Rise by Elevare can help. Build unshakeable confidence in just 30 days. Your voice matters.",
+                medium: "Do you have valuable ideas but anxiety stops you from sharing them? You deserve to be heard. Rise by Elevare addresses what's really holding you back. Our mental-health-informed coaching combines mindset work with practical communication techniques. We've helped professionals just like you break through their barriers and communicate with confidence. Results in 30 days, guaranteed. Join our community starting at just $39 per month for group sessions and exclusive support. Your voice matters. Let us help you find it.",
+                long: "Do you have valuable ideas but anxiety stops you from sharing them? You deserve to be heard. Rise by Elevare addresses what's really holding you back. Our mental-health-informed coaching combines mindset work with practical communication techniques. Unlike traditional coaching, we help you understand WHY you're stuck and HOW to move forward. We've helped professionals just like you break through their barriers and communicate with genuine confidence. Whether it's speaking up in meetings, presenting to clients, or everyday conversations, Rise gives you the tools to own your voice. Results in 30 days, guaranteed. Choose your path: $75 for a single session, or $39 per month for group sessions plus our supportive community. Your transformation starts today. Visit elevare.work and take the first step."
+            },
+            flexnexus: {
+                short: "Technical skills got you the interview. Communication skills get you the promotion. Flex Nexus by Elevare gives you executive presence. 12-week intensive. Transform your career.",
+                medium: "Technical skills got you the interview. But communication skills get you the promotion. Flex Nexus by Elevare bridges language learning with executive presence training. Learn to lead meetings, land deals, and present with authority. Our 12-week intensive program gives you industry-expert coaching, real-world skills, and measurable results. Small cohorts ensure personalized feedback. Limited spots available. Invest in yourself today at elevare.work",
+                long: "Technical skills got you the interview. But communication skills get you the promotion. Flex Nexus by Elevare bridges language learning with executive presence training. You bring the expertise. We'll help you communicate it with power and authority. In this comprehensive 12-week program, you'll master professional communication, executive presence, and leadership skills. Our industry-expert coaches have been where you want to go. They'll give you real-world skills, not textbook theories. Small cohort sizes ensure you get personalized feedback on every presentation, every pitch, every conversation. You'll learn to command rooms, deliver compelling presentations, and negotiate with authority. The investment in yourself pays for itself with your next promotion or deal closed. 12-week intensive. Limited spots to maintain quality. Results that transform your career trajectory. Ready to elevate your professional communication? Visit elevare.work to learn more."
+            },
+            general: {
+                short: "Transform how you communicate with Elevare. Language, confidence, and professional skills - all in one place. Start your journey today at elevare.work",
+                medium: "Transform how you communicate with Elevare. We combine language learning, confidence building, and professional communication coaching into one powerful program. Whether you're learning a new language, overcoming speaking anxiety, or developing executive presence, Elevare meets you where you are. Our mental-health-informed approach ensures you feel supported as you grow. Join our community of learners who've discovered their voice. Start your journey today at elevare.work",
+                long: "Transform how you communicate with Elevare. We combine language learning, confidence building, and professional communication coaching into one powerful, integrated program. At Elevare, we believe communication is the skill that unlocks every other skill. Whether you're learning a new language, overcoming speaking anxiety, or developing executive presence for your career, Elevare meets you where you are and walks with you to where you want to be. Our unique approach is mental-health-informed. We don't just teach techniques. We help you understand and overcome what's really holding you back. Our community of learners supports each other through every breakthrough and setback. Three programs, one mission: to help you find and use your voice. Lingua for language, Rise for confidence, Flex Nexus for professional communication. Your transformation starts today at elevare.work"
+            }
+        };
+
+        async function toggleVoiceSample() {
+            if (!isRecordingSample) {
+                try {
+                    // First check what mime types are supported
+                    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') 
+                        ? 'audio/webm;codecs=opus' 
+                        : MediaRecorder.isTypeSupported('audio/webm')
+                            ? 'audio/webm'
+                            : 'audio/mp4';
+
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            echoCancellation: false,
+                            noiseSuppression: false,
+                            autoGainControl: false,
+                            sampleRate: 48000,
+                            channelCount: 2
+                        }
+                    });
+                    
+                    // Higher quality settings - 128kbps bitrate
+                    const options = { mimeType };
+                    try {
+                        const testRecorder = new MediaRecorder(stream, options);
+                        // Check if this actually works
+                        if (testRecorder.mimeType) {
+                            options.audioBitsPerSecond = 128000;
+                        }
+                    } catch (e) {
+                        console.log('Using default options');
+                    }
+                    
+                    mediaRecorder = new MediaRecorder(stream, options);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = (e) => {
+                        if (e.data.size > 0) {
+                            audioChunks.push(e.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const blob = new Blob(audioChunks, { type: mimeType });
+                        voiceSampleBlob = blob;
+                        voiceSampleUrl = URL.createObjectURL(blob);
+                        
+                        document.getElementById('samplePlayback').src = voiceSampleUrl;
+                        document.getElementById('samplePlayback').style.display = 'block';
+                        document.getElementById('saveSampleBtn').style.display = 'block';
+                        document.getElementById('sampleStatus').textContent = `Sample recorded! File size: ${(blob.size / 1024).toFixed(1)}KB - Higher quality mode`;
+                        
+                        stream.getTracks().forEach(track => track.stop());
+                    };
+
+                    mediaRecorder.start(100); // Collect data every 100ms for better quality
+                    isRecordingSample = true;
+                    document.getElementById('recordSampleIcon').classList.add('recording-indicator');
+                    document.getElementById('recordSampleText').textContent = 'Recording...';
+                    document.getElementById('recordSampleBtn').classList.add('recording');
+                    
+                } catch (err) {
+                    alert('Please allow microphone access to record your voice sample.');
+                    console.error(err);
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecordingSample = false;
+                document.getElementById('recordSampleIcon').classList.remove('recording-indicator');
+                document.getElementById('recordSampleText').textContent = 'Record Sample';
+                document.getElementById('recordSampleBtn').classList.remove('recording');
+            }
+        }
+
+        function saveVoiceSample() {
+            if (!voiceSampleBlob) return;
+            
+            localStorage.setItem('elevare_voice_sample', JSON.stringify({
+                timestamp: Date.now(),
+                duration: 'unknown'
+            }));
+            
+            // Save blob as base64 would be too large, so we keep it in memory
+            document.getElementById('sampleStatus').textContent = 'Voice sample saved! It will be available during this session.';
+            document.getElementById('saveSampleBtn').style.display = 'none';
+        }
+
+        function generateAdScript() {
+            const program = document.getElementById('adProgram').value;
+            const length = document.getElementById('adLength').value;
+            const notes = document.getElementById('adNotes').value;
+            
+            let script = adScripts[program][length];
+            
+            if (notes.trim()) {
+                script += '\n\nNote: ' + notes;
+            }
+            
+            document.getElementById('adScript').value = script;
+        }
+
+        function copyScript() {
+            const script = document.getElementById('adScript').value;
+            navigator.clipboard.writeText(script).then(() => {
+                alert('Script copied to clipboard!');
+            });
+        }
+
+async function toggleAdRecording() {
+            if (!isRecordingAd) {
+                // Check if we have a script
+                const script = document.getElementById('adScript').value.trim();
+                if (!script) {
+                    alert('Please generate or write an ad script first!');
+                    return;
+                }
+                
+                try {
+                    // First check what mime types are supported
+                    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') 
+                        ? 'audio/webm;codecs=opus' 
+                        : MediaRecorder.isTypeSupported('audio/webm')
+                            ? 'audio/webm'
+                            : 'audio/mp4';
+
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            echoCancellation: false,
+                            noiseSuppression: false,
+                            autoGainControl: false,
+                            sampleRate: 48000,
+                            channelCount: 2
+                        }
+                    });
+                    
+                    // Higher quality settings - 128kbps bitrate
+                    const options = { mimeType };
+                    try {
+                        const testRecorder = new MediaRecorder(stream, options);
+                        if (testRecorder.mimeType) {
+                            options.audioBitsPerSecond = 128000;
+                        }
+                    } catch (e) {
+                        console.log('Using default options');
+                    }
+                    
+                    mediaRecorder = new MediaRecorder(stream, options);
+                    audioChunks = [];
+                    recordingSeconds = 0;
+
+                    mediaRecorder.ondataavailable = (e) => {
+                        if (e.data.size > 0) {
+                            audioChunks.push(e.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const blob = new Blob(audioChunks, { type: mimeType });
+                        currentAdBlob = blob;
+                        currentAdUrl = URL.createObjectURL(blob);
+                        
+                        document.getElementById('adPlayback').src = currentAdUrl;
+                        document.getElementById('adPlaybackArea').style.display = 'block';
+                        
+                        stream.getTracks().forEach(track => track.stop());
+                        
+                        if (recordingTimer) {
+                            clearInterval(recordingTimer);
+                            recordingTimer = null;
+                        }
+                    };
+
+                    mediaRecorder.start(100);
+                    isRecordingAd = true;
+                    document.getElementById('recordAdIcon').textContent = '■';
+                    document.getElementById('recordAdIcon').style.color = '#ef4444';
+                    document.getElementById('recordAdText').textContent = 'Stop';
+                    document.getElementById('recordAdBtn').classList.add('recording');
+                    document.getElementById('recordingTimer').style.display = 'block';
+                    
+                    recordingTimer = setInterval(() => {
+                        recordingSeconds++;
+                        const mins = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
+                        const secs = (recordingSeconds % 60).toString().padStart(2, '0');
+                        document.getElementById('recordingTimer').textContent = `${mins}:${secs}`;
+                    }, 1000);
+                    
+                } catch (err) {
+                    alert('Please allow microphone access to record your ad.');
+                    console.error(err);
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecordingAd = false;
+                document.getElementById('recordAdIcon').textContent = '●';
+                document.getElementById('recordAdIcon').style.color = 'var(--gold)';
+                document.getElementById('recordAdText').textContent = 'Record Ad';
+                document.getElementById('recordAdBtn').classList.remove('recording');
+            }
+        }
+                
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            echoCancellation: false,
+                            noiseSuppression: false,
+                            autoGainControl: true,
+                            sampleRate: 44100,
+                            channelCount: 1
+                        }
+                    });
+                    mediaRecorder = new MediaRecorder(stream, {
+                        mimeType: 'audio/webm;codecs=opus'
+                    });
+                    audioChunks = [];
+                    recordingSeconds = 0;
+
+                    mediaRecorder.ondataavailable = (e) => {
+                        audioChunks.push(e.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                        currentAdBlob = blob;
+                        currentAdUrl = URL.createObjectURL(blob);
+                        
+                        document.getElementById('adPlayback').src = currentAdUrl;
+                        document.getElementById('adPlaybackArea').style.display = 'block';
+                        
+                        stream.getTracks().forEach(track => track.stop());
+                        
+                        if (recordingTimer) {
+                            clearInterval(recordingTimer);
+                            recordingTimer = null;
+                        }
+                    };
+
+                    mediaRecorder.start();
+                    isRecordingAd = true;
+                    document.getElementById('recordAdIcon').textContent = '■';
+                    document.getElementById('recordAdIcon').style.color = '#ef4444';
+                    document.getElementById('recordAdText').textContent = 'Stop';
+                    document.getElementById('recordAdBtn').classList.add('recording');
+                    document.getElementById('recordingTimer').style.display = 'block';
+                    
+                    recordingTimer = setInterval(() => {
+                        recordingSeconds++;
+                        const mins = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
+                        const secs = (recordingSeconds % 60).toString().padStart(2, '0');
+                        document.getElementById('recordingTimer').textContent = `${mins}:${secs}`;
+                    }, 1000);
+                    
+                } catch (err) {
+                    // Fallback to default if high quality fails
+                    try {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        mediaRecorder = new MediaRecorder(stream);
+                        audioChunks = [];
+                        recordingSeconds = 0;
+
+                        mediaRecorder.ondataavailable = (e) => {
+                            audioChunks.push(e.data);
+                        };
+
+                        mediaRecorder.onstop = () => {
+                            const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                            currentAdBlob = blob;
+                            currentAdUrl = URL.createObjectURL(blob);
+                            
+                            document.getElementById('adPlayback').src = currentAdUrl;
+                            document.getElementById('adPlaybackArea').style.display = 'block';
+                            
+                            stream.getTracks().forEach(track => track.stop());
+                            
+                            if (recordingTimer) {
+                                clearInterval(recordingTimer);
+                                recordingTimer = null;
+                            }
+                        };
+
+                        mediaRecorder.start();
+                        isRecordingAd = true;
+                        document.getElementById('recordAdIcon').textContent = '■';
+                        document.getElementById('recordAdIcon').style.color = '#ef4444';
+                        document.getElementById('recordAdText').textContent = 'Stop';
+                        document.getElementById('recordAdBtn').classList.add('recording');
+                        document.getElementById('recordingTimer').style.display = 'block';
+                        
+                        recordingTimer = setInterval(() => {
+                            recordingSeconds++;
+                            const mins = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
+                            const secs = (recordingSeconds % 60).toString().padStart(2, '0');
+                            document.getElementById('recordingTimer').textContent = `${mins}:${secs}`;
+                        }, 1000);
+                    } catch (fallbackErr) {
+                        alert('Please allow microphone access to record your ad.');
+                        console.error(fallbackErr);
+                    }
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecordingAd = false;
+                document.getElementById('recordAdIcon').textContent = '●';
+                document.getElementById('recordAdIcon').style.color = 'var(--gold)';
+                document.getElementById('recordAdText').textContent = 'Record Ad';
+                document.getElementById('recordAdBtn').classList.remove('recording');
+            }
+        }
+
+        function reRecordAd() {
+            document.getElementById('adPlaybackArea').style.display = 'none';
+            currentAdBlob = null;
+            currentAdUrl = null;
+        }
+
+        function downloadAd() {
+            if (!currentAdBlob) return;
+            
+            const script = document.getElementById('adScript').value;
+            const program = document.getElementById('adProgram').value;
+            const timestamp = new Date().toISOString().slice(0, 10);
+            
+            const a = document.createElement('a');
+            a.href = currentAdUrl;
+            a.download = `elevare-${program}-ad-${timestamp}.webm`;
+            a.click();
+        }
+
+        function saveToLibrary() {
+            if (!currentAdBlob) return;
+            
+            const script = document.getElementById('adScript').value;
+            const program = document.getElementById('adProgram').value;
+            
+            const ad = {
+                id: Date.now(),
+                program: program,
+                script: script.substring(0, 50) + '...',
+                scriptFull: script,
+                blob: currentAdBlob,
+                url: currentAdUrl,
+                timestamp: new Date().toLocaleString(),
+                duration: recordingSeconds
+            };
+            
+            adLibrary.push(ad);
+            renderAdLibrary();
+            
+            alert('Ad saved to your library!');
+        }
+
+        function renderAdLibrary() {
+            const library = document.getElementById('adLibrary');
+            
+            if (adLibrary.length === 0) {
+                library.innerHTML = `
+                    <div style="text-align: center; padding: 32px; color: var(--text); font-size: 13px; background: var(--navy); border-radius: 10px;">
+                        <p>No recordings yet</p>
+                        <p style="font-size: 11px; margin-top: 4px; opacity: 0.7;">Record your first ad to see it here</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            library.innerHTML = adLibrary.map(ad => `
+                <div class="library-item">
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: var(--gold); margin-bottom: 4px;">${ad.program.toUpperCase()} - ${ad.timestamp}</div>
+                        <div style="font-size: 13px; color: var(--cream); margin-bottom: 8px;">${ad.script}</div>
+                        <audio src="${ad.url}" controls style="width: 100%; height: 40px;"></audio>
+                    </div>
+                    <div class="library-item-actions">
+                        <button onclick="downloadLibraryAd(${ad.id})">⬇</button>
+                        <button onclick="deleteLibraryAd(${ad.id})">🗑</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function downloadLibraryAd(id) {
+            const ad = adLibrary.find(a => a.id === id);
+            if (!ad) return;
+            
+            const a = document.createElement('a');
+            a.href = ad.url;
+            a.download = `elevare-${ad.program}-ad-${Date.now()}.webm`;
+            a.click();
+        }
+
+        function deleteLibraryAd(id) {
+            adLibrary = adLibrary.filter(a => a.id !== id);
+            renderAdLibrary();
         }
 
         function renderCalendar() {
@@ -1002,6 +2041,7 @@ Elevare Team`
         // Load saved settings on page load
         window.onload = function() {
             renderCalendar();
+            renderAdLibrary();
 
             const savedApi = localStorage.getItem('elevare_marketing_api');
             if (savedApi) {

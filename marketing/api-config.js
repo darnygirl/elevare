@@ -20,6 +20,27 @@ const API_KEYS = {
         apiKey: 'YOUR_SENDGRID_API_KEY',
         fromEmail: 'hello@elevare.work',
         fromName: 'Elevare'
+    },
+
+    // ElevenLabs API - https://elevenlabs.io/docs/api-reference
+    elevenlabs: {
+        apiKey: 'YOUR_ELEVENLABS_API_KEY', // Get from elevenlabs.io/profile/api-key
+        voiceId: 'YOUR_VOICE_ID', // Get from your cloned voice settings
+        model: 'eleven_monolingual_v1' // Audio model
+    },
+
+    // Play.ht API - https://play.ht/docs/api
+    playht: {
+        apiKey: 'YOUR_PLAYHT_API_KEY', // Get from play.ht/api
+        userId: 'YOUR_PLAYHT_USER_ID', // Get from play.ht/api
+        voiceId: 'YOUR_CLONED_VOICE_ID' // Get from voice cloning section
+    },
+
+    // Resemble.ai API - https://docs.resemble.ai
+    resemble: {
+        apiKey: 'YOUR_RESEMBLE_API_TOKEN', // Get from app.resemble.ai/account/api
+        voiceId: 'YOUR_VOICE_UUID', // Get from voice cloning section
+        model: 'chatterbox-turbo' // Use turbo model for better quality
     }
 };
 
@@ -63,6 +84,172 @@ class MarketingAgent {
         this.mailchimp = apiKeys.mailchimp;
         this.buffer = apiKeys.buffer;
         this.sendgrid = apiKeys.sendgrid;
+        this.elevenlabs = apiKeys.elevenlabs;
+        this.resemble = apiKeys.resemble;
+    }
+
+    // Resemble.ai Voice Cloning functions
+    async generateVoiceoverResemble(text, options = {}) {
+        if (!this.resemble.apiKey || this.resemble.apiKey === 'YOUR_RESEMBLE_API_TOKEN') {
+            return { error: 'Resemble not configured' };
+        }
+
+        const voiceId = options.voiceId || this.resemble.voiceId;
+        const model = options.model || this.resemble.model;
+
+        const response = await fetch('https://f.cluster.resemble.ai/synthesize', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${this.resemble.apiKey}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                voice_uuid: voiceId,
+                data: text,
+                model: model,
+                output_format: 'mp3'
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            return { error: error.message || 'Voice generation failed' };
+        }
+
+        const result = await response.json();
+        
+        if (!result.success) {
+            return { error: result.error || 'Voice generation failed' };
+        }
+
+        // Convert base64 to blob
+        const audioData = atob(result.audio_content);
+        const audioArray = new Uint8Array(audioData.length);
+        for (let i = 0; i < audioData.length; i++) {
+            audioArray[i] = audioData.charCodeAt(i);
+        }
+        const audioBlob = new Blob([audioArray], { type: 'audio/mp3' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        return { 
+            success: true, 
+            audioUrl: audioUrl,
+            audioBlob: audioBlob,
+            duration: result.duration
+        };
+    }
+
+    async getResembleVoices() {
+        const response = await fetch('https://f.cluster.resemble.ai/voices', {
+            headers: {
+                'Authorization': `Bearer ${this.resemble.apiKey}`
+            }
+        });
+        return await response.json();
+    }
+
+    // ElevenLabs Voice Cloning functions
+    async generateVoiceover(text, options = {}) {
+        if (!this.elevenlabs.apiKey || this.elevenlabs.apiKey === 'YOUR_ELEVENLABS_API_KEY') {
+            return { error: 'ElevenLabs not configured' };
+        }
+
+        const voiceId = options.voiceId || this.elevenlabs.voiceId;
+        const model = options.model || this.elevenlabs.model;
+        const stability = options.stability || 0.5;
+        const similarityBoost = options.similarityBoost || 0.75;
+
+        const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'audio/mpeg',
+                'Content-Type': 'application/json',
+                'xi-api-key': this.elevenlabs.apiKey
+            },
+            body: JSON.stringify({
+                text: text,
+                model_id: model,
+                voice_settings: {
+                    stability: stability,
+                    similarity_boost: similarityBoost
+                }
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            return { error: error.detail || 'Voice generation failed' };
+        }
+
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        return { 
+            success: true, 
+            audioUrl: audioUrl,
+            audioBlob: audioBlob
+        };
+    }
+
+    async getVoiceoverHistory() {
+        if (!this.elevenlabs.apiKey) {
+            return { error: 'ElevenLabs not configured' };
+        }
+
+        const response = await fetch('https://api.elevenlabs.io/v1/history', {
+            headers: {
+                'xi-api-key': this.elevenlabs.apiKey
+            }
+        });
+
+        return await response.json();
+    }
+
+    // Play.ht Voice Cloning functions
+    async generateVoiceoverPlayht(text, options = {}) {
+        if (!this.playht.apiKey || this.playht.apiKey === 'YOUR_PLAYHT_API_KEY') {
+            return { error: 'Play.ht not configured' };
+        }
+
+        const voiceId = options.voiceId || this.playht.voiceId;
+        const voiceEngine = options.voiceEngine || 'PlayHT2.0';
+
+        const response = await fetch('https://api.play.ht/api/v2/tts', {
+            method: 'POST',
+            headers: {
+                'Accept': 'audio/mpeg',
+                'Content-Type': 'application/json',
+                'X-API-Key': this.playht.apiKey,
+                'X-User-Id': this.playht.userId
+            },
+            body: JSON.stringify({
+                text: text,
+                voice: voiceId,
+                voice_engine: voiceEngine
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            return { error: error.message || 'Voice generation failed' };
+        }
+
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        return { 
+            success: true, 
+            audioUrl: audioUrl,
+            audioBlob: audioBlob
+        };
+    }
+
+    async getPlayhtVoices() {
+        const response = await fetch('https://api.play.ht/api/v2/voices', {
+            headers: {
+                'X-API-Key': this.playht.apiKey,
+                'X-User-Id': this.playht.userId
+            }
+        });
+        return await response.json();
     }
 
     // Mailchimp functions

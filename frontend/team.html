@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Elevare</title>
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --cream: #faf8f5;
+            --text: #e0e1dd;
+            --success: #22c55e;
+            --lingua: #3b82f6;
+            --rise: #f59e0b;
+            --flexnexus: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 24px;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--cream);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .nav-logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            color: var(--cream);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .hero h1 span { color: var(--gold); }
+
+        .hero .tagline {
+            color: var(--text);
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: var(--cream);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .section-title svg { color: var(--gold); }
+
+        .section-desc {
+            color: var(--text);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Org Chart Section */
+        .org-section {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .level {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .level-connector {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+            position: relative;
+        }
+
+        .level-connector::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            width: 220px;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.15);
+        }
+
+        .card.founder {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(201, 162, 39, 0.15) 100%);
+            width: 260px;
+        }
+
+        .card.lingua { border-color: var(--lingua); }
+        .card.rise { border-color: var(--rise); }
+        .card.flexnexus { border-color: var(--flexnexus); }
+        .card.admin { border-color: var(--success); }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            opacity: 0.3;
+        }
+
+        .founder .avatar { 
+            background: linear-gradient(135deg, var(--gold), var(--gold-light)); 
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+        }
+
+        .lingua .avatar { background: linear-gradient(135deg, var(--lingua), #60a5fa); }
+        .rise .avatar { background: linear-gradient(135deg, var(--rise), #fbbf24); }
+        .flexnexus .avatar { background: linear-gradient(135deg, var(--flexnexus), #a78bfa); }
+        .admin .avatar { background: linear-gradient(135deg, var(--success), #4ade80); }
+
+        .card-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .card-role {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .card-program {
+            font-size: 11px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .lingua .card-program { background: rgba(59, 130, 246, 0.2); color: var(--lingua); }
+        .rise .card-program { background: rgba(245, 158, 11, 0.2); color: var(--rise); }
+        .flexnexus .card-program { background: rgba(139, 92, 246, 0.2); color: var(--flexnexus); }
+        .admin .card-program { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .founder .card-program { background: rgba(201, 162, 39, 0.2); color: var(--gold); }
+
+        /* Departments Row */
+        .departments-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 900px) {
+            .departments-row { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 40px; }
+            .hero-stats { flex-wrap: wrap; gap: 24px; }
+        }
+
+        .department {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .department:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .dept-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dept-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .lingua .dept-icon { background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1)); }
+        .rise .dept-icon { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1)); }
+        .flexnexus .dept-icon { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1)); }
+
+        .dept-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .dept-sub {
+            font-size: 13px;
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        .dept-count {
+            font-size: 12px;
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .role-list {
+            list-style: none;
+        }
+
+        .role-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s;
+        }
+
+        .role-item:last-child { border-bottom: none; }
+        .role-item:hover { padding-left: 8px; }
+
+        .role-info { display: flex; align-items: center; gap: 12px; }
+
+        .role-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .role-name {
+            font-size: 14px;
+            color: var(--cream);
+        }
+
+        .role-status {
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .role-status.current {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .role-status.open {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+        }
+
+        /* Team Grid */
+        .team-section {
+            padding: 80px 24px;
+            background: var(--navy);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .team-card {
+            background: var(--navy-light);
+            border-radius: 20px;
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .team-card.placeholder {
+            border: 2px dashed rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--cream);
+            flex-shrink: 0;
+        }
+
+        .team-info { flex: 1; }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .team-programs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .program-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .program-badge.lingua { background: rgba(59, 130, 246, 0.2); color: var(--lingua); }
+        .program-badge.rise { background: rgba(245, 158, 11, 0.2); color: var(--rise); }
+        .program-badge.flexnexus { background: rgba(139, 92, 246, 0.2); color: var(--flexnexus); }
+        .program-badge.all { background: rgba(201, 162, 39, 0.2); color: var(--gold); }
+
+        .team-bio {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .team-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .team-social a:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .join-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .join-section h2 {
+            font-size: 36px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .join-section p {
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 24px;
+            background: var(--navy);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .value-card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .value-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .value-desc {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="nav-logo">Elevare<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="lingua.html">Lingua</a></li>
+                <li><a href="rise.html">Rise</a></li>
+                <li><a href="flexnexus.html">Flex Nexus</a></li>
+                <li><a href="team.html" class="active">Team</a></li>
+                <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Meet the <span>Elevare</span> Team</h1>
+        <p class="tagline">Passionate coaches dedicated to your transformation in language, confidence, and professional communication</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Programs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Team Roles</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Commitment</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Org Chart Section -->
+    <section class="org-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Organizational Structure
+                </h2>
+                <p class="section-desc">Our team is organized around three core departments, each dedicated to a specific aspect of your growth</p>
+            </div>
+
+            <div class="org-chart">
+                <!-- Level 1: Founder -->
+                <div class="level">
+                    <div class="card founder">
+                        <div class="avatar">DY</div>
+                        <div class="card-name">Debby</div>
+                        <div class="card-role">Founder & Director</div>
+                        <span class="card-program">All Programs</span>
+                    </div>
+                </div>
+
+                <div class="level-connector"></div>
+
+                <!-- Level 2: Department Leads -->
+                <div class="level">
+                    <div class="card lingua">
+                        <div class="avatar">🌍</div>
+                        <div class="card-name">Lingua Lead</div>
+                        <div class="card-role">Language Department</div>
+                        <span class="card-program">Lingua</span>
+                    </div>
+
+                    <div class="card rise">
+                        <div class="avatar">💪</div>
+                        <div class="card-name">Rise Lead</div>
+                        <div class="card-role">Confidence Department</div>
+                        <span class="card-program">Rise</span>
+                    </div>
+
+                    <div class="card flexnexus">
+                        <div class="avatar">💼</div>
+                        <div class="card-name">Flex Nexus Lead</div>
+                        <div class="card-role">Business Communication</div>
+                        <span class="card-program">Flex Nexus</span>
+                    </div>
+                </div>
+
+                <div class="level-connector"></div>
+
+                <!-- Level 3: Support Roles -->
+                <div class="level">
+                    <div class="card admin">
+                        <div class="avatar">📋</div>
+                        <div class="card-name">Operations Manager</div>
+                        <div class="card-role">Admin & Scheduling</div>
+                        <span class="card-program">All Programs</span>
+                    </div>
+
+                    <div class="card admin">
+                        <div class="avatar">🎧</div>
+                        <div class="card-name">Student Support</div>
+                        <div class="card-role">Student Success</div>
+                        <span class="card-program">All Programs</span>
+                    </div>
+
+                    <div class="card admin">
+                        <div class="avatar">📱</div>
+                        <div class="card-name">Marketing Lead</div>
+                        <div class="card-role">Social Media & Ads</div>
+                        <span class="card-program">All Programs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Breakdown -->
+            <div class="departments-row">
+                <div class="department lingua">
+                    <div class="dept-header">
+                        <div class="dept-icon">🌍</div>
+                        <div>
+                            <div class="dept-name">Lingua</div>
+                            <div class="dept-sub">Language Learning Department</div>
+                            <div class="dept-count">4 roles</div>
+                        </div>
+                    </div>
+                    <ul class="role-list">
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--lingua);"></div>
+                                <span class="role-name">Department Lead</span>
+                            </div>
+                            <span class="role-status current">You</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--lingua);"></div>
+                                <span class="role-name">Senior Language Tutors</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--lingua);"></div>
+                                <span class="role-name">Language Tutors</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--lingua);"></div>
+                                <span class="role-name">Conversation Partners</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="department rise">
+                    <div class="dept-header">
+                        <div class="dept-icon">💪</div>
+                        <div>
+                            <div class="dept-name">Rise</div>
+                            <div class="dept-sub">Confidence & Personal Growth</div>
+                            <div class="dept-count">3 roles</div>
+                        </div>
+                    </div>
+                    <ul class="role-list">
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--rise);"></div>
+                                <span class="role-name">Department Lead</span>
+                            </div>
+                            <span class="role-status current">You</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--rise);"></div>
+                                <span class="role-name">Confidence Coaches</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--rise);"></div>
+                                <span class="role-name">Mindset Mentors</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="department flexnexus">
+                    <div class="dept-header">
+                        <div class="dept-icon">💼</div>
+                        <div>
+                            <div class="dept-name">Flex Nexus</div>
+                            <div class="dept-sub">Business Communication</div>
+                            <div class="dept-count">4 roles</div>
+                        </div>
+                    </div>
+                    <ul class="role-list">
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--flexnexus);"></div>
+                                <span class="role-name">Department Lead</span>
+                            </div>
+                            <span class="role-status current">You</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--flexnexus);"></div>
+                                <span class="role-name">Executive Coaches</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--flexnexus);"></div>
+                                <span class="role-name">Presentation Trainers</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                        <li class="role-item">
+                            <div class="role-info">
+                                <div class="role-dot" style="background: var(--flexnexus);"></div>
+                                <span class="role-name">Industry Experts (Guest)</span>
+                            </div>
+                            <span class="role-status open">Hiring</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Our Values
+                </h2>
+                <p class="section-desc">The principles that guide everything we do at Elevare</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">Student-First</div>
+                    <div class="value-desc">Every decision we make starts with "will this help our students succeed?"</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <div class="value-title">Excellence</div>
+                    <div class="value-desc">We set the bar high and support each other to reach it every day.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <div class="value-title">Growth Mindset</div>
+                    <div class="value-desc">We believe everyone can grow. We're committed to our own growth too.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <div class="value-title">Empathy</div>
+                    <div class="value-desc">We meet students where they are and walk alongside them on their journey.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Directory -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Team Directory
+                </h2>
+                <p class="section-desc">The people behind Elevare's mission to transform communication</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- You - Founder -->
+                <div class="team-card">
+                    <div class="team-avatar" style="background: linear-gradient(135deg, var(--gold), var(--gold-light));">DY</div>
+                    <div class="team-info">
+                        <div class="team-name">Debby</div>
+                        <div class="team-role">Founder & Director</div>
+                        <div class="team-programs">
+                            <span class="program-badge all">All Programs</span>
+                        </div>
+                        <div class="team-bio">Leading Elevare's mission to transform communication worldwide. Passionate about language, confidence, and helping others find their voice.</div>
+                        <div class="team-social">
+                            <a href="mailto:debby@elevare.work" title="Email">✉️</a>
+                            <a href="#" title="LinkedIn">in</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Future Team Member Placeholders -->
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">?</div>
+                    <div class="team-info">
+                        <div class="team-name">Operations Manager</div>
+                        <div class="team-role">Admin & Scheduling • Open Position</div>
+                        <div class="team-programs">
+                            <span class="program-badge all">All Programs</span>
+                        </div>
+                        <div class="team-bio">Manages scheduling, student inquiries, and day-to-day operations. Join our team if this is you!</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">?</div>
+                    <div class="team-info">
+                        <div class="team-name">Student Support Lead</div>
+                        <div class="team-role">Student Success • Open Position</div>
+                        <div class="team-programs">
+                            <span class="program-badge all">All Programs</span>
+                        </div>
+                        <div class="team-bio">Ensures every student has an amazing experience. Handles feedback, progress tracking, and student happiness.</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">🌍</div>
+                    <div class="team-info">
+                        <div class="team-name">Senior Language Tutor</div>
+                        <div class="team-role">Lingua Department • Hiring</div>
+                        <div class="team-programs">
+                            <span class="program-badge lingua">Lingua</span>
+                        </div>
+                        <div class="team-bio">Native speaker with 3+ years teaching experience. Leads conversation sessions and mentors new tutors.</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">🌍</div>
+                    <div class="team-info">
+                        <div class="team-name">Language Tutor</div>
+                        <div class="team-role">Lingua Department • Hiring</div>
+                        <div class="team-programs">
+                            <span class="program-badge lingua">Lingua</span>
+                        </div>
+                        <div class="team-bio">Conducts personalized language sessions. Helps students achieve fluency through real conversations.</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">💪</div>
+                    <div class="team-info">
+                        <div class="team-name">Confidence Coach</div>
+                        <div class="team-role">Rise Department • Hiring</div>
+                        <div class="team-programs">
+                            <span class="program-badge rise">Rise</span>
+                        </div>
+                        <div class="team-bio">Mental-health-informed approach to building confidence. Helps students overcome communication anxiety.</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">💼</div>
+                    <div class="team-info">
+                        <div class="team-name">Executive Coach</div>
+                        <div class="team-role">Flex Nexus Department • Hiring</div>
+                        <div class="team-programs">
+                            <span class="program-badge flexnexus">Flex Nexus</span>
+                        </div>
+                        <div class="team-bio">Industry experience in business communication. Trains professionals in executive presence and leadership.</div>
+                    </div>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar" style="background: rgba(255,255,255,0.1);">📱</div>
+                    <div class="team-info">
+                        <div class="team-name">Marketing Specialist</div>
+                        <div class="team-role">Marketing • Hiring</div>
+                        <div class="team-programs">
+                            <span class="program-badge all">All Programs</span>
+                        </div>
+                        <div class="team-bio">Manages social media, content creation, and ad campaigns. Grows Elevare's reach and community.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Team Section -->
+    <section class="join-section">
+        <div class="join-content">
+            <h2>Join Our Team</h2>
+            <p>We're always looking for passionate coaches who share our mission to transform how people communicate. If you're driven, empathetic, and expert in your field, we'd love to hear from you.</p>
+            <a href="mailto:hello@elevare.work?subject=Job Application - Elevare" class="btn">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Elevare. Transforming communication worldwide.</p>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1234567890?text=Hi%20Elevare!%20I%27m%20interested%20in%20learning%20more%20about%20your%20programs." 
+       target="_blank"
+       style="position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; transition: transform 0.3s;"
+       onmouseover="this.style.transform='scale(1.1)'"
+       onmouseout="this.style.transform='scale(1)'">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+</body>
+</html>

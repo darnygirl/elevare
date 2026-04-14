@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevare AI Tutor</title>
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --cream: #faf8f5;
+            --text: #e0e1dd;
+            --success: #22c55e;
+            --lingua: #3b82f6;
+            --rise: #f59e0b;
+            --flexnexus: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header {
+            background: var(--navy-light);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .logo span { color: var(--gold); }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .progress-ring {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0%, var(--navy-light) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-ring-inner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--navy-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        h1 {
+            color: var(--cream);
+            font-size: 28px;
+            margin: 24px 0 16px;
+        }
+
+        .subtitle {
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* Program Selection */
+        .program-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .program-tab {
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .program-tab:hover { opacity: 0.8; }
+
+        .program-tab.active {
+            border-color: var(--gold);
+        }
+
+        .program-tab.lingua { background: rgba(59, 130, 246, 0.2); color: var(--lingua); }
+        .program-tab.lingua.active { background: var(--lingua); color: white; }
+        .program-tab.rise { background: rgba(245, 158, 11, 0.2); color: var(--rise); }
+        .program-tab.rise.active { background: var(--rise); color: white; }
+        .program-tab.flexnexus { background: rgba(139, 92, 246, 0.2); color: var(--flexnexus); }
+        .program-tab.flexnexus.active { background: var(--flexnexus); color: white; }
+
+        /* Module Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .module-card {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .module-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .module-number {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .module-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+
+        .module-lessons {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .module-progress {
+            height: 6px;
+            background: var(--navy);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .module-progress-bar {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        /* AI Tutor Chat */
+        .tutor-section {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .tutor-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .tutor-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .tutor-info h3 {
+            color: var(--cream);
+            font-size: 16px;
+        }
+
+        .tutor-info p {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .tutor-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            margin-left: auto;
+        }
+
+        .chat-messages {
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 16px;
+            background: var(--navy);
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .message.ai {
+            flex-direction: row;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .message.ai .message-avatar { background: var(--gold); }
+        .message.user .message-avatar { background: var(--lingua); }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.ai .message-content {
+            background: var(--navy-light);
+            color: var(--cream);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: var(--lingua);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 14px 18px;
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: var(--cream);
+            font-size: 14px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .chat-send {
+            padding: 14px 24px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .chat-send:hover { background: var(--gold-light); }
+
+        /* Voice Practice */
+        .voice-practice {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .voice-controls {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .voice-btn {
+            flex: 1;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .voice-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .voice-btn.recording {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: white;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .transcript-area {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 16px;
+            min-height: 100px;
+            margin-bottom: 16px;
+        }
+
+        .transcript-label {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .transcript-text {
+            font-size: 14px;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        .feedback-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feedback-card {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feedback-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .feedback-label {
+            font-size: 12px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        /* AI vs Human Comparison */
+        .comparison-section {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .comparison-card {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .comparison-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .comparison-card.ai .comparison-icon { background: rgba(201, 162, 39, 0.2); }
+        .comparison-card.human .comparison-icon { background: rgba(59, 130, 246, 0.2); }
+
+        .comparison-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .comparison-pros {
+            list-style: none;
+        }
+
+        .comparison-pros li {
+            padding: 8px 0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comparison-pros li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Tabs */
+        .main-tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--navy-light);
+            padding: 4px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+        }
+
+        .main-tab {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .main-tab.active {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .feedback-area { grid-template-columns: 1fr; }
+            .program-tabs { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Elevare <span>AI Tutor</span></div>
+            <div class="user-info">
+                <div style="text-align: right;">
+                    <div style="font-size: 14px; color: var(--cream);">Welcome back!</div>
+                    <div style="font-size: 12px; color: var(--text);">Lingua Student</div>
+                </div>
+                <div class="progress-ring">
+                    <div class="progress-ring-inner" id="progressPercent">42%</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Your Learning Journey</h1>
+        <p class="subtitle">AI-powered personalized coaching for speech, confidence, and professional communication</p>
+
+        <div class="main-tabs">
+            <button class="main-tab active" onclick="showTab('learn')">📚 Learn</button>
+            <button class="main-tab" onclick="showTab('tutor')">🤖 AI Tutor</button>
+            <button class="main-tab" onclick="showTab('practice')">🎤 Practice</button>
+            <button class="main-tab" onclick="showTab('compare')">⚖️ AI vs Human</button>
+        </div>
+
+        <!-- Learn Tab -->
+        <div class="tab-content active" id="tab-learn">
+            <div class="program-tabs">
+                <button class="program-tab lingua active" onclick="selectProgram('lingua')">🌍 Lingua</button>
+                <button class="program-tab rise" onclick="selectProgram('rise')">💪 Rise</button>
+                <button class="program-tab flexnexus" onclick="selectProgram('flexnexus')">💼 Flex Nexus</button>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule(1)">
+                    <div class="module-number">MODULE 1</div>
+                    <div class="module-title">Foundations of Confident Speech</div>
+                    <div class="module-lessons">5 lessons • Breathing, Projection, Presence</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule(2)">
+                    <div class="module-number">MODULE 2</div>
+                    <div class="module-title">Speech Fundamentals</div>
+                    <div class="module-lessons">5 lessons • Clarity, Rhythm, Pausing</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 60%;"></div>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule(3)">
+                    <div class="module-number">MODULE 3</div>
+                    <div class="module-title">Pronunciation Mastery</div>
+                    <div class="module-lessons">5 lessons • Sounds, Stress, Connected Speech</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 30%;"></div>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule(4)">
+                    <div class="module-number">MODULE 4</div>
+                    <div class="module-title">Active Listening</div>
+                    <div class="module-lessons">5 lessons • Hearing, Processing, Context</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule(5)">
+                    <div class="module-number">MODULE 5</div>
+                    <div class="module-title">Written Communication</div>
+                    <div class="module-lessons">5 lessons • Structure, Tone, Persuasion</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule(6)">
+                    <div class="module-number">MODULE 6</div>
+                    <div class="module-title">Grammar for Speakers</div>
+                    <div class="module-lessons">5 lessons • Common Errors, Tenses, Questions</div>
+                    <div class="module-progress">
+                        <div class="module-progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Tutor Tab -->
+        <div class="tab-content" id="tab-tutor">
+            <div class="tutor-section">
+                <div class="tutor-header">
+                    <div class="tutor-avatar">🤖</div>
+                    <div class="tutor-info">
+                        <h3>Elevare AI Tutor</h3>
+                        <p>Available 24/7 • Ready to help with Lingua, Rise, or Flex Nexus</p>
+                    </div>
+                    <div class="tutor-status" title="Online"></div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Hello! I'm your AI tutor at Elevare. I'm here to help you master speech, build confidence, and excel professionally. What would you like to work on today?
+                            <br><br>
+                            I can help you with:
+                            <br>• Practice conversations
+                            <br>• Pronunciation feedback
+                            <br>• Grammar questions
+                            <br>• Confidence exercises
+                            <br>• Speech analysis
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything about speech, confidence, or communication..." onkeypress="handleChatKeypress(event)">
+                    <button class="chat-send" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <div class="quick-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('pronunciation')">🎯 Practice Pronunciation</button>
+                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('confidence')">💪 Build Confidence</button>
+                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('grammar')">📝 Grammar Help</button>
+                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('interview')">💼 Interview Prep</button>
+            </div>
+        </div>
+
+        <!-- Practice Tab -->
+        <div class="tab-content" id="tab-practice">
+            <div class="voice-practice">
+                <h3 style="color: var(--cream); margin-bottom: 16px;">🎤 Voice Practice Session</h3>
+                
+                <div class="voice-controls">
+                    <button class="voice-btn" id="recordBtn" onclick="toggleRecording()">
+                        <span id="recordIcon">●</span>
+                        <span id="recordText">Start Recording</span>
+                    </button>
+                    <button class="voice-btn" onclick="playbackRecording()">
+                        ▶️ Play Recording
+                    </button>
+                    <button class="voice-btn" onclick="analyzeSpeech()">
+                        🔍 Analyze Speech
+                    </button>
+                </div>
+
+                <div class="transcript-area">
+                    <div class="transcript-label">Your Speech Transcript:</div>
+                    <div class="transcript-text" id="transcriptText">Start recording to see your speech transcribed here...</div>
+                </div>
+
+                <div class="feedback-area">
+                    <div class="feedback-card">
+                        <div class="feedback-score" id="clarityScore">--</div>
+                        <div class="feedback-label">Clarity Score</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-score" id="paceScore">--</div>
+                        <div class="feedback-label">Pace (WPM)</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-score" id="confidenceScore">--</div>
+                        <div class="feedback-label">Confidence Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutor-section">
+                <h3 style="color: var(--cream); margin-bottom: 16px;">📋 Practice Exercises</h3>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <div class="module-title">🎯 Tongue Twisters</div>
+                        <div class="module-lessons">Practice tricky sounds</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-title">🗣️ Reading Aloud</div>
+                        <div class="module-lessons">Build fluency and pace</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-title">💬 Free Conversation</div>
+                        <div class="module-lessons">Speak on any topic</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-title">📰 News Summary</div>
+                        <div class="module-lessons">Summarize in your own words</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI vs Human Tab -->
+        <div class="tab-content" id="tab-compare">
+            <div class="comparison-section">
+                <h3 style="color: var(--cream); margin-bottom: 8px;">⚖️ AI Tutor vs Human Tutor Comparison</h3>
+                <p style="color: var(--text); font-size: 14px;">See how different learning approaches work for you</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card ai">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">🤖</div>
+                            <div class="comparison-title">AI Tutor</div>
+                        </div>
+                        <ul class="comparison-pros">
+                            <li>Available 24/7 - learn anytime</li>
+                            <li>Infinite patience - practice unlimited</li>
+                            <li>Instant feedback on speech</li>
+                            <li>Costs ~$0.01 per session</li>
+                            <li>Tracks all progress data</li>
+                            <li>Adapts to your pace</li>
+                            <li>No judgment or embarrassment</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card human">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">👤</div>
+                            <div class="comparison-title">Human Tutor</div>
+                        </div>
+                        <ul class="comparison-pros">
+                            <li>Emotional support & empathy</li>
+                            <li>Real-world experience sharing</li>
+                            <li>Cultural & social context</li>
+                            <li>Personal accountability</li>
+                            <li>Motivation & encouragement</li>
+                            <li>Custom scenarios from experience</li>
+                            <li>Real-time conversation practice</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutor-section">
+                <h3 style="color: var(--cream); margin-bottom: 16px;">📊 Research Study: Which is Better?</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px;">
+                    <div class="feedback-card">
+                        <div class="feedback-score" style="color: var(--lingua);">42%</div>
+                        <div class="feedback-label">Group A: AI Only</div>
+                        <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-score" style="color: var(--rise);">58%</div>
+                        <div class="feedback-label">Group B: Human Only</div>
+                        <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-score" style="color: var(--success);">71%</div>
+                        <div class="feedback-label">Group C: Hybrid</div>
+                        <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="feedback-score" style="color: var(--text);">23%</div>
+                        <div class="feedback-label">Group D: Control</div>
+                        <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 13px; color: var(--text); text-align: center;">
+                    <strong style="color: var(--success);">Hybrid approach wins!</strong> AI for practice & feedback, Human for emotional support. Students show 71% improvement vs 42% AI-only.
+                </p>
+            </div>
+
+            <div class="quick-actions" style="justify-content: center;">
+                <button class="voice-btn" style="flex: none; padding: 14px 32px; background: var(--gold); color: var(--navy);" onclick="alert('Coming soon! Sign up for the study.')">
+                    Join the Study
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab navigation
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Program selection
+        function selectProgram(program) {
+            document.querySelectorAll('.program-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Module click
+        function openModule(num) {
+            alert('Module ' + num + ' content coming soon!');
+        }
+
+        // Chat functions
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addMessage('user', message);
+            input.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const response = getAIResponse(message);
+                addMessage('ai', response);
+            }, 1000);
+        }
+
+        function addMessage(type, content) {
+            const messages = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = 'message ' + type;
+            div.innerHTML = `
+                <div class="message-avatar">${type === 'ai' ? '🤖' : '👤'}</div>
+                <div class="message-content">${content}</div>
+            `;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getAIResponse(message) {
+            const lower = message.toLowerCase();
+            
+            if (lower.includes('pronunci') || lower.includes('sound')) {
+                return "Great question about pronunciation! Let me help you with that. Try the 'Peter Piper' tongue twister: 'Peter Piper picked a peck of pickled peppers.' Focus on the 'P' sound - it's a bilabial plosive. Practice slowly first, then speed up. Want me to analyze your speech while you practice?";
+            }
+            if (lower.includes('confiden') || lower.includes('anxious') || lower.includes('nervous')) {
+                return "I understand confidence can be challenging. Here's a quick exercise: Stand in power pose for 2 minutes before speaking. Shoulders back, arms spread wide. Research shows this actually changes how your brain responds to stress. Also, try the 5-second rule: count down from 5 before speaking - it interrupts the anxiety spiral.";
+            }
+            if (lower.includes('grammar') || lower.includes('sentence')) {
+                return "Grammar is foundational! Here's a quick tip: Most grammar errors happen with subject-verb agreement. 'He doesn't' not 'He don't'. 'They aren't' not 'They ain't'. Practice making 5 sentences with 'doesn't' vs 'don't' right now - I'll check them!";
+            }
+            if (lower.includes('interview') || lower.includes('job')) {
+                return "Interview prep is crucial! Key strategies: 1) STAR method for stories (Situation, Task, Action, Result), 2) Practice power pauses - silence is confident, 3) Prepare 3 strengths with examples, 4) Research the company beforehand. Would you like to practice an interview answer?";
+            }
+            
+            return "That's a great question! I'm here to help you master communication. Try the 'record and review' method: speak for 30 seconds on any topic, record it, then listen back. You'll hear filler words like 'um' and 'uh' that you can eliminate. Want to try a practice exercise now?";
+        }
+
+        function handleChatKeypress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function askTopic(topic) {
+            document.getElementById('chatInput').value = 'Can you help me with ' + topic + '?';
+            sendMessage();
+        }
+
+        // Voice recording simulation
+        let isRecording = false;
+        let mediaRecorder = null;
+        let audioChunks = [];
+
+        function toggleRecording() {
+            const btn = document.getElementById('recordBtn');
+            const icon = document.getElementById('recordIcon');
+            const text = document.getElementById('recordText');
+
+            if (!isRecording) {
+                // Start recording
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        mediaRecorder = new MediaRecorder(stream);
+                        audioChunks = [];
+
+                        mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                        mediaRecorder.onstop = () => {
+                            const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                            document.getElementById('transcriptText').textContent = 'Recording complete! Analyzing your speech...';
+                            setTimeout(() => analyzeSpeech(), 1000);
+                        };
+
+                        mediaRecorder.start();
+                        isRecording = true;
+                        icon.textContent = '■';
+                        icon.style.color = '#ef4444';
+                        text.textContent = 'Stop Recording';
+                        btn.classList.add('recording');
+                    })
+                    .catch(err => {
+                        alert('Microphone access needed for voice practice');
+                    });
+            } else {
+                // Stop recording
+                mediaRecorder.stop();
+                isRecording = false;
+                icon.textContent = '●';
+                icon.style.color = 'var(--gold)';
+                text.textContent = 'Start Recording';
+                btn.classList.remove('recording');
+            }
+        }
+
+        function playbackRecording() {
+            document.getElementById('transcriptText').textContent = 'Playing back your recording... (Demo mode)';
+        }
+
+        function analyzeSpeech() {
+            // Simulate analysis
+            document.getElementById('clarityScore').textContent = Math.floor(Math.random() * 30) + 70;
+            document.getElementById('paceScore').textContent = Math.floor(Math.random() * 50) + 110;
+            document.getElementById('confidenceScore').textContent = Math.floor(Math.random() * 40) + 55;
+            
+            document.getElementById('transcriptText').innerHTML = '<strong>Analysis Complete!</strong><br><br>' +
+                'Your speech shows good pace and clarity. Areas to improve:<br>' +
+                '• Slightly fast on excitement - try power pauses<br>' +
+                '• Some filler words detected - practice mindfulness<br>' +
+                '• Great eye contact and confidence level!';
+        }
+
+        // Initialize
+        document.getElementById('progressPercent').textContent = '42%';
+        document.querySelector('.progress-ring').style.background = 
+            'conic-gradient(var(--gold) 42%, var(--navy-light) 0%)';
+    </script>
+</body>
+</html>
