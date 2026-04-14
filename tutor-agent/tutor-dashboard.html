@@ -529,6 +529,7 @@
             <button class="main-tab" onclick="showTab('tutor')">🤖 AI Tutor</button>
             <button class="main-tab" onclick="showTab('practice')">🎤 Practice</button>
             <button class="main-tab" onclick="showTab('compare')">⚖️ AI vs Human</button>
+            <button class="main-tab" onclick="showTab('settings')">⚙️ Settings</button>
         </div>
 
         <!-- Learn Tab -->
@@ -701,6 +702,69 @@
         </div>
 
         <!-- AI vs Human Tab -->
+        <div class="tab-content" id="tab-settings">
+            <div class="tutor-section">
+                <div class="tutor-header">
+                    <div class="tutor-avatar">⚙️</div>
+                    <div class="tutor-info">
+                        <h3>AI Tutor Settings</h3>
+                        <p>Configure your AI tutor preferences</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div>
+                        <div class="form-group">
+                            <label style="color: var(--cream); font-size: 12px; font-weight: 600; margin-bottom: 8px; display: block;">OPENAI API KEY (Optional)</label>
+                            <input type="password" id="openaiKey" placeholder="sk-..." style="width: 100%; padding: 12px 16px; background: var(--navy); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--cream); font-size: 14px;" onchange="saveSettings()">
+                            <p style="font-size: 11px; color: var(--text); margin-top: 6px;">Get free key at platform.openai.com • Used only for AI tutoring</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color: var(--cream); font-size: 12px; font-weight: 600; margin-bottom: 8px; display: block;">AI MODEL</label>
+                            <select id="aiModel" style="width: 100%; padding: 12px 16px; background: var(--navy); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--cream); font-size: 14px;" onchange="saveSettings()">
+                                <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Fast)</option>
+                                <option value="gpt-4">GPT-4 (Better quality)</option>
+                            </select>
+                        </div>
+
+                        <div style="background: var(--navy); border-radius: 10px; padding: 16px; margin-top: 16px;">
+                            <h4 style="color: var(--gold); font-size: 14px; margin-bottom: 8px;">🚀 Server Required</h4>
+                            <p style="font-size: 12px; color: var(--text); margin-bottom: 12px;">
+                                For AI responses, run the server in a new terminal:
+                            </p>
+                            <code style="background: var(--navy-light); padding: 8px 12px; border-radius: 6px; display: block; font-size: 11px; color: var(--gold);">
+cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPENAI_API_KEY='your-key' python tutor_server.py
+                            </code>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px;">
+                            <h4 style="color: var(--cream); font-size: 14px; margin-bottom: 16px;">🎯 Connection Status</h4>
+                            <div id="serverStatus" style="font-size: 13px; color: var(--text);">
+                                <p>⏳ Checking server...</p>
+                            </div>
+                            <button onclick="checkServerStatus()" style="margin-top: 12px; padding: 8px 16px; background: var(--gold); color: var(--navy); border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600;">
+                                🔄 Refresh Status
+                            </button>
+                        </div>
+
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px; margin-top: 16px;">
+                            <h4 style="color: var(--cream); font-size: 14px; margin-bottom: 12px;">📊 What You Get with AI</h4>
+                            <ul style="font-size: 12px; color: var(--text); list-style: none; line-height: 1.8;">
+                                <li>✓ Personalized conversation practice</li>
+                                <li>✓ Grammar and pronunciation feedback</li>
+                                <li>✓ Custom exercises based on your level</li>
+                                <li>✓ 24/7 availability</li>
+                                <li>✓ Progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="tab-content" id="tab-compare">
             <div class="comparison-section">
                 <h3 style="color: var(--cream); margin-bottom: 8px;">⚖️ AI Tutor vs Human Tutor Comparison</h3>
@@ -786,7 +850,8 @@
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('tab-' + tabName).classList.add('active');
-            event.target.classList.add('active');
+            if (event && event.target) event.target.classList.add('active');
+            if (tabName === 'settings') checkServerStatus();
         }
 
         // Program selection
@@ -800,20 +865,72 @@
             alert('Module ' + num + ' content coming soon!');
         }
 
+        // Settings functions
+        function saveSettings() {
+            const key = document.getElementById('openaiKey').value;
+            const model = document.getElementById('aiModel').value;
+            localStorage.setItem('elevare_tutor_settings', JSON.stringify({ openaiKey: key, model }));
+            checkServerStatus();
+        }
+
+        function loadSettings() {
+            const saved = localStorage.getItem('elevare_tutor_settings');
+            if (saved) {
+                const settings = JSON.parse(saved);
+                if (settings.openaiKey) document.getElementById('openaiKey').value = settings.openaiKey;
+                if (settings.model) document.getElementById('aiModel').value = settings.model;
+            }
+        }
+
+        async function checkServerStatus() {
+            const status = document.getElementById('serverStatus');
+            if (!status) return;
+            
+            try {
+                const res = await fetch('http://localhost:5001/status');
+                const data = await res.json();
+                if (data.ready) {
+                    status.innerHTML = '<p style="color: var(--success);">✅ AI Server Connected</p><p style="font-size: 11px; margin-top: 4px;">Model: ' + data.model + '</p>';
+                } else {
+                    status.innerHTML = '<p style="color: var(--gold);">⏳ ' + data.message + '</p>';
+                }
+            } catch (e) {
+                status.innerHTML = '<p style="color: var(--error);">❌ Server not running</p><p style="font-size: 11px; margin-top: 4px;">Run: python tutor_server.py</p>';
+            }
+        }
+
         // Chat functions
-        function sendMessage() {
+        let chatHistory = [];
+
+        async function sendMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
             if (!message) return;
 
             addMessage('user', message);
+            chatHistory.push({ role: 'user', content: message });
             input.value = '';
 
-            // Simulate AI response
-            setTimeout(() => {
-                const response = getAIResponse(message);
+            // Show typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message ai';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="message-content" style="font-style: italic;">Thinking...</div>
+            `;
+            document.getElementById('chatMessages').appendChild(typingDiv);
+            scrollChat();
+
+            try {
+                const response = await getAIResponse(message);
+                document.getElementById('typing-indicator').remove();
                 addMessage('ai', response);
-            }, 1000);
+                chatHistory.push({ role: 'assistant', content: response });
+            } catch (e) {
+                document.getElementById('typing-indicator').remove();
+                addMessage('ai', 'Sorry, I encountered an error. Make sure the tutor server is running with your OpenAI API key.');
+            }
         }
 
         function addMessage(type, content) {
@@ -822,17 +939,51 @@
             div.className = 'message ' + type;
             div.innerHTML = `
                 <div class="message-avatar">${type === 'ai' ? '🤖' : '👤'}</div>
-                <div class="message-content">${content}</div>
+                <div class="message-content">${content.replace(/\n/g, '<br>')}</div>
             `;
             messages.appendChild(div);
+            scrollChat();
+        }
+
+        function scrollChat() {
+            const messages = document.getElementById('chatMessages');
             messages.scrollTop = messages.scrollHeight;
         }
 
-        function getAIResponse(message) {
+        async function getAIResponse(message) {
+            const settings = JSON.parse(localStorage.getItem('elevare_tutor_settings') || '{}');
+            
+            // Try OpenAI server first
+            if (settings.openaiKey) {
+                try {
+                    const res = await fetch('http://localhost:5001/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            message, 
+                            history: chatHistory.slice(-10),
+                            apiKey: settings.openaiKey,
+                            model: settings.model || 'gpt-3.5-turbo'
+                        })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        return data.response;
+                    }
+                } catch (e) {
+                    console.log('OpenAI server not available, using fallback');
+                }
+            }
+            
+            // Fallback to keyword responses
+            return getKeywordResponse(message);
+        }
+
+        function getKeywordResponse(message) {
             const lower = message.toLowerCase();
             
             if (lower.includes('pronunci') || lower.includes('sound')) {
-                return "Great question about pronunciation! Let me help you with that. Try the 'Peter Piper' tongue twister: 'Peter Piper picked a peck of pickled peppers.' Focus on the 'P' sound - it's a bilabial plosive. Practice slowly first, then speed up. Want me to analyze your speech while you practice?";
+                return "Great question about pronunciation! Try the 'Peter Piper' tongue twister: 'Peter Piper picked a peck of pickled peppers.' Focus on the 'P' sound - it's a bilabial plosive. Practice slowly first, then speed up. Want me to analyze your speech while you practice?";
             }
             if (lower.includes('confiden') || lower.includes('anxious') || lower.includes('nervous')) {
                 return "I understand confidence can be challenging. Here's a quick exercise: Stand in power pose for 2 minutes before speaking. Shoulders back, arms spread wide. Research shows this actually changes how your brain responds to stress. Also, try the 5-second rule: count down from 5 before speaking - it interrupts the anxiety spiral.";
@@ -842,6 +993,9 @@
             }
             if (lower.includes('interview') || lower.includes('job')) {
                 return "Interview prep is crucial! Key strategies: 1) STAR method for stories (Situation, Task, Action, Result), 2) Practice power pauses - silence is confident, 3) Prepare 3 strengths with examples, 4) Research the company beforehand. Would you like to practice an interview answer?";
+            }
+            if (lower.includes('tongue') || lower.includes('twister')) {
+                return "Tongue twisters are great for pronunciation! Try these:\n\n• 'She sells seashells by the seashore' (S sounds)\n• 'Red leather, yellow leather' (L/R sounds)\n• 'Unique New York, unique New York' (Yooo sounds)\n\nStart slow, then speed up. Record yourself and listen back!";
             }
             
             return "That's a great question! I'm here to help you master communication. Try the 'record and review' method: speak for 30 seconds on any topic, record it, then listen back. You'll hear filler words like 'um' and 'uh' that you can eliminate. Want to try a practice exercise now?";
@@ -867,7 +1021,6 @@
             const text = document.getElementById('recordText');
 
             if (!isRecording) {
-                // Start recording
                 navigator.mediaDevices.getUserMedia({ audio: true })
                     .then(stream => {
                         mediaRecorder = new MediaRecorder(stream);
@@ -891,7 +1044,6 @@
                         alert('Microphone access needed for voice practice');
                     });
             } else {
-                // Stop recording
                 mediaRecorder.stop();
                 isRecording = false;
                 icon.textContent = '●';
@@ -906,7 +1058,6 @@
         }
 
         function analyzeSpeech() {
-            // Simulate analysis
             document.getElementById('clarityScore').textContent = Math.floor(Math.random() * 30) + 70;
             document.getElementById('paceScore').textContent = Math.floor(Math.random() * 50) + 110;
             document.getElementById('confidenceScore').textContent = Math.floor(Math.random() * 40) + 55;
@@ -922,6 +1073,7 @@
         document.getElementById('progressPercent').textContent = '42%';
         document.querySelector('.progress-ring').style.background = 
             'conic-gradient(var(--gold) 42%, var(--navy-light) 0%)';
+        loadSettings();
     </script>
 </body>
 </html>
