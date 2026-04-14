@@ -1320,6 +1320,7 @@
             padding: 24px;
             gap: 20px;
             border-top: 1px solid rgba(201, 162, 39, 0.2);
+            z-index: 999;
         }
 
         .nav-links.active a {
@@ -1330,8 +1331,23 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-toggle { display: block; }
-            .pillars-grid, .library-grid, .tutors-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .pillars-grid, .library-grid, .tutors-grid, .tutors-preview-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero { min-height: auto; padding: 100px 0 60px; }
+            .hero-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-visual { order: -1; }
+            .hero-card { max-width: 100%; }
+            .pillars, .library, .programs, .tutors, .testimonials, .progress-section, .faq { padding: 60px 0; }
+            .email-signup, .mini-course, .cta { padding: 60px 0; }
+            .section-header { margin-bottom: 40px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .progress-grid { grid-template-columns: 1fr 1fr; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
+            .hero-trust { flex-direction: column; gap: 12px; }
+            .complete-package { padding: 32px 24px !important; }
+            .complete-package h3 { font-size: 24px !important; }
         }
 
         /* Testimonials Section */
@@ -1538,6 +1554,10 @@
             }
             .email-signup-text h2 {
                 font-size: 32px;
+            }
+            .email-signup-form .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
 

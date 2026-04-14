@@ -96,6 +96,51 @@
 
         .nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
 
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle svg {
+            width: 28px;
+            height: 28px;
+            color: var(--cream);
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            padding: 24px;
+            gap: 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .nav-links.active a {
+            font-size: 16px;
+            padding: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-toggle { display: block; }
+            .page-header { padding: 120px 0 60px; }
+            .pricing-section, .bundle-section, .faq-section, .guarantee-section { padding: 60px 0; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .bundle-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 36px; }
+            .pricing-card.featured { transform: none; }
+            .pricing-card.featured:hover { transform: translateY(-8px); }
+        }
+
         .page-header {
             padding: 160px 0 80px;
             background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
@@ -291,12 +336,6 @@
             margin-top: 48px;
         }
 
-        @media (max-width: 768px) {
-            .bundle-grid { grid-template-columns: 1fr; }
-            .pricing-card.featured { transform: none; }
-            .pricing-card.featured:hover { transform: translateY(-8px); }
-        }
-
         .bundle-card {
             background: linear-gradient(135deg, var(--navy-light), var(--navy));
             border: 2px solid var(--gold);
@@ -464,6 +503,13 @@
                     <div class="logo-icon">E</div>
                     <div class="logo-text">ELEVARE</div>
                 </a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="lingua.html">Lingua</a></li>
@@ -781,6 +827,11 @@
                 answer.classList.add('hidden');
                 span.textContent = '+';
             }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
         }
     </script>
 </body>
