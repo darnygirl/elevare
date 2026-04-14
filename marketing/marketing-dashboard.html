@@ -477,6 +477,7 @@
             <button class="tab" onclick="showSection('calendar')">Post Calendar</button>
             <button class="tab" onclick="showSection('analytics')">Analytics</button>
             <button class="tab" onclick="showSection('settings')">Settings</button>
+            <button class="tab" onclick="showSection('clone')">🎤 Voice Clone</button>
         </div>
 
         <div class="grid">
@@ -1000,6 +1001,122 @@
                         </div>
 
                         <button class="btn-secondary" style="margin-top: 8px;" onclick="saveBrandSettings()">Save Brand Settings</button>
+                    </div>
+                </div>
+
+                <!-- Content Section: Voice Clone -->
+                <div class="content-section" id="section-clone">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">🎤 Voice Clone Studio</span>
+                            <span class="status-badge" style="background: rgba(34, 197, 94, 0.2); color: var(--success);">100% Free - XTTS AI</span>
+                        </div>
+
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 20px;">
+                            Clone your voice using Coqui XTTS v2 AI. Type any text and hear it in YOUR voice. No fees, no subscriptions.
+                        </p>
+
+                        <!-- Setup Instructions -->
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid var(--gold);">
+                            <h4 style="color: var(--gold); margin-bottom: 12px; font-size: 14px;">🚀 First Time Setup</h4>
+                            <p style="color: var(--text); font-size: 12px; margin-bottom: 12px;">
+                                To use voice cloning, open a NEW terminal and run:
+                            </p>
+                            <code style="background: var(--navy-light); padding: 10px 14px; border-radius: 6px; display: block; font-family: monospace; font-size: 12px; color: var(--gold); margin-bottom: 12px;">
+cd /home/debby/voice-cloning && source xtts-env/bin/activate && python voice_server.py
+                            </code>
+                            <p style="color: var(--text); font-size: 12px; opacity: 0.8;">
+                                Keep that terminal open! Then come back here and refresh this page.
+                            </p>
+                        </div>
+
+                        <!-- Voice Sample Status -->
+                        <div style="background: var(--navy); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <h4 style="color: var(--cream); margin-bottom: 12px; font-size: 14px;">Your Voice Sample</h4>
+                            <p style="color: var(--text); font-size: 12px; margin-bottom: 16px;" id="cloneVoiceStatus">
+                                Checking voice sample...
+                            </p>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button class="btn" onclick="checkCloneStatus()" style="width: auto; padding: 10px 20px;">🔄 Check Status</button>
+                                <button class="btn-secondary" onclick="playVoiceSample()" style="width: auto; padding: 10px 20px;">▶ Play Original Sample</button>
+                                <button class="btn-secondary" onclick="playLastOutput()" style="width: auto; padding: 10px 20px;">🔊 Play Last Generated</button>
+                            </div>
+                        </div>
+
+                        <!-- Text Input -->
+                        <div class="form-group">
+                            <label>TEXT TO SPEAK</label>
+                            <textarea id="cloneText" placeholder="Type the text you want to hear in your cloned voice..." style="min-height: 120px;">Hello! This is my cloned voice speaking. I can say anything now, and it will sound just like me!</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>LANGUAGE</label>
+                            <select id="cloneLanguage">
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="pl">Polish</option>
+                                <option value="tr">Turkish</option>
+                                <option value="ru">Russian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh">Chinese</option>
+                            </select>
+                        </div>
+
+                        <button class="btn" onclick="generateCloneAudio()" style="margin-bottom: 16px;">
+                            🎙️ Generate Voice Audio
+                        </button>
+
+                        <div id="cloneStatus" style="font-size: 13px; color: var(--text); margin-bottom: 16px;"></div>
+
+                        <!-- Generated Audio -->
+                        <div id="cloneOutput" style="display: none;">
+                            <div class="output-area" style="margin-top: 0;">
+                                <div class="output-header">
+                                    <span class="output-title">Generated Audio</span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button class="copy-btn" onclick="downloadCloneAudio()">⬇ Download</button>
+                                    </div>
+                                </div>
+                                <audio id="clonePlayback" controls style="width: 100%;"></audio>
+                                <p style="font-size: 12px; color: var(--text); margin-top: 8px;" id="cloneFileName"></p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Scripts -->
+                        <div style="margin-top: 24px;">
+                            <div class="card-header" style="margin-bottom: 12px;">
+                                <span class="card-title">📝 Quick Ad Scripts</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                                <button class="btn-secondary" onclick="setCloneText('Lingua ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
+                                    <strong>Lingua Ad:</strong> "Master any language with human coaching..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Rise ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
+                                    <strong>Rise Ad:</strong> "Confidence is a skill you can build..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Flex ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
+                                    <strong>Flex Nexus Ad:</strong> "Technical skills get you the interview..."
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Direct Terminal Command -->
+                        <div style="margin-top: 24px;">
+                            <div class="card-header" style="margin-bottom: 12px;">
+                                <span class="card-title">💻 Or Use Terminal Directly</span>
+                            </div>
+                            <p style="color: var(--text); font-size: 12px; margin-bottom: 12px;">
+                                You can also run this in your voice-cloning terminal:
+                            </p>
+                            <code style="background: var(--navy); padding: 10px 14px; border-radius: 6px; display: block; font-family: monospace; font-size: 11px; color: var(--gold); overflow-x: auto;">
+python -c "from TTS.api import TTS; tts = TTS('xtts_v2', gpu=False); tts.tts_to_file(text='YOUR TEXT HERE', file_path='output.wav', speaker_wav='my_voice.mp4', language='en')"
+                            </code>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2068,6 +2185,92 @@ async function toggleAdRecording() {
                 document.getElementById('brandWebsite').value = brand.website || 'darnygirl.github.io/elevare';
             }
         };
+
+        // Voice Clone Functions
+        function setCloneText(type, lang) {
+            const scripts = {
+                'Lingua ad': 'Master any language in thirty days with human coaching that actually works. At Elevare, our native speaking tutors help you achieve fluency through personalized coaching. Whether you are learning for business, travel, or personal growth, we build real communication skills, not just textbook phrases. Your fluency journey starts today.',
+                'Rise ad': 'Confidence is not a personality trait. It is a skill you can build. At Elevare Rise, we address the psychology behind communication anxiety, not just the mechanics. Our mental health informed approach helps you rewire the inner critic that has been holding you back. Real results. Evidence based methods. Thirty day confidence guarantee.',
+                'Flex ad': 'Technical skills will get you the interview. Communication skills will get you the promotion. Elevare Flex Nexus bridges language learning with executive presence, so you can lead meetings, land deals, and present with authority. Industry experts, real world skills, measurable results. Your next career milestone starts here.'
+            };
+            document.getElementById('cloneText').value = scripts[type] || scripts['Lingua ad'];
+            document.getElementById('cloneLanguage').value = lang;
+        }
+
+        async function checkCloneStatus() {
+            try {
+                const res = await fetch('http://localhost:5000/status');
+                const data = await res.json();
+                let status = '';
+                if (data.ready) {
+                    status = '<span style="color: var(--success);">✅ Voice clone server ready! Model loaded.</span>';
+                } else if (data.loading) {
+                    status = '<span style="color: var(--gold);">⏳ Loading model (first time takes 1-2 minutes)...</span>';
+                } else {
+                    status = '<span style="color: var(--error);">❌ Server not running. Start it with: python voice_server.py</span>';
+                }
+                document.getElementById('cloneVoiceStatus').innerHTML = status;
+            } catch (e) {
+                document.getElementById('cloneVoiceStatus').innerHTML = '<span style="color: var(--error);">❌ Server not responding. Run voice_server.py in your voice-cloning terminal.</span>';
+            }
+        }
+
+        function playVoiceSample() {
+            const audio = new Audio('/home/debby/voice-cloning/my_voice.mp4');
+            audio.play().catch(e => alert('Could not play sample: ' + e.message));
+        }
+
+        function playLastOutput() {
+            const audio = new Audio('/home/debby/voice-cloning/output.wav');
+            audio.play().catch(e => alert('No audio found. Generate one first using voice_server.py'));
+        }
+
+        async function generateCloneAudio() {
+            const text = document.getElementById('cloneText').value.trim();
+            const language = document.getElementById('cloneLanguage').value;
+            
+            if (!text) {
+                document.getElementById('cloneStatus').innerHTML = '<span style="color: var(--error);">Please enter text to speak</span>';
+                return;
+            }
+
+            document.getElementById('cloneStatus').innerHTML = '<span style="color: var(--gold);">⏳ Generating audio... (may take 30-90 seconds)</span>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text, language })
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    document.getElementById('clonePlayback').src = url;
+                    document.getElementById('cloneOutput').style.display = 'block';
+                    document.getElementById('cloneFileName').textContent = 'Generated at ' + new Date().toLocaleTimeString();
+                    document.getElementById('cloneStatus').innerHTML = '<span style="color: var(--success);">✅ Audio generated! Listen or download below.</span>';
+                } else {
+                    const err = await response.json();
+                    document.getElementById('cloneStatus').innerHTML = '<span style="color: var(--error);">Error: ' + (err.error || 'Unknown error') + '</span>';
+                }
+            } catch (e) {
+                document.getElementById('cloneStatus').innerHTML = '<span style="color: var(--error);">❌ Could not connect to voice server. Make sure you ran: python voice_server.py</span>';
+            }
+        }
+
+        function downloadCloneAudio() {
+            const audio = document.getElementById('clonePlayback');
+            if (audio.src && audio.src !== window.location.href) {
+                const a = document.createElement('a');
+                a.href = audio.src;
+                a.download = 'elevare-clone-' + Date.now() + '.wav';
+                a.click();
+            }
+        }
+
+        // Auto-check status on page load for this section
+        window.cloneChecked = false;
     </script>
 </body>
 </html>
