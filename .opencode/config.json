@@ -1,0 +1,22 @@
+{
+  "model_routing": {
+    "default": "anthropic/claude-haiku-4-5",
+    "description": "Fast, cheap responses for simple tasks",
+    "deep_work": "anthropic/claude-sonnet-4-6",
+    "description": "Complex analysis, code architecture, detailed writing",
+    "bulk_content": "google/gemini-2.5-flash",
+    "description": "High-volume content generation, quick tasks"
+  },
+  "preferences": {
+    "plan_mode": true,
+    "confirm_before_push": true,
+    "confirm_before_deploy": true,
+    "confirm_spending_money": true
+  },
+  "context": {
+    "project": "Elevare",
+    "repo": "darnygirl/elevare",
+    "primary_url": "https://darnygirl.github.io/elevare/",
+    "platform": "github"
+  }
+}
