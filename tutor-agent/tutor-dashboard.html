@@ -55,6 +55,49 @@
             gap: 20px;
         }
 
+        .user-welcome {
+            text-align: right;
+        }
+
+        .user-welcome-main {
+            font-size: 14px;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .user-welcome-sub {
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .user-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 8px;
+        }
+
+        .user-badge.lingua {
+            background: rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+
+        .user-badge.rise {
+            background: rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.5);
+        }
+
+        .user-badge.flexnexus {
+            background: rgba(139, 92, 246, 0.3);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+        }
+
         .progress-ring {
             width: 50px;
             height: 50px;
@@ -509,12 +552,15 @@
         <div class="container">
             <div class="logo">Elevare <span>AI Tutor</span></div>
             <div class="user-info">
-                <div style="text-align: right;">
-                    <div style="font-size: 14px; color: var(--cream);">Welcome back!</div>
-                    <div style="font-size: 12px; color: var(--text);">Lingua Student</div>
+                <div class="user-welcome">
+                    <div class="user-welcome-main">Welcome back!</div>
+                    <div class="user-welcome-sub">
+                        <span id="studentType">Lingua</span> Student
+                        <span class="user-badge lingua" id="programBadge">🌍</span>
+                    </div>
                 </div>
                 <div class="progress-ring">
-                    <div class="progress-ring-inner" id="progressPercent">42%</div>
+                    <div class="progress-ring-inner" id="progressPercent">0%</div>
                 </div>
             </div>
         </div>
@@ -1018,9 +1064,48 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
         }
 
         // Program selection
+        let currentProgram = 'lingua';
+        
+        const programData = {
+            lingua: { name: 'Lingua', icon: '🌍', badge: 'lingua', color: '#3b82f6' },
+            rise: { name: 'Rise', icon: '💪', badge: 'rise', color: '#f59e0b' },
+            flexnexus: { name: 'Flex Nexus', icon: '💼', badge: 'flexnexus', color: '#8b5cf6' }
+        };
+
         function selectProgram(program) {
             document.querySelectorAll('.program-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
+            currentProgram = program;
+            updateHeaderProgram();
+            saveUserPreference();
+        }
+
+        function updateHeaderProgram() {
+            const data = programData[currentProgram];
+            document.getElementById('studentType').textContent = data.name;
+            const badge = document.getElementById('programBadge');
+            badge.textContent = data.icon;
+            badge.className = 'user-badge ' + data.badge;
+        }
+
+        function saveUserPreference() {
+            localStorage.setItem('elevare_tutor_program', currentProgram);
+            loadProgress();
+        }
+
+        function loadUserPreference() {
+            const saved = localStorage.getItem('elevare_tutor_program');
+            if (saved && programData[saved]) {
+                currentProgram = saved;
+                // Update the active tab
+                document.querySelectorAll('.program-tab').forEach(t => {
+                    t.classList.remove('active');
+                    if (t.classList.contains(saved)) {
+                        t.classList.add('active');
+                    }
+                });
+            }
+            updateHeaderProgram();
         }
 
         // Module click
@@ -1122,6 +1207,7 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 if (settings.openaiKey) document.getElementById('openaiKey').value = settings.openaiKey;
                 if (settings.model) document.getElementById('aiModel').value = settings.model;
             }
+            loadUserPreference();
             loadProgress();
         }
 
