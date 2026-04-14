@@ -96,6 +96,39 @@
             color: var(--navy) !important;
         }
 
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle svg {
+            width: 28px;
+            height: 28px;
+            color: var(--cream);
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            padding: 24px;
+            gap: 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            z-index: 999;
+        }
+
+        .nav-links.active a {
+            font-size: 16px;
+            padding: 8px 0;
+        }
+
         .hero {
             min-height: 50vh;
             background: var(--navy);
@@ -488,7 +521,9 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .booking-form-container { padding: 30px; }
+            .mobile-menu-toggle { display: block; }
+            .booking-form-container { padding: 24px; }
+            .hero { padding: 100px 0 60px; }
         }
     </style>
 </head>
@@ -506,6 +541,13 @@
                     </div>
                     <span class="logo-text">ELEVARE<span>.</span></span>
                 </a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="lingua.html">Lingua</a></li>
@@ -714,6 +756,11 @@
     </style>
     <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
     <script>
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
         const bookingForm = document.getElementById('bookingForm');
         
         bookingForm.addEventListener('submit', async function(e) {
