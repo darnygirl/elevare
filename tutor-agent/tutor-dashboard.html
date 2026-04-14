@@ -774,17 +774,24 @@
 
             <!-- Topic Quick Actions -->
             <div style="background: var(--navy-light); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-                <h4 style="color: var(--cream); margin-bottom: 16px; font-size: 14px;">🎯 Popular Topics</h4>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
-                    <button class="voice-btn" onclick="askTopic('pronunciation', 'Try the tongue twister: \"She sells seashells by the seashore\" - focus on the S sound. Say it slowly 3 times, then faster!')">🎯 Pronunciation</button>
-                    <button class="voice-btn" onclick="askTopic('confidence', 'Power pose exercise: Stand tall, hands on hips, for 2 minutes before speaking. Your cortisol drops 25%!')">💪 Build Confidence</button>
-                    <button class="voice-btn" onclick="askTopic('grammar', 'Subject-verb agreement: \"He DOESN\'T\" (not \"He DON\'T\"). Practice with 5 sentences now!')">📝 Grammar</button>
-                    <button class="voice-btn" onclick="askTopic('interview', 'STAR method: Situation, Task, Action, Result. Want me to quiz you with a sample question?')">💼 Interview Prep</button>
-                    <button class="voice-btn" onclick="askTopic('tongue twisters', 'Here are 3 to practice:\n1. Peter Piper picked pickled peppers\n2. Red leather, yellow leather\n3. Unique New York')">🗣️ Tongue Twisters</button>
-                    <button class="voice-btn" onclick="askTopic('pace', 'Optimal speaking pace: 120-150 WPM. Record yourself for 1 minute and count words!')">⏱️ Speaking Pace</button>
-                    <button class="voice-btn" onclick="askTopic('filler words', 'Common fillers: um, uh, like, you know, basically. Notice YOUR pattern first, then practice pausing instead!')">🚫 No Filler Words</button>
-                    <button class="voice-btn" onclick="askTopic('body language', 'Eye contact: 60-70% of conversation. Look away to think, then return. Power positions: feet flat, arms open!')">👁️ Body Language</button>
+                <h4 style="color: var(--cream); margin-bottom: 16px; font-size: 14px;">🎯 Choose a Topic to Learn</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px;">
+                    <button class="voice-btn" onclick="askTopic('pronunciation')">🎯 Pronunciation</button>
+                    <button class="voice-btn" onclick="askTopic('confidence')">💪 Confidence</button>
+                    <button class="voice-btn" onclick="askTopic('grammar')">📝 Grammar</button>
+                    <button class="voice-btn" onclick="askTopic('interview')">💼 Interview</button>
+                    <button class="voice-btn" onclick="askTopic('tongue twisters')">🗣️ Twisters</button>
+                    <button class="voice-btn" onclick="askTopic('pace')">⏱️ Pace</button>
+                    <button class="voice-btn" onclick="askTopic('filler words')">🚫 Fillers</button>
+                    <button class="voice-btn" onclick="askTopic('body language')">👁️ Body Lang</button>
+                    <button class="voice-btn" onclick="askTopic('breathing')">🧘 Breathing</button>
+                    <button class="voice-btn" onclick="askTopic('storytelling')">📖 Storytelling</button>
+                    <button class="voice-btn" onclick="askTopic('listening')">👂 Listening</button>
+                    <button class="voice-btn" onclick="askTopic('business communication')">💼 Professional</button>
                 </div>
+                <p style="text-align: center; margin-top: 16px; font-size: 12px; color: var(--text);">
+                    Or just type your question below! Type "help" for all topics.
+                </p>
             </div>
 
             <!-- Speaking Practice Challenge -->
@@ -1285,35 +1292,338 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
         function getKeywordResponse(message) {
             const lower = message.toLowerCase();
             
-            if (lower.includes('pronunci') || lower.includes('sound')) {
-                return "Great question about pronunciation! Here's your practice plan:\n\n🎯 Tongue Twister: 'Peter Piper picked a peck of pickled peppers'\n\n1. Say it slowly 3x focusing on P sounds\n2. Speed up gradually\n3. Record and compare\n\nKey tip: The P sound is a 'bilabial plosive' - both lips touch!";
-            }
-            if (lower.includes('confiden') || lower.includes('anxious') || lower.includes('nervous')) {
-                return "Building confidence is a skill! Here's your toolkit:\n\n🧘 2-min Power Pose before speaking\n📝 Count 5-4-3-2-1 before starting\n🎯 Focus on ONE key point\n⏸️ Use pauses (they feel long, but aren't)\n\nRemember: Nervousness and excitement feel the same. Re-label it!";
-            }
-            if (lower.includes('grammar') || lower.includes('sentence')) {
-                return "Grammar quick wins:\n\n✓ 'He DOESN'T' (not 'don't')\n✓ 'They AREN'T' (not 'ain't')\n✓ 'She ISN'T' (not 'isn't' - common error!)\n\nPractice: Make 5 sentences with these patterns RIGHT NOW. Repetition = neural pathways!";
-            }
-            if (lower.includes('interview') || lower.includes('job')) {
-                return "Ace your interview with STAR:\n\nS - Situation (what happened?)\nT - Task (what was your goal?)\nA - Action (what did YOU do?)\nR - Result (what happened?)\n\nExample: 'Reduced processing time by 40%'\n\nWant me to give you a practice question?";
-            }
-            if (lower.includes('tongue') || lower.includes('twister')) {
-                return "Practice these dailys:\n\n🔤 'She sells seashells' → S sounds\n🔤 'Red leather, yellow' → L/R sounds  \n🔤 'Unique New York' → Yooo sounds\n\nTip: Start slow and clear, then speed up. Your mouth learns the muscle movements!";
-            }
-            if (lower.includes('pace') || lower.includes('speed') || lower.includes('wpm')) {
-                return "Optimal speaking pace: 120-150 words/min\n\nToo fast = nervous\nToo slow = boring\n\n🎯 Practice: Read for 1 min, count words. Target: ~140.\n\nPower pauses (2-3 sec) make you sound THOUGHTFUL, not slow!";
-            }
-            if (lower.includes('filler') || lower.includes('um') || lower.includes('uh')) {
-                return "Eliminate filler words with this trick:\n\n1. Record yourself talking for 2 min\n2. Listen and COUNT your fillers\n3. Notice the pattern - WHERE do they come?\n\nMost happen when THINKING. Replace 'um' with SILENCE - it feels long but isn't!\n\nMindfulness practice helps too.";
-            }
-            if (lower.includes('body') || lower.includes('posture') || lower.includes('eye')) {
-                return "Body language for confidence:\n\n👁️ Eye contact: 60-70% (look away to think, return)\n🧍 Posture: Feet flat, shoulders back, arms open\n✋ Gestures: Palms visible, deliberate movements\n🚫 No crossing arms or fidgeting\n\nPower pose for 2 min BEFORE meetings changes testosterone levels by 20%!";
-            }
-            if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
-                return "Hey there! 👋 Great to have you here!\n\nI'm your Elevare tutor. What would you like to work on today?\n\nTip: Start with a topic button or just ask me anything!";
+            // Pronunciation & Sounds
+            if (lower.includes('pronunci') || lower.includes('sound') || lower.includes('phonetic')) {
+                return `🎯 <strong>Pronunciation Mastery Plan</strong><br><br>
+Here's exactly what to practice:<br><br>
+<strong>Step 1:</strong> Master the 'P' sound<br>
+🗣️ "Peter Piper picked a peck of pickled peppers"<br>
+Say it 5x slowly, then 5x faster<br><br>
+<strong>Step 2:</strong> The 'TH' sound<br>
+👅 Place tongue between teeth: "this", "that", "the"<br><br>
+<strong>Step 3:</strong> The 'L' vs 'R' (hardest!)<br>
+🔤 "Red leather, yellow leather"<br><br>
+<strong>Pro tip:</strong> Record yourself. Compare to native speakers.<br><br>
+Want me to give you a specific sound to work on?`;
             }
             
-            return "That's a great question! Here's my tip for today:\n\n📝 Record yourself for 30 seconds on any topic. Listen back - you'll hear things you never noticed!\n\nCommon improvements:\n• Speed up or slow down\n• Reduce filler words\n• Practice power pauses\n\nWhat specific area would you like to focus on?";
+            // Confidence & Anxiety
+            if (lower.includes('confiden') || lower.includes('anxious') || lower.includes('nervous') || lower.includes('anxiety') || lower.includes('scared')) {
+                return `💪 <strong>Confidence Toolkit</strong><br><br>
+Remember: <em>Nervousness and excitement feel IDENTICAL. Re-label it!</em><br><br>
+<strong>Before any speaking:</strong><br>
+🧘 2-min Power Pose (hands on hips, shoulders back)<br>
+📝 5-4-3-2-1 countdown before you start<br>
+🎯 Say ONE key message in your head<br><br>
+<strong>During speaking:</strong><br>
+⏸️ Pause when you need to think (feels long, isn't!)<br>
+👁️ Eye contact: 60-70%<br><br>
+<strong>Fact:</strong> Cortisol drops 25% after just 2 min power pose!<br><br>
+What's causing your anxiety? I can help specifically.`;
+            }
+            
+            // Grammar
+            if (lower.includes('grammar') || lower.includes('sentence') || lower.includes('tenses') || lower.includes('verb')) {
+                return `📝 <strong>Grammar That Kills Confidence</strong><br><br>
+Top 3 errors that make you sound less polished:<br><br>
+❌ "He <strong>don't</strong>" → ✅ "He <strong>doesn't</strong>"<br>
+❌ "She <strong>ain't</strong>" → ✅ "She <strong>isn't</strong>"<br>
+❌ "They <strong>wasn't</strong>" (plural) → ✅ "They <strong>weren't</strong>"<br><br>
+<strong>Quick fix:</strong> Every time you say "don't", check - should it be "doesn't"?<br><br>
+<strong>Practice now:</strong> Say 5 sentences using "doesn't" for ongoing habits.<br><br>
+Need help with a specific grammar point?`;
+            }
+            
+            // Interview
+            if (lower.includes('interview') || lower.includes('job') || lower.includes('hiring') || lower.includes('resume') || lower.includes('cv')) {
+                return `💼 <strong>Interview Success Formula</strong><br><br>
+<strong>The STAR Method:</strong><br>
+📌 <strong>S</strong>ituation - What happened?<br>
+📌 <strong>T</strong>ask - What was your goal?<br>
+📌 <strong>A</strong>ction - What did YOU do?<br>
+📌 <strong>R</strong>esult - What happened? (Use numbers!)<br><br>
+<strong>Example:</strong><br>
+"I <strong>S</strong>aw our response time was 5 days. I <strong>T</strong>ried to fix it. I <strong>A</strong>utomated 3 steps. We <strong>R</strong>educed time to 1 day = <strong>80% improvement</strong>."<br><br>
+<strong>Your turn:</strong> Tell me about a problem you solved. I'll help you STAR it!`;
+            }
+            
+            // Tongue Twisters
+            if (lower.includes('tongue') || lower.includes('twister')) {
+                return `🗣️ <strong>Daily Tongue Twister Workout</strong><br><br>
+<strong>Morning Routine (do each 3x):</strong><br><br>
+🔤 <strong>S sounds:</strong><br>
+"She sells seashells by the seashore"<br><br>
+🔤 <strong>L/R sounds:</strong><br>
+"Red leather, yellow leather"<br><br>
+🔤 <strong>Yooo sounds:</strong><br>
+"Unique New York, unique New York"<br><br>
+🔤 <strong>Mixed:</strong><br>
+"How much wood would a woodchuck chuck"<br><br>
+<strong>Key:</strong> SLOW first. Clear > Fast. Accuracy builds speed!<br><br>
+Which sound is hardest for you? I can give you targeted ones.`;
+            }
+            
+            // Speaking Pace
+            if (lower.includes('pace') || lower.includes('speed') || lower.includes('wpm') || lower.includes('fast') || lower.includes('slow')) {
+                return `⏱️ <strong>Find Your Perfect Pace</strong><br><br>
+<strong>The Golden Range:</strong> 120-150 words per minute<br><br>
+📊 <strong>Test yourself:</strong><br>
+1. Read aloud for exactly 1 minute<br>
+2. Count total words spoken<br>
+3. Target: 120-150<br><br>
+<strong>Too fast?</strong> Add power pauses (2-3 sec). They're GOLD for emphasis.<br>
+<strong>Too slow?</strong> Remove um/uh - replace with silence.<br><br>
+<strong>Pro tip:</strong> Great speakers pause 20-30% of the time. Silence = thoughtfulness!<br><br>
+Want to practice pace control?`;
+            }
+            
+            // Filler Words
+            if (lower.includes('filler') || lower.includes('um') || lower.includes('uh') || lower.includes('like') || lower.includes('basically') || lower.includes('you know')) {
+                return `🚫 <strong>Destroy Your Filler Words</strong><br><br>
+<strong>The 3-Step Method:</strong><br><br>
+1️⃣ <strong>Detect:</strong> Record 2 min of talking. Count YOUR fillers.<br>
+Common: "um", "uh", "like", "you know", "basically", "actually"<br><br>
+2️⃣ <strong>Pattern:</strong> WHEN do they come? (Thinking? Nervous?)<br><br>
+3️⃣ <strong>Replace:</strong> Instead of "um", use a PAUSE. It feels weird but isn't noticeable.<br><br>
+<strong>Truth:</strong> Everyone has fillers. Audiences don't notice them as much as YOU do.<br><br>
+Record yourself now and count - let's see your baseline!`;
+            }
+            
+            // Body Language
+            if (lower.includes('body') || lower.includes('posture') || lower.includes('eye') || lower.includes('gesture') || lower.includes('hand') || lower.includes('arm')) {
+                return `👁️ <strong>Confident Body Language</strong><br><br>
+<strong>Eye Contact:</strong><br>
+• 60-70% = confident<br>
+• Look away to THINK, return quickly<br>
+• Think "triangular" - left eye, right eye, forehead<br><br>
+<strong>Posture:</strong><br>
+• Feet flat on floor<br>
+• Shoulders BACK (not hunched)<br>
+• Arms OPEN (palms visible when gesturing)<br><br>
+<strong>Power Positions:</strong><br>
+• Before meetings: Stand like Superman for 2 min<br>
+• During: Feet shoulder-width, arms uncrossed<br><br>
+<strong>Kill list:</strong><br>
+🚫 Crossing arms<br>
+🚫 Fidgeting<br>
+🚫 Looking at floor<br>
+🚫 Hands in pockets<br><br>
+Practice in front of a mirror!`;
+            }
+            
+            // Breathing
+            if (lower.includes('breath') || lower.includes('diaphragm') || lower.includes('relax') || lower.includes('stress')) {
+                return `🧘 <strong>Breath Control for Calm Speaking</strong><br><br>
+<strong>The 4-7-8 Technique:</strong><br>
+📖 Breathe in through nose: 4 counts<br>
+📖 Hold: 7 counts<br>
+📖 Breathe out through mouth: 8 counts<br>
+→ Repeat 3x before speaking<br><br>
+<strong>Why it works:</strong><br>
+• Activates parasympathetic nervous system<br>
+• Lowers heart rate<br>
+• Calms the 'nervous system backup'<br><br>
+<strong>During speaking:</strong><br>
+• Breathe from belly, not chest<br>
+• Sentence ending = breathe out<br>
+• Before important word = breathe in<br><br>
+Try this right now!`;
+            }
+            
+            // Storytelling
+            if (lower.includes('story') || lower.includes('storytelling') || lower.includes('narrative')) {
+                return `📖 <strong>The POWER Framework for Stories</strong><br><br>
+<strong>P</strong>oint - Start with the lesson/moral<br>
+<strong>O</strong>bstacle - What challenged you?<br>
+<strong>W</strong>orld - Paint the scene (sights, sounds)<br>
+<strong>E</strong>vents - What happened? (Keep moving!)<br>
+<strong>R</strong>eflection - What did you learn?<br><br>
+<strong>Example:</strong><br>
+"The <strong>P</strong>oint is: preparation beats pressure.<br>
+I was <strong>O</strong>nstage, heart racing, when my slides crashed.<br>
+The <strong>W</strong>: bright lights, 200 faces, dead silence.<br>
+I <strong>E</strong>: Took a breath, spoke from memory.<br>
+It <strong>R</strong>: taught me: I knew my stuff better than I thought."<br><br>
+Tell me a story - I'll help you structure it!`;
+            }
+            
+            // Listening
+            if (lower.includes('listen') || lower.includes('hearing') || lower.includes('comprehension')) {
+                return `👂 <strong>Active Listening Skills</strong><br><br>
+<strong>Most people hear. Few listen.</strong><br><br>
+<strong>SOLER Technique:</strong><br>
+📌 <strong>S</strong>quarely - Face the speaker<br>
+📌 <strong>O</strong>pen posture - Leans in slightly<br>
+📌 <strong>L</strong>ook - Eye contact (not stare)<br>
+📌 <strong>E</strong>ducated responses - Nod, say "yes", "I see"<br>
+📌 <strong>R</strong>eflect - Repeat back what you heard<br><br>
+<strong>Example:</strong><br>
+"So what you're saying is... your manager gave unclear feedback?"<br><br>
+<strong>Benefit:</strong> Speakers love you. You understand better. You remember more.<br><br>
+Practice: In your next conversation, focus ONLY on listening for 2 min.`;
+            }
+            
+            // Voice & Projection
+            if (lower.includes('voice') || lower.includes('project') || lower.includes('volume') || lower.includes('loud') || lower.includes('quiet')) {
+                return `🔊 <strong>Voice Projection Without Screaming</strong><br><br>
+<strong>The 3 Resonance Zones:</strong><br>
+1️⃣ <strong>Chest</strong> - Deep, confident (good for authority)<br>
+2️⃣ <strong>Mask</strong> - Warm, engaging (best for teaching)<br>
+3️⃣ <strong>Head</strong> - Clear, precise (good for details)<br><br>
+<strong>Exercise:</strong><br>
+Say "Hello, how are you?" in each zone. Feel the vibration.<br><br>
+<strong>Projection tip:</strong><br>
+• Don't shout - SUPPORT the voice<br>
+• Breathe from belly, not chest<br>
+• Imagine your voice going PAST the listener<br><br>
+<strong>Test:</strong> Can someone in the back row hear you without you yelling?`;
+            }
+            
+            // English Specific
+            if (lower.includes('english') || lower.includes('american') || lower.includes('british') || lower.includes('accent')) {
+                return `🗣️ <strong>Accent & English Tips</strong><br><br>
+<strong>Key sounds that differ:</strong><br>
+🔤 'T' in 'water' - often sounds like 'D' in American English<br>
+🔤 'R' - Americans curl tongue back, British don't<br>
+🔤 'A' in 'dance' - short vs long vowel<br><br>
+<strong>Speaking clearly:</strong><br>
+• Over-enunciate at first<br>
+• Watch your mouth in mirrors<br>
+• Slow down - clarity > speed<br><br>
+<strong>Accent is FINE</strong> - Clarity > accent reduction<br>
+<br>
+What specific accent or sound would you like help with?`;
+            }
+            
+            // Business Communication
+            if (lower.includes('business') || lower.includes('professional') || lower.includes('meeting') || lower.includes('presentation') || lower.includes('email')) {
+                return `💼 <strong>Professional Communication</strong><br><br>
+<strong> Meetings:</strong><br>
+• Start with a question (engages)<br>
+• Use "I" statements, not "they"<br>
+• Pause before and after key points<br><br>
+<strong> Emails:</strong><br>
+• Subject = action (not description)<br>
+• First line = what you need<br>
+• Short paragraphs (3 sentences max)<br>
+• End with clear next step<br><br>
+<strong> Presentations:</strong><br>
+• Tell them what you'll tell them<br>
+• Tell them<br>
+• Tell them what you told them<br><br>
+What's your biggest professional communication challenge?`;
+            }
+            
+            // Persuasion
+            if (lower.includes('persua') || lower.includes('convin') || lower.includes('sell') || lower.includes('negotiat')) {
+                return `🎯 <strong>The Art of Persuasion</strong><br><br>
+<strong>Build Trust First:</strong><br>
+• Share a weakness early (be human)<br>
+• Use "I" not "we" (take credit AND responsibility)<br>
+• Show, don't just tell<br><br>
+<strong>The Pattern:</strong><br>
+1️⃣ Problem (they feel it)<br>
+2️⃣ Solution (you offer it)<br>
+3️⃣ Proof (evidence, not claims)<br>
+4️⃣ Action (simple, clear next step)<br><br>
+<strong>Power words:</strong> "Because", "Imagine", "Guarantee", "New", "Proven"<br><br>
+What are you trying to persuade someone about?`;
+            }
+            
+            // Leadership
+            if (lower.includes('leader') || lower.includes('lead') || lower.includes('manage') || lower.includes('team')) {
+                return `👑 <strong>Leadership Communication</strong><br><br>
+<strong>The 3 C's:</strong><br>
+📌 <strong>Clear</strong> - Simple words, direct<br>
+📌 <strong>Concise</strong> - No fluff, respect time<br>
+📌 <strong>Confident</strong> - Command presence<br><br>
+<strong>Start strong:</strong><br>
+• "Here's what I need from you..."<br>
+• "The decision is..."<br>
+• "Here's the situation..."<br><br>
+<strong>Avoid:</strong><br>
+• "I think maybe perhaps"<br>
+• "Does anyone have any thoughts?" (be decisive)<br>
+• Filling silence with nervous talk<br><br>
+Leadership = clarity + confidence. Practice commanding the room!`;
+            }
+            
+            // Feedback
+            if (lower.includes('feedback') || lower.includes('critic') || lower.includes('improve')) {
+                return `💬 <strong>Getting & Giving Feedback</strong><br><br>
+<strong>Receiving feedback:</strong><br>
+• Listen FIRST, respond later<br>
+• Say "Thank you" (even if wrong)<br>
+• Ask: "What would you do differently?"<br><br>
+<strong>Giving feedback:</strong><br>
+• Start positive (builds safety)<br>
+• Be specific ("Often" not "Always")<br>
+• End with next step<br><br>
+<strong>Formula:</strong><br>
+"When you [behavior], I feel [impact], because [reason]. Next time, could you [specific change]?"<br><br>
+This works for managers, peers, and friends!<br><br>
+Need help with a specific feedback situation?`;
+            }
+            
+            // Greetings
+            if (lower.includes('hello') || lower.includes('hi ') || lower.includes('hey') || lower.includes('greeting')) {
+                return `👋 Hey! Great to have you here!<br><br>
+I'm your Elevare AI tutor. I can help you with:<br><br>
+🎤 <strong>Speaking:</strong> Pace, projection, filler words<br>
+🎯 <strong>Confidence:</strong> Anxiety, mindset, presence<br>
+📝 <strong>Grammar:</strong> Common errors, sentence structure<br>
+💼 <strong>Professional:</strong> Interviews, presentations, emails<br>
+🗣️ <strong>Pronunciation:</strong> Sounds, tongue twisters<br><br>
+<strong>Quick wins:</strong><br>
+• Click any Topic Button below<br>
+• Ask me to teach you a specific lesson<br>
+• Practice with the Speaking Challenge<br><br>
+What's on your mind? Or click a topic! 👇`;
+            }
+            
+            // Thanks
+            if (lower.includes('thank') || lower.includes('thx') || lower.includes('thanks')) {
+                return `You're welcome! 🙌<br><br>
+Remember: Every conversation is practice. Every practice session makes you better.<br><br>
+<strong>Quick win for today:</strong> Record yourself saying one sentence. Listen back. Notice ONE thing to improve.<br><br>
+Come back anytime! I'm here 24/7. 💪<br><br>
+What else can I help you with?`;
+            }
+            
+            // Help
+            if (lower.includes('help') || lower.includes('what can you') || lower.includes('how can you')) {
+                return `🤖 <strong>Here's How I Can Help You:</strong><br><br>
+<strong>Click a topic below OR just ask me anything about:</strong><br><br>
+🎯 <strong>Pronunciation</strong> - Sound like a native<br>
+💪 <strong>Confidence</strong> - Overcome speaking anxiety<br>
+📝 <strong>Grammar</strong> - Polish your speech<br>
+💼 <strong>Interview Prep</strong> - STAR method & practice<br>
+🗣️ <strong>Tongue Twisters</strong> - Daily articulation workout<br>
+⏱️ <strong>Speaking Pace</strong> - Find your rhythm<br>
+🚫 <strong>Filler Words</strong> - Stop saying um/uh<br>
+👁️ <strong>Body Language</strong> - Project confidence<br>
+🧘 <strong>Breathing</strong> - Calm your nerves<br>
+📖 <strong>Storytelling</strong> - Captivate any audience<br>
+👂 <strong>Listening</strong> - Be a better communicator<br>
+💼 <strong>Professional</strong> - Emails, meetings, presentations<br><br>
+Just type your question or click a button!`;
+            }
+            
+            // Default response
+            return `That's a great question! Here's my approach:<br><br>
+📝 <strong>First step:</strong> Record yourself for 30 seconds on any topic.<br>
+🎧 <strong>Then:</strong> Listen back and notice ONE thing to improve.<br><br>
+<strong>Common improvements:</strong><br>
+• Pace (target: 120-150 WPM)<br>
+• Filler words (um, uh, like)<br>
+• Pauses for emphasis<br>
+• Eye contact<br>
+• Confidence in your voice<br><br>
+<strong>I can help you with:</strong><br>
+• Specific lessons from our 8-module course<br>
+• Practice exercises<br>
+• Immediate feedback tips<br><br>
+What specific area would you like to work on? Or click a topic button below! 👇`;
         }
 
         function handleChatKeypress(e) {
