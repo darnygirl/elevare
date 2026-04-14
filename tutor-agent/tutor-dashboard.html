@@ -811,9 +811,32 @@
                     </div>
                 </div>
 
+                <!-- Voice Recording Panel -->
+                <div id="voicePanel" style="background: var(--navy); border-radius: 16px; padding: 24px; margin-bottom: 16px; text-align: center; border: 2px solid transparent; transition: all 0.3s;">
+                    <div style="margin-bottom: 16px;">
+                        <span style="font-size: 48px;" id="voiceEmoji">🎤</span>
+                    </div>
+                    <p id="voiceStatus" style="color: var(--cream); font-size: 16px; margin-bottom: 16px;">Click the microphone to speak</p>
+                    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                        <button id="voiceRecordBtn" onclick="toggleVoiceRecording()" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; padding: 20px 40px; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.3s; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);">
+                            <span id="voiceIcon">🎤</span>
+                            <span id="voiceBtnText">Start Speaking</span>
+                        </button>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text); margin-top: 12px;">Works best in Chrome browser</p>
+                </div>
+
+                <!-- Transcript Preview -->
+                <div id="transcriptPreview" style="display: none; background: var(--navy-light); border-radius: 12px; padding: 16px; margin-bottom: 16px; border-left: 4px solid var(--gold);">
+                    <p style="font-size: 12px; color: var(--gold); margin-bottom: 8px;">📝 Your words:</p>
+                    <p id="transcriptText2" style="color: var(--cream); font-size: 15px; line-height: 1.6;"></p>
+                    <button onclick="sendVoiceTranscript()" style="margin-top: 12px; background: var(--gold); color: var(--navy); border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                        Send to AI Tutor →
+                    </button>
+                </div>
+
                 <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
-                    <button class="chat-send" id="micBtn" onclick="toggleVoiceInput()" title="Voice input" style="background: var(--navy-light); width: 50px;">🎤</button>
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Or type your question here..." onkeypress="handleChatKeypress(event)">
                     <button class="chat-send" onclick="sendMessage()">Send</button>
                 </div>
             </div>
@@ -1232,63 +1255,122 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
             }
         }
 
-        // Voice input (Web Speech API)
-        let isListening = false;
+        // Voice Recording - Full Implementation
+        let isRecording = false;
         let recognition = null;
+        let finalTranscript = '';
 
-        function toggleVoiceInput() {
+        function toggleVoiceRecording() {
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                alert('Voice input not supported in this browser. Try Chrome!');
+                alert('🎤 Voice input requires Chrome browser. Please open this page in Chrome and try again!');
                 return;
             }
 
-            if (isListening) {
-                stopVoiceInput();
+            if (isRecording) {
+                stopVoiceRecording();
                 return;
             }
 
+            startVoiceRecording();
+        }
+
+        function startVoiceRecording() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
-            recognition.continuous = false;
+            recognition.continuous = true;
             recognition.interimResults = true;
             recognition.lang = 'en-US';
 
-            recognition.onstart = () => {
-                isListening = true;
-                document.getElementById('micBtn').style.background = 'var(--error)';
-                document.getElementById('chatInput').placeholder = 'Listening...';
-            };
+            finalTranscript = '';
+            isRecording = true;
+
+            // Update UI
+            const panel = document.getElementById('voicePanel');
+            const voiceEmoji = document.getElementById('voiceEmoji');
+            const voiceStatus = document.getElementById('voiceStatus');
+            const voiceBtn = document.getElementById('voiceRecordBtn');
+            const voiceIcon = document.getElementById('voiceIcon');
+            const voiceBtnText = document.getElementById('voiceBtnText');
+
+            panel.style.borderColor = '#ef4444';
+            panel.style.background = 'rgba(239, 68, 68, 0.1)';
+            voiceEmoji.textContent = '🔴';
+            voiceStatus.textContent = 'Listening... Speak now!';
+            voiceIcon.textContent = '⏹️';
+            voiceBtnText.textContent = 'Stop';
+            voiceBtn.style.background = 'linear-gradient(135deg, #6b7280, #4b5563)';
+            voiceBtn.style.boxShadow = 'none';
 
             recognition.onresult = (event) => {
-                let transcript = '';
+                let interimTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; i++) {
-                    transcript += event.results[i][0].transcript;
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript + ' ';
+                    } else {
+                        interimTranscript += transcript;
+                    }
                 }
-                document.getElementById('chatInput').value = transcript;
+                const preview = document.getElementById('transcriptPreview');
+                const text2 = document.getElementById('transcriptText2');
+                preview.style.display = 'block';
+                text2.textContent = finalTranscript + interimTranscript;
+            };
+
+            recognition.onerror = (event) => {
+                console.log('Speech recognition error:', event.error);
+                if (event.error === 'not-allowed') {
+                    alert('🎤 Microphone access denied! Please allow microphone access in your browser settings.');
+                }
+                stopVoiceRecording();
             };
 
             recognition.onend = () => {
-                isListening = false;
-                document.getElementById('micBtn').style.background = 'var(--navy-light)';
-                document.getElementById('chatInput').placeholder = 'Ask me anything...';
-                if (document.getElementById('chatInput').value.trim()) {
-                    sendMessage();
+                if (isRecording) {
+                    recognition.start();
                 }
-            };
-
-            recognition.onerror = (e) => {
-                console.log('Speech error:', e.error);
-                stopVoiceInput();
             };
 
             recognition.start();
         }
 
-        function stopVoiceInput() {
-            if (recognition) recognition.stop();
-            isListening = false;
-            document.getElementById('micBtn').style.background = 'var(--navy-light)';
-            document.getElementById('chatInput').placeholder = 'Ask me anything...';
+        function stopVoiceRecording() {
+            if (recognition) {
+                recognition.stop();
+            }
+            isRecording = false;
+
+            // Reset UI
+            const panel = document.getElementById('voicePanel');
+            const voiceEmoji = document.getElementById('voiceEmoji');
+            const voiceStatus = document.getElementById('voiceStatus');
+            const voiceBtn = document.getElementById('voiceRecordBtn');
+            const voiceIcon = document.getElementById('voiceIcon');
+            const voiceBtnText = document.getElementById('voiceBtnText');
+
+            panel.style.borderColor = 'transparent';
+            panel.style.background = 'var(--navy)';
+            voiceEmoji.textContent = '✅';
+            voiceStatus.textContent = finalTranscript.trim() ? 'Got it! Review below and send.' : 'No speech detected. Try again!';
+            voiceIcon.textContent = '🎤';
+            voiceBtnText.textContent = 'Speak Again';
+            voiceBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            voiceBtn.style.boxShadow = '0 4px 20px rgba(239, 68, 68, 0.4)';
+
+            if (finalTranscript.trim()) {
+                document.getElementById('transcriptPreview').style.display = 'block';
+                document.getElementById('transcriptText2').textContent = finalTranscript.trim();
+                document.getElementById('chatInput').value = finalTranscript.trim();
+            }
+        }
+
+        function sendVoiceTranscript() {
+            const text = document.getElementById('transcriptText2').textContent.trim();
+            if (text) {
+                document.getElementById('chatInput').value = text;
+                sendMessage();
+                document.getElementById('transcriptPreview').style.display = 'none';
+            }
         }
 
         // Chat functions
