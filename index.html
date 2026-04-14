@@ -1882,15 +1882,27 @@
                     <li><a href="frontend/lingua.html">Lingua</a></li>
                     <li><a href="frontend/rise.html">Rise</a></li>
                     <li><a href="frontend/flexnexus.html">Flex Nexus</a></li>
+                    <li><a href="frontend/pricing.html">Pricing</a></li>
                     <li><a href="frontend/team.html">Team</a></li>
                     <li><a href="frontend/tutors.html">For Tutors</a></li>
-                    <li><a href="marketing/marketing-dashboard.html">Marketing</a></li>
-                    <li><a href="tutor-agent/tutor-dashboard.html">AI Tutor</a></li>
-                    <li><a href="frontend/book.html" class="nav-cta">Book a Session</a></li>
+                    <li><a href="frontend/book.html" class="nav-cta">Book Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Sticky Header (appears on scroll) -->
+    <div class="sticky-header" id="stickyHeader">
+        <div class="sticky-header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">E</div>
+            </a>
+            <div class="sticky-header-cta">
+                <a href="frontend/pricing.html" class="cta-secondary">Pricing</a>
+                <a href="frontend/book.html" class="cta-primary">Book Free Call</a>
+            </div>
+        </div>
+    </div>
 
     <section id="main-content" class="hero">
         <div class="container">
@@ -1904,7 +1916,7 @@
                     <p class="hero-subtitle">We don't just teach language. We address what's <em>really</em> holding you back — anxiety, fear, self-doubt — with coaching that understands the psychology behind communication.</p>
                     <div class="hero-buttons">
                         <a href="#signup" class="btn btn-primary">Start Your Free 5-Day Course</a>
-                        <a href="#programs" class="btn btn-secondary">See How It Works</a>
+                        <a href="frontend/book.html" class="btn btn-secondary" style="background: var(--gold); color: var(--navy);">📅 Book Free Call</a>
                     </div>
                     <div class="hero-trust">
                         <span>✓ Guaranteed results or your money back</span>
@@ -2631,6 +2643,22 @@
 
             <!-- Trust Bar -->
             <div style="background: var(--navy-light); border-radius: 16px; padding: 32px; margin-top: 48px; text-align: center;">
+                <!-- Live Counter -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 20px;">
+                    <div style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                    <span style="color: var(--text); font-size: 14px;"><strong style="color: #22c55e;" id="liveCounter">47</strong> people viewing this page right now</span>
+                </div>
+
+                <!-- Company Logos (Placeholder - Replace with real logos) -->
+                <p style="color: var(--text); font-size: 12px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">Students work at companies like</p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 24px; opacity: 0.7;">
+                    <div style="font-size: 18px; font-weight: 700; color: var(--cream);">Google</div>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--cream);">Microsoft</div>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--cream);">Amazon</div>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--cream);">Deloitte</div>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--cream);">Shopify</div>
+                </div>
+
                 <p style="color: var(--text); font-size: 14px; margin-bottom: 16px;">Join thousands of successful students</p>
                 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
                     <div style="text-align: center;">
@@ -2703,7 +2731,37 @@
         .faq-item h4 span.open {
             transform: rotate(45deg);
         }
-    </style>
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .email-signup .form-row {
+                flex-direction: column;
+            }
+            .email-signup-text h2 {
+                font-size: 28px;
+            }
+            .email-signup-form .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .sticky-header {
+                display: none;
+            }
+            .exit-popup {
+                padding: 32px 24px;
+            }
+            .exit-popup h3 {
+                font-size: 22px;
+            }
+            .video-testimonial { padding: 16px !important; }
+            .faq-item h4 { font-size: 15px; }
+            .progress-step { flex-direction: column; gap: 4px; }
+            .progress-step div:first-child { order: -1; }
+        }
 
     <script>
         function filterTestimonials(program) {
@@ -2774,30 +2832,48 @@
     <section class="email-signup" id="signup">
         <div class="container">
             <div class="email-signup-content">
-                <div class="email-signup-badge">🎁 100% FREE</div>
+                <!-- Progress Indicator -->
+                <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 28px; height: 28px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--navy);">1</div>
+                        <span style="color: var(--cream); font-size: 13px;">Choose Program</span>
+                    </div>
+                    <div style="width: 40px; height: 2px; background: var(--gold);"></div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 28px; height: 28px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--navy);">2</div>
+                        <span style="color: var(--cream); font-size: 13px;">Get Free Course</span>
+                    </div>
+                    <div style="width: 40px; height: 2px; background: rgba(201,162,39,0.3);"></div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 28px; height: 28px; background: rgba(201,162,39,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--cream);">3</div>
+                        <span style="color: var(--text); font-size: 13px;">Start Transformation</span>
+                    </div>
+                </div>
+
+                <div class="email-signup-badge">🎁 100% FREE — Limited Time Offer</div>
                 <div class="email-signup-text">
                     <h2>Get Your Free 5-Day Confidence Kickstart</h2>
-                    <p>Join 2,000+ students who've transformed their communication. Get instant access to our proven mini-course delivered straight to your inbox.</p>
+                    <p>Join 2,000+ students who've transformed their communication. Get <strong style="color: var(--gold);">instant access</strong> to our proven mini-course delivered straight to your inbox.</p>
                 </div>
 
                 <!-- What You'll Learn -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; text-align: left;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold);">
                         <div style="font-size: 24px; margin-bottom: 8px;">🧠</div>
                         <h4 style="color: var(--cream); margin-bottom: 4px;">Day 1</h4>
                         <p style="font-size: 13px; color: var(--text);">The psychology behind speaking anxiety</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold);">
                         <div style="font-size: 24px; margin-bottom: 8px;">💪</div>
                         <h4 style="color: var(--cream); margin-bottom: 4px;">Day 2</h4>
                         <p style="font-size: 13px; color: var(--text);">Body language secrets that instantly boost confidence</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold);">
                         <div style="font-size: 24px; margin-bottom: 8px;">🎯</div>
                         <h4 style="color: var(--cream); margin-bottom: 4px;">Day 3</h4>
                         <p style="font-size: 13px; color: var(--text);">How to make any first impression memorable</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold);">
                         <div style="font-size: 24px; margin-bottom: 8px;">📝</div>
                         <h4 style="color: var(--cream); margin-bottom: 4px;">Day 4-5</h4>
                         <p style="font-size: 13px; color: var(--text);">Real exercises and your personal action plan</p>
@@ -2814,6 +2890,11 @@
                     <div style="color: var(--text); font-size: 14px;">4.9/5 avg rating</div>
                     <div style="color: var(--text); font-size: 14px;">•</div>
                     <div style="color: var(--text); font-size: 14px;">30-day guarantee</div>
+                </div>
+
+                <!-- Urgency Banner -->
+                <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; border-radius: 8px; padding: 12px 20px; margin-bottom: 24px; display: inline-block;">
+                    <span style="color: #22c55e; font-size: 13px;">⚡ <strong>2,847 people</strong> grabbed this offer this month</span>
                 </div>
 
                 <form class="email-signup-form" action="https://formspree.io/f/xwpkvgpn" method="POST">
@@ -3174,6 +3255,205 @@
             color: white;
         }
 
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 12px 0;
+            z-index: 1001;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-header.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .sticky-header .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 18px;
+        }
+
+        .sticky-header-cta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .sticky-header-cta a {
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .sticky-header-cta .cta-secondary {
+            color: var(--cream);
+            border: 1px solid rgba(201, 162, 39, 0.5);
+        }
+
+        .sticky-header-cta .cta-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .sticky-header-cta .cta-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .sticky-header-cta .cta-primary:hover {
+            background: var(--gold-light);
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header {
+                display: none;
+            }
+        }
+
+        /* Exit Intent Popup */
+        .exit-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .exit-popup-overlay.show {
+            display: flex;
+        }
+
+        .exit-popup {
+            background: var(--navy);
+            border: 2px solid var(--gold);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: popupSlideIn 0.3s ease;
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exit-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .exit-popup-close:hover {
+            color: var(--gold);
+        }
+
+        .exit-popup h3 {
+            font-size: 28px;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .exit-popup p {
+            color: var(--text);
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .exit-popup .form-group {
+            margin-bottom: 16px;
+        }
+
+        .exit-popup input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            background: var(--navy-light);
+            color: var(--cream);
+            font-size: 15px;
+        }
+
+        .exit-popup input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .exit-popup button {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .exit-popup button:hover {
+            background: var(--gold-light);
+        }
+
+        .exit-popup .note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 12px;
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .whatsapp-float {
                 bottom: 16px;
@@ -3219,5 +3499,84 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup-overlay" id="exitPopup">
+        <div class="exit-popup">
+            <button class="exit-popup-close" onclick="closeExitPopup()">&times;</button>
+            <h3>Wait! Don't Leave Empty-Handed</h3>
+            <p>Get our FREE 5-Day Confidence Kickstart before you go. Join 2,000+ students who've transformed their communication.</p>
+            <form id="exitPopupForm" action="https://formspree.io/f/xwpkvgpn" method="POST">
+                <div class="form-group">
+                    <input type="text" name="First Name" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="Email" placeholder="Your email address" required>
+                </div>
+                <input type="hidden" name="_subject" value="Exit Popup Signup: 5-Day Confidence Kickstart">
+                <button type="submit" onclick="closeExitPopup()">Get Free Access →</button>
+            </form>
+            <p class="note">🔒 No credit card required. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
+    <script>
+        // Sticky Header on Scroll
+        let lastScrollY = window.scrollY;
+        const stickyHeader = document.getElementById('stickyHeader');
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show sticky header after scrolling 500px
+            if (currentScrollY > 500) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Exit Intent Popup
+        let exitPopupShown = false;
+        const exitPopup = document.getElementById('exitPopup');
+
+        function closeExitPopup() {
+            exitPopup.classList.remove('show');
+        }
+
+        // Show exit popup when mouse leaves viewport (desktop only)
+        document.addEventListener('mouseout', (e) => {
+            if (!exitPopupShown && e.clientY <= 0 && window.innerWidth > 768) {
+                exitPopupShown = true;
+                exitPopup.classList.add('show');
+            }
+        });
+
+        // Close popup on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeExitPopup();
+            }
+        });
+
+        // Close popup on overlay click
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                closeExitPopup();
+            }
+        });
+
+        // Live Counter (random number between 30-100)
+        function updateLiveCounter() {
+            const counter = document.getElementById('liveCounter');
+            if (counter) {
+                const count = Math.floor(Math.random() * 70) + 30;
+                counter.textContent = count;
+            }
+        }
+        setInterval(updateLiveCounter, 10000); // Update every 10 seconds
+    </script>
 </body>
 </html>
