@@ -2463,46 +2463,192 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Testimonials</div>
-                <h2 class="section-title">What Our Students Say</h2>
-                <p class="section-desc">Real stories from real transformations</p>
+                <div class="section-label">Success Stories</div>
+                <h2 class="section-title">Real Transformations, Real People</h2>
+                <p class="section-desc">Join 2,000+ students who've changed their communication lives</p>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Elevare completely transformed my confidence. I went from being afraid to speak up in meetings to leading presentations. The mental-health-informed approach made all the difference."</p>
-                    <div class="testimonial-author">
-                        <div class="author-name">Sarah M.</div>
-                        <div class="author-program">Rise Program Graduate</div>
+            <!-- Video Testimonials -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="color: var(--cream); font-size: 20px; margin-bottom: 24px; text-align: center;">
+                    🎬 Watch Their Stories
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div class="video-testimonial" style="background: var(--navy-light); border-radius: 16px; padding: 20px; text-align: center; border: 2px solid rgba(201,162,39,0.3); cursor: pointer; transition: all 0.3s;" onclick="alert('Video testimonial will open here. Add YouTube/Vimeo embed code.')">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 32px;">▶</div>
+                        <h4 style="color: var(--cream); margin-bottom: 8px;">Sarah M.</h4>
+                        <p style="color: var(--text); font-size: 13px;">Rise Program Graduate</p>
+                        <p style="color: var(--gold); font-size: 12px; margin-top: 8px;">"From shy to confident in 30 days"</p>
+                    </div>
+                    <div class="video-testimonial" style="background: var(--navy-light); border-radius: 16px; padding: 20px; text-align: center; border: 2px solid rgba(59,130,246,0.3); cursor: pointer; transition: all 0.3s;" onclick="alert('Video testimonial will open here. Add YouTube/Vimeo embed code.')">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 32px;">▶</div>
+                        <h4 style="color: var(--cream); margin-bottom: 8px;">James T.</h4>
+                        <p style="color: var(--text); font-size: 13px;">Lingua Student</p>
+                        <p style="color: #60a5fa; font-size: 12px; margin-top: 8px;">"Fluent in Spanish in 6 months"</p>
+                    </div>
+                    <div class="video-testimonial" style="background: var(--navy-light); border-radius: 16px; padding: 20px; text-align: center; border: 2px solid rgba(139,92,246,0.3); cursor: pointer; transition: all 0.3s;" onclick="alert('Video testimonial will open here. Add YouTube/Vimeo embed code.')">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8b5cf6, #6d28d9); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 32px;">▶</div>
+                        <h4 style="color: var(--cream); margin-bottom: 8px;">Aisha K.</h4>
+                        <p style="color: var(--text); font-size: 13px;">Flex Nexus Intensive</p>
+                        <p style="color: #a78bfa; font-size: 12px; margin-top: 8px;">"Landed my dream job"</p>
                     </div>
                 </div>
-                
-                <div class="testimonial-card featured">
+            </div>
+
+            <!-- Program Filter -->
+            <div style="text-align: center; margin-bottom: 32px;">
+                <span style="color: var(--gold); font-size: 14px; margin-right: 16px;">Filter by:</span>
+                <button onclick="filterTestimonials('all')" class="filter-btn active" style="background: var(--gold); color: var(--navy); border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; margin-right: 8px; font-weight: 600;">All</button>
+                <button onclick="filterTestimonials('lingua')" class="filter-btn" style="background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 8px 20px; border-radius: 20px; cursor: pointer; margin-right: 8px;">🌍 Lingua</button>
+                <button onclick="filterTestimonials('rise')" class="filter-btn" style="background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 8px 20px; border-radius: 20px; cursor: pointer; margin-right: 8px;">💪 Rise</button>
+                <button onclick="filterTestimonials('flexnexus')" class="filter-btn" style="background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 8px 20px; border-radius: 20px; cursor: pointer;">💼 Flex Nexus</button>
+            </div>
+            
+            <!-- Text Testimonials -->
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <div class="testimonial-card lingua" data-program="lingua">
                     <div class="stars">★★★★★</div>
                     <p class="quote">"I achieved fluency in Spanish in just 6 months. The native-speaking tutors and personalized lesson plans made learning feel natural and effective."</p>
                     <div class="testimonial-author">
                         <div class="author-name">James T.</div>
-                        <div class="author-program">Lingua Student</div>
+                        <div class="author-program">🌍 Lingua Student</div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card rise featured" data-program="rise">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Elevare completely transformed my confidence. I went from being afraid to speak up in meetings to leading presentations. The mental-health-informed approach made all the difference."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Sarah M.</div>
+                        <div class="author-program">💪 Rise Graduate</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card flexnexus" data-program="flexnexus">
                     <div class="stars">★★★★★</div>
                     <p class="quote">"Flex Nexus gave me the professional communication skills I needed to land my dream job. The executive presence training was invaluable."</p>
                     <div class="testimonial-author">
                         <div class="author-name">Aisha K.</div>
-                        <div class="author-program">Flex Nexus Intensive</div>
+                        <div class="author-program">💼 Flex Nexus Intensive</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card lingua" data-program="lingua">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"After years of school French, I finally speak it fluently. The conversation-focused approach with real tutors changed everything."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Michael R.</div>
+                        <div class="author-program">🌍 Lingua Student</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rise" data-program="rise">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"I used to dread phone calls. Now I lead conference calls with 50+ people. The anxiety techniques actually work!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">David L.</div>
+                        <div class="author-program">💪 Rise Graduate</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card flexnexus" data-program="flexnexus">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Landed a $30k raise after completing Flex Nexus. The negotiation skills alone were worth every penny."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Priya S.</div>
+                        <div class="author-program">💼 Flex Nexus Intensive</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card lingua" data-program="lingua">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"My boss noticed the improvement in my client calls within 2 weeks. This isn't just language learning — it's career acceleration."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Carlos M.</div>
+                        <div class="author-program">🌍 Lingua Student</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card rise" data-program="rise">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"The confidence I gained helped me start my own business. I presented to investors last month — never thought I could do that."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Jessica T.</div>
+                        <div class="author-program">💪 Rise Graduate</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card flexnexus" data-program="flexnexus">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"I went from mumbling in meetings to presenting to the board. The ROI on this program is incredible."</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Robert K.</div>
+                        <div class="author-program">💼 Flex Nexus Professional</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Bar -->
+            <div style="background: var(--navy-light); border-radius: 16px; padding: 32px; margin-top: 48px; text-align: center;">
+                <p style="color: var(--text); font-size: 14px; margin-bottom: 16px;">Join thousands of successful students</p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--gold);">2,000+</div>
+                        <div style="font-size: 12px; color: var(--text);">Students Trained</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--gold);">95%</div>
+                        <div style="font-size: 12px; color: var(--text);">Success Rate</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--gold);">4.9★</div>
+                        <div style="font-size: 12px; color: var(--text);">Average Rating</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--gold);">30</div>
+                        <div style="font-size: 12px; color: var(--text);">Day Guarantee</div>
                     </div>
                 </div>
             </div>
             
             <div class="testimonial-cta">
-                <p>Want to share your Elevare story?</p>
-                <a href="frontend/contact.html" class="btn btn-outline">Contact Us</a>
+                <p>Ready to write your success story?</p>
+                <a href="frontend/book.html" class="btn btn-primary" style="background: var(--gold); color: var(--navy);">Start Your Free Trial</a>
+                <a href="frontend/contact.html" class="btn btn-outline" style="margin-left: 12px;">Share Your Story</a>
             </div>
         </div>
     </section>
+
+    <style>
+        .video-testimonial:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold) !important;
+        }
+        .filter-btn.active {
+            font-weight: 600;
+        }
+        .testimonial-card.hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        function filterTestimonials(program) {
+            const cards = document.querySelectorAll('.testimonial-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (program === 'all' || card.dataset.program === program) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 
     <section class="progress-section">
         <div class="container">
@@ -2540,11 +2686,48 @@
     <section class="email-signup" id="signup">
         <div class="container">
             <div class="email-signup-content">
-                <div class="email-signup-badge">100% FREE</div>
+                <div class="email-signup-badge">🎁 100% FREE</div>
                 <div class="email-signup-text">
                     <h2>Get Your Free 5-Day Confidence Kickstart</h2>
-                    <p>Join 2,000+ students who've transformed their communication skills. Enter your details below and get instant access to our proven mini-course delivered straight to your inbox.</p>
+                    <p>Join 2,000+ students who've transformed their communication. Get instant access to our proven mini-course delivered straight to your inbox.</p>
                 </div>
+
+                <!-- What You'll Learn -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; text-align: left;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🧠</div>
+                        <h4 style="color: var(--cream); margin-bottom: 4px;">Day 1</h4>
+                        <p style="font-size: 13px; color: var(--text);">The psychology behind speaking anxiety</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">💪</div>
+                        <h4 style="color: var(--cream); margin-bottom: 4px;">Day 2</h4>
+                        <p style="font-size: 13px; color: var(--text);">Body language secrets that instantly boost confidence</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🎯</div>
+                        <h4 style="color: var(--cream); margin-bottom: 4px;">Day 3</h4>
+                        <p style="font-size: 13px; color: var(--text);">How to make any first impression memorable</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">📝</div>
+                        <h4 style="color: var(--cream); margin-bottom: 4px;">Day 4-5</h4>
+                        <p style="font-size: 13px; color: var(--text);">Real exercises and your personal action plan</p>
+                    </div>
+                </div>
+
+                <!-- Social Proof -->
+                <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--gold);">★★★★★</span>
+                        <span style="color: var(--text); font-size: 14px;">2,000+ students</span>
+                    </div>
+                    <div style="color: var(--text); font-size: 14px;">•</div>
+                    <div style="color: var(--text); font-size: 14px;">4.9/5 avg rating</div>
+                    <div style="color: var(--text); font-size: 14px;">•</div>
+                    <div style="color: var(--text); font-size: 14px;">30-day guarantee</div>
+                </div>
+
                 <form class="email-signup-form" action="https://formspree.io/f/xwpkvgpn" method="POST">
                     <div class="form-row">
                         <label for="signup-firstname" class="visually-hidden">First Name</label>
@@ -2556,9 +2739,11 @@
                     <input type="email" id="signup-email" name="Email" placeholder="Enter your email address" required>
                     <input type="hidden" name="_subject" value="New Signup: 5-Day Confidence Kickstart">
                     <input type="hidden" name="Message" value="User signed up for the free mini-course">
-                    <button type="submit" class="btn btn-primary">Send Me The Free Course →</button>
+                    <button type="submit" class="btn btn-primary" style="font-size: 16px; padding: 18px 40px;">
+                        🎁 Get Instant Access — It's Free
+                    </button>
                 </form>
-                <p class="email-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+                <p class="email-note">🔒 No credit card required. No spam. Unsubscribe anytime.</p>
             </div>
         </div>
     </section>
@@ -2718,7 +2903,13 @@
         <div class="container">
             <h2>Ready to Start Your Journey?</h2>
             <p>Your transformation begins with a single step. Book a free consultation call and let's discuss your goals.</p>
-            <a href="frontend/book.html" class="btn">Book a Free Call</a>
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+                <a href="frontend/book.html" class="btn btn-primary" style="background: var(--gold); color: var(--navy); padding: 16px 40px; border-radius: 8px; font-weight: 700; text-decoration: none;">📅 Book Free Consultation</a>
+                <a href="https://wa.me/601111612082?text=Hi%2C%20I%27m%20interested%20in%20Elevare%20coaching" class="btn btn-whatsapp" style="background: #25D366; color: white; padding: 16px 40px; border-radius: 8px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.084 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Us
+                </a>
+            </div>
             <div class="guarantee-badge">
                 <span class="guarantee-icon">✓</span>
                 <span class="guarantee-text"><strong>30-Day Results Guarantee</strong><br>We guarantee measurable improvement within 30 days</span>
