@@ -604,38 +604,54 @@
                     <div class="tutor-avatar">🤖</div>
                     <div class="tutor-info">
                         <h3>Elevare AI Tutor</h3>
-                        <p>Available 24/7 • Ready to help with Lingua, Rise, or Flex Nexus</p>
+                        <p id="tutorSubtitle">Available 24/7 • Choose a topic below or chat freely</p>
                     </div>
-                    <div class="tutor-status" title="Online"></div>
+                    <div class="tutor-status" id="tutorStatus" title="Online">●</div>
                 </div>
 
                 <div class="chat-messages" id="chatMessages">
                     <div class="message ai">
                         <div class="message-avatar">🤖</div>
                         <div class="message-content">
-                            Hello! I'm your AI tutor at Elevare. I'm here to help you master speech, build confidence, and excel professionally. What would you like to work on today?
+                            👋 Hi! I'm your Elevare AI tutor. I can help you with:
+                            <br>• <strong>Conversation practice</strong> - Speak on any topic
+                            <br>• <strong>Pronunciation</strong> - Master tricky sounds
+                            <br>• <strong>Grammar</strong> - Build solid foundations
+                            <br>• <strong>Confidence</strong> - Overcome speaking anxiety
+                            <br>• <strong>Interviews</strong> - Prepare with STAR method
                             <br><br>
-                            I can help you with:
-                            <br>• Practice conversations
-                            <br>• Pronunciation feedback
-                            <br>• Grammar questions
-                            <br>• Confidence exercises
-                            <br>• Speech analysis
+                            <em>Type a message or click a topic below!</em>
                         </div>
                     </div>
                 </div>
 
                 <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything about speech, confidence, or communication..." onkeypress="handleChatKeypress(event)">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." onkeypress="handleChatKeypress(event)">
+                    <button class="chat-send" id="micBtn" onclick="toggleVoiceInput()" title="Voice input" style="background: var(--navy-light); width: 50px;">🎤</button>
                     <button class="chat-send" onclick="sendMessage()">Send</button>
                 </div>
             </div>
 
-            <div class="quick-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('pronunciation')">🎯 Practice Pronunciation</button>
-                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('confidence')">💪 Build Confidence</button>
-                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('grammar')">📝 Grammar Help</button>
-                <button class="voice-btn" style="flex: none; padding: 10px 20px;" onclick="askTopic('interview')">💼 Interview Prep</button>
+            <!-- Topic Quick Actions -->
+            <div style="background: var(--navy-light); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+                <h4 style="color: var(--cream); margin-bottom: 16px; font-size: 14px;">🎯 Popular Topics</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                    <button class="voice-btn" onclick="askTopic('pronunciation', 'Try the tongue twister: \"She sells seashells by the seashore\" - focus on the S sound. Say it slowly 3 times, then faster!')">🎯 Pronunciation</button>
+                    <button class="voice-btn" onclick="askTopic('confidence', 'Power pose exercise: Stand tall, hands on hips, for 2 minutes before speaking. Your cortisol drops 25%!')">💪 Build Confidence</button>
+                    <button class="voice-btn" onclick="askTopic('grammar', 'Subject-verb agreement: \"He DOESN\'T\" (not \"He DON\'T\"). Practice with 5 sentences now!')">📝 Grammar</button>
+                    <button class="voice-btn" onclick="askTopic('interview', 'STAR method: Situation, Task, Action, Result. Want me to quiz you with a sample question?')">💼 Interview Prep</button>
+                    <button class="voice-btn" onclick="askTopic('tongue twisters', 'Here are 3 to practice:\n1. Peter Piper picked pickled peppers\n2. Red leather, yellow leather\n3. Unique New York')">🗣️ Tongue Twisters</button>
+                    <button class="voice-btn" onclick="askTopic('pace', 'Optimal speaking pace: 120-150 WPM. Record yourself for 1 minute and count words!')">⏱️ Speaking Pace</button>
+                    <button class="voice-btn" onclick="askTopic('filler words', 'Common fillers: um, uh, like, you know, basically. Notice YOUR pattern first, then practice pausing instead!')">🚫 No Filler Words</button>
+                    <button class="voice-btn" onclick="askTopic('body language', 'Eye contact: 60-70% of conversation. Look away to think, then return. Power positions: feet flat, arms open!')">👁️ Body Language</button>
+                </div>
+            </div>
+
+            <!-- Speaking Practice Challenge -->
+            <div style="background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); border-radius: 16px; padding: 24px; margin-bottom: 24px; color: var(--navy);">
+                <h4 style="margin-bottom: 8px;">🎤 Today's Speaking Challenge</h4>
+                <p id="dailyChallenge" style="font-size: 14px; margin-bottom: 12px;">"Tell me about your favorite hobby in 60 seconds"</p>
+                <button onclick="startChallenge()" style="background: var(--navy); color: var(--gold); border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;">▶ Start Challenge</button>
             </div>
         </div>
 
@@ -880,10 +896,12 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 if (settings.openaiKey) document.getElementById('openaiKey').value = settings.openaiKey;
                 if (settings.model) document.getElementById('aiModel').value = settings.model;
             }
+            loadProgress();
         }
 
         async function checkServerStatus() {
             const status = document.getElementById('serverStatus');
+            const tutorStatus = document.getElementById('tutorStatus');
             if (!status) return;
             
             try {
@@ -891,12 +909,74 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 const data = await res.json();
                 if (data.ready) {
                     status.innerHTML = '<p style="color: var(--success);">✅ AI Server Connected</p><p style="font-size: 11px; margin-top: 4px;">Model: ' + data.model + '</p>';
+                    tutorStatus.style.background = 'var(--success)';
                 } else {
                     status.innerHTML = '<p style="color: var(--gold);">⏳ ' + data.message + '</p>';
+                    tutorStatus.style.background = 'var(--gold)';
                 }
             } catch (e) {
                 status.innerHTML = '<p style="color: var(--error);">❌ Server not running</p><p style="font-size: 11px; margin-top: 4px;">Run: python tutor_server.py</p>';
+                tutorStatus.style.background = 'var(--error)';
             }
+        }
+
+        // Voice input (Web Speech API)
+        let isListening = false;
+        let recognition = null;
+
+        function toggleVoiceInput() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('Voice input not supported in this browser. Try Chrome!');
+                return;
+            }
+
+            if (isListening) {
+                stopVoiceInput();
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                isListening = true;
+                document.getElementById('micBtn').style.background = 'var(--error)';
+                document.getElementById('chatInput').placeholder = 'Listening...';
+            };
+
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                document.getElementById('chatInput').value = transcript;
+            };
+
+            recognition.onend = () => {
+                isListening = false;
+                document.getElementById('micBtn').style.background = 'var(--navy-light)';
+                document.getElementById('chatInput').placeholder = 'Ask me anything...';
+                if (document.getElementById('chatInput').value.trim()) {
+                    sendMessage();
+                }
+            };
+
+            recognition.onerror = (e) => {
+                console.log('Speech error:', e.error);
+                stopVoiceInput();
+            };
+
+            recognition.start();
+        }
+
+        function stopVoiceInput() {
+            if (recognition) recognition.stop();
+            isListening = false;
+            document.getElementById('micBtn').style.background = 'var(--navy-light)';
+            document.getElementById('chatInput').placeholder = 'Ask me anything...';
         }
 
         // Chat functions
@@ -910,6 +990,9 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
             addMessage('user', message);
             chatHistory.push({ role: 'user', content: message });
             input.value = '';
+
+            // Save to progress
+            saveProgress();
 
             // Show typing indicator
             const typingDiv = document.createElement('div');
@@ -927,6 +1010,7 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 document.getElementById('typing-indicator').remove();
                 addMessage('ai', response);
                 chatHistory.push({ role: 'assistant', content: response });
+                saveProgress();
             } catch (e) {
                 document.getElementById('typing-indicator').remove();
                 addMessage('ai', 'Sorry, I encountered an error. Make sure the tutor server is running with your OpenAI API key.');
@@ -983,31 +1067,100 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
             const lower = message.toLowerCase();
             
             if (lower.includes('pronunci') || lower.includes('sound')) {
-                return "Great question about pronunciation! Try the 'Peter Piper' tongue twister: 'Peter Piper picked a peck of pickled peppers.' Focus on the 'P' sound - it's a bilabial plosive. Practice slowly first, then speed up. Want me to analyze your speech while you practice?";
+                return "Great question about pronunciation! Here's your practice plan:\n\n🎯 Tongue Twister: 'Peter Piper picked a peck of pickled peppers'\n\n1. Say it slowly 3x focusing on P sounds\n2. Speed up gradually\n3. Record and compare\n\nKey tip: The P sound is a 'bilabial plosive' - both lips touch!";
             }
             if (lower.includes('confiden') || lower.includes('anxious') || lower.includes('nervous')) {
-                return "I understand confidence can be challenging. Here's a quick exercise: Stand in power pose for 2 minutes before speaking. Shoulders back, arms spread wide. Research shows this actually changes how your brain responds to stress. Also, try the 5-second rule: count down from 5 before speaking - it interrupts the anxiety spiral.";
+                return "Building confidence is a skill! Here's your toolkit:\n\n🧘 2-min Power Pose before speaking\n📝 Count 5-4-3-2-1 before starting\n🎯 Focus on ONE key point\n⏸️ Use pauses (they feel long, but aren't)\n\nRemember: Nervousness and excitement feel the same. Re-label it!";
             }
             if (lower.includes('grammar') || lower.includes('sentence')) {
-                return "Grammar is foundational! Here's a quick tip: Most grammar errors happen with subject-verb agreement. 'He doesn't' not 'He don't'. 'They aren't' not 'They ain't'. Practice making 5 sentences with 'doesn't' vs 'don't' right now - I'll check them!";
+                return "Grammar quick wins:\n\n✓ 'He DOESN'T' (not 'don't')\n✓ 'They AREN'T' (not 'ain't')\n✓ 'She ISN'T' (not 'isn't' - common error!)\n\nPractice: Make 5 sentences with these patterns RIGHT NOW. Repetition = neural pathways!";
             }
             if (lower.includes('interview') || lower.includes('job')) {
-                return "Interview prep is crucial! Key strategies: 1) STAR method for stories (Situation, Task, Action, Result), 2) Practice power pauses - silence is confident, 3) Prepare 3 strengths with examples, 4) Research the company beforehand. Would you like to practice an interview answer?";
+                return "Ace your interview with STAR:\n\nS - Situation (what happened?)\nT - Task (what was your goal?)\nA - Action (what did YOU do?)\nR - Result (what happened?)\n\nExample: 'Reduced processing time by 40%'\n\nWant me to give you a practice question?";
             }
             if (lower.includes('tongue') || lower.includes('twister')) {
-                return "Tongue twisters are great for pronunciation! Try these:\n\n• 'She sells seashells by the seashore' (S sounds)\n• 'Red leather, yellow leather' (L/R sounds)\n• 'Unique New York, unique New York' (Yooo sounds)\n\nStart slow, then speed up. Record yourself and listen back!";
+                return "Practice these dailys:\n\n🔤 'She sells seashells' → S sounds\n🔤 'Red leather, yellow' → L/R sounds  \n🔤 'Unique New York' → Yooo sounds\n\nTip: Start slow and clear, then speed up. Your mouth learns the muscle movements!";
+            }
+            if (lower.includes('pace') || lower.includes('speed') || lower.includes('wpm')) {
+                return "Optimal speaking pace: 120-150 words/min\n\nToo fast = nervous\nToo slow = boring\n\n🎯 Practice: Read for 1 min, count words. Target: ~140.\n\nPower pauses (2-3 sec) make you sound THOUGHTFUL, not slow!";
+            }
+            if (lower.includes('filler') || lower.includes('um') || lower.includes('uh')) {
+                return "Eliminate filler words with this trick:\n\n1. Record yourself talking for 2 min\n2. Listen and COUNT your fillers\n3. Notice the pattern - WHERE do they come?\n\nMost happen when THINKING. Replace 'um' with SILENCE - it feels long but isn't!\n\nMindfulness practice helps too.";
+            }
+            if (lower.includes('body') || lower.includes('posture') || lower.includes('eye')) {
+                return "Body language for confidence:\n\n👁️ Eye contact: 60-70% (look away to think, return)\n🧍 Posture: Feet flat, shoulders back, arms open\n✋ Gestures: Palms visible, deliberate movements\n🚫 No crossing arms or fidgeting\n\nPower pose for 2 min BEFORE meetings changes testosterone levels by 20%!";
+            }
+            if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
+                return "Hey there! 👋 Great to have you here!\n\nI'm your Elevare tutor. What would you like to work on today?\n\nTip: Start with a topic button or just ask me anything!";
             }
             
-            return "That's a great question! I'm here to help you master communication. Try the 'record and review' method: speak for 30 seconds on any topic, record it, then listen back. You'll hear filler words like 'um' and 'uh' that you can eliminate. Want to try a practice exercise now?";
+            return "That's a great question! Here's my tip for today:\n\n📝 Record yourself for 30 seconds on any topic. Listen back - you'll hear things you never noticed!\n\nCommon improvements:\n• Speed up or slow down\n• Reduce filler words\n• Practice power pauses\n\nWhat specific area would you like to focus on?";
         }
 
         function handleChatKeypress(e) {
             if (e.key === 'Enter') sendMessage();
         }
 
-        function askTopic(topic) {
-            document.getElementById('chatInput').value = 'Can you help me with ' + topic + '?';
+        function askTopic(topic, customMessage) {
+            if (customMessage) {
+                document.getElementById('chatInput').value = customMessage;
+            } else {
+                document.getElementById('chatInput').value = 'Can you help me with ' + topic + '?';
+            }
             sendMessage();
+        }
+
+        // Progress tracking
+        function saveProgress() {
+            const progress = {
+                chatHistory: chatHistory.slice(-20),
+                messagesCount: chatHistory.length,
+                lastVisit: new Date().toISOString()
+            };
+            localStorage.setItem('elevare_tutor_progress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('elevare_tutor_progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                chatHistory = progress.chatHistory || [];
+                
+                // Restore messages
+                const messagesDiv = document.getElementById('chatMessages');
+                if (chatHistory.length > 0 && messagesDiv.children.length <= 1) {
+                    chatHistory.forEach(msg => {
+                        addMessage(msg.role === 'user' ? 'user' : 'ai', msg.content);
+                    });
+                }
+                
+                // Update progress ring
+                const percent = Math.min(chatHistory.length * 2, 100);
+                document.getElementById('progressPercent').textContent = percent + '%';
+                document.querySelector('.progress-ring').style.background = 
+                    'conic-gradient(var(--gold) ' + percent + '%, var(--navy-light) 0%)';
+            }
+        }
+
+        // Speaking challenge
+        const challenges = [
+            'Tell me about your favorite hobby in 60 seconds',
+            'Explain your career goals in 45 seconds',
+            'Describe a book that changed your life in 30 seconds',
+            'Give a 1-minute elevator pitch about yourself',
+            'Explain a technical concept to a 5-year-old'
+        ];
+
+        function startChallenge() {
+            const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+            document.getElementById('dailyChallenge').textContent = '"' + challenge + '"';
+            
+            // Enable voice recording for challenge
+            const transcript = document.getElementById('transcriptText');
+            transcript.innerHTML = '🎤 Recording your challenge... Click "Start Recording" in the Practice tab!\n\nTips:\n• Speak clearly and at moderate pace\n• Pause to think - it\'s okay!\n• Make eye contact with the camera';
+            
+            // Auto-start recording
+            toggleRecording();
         }
 
         // Voice recording simulation
@@ -1029,8 +1182,8 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                         mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
                         mediaRecorder.onstop = () => {
                             const blob = new Blob(audioChunks, { type: 'audio/webm' });
-                            document.getElementById('transcriptText').textContent = 'Recording complete! Analyzing your speech...';
-                            setTimeout(() => analyzeSpeech(), 1000);
+                            document.getElementById('transcriptText').innerHTML = '✅ Recording complete!\n\nAnalyzing your speech...';
+                            setTimeout(() => analyzeSpeech(), 1500);
                         };
 
                         mediaRecorder.start();
@@ -1039,6 +1192,11 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                         icon.style.color = '#ef4444';
                         text.textContent = 'Stop Recording';
                         btn.classList.add('recording');
+                        
+                        // Auto-stop after 90 seconds
+                        setTimeout(() => {
+                            if (isRecording) toggleRecording();
+                        }, 90000);
                     })
                     .catch(err => {
                         alert('Microphone access needed for voice practice');
@@ -1054,25 +1212,54 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
         }
 
         function playbackRecording() {
-            document.getElementById('transcriptText').textContent = 'Playing back your recording... (Demo mode)';
+            if (audioChunks.length > 0) {
+                const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                const url = URL.createObjectURL(blob);
+                const audio = new Audio(url);
+                audio.play();
+            } else {
+                document.getElementById('transcriptText').textContent = 'No recording found. Record first!';
+            }
         }
 
         function analyzeSpeech() {
-            document.getElementById('clarityScore').textContent = Math.floor(Math.random() * 30) + 70;
-            document.getElementById('paceScore').textContent = Math.floor(Math.random() * 50) + 110;
-            document.getElementById('confidenceScore').textContent = Math.floor(Math.random() * 40) + 55;
+            // Simulate analysis
+            const clarity = Math.floor(Math.random() * 30) + 70;
+            const pace = Math.floor(Math.random() * 50) + 110;
+            const confidence = Math.floor(Math.random() * 40) + 55;
             
-            document.getElementById('transcriptText').innerHTML = '<strong>Analysis Complete!</strong><br><br>' +
-                'Your speech shows good pace and clarity. Areas to improve:<br>' +
-                '• Slightly fast on excitement - try power pauses<br>' +
-                '• Some filler words detected - practice mindfulness<br>' +
-                '• Great eye contact and confidence level!';
+            document.getElementById('clarityScore').textContent = clarity;
+            document.getElementById('paceScore').textContent = pace;
+            document.getElementById('confidenceScore').textContent = confidence;
+            
+            let feedback = '<strong>🎉 Analysis Complete!</strong><br><br>';
+            feedback += '✅ Clarity: ' + (clarity > 80 ? 'Excellent' : clarity > 70 ? 'Good' : 'Needs work') + '<br>';
+            feedback += '✅ Pace: ' + (pace >= 120 && pace <= 150 ? 'Perfect range!' : pace < 120 ? 'Try speaking faster' : 'Try slowing down') + '<br>';
+            feedback += '✅ Confidence: ' + (confidence > 75 ? 'Strong!' : 'Building nicely') + '<br><br>';
+            
+            if (clarity < 75) feedback += '💡 Tip: Practice tongue twisters daily<br>';
+            if (pace < 120 || pace > 150) feedback += '💡 Tip: Try the 120-150 WPM pace exercise<br>';
+            
+            document.getElementById('transcriptText').innerHTML = feedback;
+            
+            // Update progress
+            const currentProgress = parseInt(document.getElementById('progressPercent').textContent);
+            const newProgress = Math.min(currentProgress + 5, 100);
+            document.getElementById('progressPercent').textContent = newProgress + '%';
+            document.querySelector('.progress-ring').style.background = 
+                'conic-gradient(var(--gold) ' + newProgress + '%, var(--navy-light) 0%)';
         }
 
         // Initialize
-        document.getElementById('progressPercent').textContent = '42%';
+        const initialProgress = localStorage.getItem('elevare_tutor_progress');
+        if (initialProgress) {
+            const p = JSON.parse(initialProgress);
+            document.getElementById('progressPercent').textContent = Math.min(p.messagesCount * 2, 100) + '%';
+        } else {
+            document.getElementById('progressPercent').textContent = '0%';
+        }
         document.querySelector('.progress-ring').style.background = 
-            'conic-gradient(var(--gold) 42%, var(--navy-light) 0%)';
+            'conic-gradient(var(--gold) ' + document.getElementById('progressPercent').textContent + ', var(--navy-light) 0%)';
         loadSettings();
     </script>
 </body>
