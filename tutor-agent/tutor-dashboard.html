@@ -540,61 +540,201 @@
                 <button class="program-tab flexnexus" onclick="selectProgram('flexnexus')">💼 Flex Nexus</button>
             </div>
 
-            <div class="modules-grid">
-                <div class="module-card" onclick="openModule(1)">
-                    <div class="module-number">MODULE 1</div>
-                    <div class="module-title">Foundations of Confident Speech</div>
-                    <div class="module-lessons">5 lessons • Breathing, Projection, Presence</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 80%;"></div>
+            <!-- Course Progress Overview -->
+            <div style="background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); border-radius: 16px; padding: 24px; margin-bottom: 24px; color: var(--navy);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h3 style="margin-bottom: 4px;">Your Learning Path</h3>
+                        <p style="font-size: 14px; opacity: 0.9;">8 Modules • 40 Lessons • 3 Programs</p>
                     </div>
-                </div>
-
-                <div class="module-card" onclick="openModule(2)">
-                    <div class="module-number">MODULE 2</div>
-                    <div class="module-title">Speech Fundamentals</div>
-                    <div class="module-lessons">5 lessons • Clarity, Rhythm, Pausing</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 60%;"></div>
-                    </div>
-                </div>
-
-                <div class="module-card" onclick="openModule(3)">
-                    <div class="module-number">MODULE 3</div>
-                    <div class="module-title">Pronunciation Mastery</div>
-                    <div class="module-lessons">5 lessons • Sounds, Stress, Connected Speech</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 30%;"></div>
-                    </div>
-                </div>
-
-                <div class="module-card" onclick="openModule(4)">
-                    <div class="module-number">MODULE 4</div>
-                    <div class="module-title">Active Listening</div>
-                    <div class="module-lessons">5 lessons • Hearing, Processing, Context</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 0%;"></div>
-                    </div>
-                </div>
-
-                <div class="module-card" onclick="openModule(5)">
-                    <div class="module-number">MODULE 5</div>
-                    <div class="module-title">Written Communication</div>
-                    <div class="module-lessons">5 lessons • Structure, Tone, Persuasion</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 0%;"></div>
-                    </div>
-                </div>
-
-                <div class="module-card" onclick="openModule(6)">
-                    <div class="module-number">MODULE 6</div>
-                    <div class="module-title">Grammar for Speakers</div>
-                    <div class="module-lessons">5 lessons • Common Errors, Tenses, Questions</div>
-                    <div class="module-progress">
-                        <div class="module-progress-bar" style="width: 0%;"></div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700;" id="courseProgress">0%</div>
+                        <div style="font-size: 12px;">Complete</div>
                     </div>
                 </div>
             </div>
+
+            <!-- MODULE 1 -->
+            <div class="module-card" onclick="toggleModule(1)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 1</div>
+                        <div class="module-title">🎯 Foundations of Confident Speech</div>
+                        <div class="module-lessons">5 Lessons: Communication Style, Anxiety, Breath Control, Voice Projection, Building Presence</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module1Arrow">▼</div>
+                </div>
+                <div id="module1Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(1,1)">📝 1.1 Understanding Your Communication Style</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(1,2)">📝 1.2 Overcoming Speech Anxiety</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(1,3)">📝 1.3 Breath Control & Relaxation</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(1,4)">📝 1.4 Voice Projection Basics</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(1,5)">📝 1.5 Building Presence</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2 -->
+            <div class="module-card" onclick="toggleModule(2)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 2</div>
+                        <div class="module-title">🗣️ Speech Fundamentals</div>
+                        <div class="module-lessons">5 Lessons: Clarity, Rhythm, Emphasis, Pausing, Conversation Flow</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module2Arrow">▼</div>
+                </div>
+                <div id="module2Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(2,1)">📝 2.1 Clarity & Articulation</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(2,2)">📝 2.2 Rhythm & Pace</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(2,3)">📝 2.3 Emphasis & Intonation</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(2,4)">📝 2.4 Pausing Strategically</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(2,5)">📝 2.5 Natural Conversation Flow</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 3 -->
+            <div class="module-card" onclick="toggleModule(3)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 3</div>
+                        <div class="module-title">🔊 Pronunciation Mastery</div>
+                        <div class="module-lessons">5 Lessons: Sound ID, Problem Sounds, Stress, Connected Speech, Regional Variations</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module3Arrow">▼</div>
+                </div>
+                <div id="module3Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(3,1)">📝 3.1 Sound Identification</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(3,2)">📝 3.2 Problem Sound Practice</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(3,3)">📝 3.3 Stress Patterns</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(3,4)">📝 3.4 Connected Speech Sounds</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(3,5)">📝 3.5 Regional Variations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 4 -->
+            <div class="module-card" onclick="toggleModule(4)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 4</div>
+                        <div class="module-title">👂 Active Listening</div>
+                        <div class="module-lessons">5 Lessons: Hearing vs Listening, Processing, Context, Accent Recognition, Note-Taking</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module4Arrow">▼</div>
+                </div>
+                <div id="module4Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(4,1)">📝 4.1 Hearing vs Listening</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(4,2)">📝 4.2 Processing Speed</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(4,3)">📝 4.3 Context Clues</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(4,4)">📝 4.4 Accent Recognition</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(4,5)">📝 4.5 Note-Taking Techniques</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 5 -->
+            <div class="module-card" onclick="toggleModule(5)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 5</div>
+                        <div class="module-title">✍️ Written Communication</div>
+                        <div class="module-lessons">5 Lessons: Structure, Tone, Persuasion, Professional Email, Social Media</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module5Arrow">▼</div>
+                </div>
+                <div id="module5Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(5,1)">📝 5.1 Structure & Organization</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(5,2)">📝 5.2 Tone & Formality</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(5,3)">📝 5.3 Persuasive Writing</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(5,4)">📝 5.4 Professional Emails</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(5,5)">📝 5.5 Social Media Writing</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 6 -->
+            <div class="module-card" onclick="toggleModule(6)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 6</div>
+                        <div class="module-title">📚 Grammar for Speakers</div>
+                        <div class="module-lessons">5 Lessons: Common Errors, Sentence Structure, Tenses, Questions, Business Grammar</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module6Arrow">▼</div>
+                </div>
+                <div id="module6Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(6,1)">📝 6.1 Common Errors That Kill Confidence</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(6,2)">📝 6.2 Sentence Structures</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(6,3)">📝 6.3 Tense Mastery</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(6,4)">📝 6.4 Question Formation</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(6,5)">📝 6.5 Business Grammar</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 7 -->
+            <div class="module-card" onclick="toggleModule(7)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 7</div>
+                        <div class="module-title">🎤 Advanced Expression</div>
+                        <div class="module-lessons">5 Lessons: Storytelling, Complex Ideas, Difficult Questions, Debate, Public Speaking</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module7Arrow">▼</div>
+                </div>
+                <div id="module7Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(7,1)">📝 7.1 Storytelling Techniques</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(7,2)">📝 7.2 Explaining Complex Ideas Simply</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(7,3)">📝 7.3 Handling Difficult Questions</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(7,4)">📝 7.4 Debate & Argumentation</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(7,5)">📝 7.5 Public Speaking Foundations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 8 -->
+            <div class="module-card" onclick="toggleModule(8)" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="module-number">MODULE 8</div>
+                        <div class="module-title">🚀 Program-Specific Mastery</div>
+                        <div class="module-lessons">4 Tracks: Lingua, Rise, Flex Nexus, Bundle Integration</div>
+                    </div>
+                    <div style="font-size: 24px;" id="module8Arrow">▼</div>
+                </div>
+                <div id="module8Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: grid; gap: 8px;">
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,1)">🌍 8.1 Lingua Track: Language Learning</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,2)">💪 8.2 Rise Track: Confidence Building</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,3)">💼 8.3 Flex Nexus Track: Professional Communication</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,4)">🎯 8.4 Bundle: Complete Integration</div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .lesson-item {
+                    padding: 12px 16px;
+                    background: var(--navy);
+                    border-radius: 8px;
+                    font-size: 13px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+                .lesson-item:hover {
+                    background: var(--gold);
+                    color: var(--navy);
+                }
+            </style>
         </div>
 
         <!-- AI Tutor Tab -->
@@ -879,6 +1019,85 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
         // Module click
         function openModule(num) {
             alert('Module ' + num + ' content coming soon!');
+        }
+
+        // Toggle module expand/collapse
+        function toggleModule(num) {
+            const content = document.getElementById('module' + num + 'Content');
+            const arrow = document.getElementById('module' + num + 'Arrow');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                arrow.textContent = '▲';
+            } else {
+                content.style.display = 'none';
+                arrow.textContent = '▼';
+            }
+        }
+
+        // Open specific lesson
+        function openLesson(module, lesson) {
+            const lessonNames = {
+                '1.1': 'Understanding Your Communication Style',
+                '1.2': 'Overcoming Speech Anxiety',
+                '1.3': 'Breath Control & Relaxation',
+                '1.4': 'Voice Projection Basics',
+                '1.5': 'Building Presence',
+                '2.1': 'Clarity & Articulation',
+                '2.2': 'Rhythm & Pace',
+                '2.3': 'Emphasis & Intonation',
+                '2.4': 'Pausing Strategically',
+                '2.5': 'Natural Conversation Flow',
+                '3.1': 'Sound Identification',
+                '3.2': 'Problem Sound Practice',
+                '3.3': 'Stress Patterns',
+                '3.4': 'Connected Speech Sounds',
+                '3.5': 'Regional Variations',
+                '4.1': 'Hearing vs Listening',
+                '4.2': 'Processing Speed',
+                '4.3': 'Context Clues',
+                '4.4': 'Accent Recognition',
+                '4.5': 'Note-Taking Techniques',
+                '5.1': 'Structure & Organization',
+                '5.2': 'Tone & Formality',
+                '5.3': 'Persuasive Writing',
+                '5.4': 'Professional Emails',
+                '5.5': 'Social Media Writing',
+                '6.1': 'Common Errors That Kill Confidence',
+                '6.2': 'Sentence Structures',
+                '6.3': 'Tense Mastery',
+                '6.4': 'Question Formation',
+                '6.5': 'Business Grammar',
+                '7.1': 'Storytelling Techniques',
+                '7.2': 'Explaining Complex Ideas Simply',
+                '7.3': 'Handling Difficult Questions',
+                '7.4': 'Debate & Argumentation',
+                '7.5': 'Public Speaking Foundations',
+                '8.1': 'Lingua Track: Language Learning',
+                '8.2': 'Rise Track: Confidence Building',
+                '8.3': 'Flex Nexus Track: Professional Communication',
+                '8.4': 'Bundle: Complete Integration'
+            };
+            const lessonId = module + '.' + lesson;
+            const lessonName = lessonNames[lessonId] || 'Lesson ' + lessonId;
+            
+            // Switch to AI Tutor tab and ask about this lesson
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-tutor').classList.add('active');
+            document.querySelectorAll('.main-tab')[1].classList.add('active');
+            
+            // Ask AI tutor about this lesson
+            document.getElementById('chatInput').value = 'Can you teach me lesson ' + lessonId + ': ' + lessonName + '? Give me the key concepts and a practice exercise.';
+            sendMessage();
+        }
+
+        // Update course progress display
+        function updateCourseProgress() {
+            const saved = localStorage.getItem('elevare_course_progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                document.getElementById('courseProgress').textContent = progress.percent + '%';
+            }
         }
 
         // Settings functions
