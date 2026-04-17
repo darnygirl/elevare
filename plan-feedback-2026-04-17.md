@@ -1,6 +1,6 @@
 # Changelog — 2026-04-17 Debby × Claude Review Session
 
-> Response to the 2026-04-15 master plan (`handover-elevare-master-plan-2026-04-15.md`) after a focused improvement pass. Attribution convention matches the master plan: `[Debby]` = Debby's voice, `[Claude]` = AI analysis, `[Donal]` = decisions needed.
+> Response to the 2026-04-15 master plan (`handover-elevare-master-plan-2026-04-15.md`) after a focused improvement pass. Attribution convention matches the master plan: `[Debby]` = Debby's voice, `[Nick]` = AI analysis, `[Donal]` = decisions needed.
 
 ---
 

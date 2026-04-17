@@ -1,242 +1,134 @@
 # Elevare AI Agent System Architecture
 
+> **Revised 2026-04-17 (Nick):** aligned to the 5-product taxonomy decision (Elevare AI / Speak / Fluency / Pro / Med) and the Section 14 scoping of Elevare AI as a shippable-in-one-week WhatsApp bot rather than a Stage-4 voice-streaming build. Earlier 5-agent pantheon (Luna / Atlas / Athena / etc.) superseded — replaced with a leaner 3-agent system that matches the current plan.
+
 ## Overview
-Multi-agent AI system handling all administrative duties for Elevare.
 
-## Agent Types
+Elevare runs on **three AI agents** orchestrated around the 5-product family. Each agent has a single job, a single interface, and a clear upgrade path. No speculative agents in the system diagram until revenue justifies the build.
 
-### 1. **Luna** — Student Success Agent (Chatbot)
-- **Role:** First point of contact for students
-- **Platform:** Website chat widget + WhatsApp + Telegram
-- **Handles:**
-  - Answer questions about Lingua, Rise, Flex Nexus programs
-  - Help with enrollment and registration
-  - Schedule appointments via Calendly
-  - Track basic student progress
-  - Handle billing inquiries
+## The three agents
 
-### 2. **Atlas** — Tutor Operations Agent (Backend)
-- **Role:** Backend automation for tutor management
-- **Platform:** Make.com (no-code automation)
-- **Handles:**
-  - Process tutor applications
-  - Onboard new tutors
-  - Schedule tutor sessions
-  - Track payments and payouts
-  - Manage tutor availability
+### 1. Elevare AI — Student-Facing Practice Companion
 
-### 3. **Athena** — Customer Support Agent (AI)
-- **Role:** Intelligent FAQ and support
-- **Platform:** Crisp AI chatbot + Email
-- **Handles:**
-  - Answer common questions
-  - Escalate complex issues to humans
-  - Collect feedback
-  - Handle refunds and disputes
+**Role:** primary AI surface for students across all 5 products.
 
-## System Architecture
+**Channel:** WhatsApp (Twilio Business API or Typebot/Chatfuel).
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      ELEVARE AI AGENTS                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│   │   LUNA      │    │   ATLAS     │    │   ATHENA    │  │
-│   │  (Chatbot)  │    │ (Automation)│    │ (Support AI)│  │
-│   └──────┬──────┘    └──────┬──────┘    └──────┬──────┘  │
-│          │                   │                   │          │
-│          ▼                   ▼                   ▼          │
-│   ┌─────────────────────────────────────────────────────┐  │
-│   │              SHARED KNOWLEDGE BASE                   │  │
-│   │  - Program info  - Pricing  - FAQ  - Policies      │  │
-│   └─────────────────────────────────────────────────────┘  │
-│          │                   │                   │          │
-│          ▼                   ▼                   ▼          │
-│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│   │  STUDENT    │    │   TUTOR     │    │  PAYMENT    │  │
-│   │  DATABASE   │    │  DATABASE   │    │   DATABASE  │  │
-│   │ (Google     │    │ (Google     │    │ (Google     │  │
-│   │  Sheets)    │    │  Sheets)    │    │  Sheets)    │  │
-│   └─────────────┘    └─────────────┘    └─────────────┘  │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+**LLM:** `anthropic/claude-haiku-4.5` via OpenRouter. Typical cost: $0.001-0.02 per student session.
 
-## Integrations
-- **Calendly** — Booking and scheduling
-- **Google Sheets** — Student/Tutor databases
-- **Email (Gmail)** — Notifications and confirmations
-- **WhatsApp / Telegram** — Messaging platforms
-- **Skrill** — Payment processing
+**Three capabilities (Section 14 scope):**
+1. **Scenario Role-Play** — student picks situation, AI plays counterpart, 10-min max
+2. **Session Warm-Up** — 3 confidence prompts before real coach call, 2 min
+3. **Between-Session Recap** — reviews coach's session notes (from Google Sheet), asks 3 recall questions, sends to coach
 
-## Setup Guide
+**Product integration:**
+- **Elevare AI ($29/mo):** sold standalone — all 3 modes unlocked
+- **Speak ($199/mo):** AI included as daily practice layer between coach sessions
+- **Fluency ($497 12wk):** AI is the drill engine that compounds weekly coach sessions
+- **Pro ($449/mo):** AI runs business-scenario role-plays (pitches, meetings, negotiations)
+- **Med ($699/mo):** AI runs OET-aligned clinical scenarios (history-taking, handover, etc.)
 
-### Step 1: Create Crisp Chat Widget Account
-1. Go to https://crisp.chat/en/
-2. Sign up for free
-3. Get your website chat widget code
-4. Add to Elevare website
+**Rise methodology enforcement:** system prompt requires non-judgmental, encouraging tone; celebrates effort not outcome; soft-routes distress signals to human coach.
 
-### Step 2: Set Up Google Sheets
-1. Create "Elevare Students" spreadsheet
-2. Create "Elevare Tutors" spreadsheet
-3. Create "Elevare Payments" spreadsheet
+**Build status:** design spec in [`courses/elevare-ai.md`](courses/elevare-ai.md) + plan-feedback Section 14. Not built yet. Trigger to build: first 10 paying customers on any tier (validates demand). Estimated effort when triggered: 1 week (Donal).
 
-### Step 3: Create Make.com Account
-1. Go to https://make.com
-2. Sign up for free (1000 ops/month)
-3. Create scenarios for each automation
+**Future v0.5 (voice mode):** triggers at $2k MRR. 11Labs free-tier voice clones Debby's voice. WhatsApp voice-note input from student. Same 3 modes.
 
-### Step 4: Configure AI Brain
-1. Set up OpenAI account
-2. Create knowledge base
-3. Train agents with Elevare info
+**Future v1 (Stage 4 ambitions):** Orpheus streaming + RVC on M5 + <2.5s latency. Triggers at $5k MRR × 2 months (per Ambitious Phase framing in plan-feedback Section 17).
 
-## AI Agent Scripts
+---
 
-### Luna (Student Chatbot) — Response Templates
+### 2. Tutor Operations Agent — Backend Automation
 
-**Greeting:**
-"Hi! I'm Luna, your Elevare assistant. How can I help you today?"
+**Role:** zero customer-facing surface. Automates ops so tutors can focus on coaching.
 
-**Common Responses:**
+**Platform:** Make.com (per `MAKE_COM_AUTOMATIONS.md`).
 
-Q: "What programs do you offer?"
-A: "We have three pillars at Elevare:
-- LINGUA: Language learning ($15/hr or $39/mo membership)
-- RISE: Personal confidence coaching ($39-97/mo)
-- FLEX NEXUS: Professional development ($47-227/program)
-Would you like to learn more about any of these?"
+**Handles:**
+- Calendly booking → Airtable student record
+- Whop payment webhook → unlock Elevare AI access + assign cohort + notify coach
+- Coach session notes (Google Sheet) → student history log (Airtable)
+- Weekly NPS pulse via WhatsApp
+- At-risk student flag (missed 2 sessions → coach pinged)
+- Monthly progress report auto-generated from session logs
+- Tutor payout calculation (pay-per-lesson schedule from plan-feedback Section 16)
+- Content queue → posting reminders (manual copy-paste phase) or Buffer API (automated phase)
 
-Q: "How do I book a session?"
-A: "Booking is easy! You can:
-1. Go to our booking page: [link]
-2. Choose your program
-3. Pick a time that works for you
-Shall I take you to the booking page?"
+**Human-in-loop gates:**
+- Every student outreach gets tutor sign-off before send
+- Every testimonial request gets coach review before send
+- Every refund / churn-save has 1-hr human delay before auto-response
 
-Q: "How much does it cost?"
-A: "Our pricing varies by program:
-- Lingua Sessions: From $15/hour
-- Rise Membership: $39/month
-- Flex Nexus Intensive: From $47
-We also offer free consultations! Want to start with a free call?"
+**Build status:** `MAKE_COM_AUTOMATIONS.md` has scenario specs. Some running (payment webhook), most pending. Donal owns implementation.
 
-Q: "I want to be a tutor"
-A: "That's wonderful! We always welcome new tutors. You can:
-1. Apply here: [link to tutors page]
-2. Fill out our registration form
-3. Our team will review and get back to you within 48 hours
-Would you like me to send you the tutor application link?"
+---
 
-Q: "I need to cancel/reschedule"
-A: "I can help with that! Please note our cancellation policy:
-- Sessions must be cancelled 24+ hours in advance
-- Late cancellations may incur a fee
-To reschedule, please visit your booking confirmation email or contact us directly."
+### 3. Marketing Content Agent — Content Flywheel
 
-### Atlas (Tutor Automation) — Workflows
+**Role:** produces ad creative + organic content at 2026 quality thresholds.
 
-**Tutor Application Flow:**
-1. Form submission on website
-2. Make.com receives webhook
-3. Creates row in Tutors spreadsheet
-4. Sends confirmation email to applicant
-5. Notifies admin of new application
-6. Admin reviews and approves
-7. Welcome email sent to new tutor
-8. Tutor added to scheduling system
+**Platform:** Elevare's own `marketing/marketing-dashboard.html` (audited 2026-04-17 — improvement plan in [`marketing-agent-improvement-plan.md`](marketing-agent-improvement-plan.md)).
 
-**Session Booking Flow:**
-1. Student books via Calendly
-2. Make.com receives notification
-3. Creates student record if new
-4. Sends confirmation email
-5. Adds to session schedule
-6. Sends reminder 24hrs before
-7. Collects feedback after session
+**Content split (Section 15 of plan-feedback):**
+- **Paid (AI-generated):** 2 short video variants + 1 carousel per week, per product. Voice clone (when available) + stock footage via marketing dashboard. Rotation every 48 hrs.
+- **Organic (human-led):** 3 Debby-led phone videos per week (30-60 sec each) + 1 long-form LinkedIn/YouTube per week. Not AI-replaced — 2026 platforms downrank detected AI.
 
-### Athena (Support Agent) — Response Templates
+**Per-product scenario libraries:**
+- Elevare AI: casual / general English hooks, low-threshold CTAs ($29 tripwire)
+- Speak: conversation-confidence stories, peer-cohort social proof
+- Fluency: deadline-urgency hooks, graduation stories, cohort-countdown ads
+- Pro: business-English fails and fixes, LinkedIn-first thought-leadership
+- Med: OET pass stories, NMC/AHPRA pathway content, nurse-forum value posts
 
-**Refund Requests:**
-"We understand things come up. For refund requests, please provide:
-- Your name and email
-- Session date
-- Reason for refund
-Our team will review and respond within 24-48 hours."
+**Build status:** marketing agent is a cosmetic UI with stub integrations. 5 prioritized fixes (9-hr critical path) in `marketing-agent-improvement-plan.md`. Top priority: wire in Med + Pro content so the highest-margin products can be pitched.
 
-**Technical Issues:**
-"We're sorry you're experiencing issues. Please describe the problem and we'll get it resolved as quickly as possible. For immediate assistance, you can also reach us on WhatsApp."
+---
 
-## Response Flowchart
+## What the earlier architecture got wrong (for the record)
 
-```
-                    INCOMING MESSAGE
-                           │
-                           ▼
-                    ┌───────────────┐
-                    │  Luna greets │
-                    │  & classifies│
-                    └───────┬───────┘
-                            │
-            ┌───────────────┼───────────────┐
-            │               │               │
-            ▼               ▼               ▼
-      ┌──────────┐   ┌──────────┐   ┌──────────┐
-      │ STUDENT  │   │  TUTOR   │   │GENERAL   │
-      │ INQUIRY  │   │ INQUIRY  │   │QUESTION  │
-      └────┬─────┘   └────┬─────┘   └────┬─────┘
-           │              │              │
-           ▼              ▼              ▼
-    Luna answers    Atlas handles   Luna checks
-    or books       or escalates    knowledge base
-           │              │              │
-           └──────────────┼──────────────┘
-                          │
-                    ┌─────┴─────┐
-                    │  Complex?  │
-                    └─────┬─────┘
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-              ▼                       ▼
-        ┌──────────┐         ┌──────────┐
-        │    NO    │         │   YES   │
-        │  Answer  │         │ Escalate │
-        │ directly │         │  to human│
-        └──────────┘         └──────────┘
-```
+The v1 architecture defined 5 agents (Luna / Atlas / Athena / Nova / Orion). Problems with that model:
 
-## Knowledge Base Content
+- **Named personas for agents users don't see** — Atlas / Athena do backend work, naming them confused the build
+- **5 agents meant 5× the integration complexity** — we couldn't ship any of them well
+- **Agent names collided with product plans** — was "Luna" the student chatbot or the AI tutor? Plan had both
+- **Forecasting agents that didn't yet solve real problems** — Nova (analytics) and Orion (predictive) are Phase B+ ambitions, not Month 1 scope
 
-### Program Details
-- Lingua: Language tutoring, 15+ languages, prices, methodology
-- Rise: Confidence coaching, mindset work, membership benefits
-- Flex Nexus: Professional development, negotiation, executive presence
+**The 3-agent model above is built around jobs, not names.** Each agent's existence traces directly to a revenue mechanism: AI to the $29 tier + included layer, tutor-ops to the coach-led tiers' margin, marketing agent to the lead funnel. When we need more agents, they earn their way in by solving a real problem we're currently solving manually.
 
-### Pricing Information
-- Lingua: $15/hr sessions, $149 video course, $29 quizzes bundle
-- Rise: $39/mo membership, $29-79 webinars, $97 mastermind, $197 course
-- Flex Nexus: $47 workshops, $79 guides bundle, $49 templates, $227 intensive
+---
 
-### Policies
-- Cancellation: 24 hours notice required
-- Refunds: At discretion, case-by-case
-- Payment: Skrill, card, bank transfer
-- Scheduling: Via Calendly
+## Trigger points — when to extend the system
 
-## Success Metrics
-- Response time: < 2 minutes
-- Resolution rate: 85% automated
-- Customer satisfaction: > 90%
-- Booking conversion: > 20%
+- **10+ paying students across all tiers** → build Elevare AI v0 (3-mode WhatsApp bot)
+- **$2k MRR sustained 1 month** → Elevare AI v0.5 voice mode
+- **$2k MRR sustained 2 months** → real marketing agent analytics (Meta/Buffer APIs)
+- **$5k MRR sustained 2 months** → Ambitious Phase A begins (autonomous client pipeline)
+- **5 tutors + 50 students** → dedicated Operations Agent UI (vs Make.com + sheets)
 
-## Next Steps
-1. Create Crisp.chat account
-2. Add chat widget to website
-3. Set up Google Sheets
-4. Create Make.com account
-5. Build first automation
-6. Train AI with knowledge base
-7. Test with real users
+Until those triggers hit, we don't build. The discipline is the architecture.
+
+---
+
+## What lives outside this architecture (explicit non-goals)
+
+- Agent personas / chatbots with names meant to be recognized by students (Luna / Amara / etc.) — superseded by "Elevare AI" as the single brand
+- Stage 4 voice streaming, Orpheus / RVC / Coqui XTTS — deferred to $5k MRR trigger
+- Custom dashboards / MDash / GHL-killer — Ambitious Phase B, $5k MRR trigger
+- Multi-language marketplace — Year 2+
+- Email nurture bots (Month 2+, after lead magnet proves out)
+- Social posting bots (Month 3+, after manual cadence proves content-market fit)
+
+---
+
+## File references
+
+- [`courses/implementation-methodology.md`](courses/implementation-methodology.md) — universal 5-stage delivery loop (applies to all products)
+- [`courses/elevare-ai.md`](courses/elevare-ai.md) — Elevare AI v0 course outline
+- [`plan-feedback-2026-04-17.md`](plan-feedback-2026-04-17.md) Section 14 — full AI tutor scoping
+- [`marketing-agent-improvement-plan.md`](marketing-agent-improvement-plan.md) — marketing agent fixes
+- [`MAKE_COM_AUTOMATIONS.md`](MAKE_COM_AUTOMATIONS.md) — tutor operations automation specs
+- [`courses/oet-diagnostic-rubric.md`](courses/oet-diagnostic-rubric.md) — intake scoring (feeds Elevare AI persona for Med students)
+
+---
+
+*Architecture v2 — 2026-04-17. Author: Nick (Claude) for Debby. Previous v1 retired as it predated the 5-product taxonomy decision.*

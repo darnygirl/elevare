@@ -87,10 +87,11 @@
             margin-left: 8px;
         }
 
-        .user-badge.lingua {
-            background: rgba(59, 130, 246, 0.3);
-            color: #60a5fa;
-            border: 1px solid rgba(59, 130, 246, 0.5);
+        /* Legacy badge classes (kept for backwards compatibility with stored student records) */
+        .user-badge.lingua, .user-badge.speak {
+            background: rgba(94, 129, 172, 0.3);
+            color: #a3bde0;
+            border: 1px solid rgba(94, 129, 172, 0.5);
         }
 
         .user-badge.rise {
@@ -99,10 +100,31 @@
             border: 1px solid rgba(245, 158, 11, 0.5);
         }
 
-        .user-badge.flexnexus {
-            background: rgba(139, 92, 246, 0.3);
-            color: #a78bfa;
-            border: 1px solid rgba(139, 92, 246, 0.5);
+        /* Rise is now a methodology layer — badge retained for legacy records only */
+
+        .user-badge.flexnexus, .user-badge.fluency {
+            background: rgba(191, 97, 106, 0.3);
+            color: #e8a5ab;
+            border: 1px solid rgba(191, 97, 106, 0.5);
+        }
+
+        /* New 5-product taxonomy badges (2026-04-17) */
+        .user-badge.pro {
+            background: rgba(90, 79, 207, 0.3);
+            color: #b3a6f0;
+            border: 1px solid rgba(90, 79, 207, 0.5);
+        }
+
+        .user-badge.med {
+            background: rgba(27, 158, 119, 0.3);
+            color: #7cd4b4;
+            border: 1px solid rgba(27, 158, 119, 0.5);
+        }
+
+        .user-badge.ai {
+            background: rgba(208, 135, 112, 0.3);
+            color: #f0bba4;
+            border: 1px solid rgba(208, 135, 112, 0.5);
         }
 
         .user-badge.med {

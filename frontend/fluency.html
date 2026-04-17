@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevare Fluency — 12-Week English Intensive with Guarantee</title>
+    <meta name="description" content="12-week structured English intensive. 1:1 coach + group cohort + AI practice + measurable progress every 2 weeks. For committed learners with a deadline-driven reason to lock in fluency gains.">
+    <link rel="canonical" href="https://darnygirl.github.io/elevare/frontend/fluency.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#778da9; --accent:#bf616a; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--navy); background:var(--cream); }
+        h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--navy); }
+        .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+        a { color:var(--gold); text-decoration:none; }
+        a:hover { color:var(--gold-dark); }
+        nav { position:sticky; top:0; z-index:100; background:var(--navy); padding:16px 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); font-weight:700; letter-spacing:2px; }
+        .nav-menu { display:flex; gap:28px; list-style:none; align-items:center; }
+        .nav-menu a { color:var(--text); font-weight:500; font-size:14px; }
+        .nav-menu a:hover, .nav-menu a.active { color:var(--gold); }
+        .nav-cta { background:var(--gold); color:var(--navy)!important; padding:10px 20px; border-radius:4px; font-weight:600; }
+        .hamburger { display:none; background:none; border:none; color:var(--gold); font-size:24px; cursor:pointer; }
+        @media (max-width:768px) { .nav-menu { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--navy); padding:20px; gap:16px; } .nav-menu.open { display:flex; } .hamburger { display:block; } }
+        .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); color:var(--white); padding:80px 0 100px; position:relative; overflow:hidden; }
+        .hero::after { content:''; position:absolute; top:0; right:-120px; width:400px; height:400px; background:radial-gradient(circle,rgba(191,97,106,0.15) 0%,transparent 70%); pointer-events:none; }
+        .hero-pre { display:inline-block; background:rgba(191,97,106,0.2); color:#e8a5ab; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; letter-spacing:1px; margin-bottom:20px; text-transform:uppercase; }
+        .hero h1 { font-size:56px; color:var(--white); line-height:1.15; margin-bottom:20px; max-width:820px; }
+        .hero h1 span { color:var(--gold); }
+        .hero-sub { font-size:20px; color:var(--text); max-width:720px; margin-bottom:36px; line-height:1.55; }
+        .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+        .btn { display:inline-block; padding:14px 30px; border-radius:4px; font-weight:600; letter-spacing:0.5px; font-size:14px; transition:all 0.2s; cursor:pointer; border:2px solid transparent; }
+        .btn-primary { background:var(--gold); color:var(--navy)!important; }
+        .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+        .btn-secondary { background:transparent; color:var(--white)!important; border-color:var(--white); }
+        .btn-secondary:hover { background:var(--white); color:var(--navy)!important; }
+        .hero-trust { display:flex; gap:24px; flex-wrap:wrap; color:var(--text-light); font-size:14px; }
+        .hero-trust span { display:flex; align-items:center; gap:6px; }
+        .hero-trust span::before { content:'✓'; color:var(--accent); font-weight:bold; }
+        @media (max-width:768px) { .hero { padding:60px 0 80px; } .hero h1 { font-size:36px; } .hero-sub { font-size:17px; } }
+        .section { padding:80px 0; }
+        .section-light { background:var(--cream); }
+        .section-navy { background:var(--navy); color:var(--text); }
+        .section-navy h2 { color:var(--gold); }
+        .section-header { text-align:center; max-width:720px; margin:0 auto 50px; }
+        .section-label { color:var(--gold); font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:10px; }
+        .section-title { font-size:40px; margin-bottom:16px; line-height:1.2; }
+        .section-desc { font-size:18px; color:var(--text-light); line-height:1.6; }
+        .section-navy .section-desc { color:var(--text); }
+        @media (max-width:768px) { .section { padding:50px 0; } .section-title { font-size:28px; } }
+        .phase-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1000px; margin:0 auto; }
+        .phase-card { background:var(--white); padding:24px; border-radius:8px; border-left:4px solid var(--gold); }
+        .phase-card h4 { color:var(--navy); font-size:20px; margin-bottom:8px; }
+        .phase-card p { color:var(--navy-lighter); font-size:15px; line-height:1.55; }
+        .phase-num { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--gold); letter-spacing:2px; font-weight:600; margin-bottom:6px; }
+        @media (max-width:900px) { .phase-grid { grid-template-columns:1fr; } }
+        .guarantee { background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%); color:var(--navy); padding:60px 40px; border-radius:12px; text-align:center; }
+        .guarantee h2 { color:var(--navy); font-size:36px; margin-bottom:16px; max-width:800px; margin-left:auto; margin-right:auto; }
+        .guarantee p { font-size:17px; color:var(--navy); max-width:700px; margin:0 auto 10px; line-height:1.6; }
+        .pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:800px; margin:0 auto; }
+        .price-card { background:var(--white); padding:40px 32px; border-radius:10px; border:2px solid #e5e5e5; position:relative; }
+        .price-card.featured { border-color:var(--gold); }
+        .price-card.featured::before { content:'MOST POPULAR'; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--navy); padding:4px 14px; border-radius:12px; font-size:11px; font-weight:700; letter-spacing:1px; }
+        .price-card h3 { font-size:22px; margin-bottom:8px; }
+        .price-big { font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--navy); font-weight:700; line-height:1; margin:14px 0; }
+        .price-big span { font-size:18px; color:var(--text-light); font-weight:400; }
+        .price-card ul { list-style:none; padding:0; margin:20px 0; }
+        .price-card li { padding:6px 0 6px 24px; position:relative; color:var(--navy-lighter); font-size:15px; }
+        .price-card li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:bold; }
+        @media (max-width:768px) { .pricing-grid { grid-template-columns:1fr; } }
+        .faq { max-width:820px; margin:0 auto; }
+        details { background:var(--white); margin-bottom:10px; border-radius:6px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+        summary { padding:18px 24px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+        summary::after { content:'+'; font-size:24px; color:var(--gold); font-weight:300; }
+        details[open] summary::after { content:'−'; }
+        details > *:not(summary) { padding:0 24px 20px; color:var(--navy-lighter); line-height:1.65; }
+        .final-cta { background:var(--navy); color:var(--text); padding:80px 0; text-align:center; }
+        .final-cta h2 { color:var(--white); font-size:42px; margin-bottom:16px; max-width:700px; margin-left:auto; margin-right:auto; }
+        .final-cta p { max-width:620px; margin:0 auto 30px; font-size:17px; line-height:1.6; }
+        footer { background:var(--navy); color:var(--text-light); padding:30px 0; border-top:1px solid var(--navy-lighter); text-align:center; font-size:14px; }
+        footer a { color:var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">ELEVARE</a>
+            <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('open')">☰</button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="speak.html">Speak</a></li>
+                <li><a href="fluency.html" class="active">Fluency</a></li>
+                <li><a href="pro.html">Pro</a></li>
+                <li><a href="med.html">Med</a></li>
+                <li><a href="ai.html">AI</a></li>
+                <li><a href="book.html" class="nav-cta">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-pre">For learners with a deadline</div>
+            <h1>Measurable fluency in 12 weeks. <span>Or we keep coaching you.</span></h1>
+            <p class="hero-sub">A 12-week structured intensive for committed learners with a real-world deadline — wedding abroad, visa requirement, job interview, international move. Group cohort of 6 + weekly 1:1 + AI practice + graduation.</p>
+            <div class="hero-ctas">
+                <a href="https://cal.com/elevare/fluency-assessment" target="_blank" class="btn btn-primary">Book Free Assessment Call</a>
+                <a href="#roadmap" class="btn btn-secondary">See the 12-week roadmap</a>
+            </div>
+            <div class="hero-trust">
+                <span>12-week program with graduation</span>
+                <span>Milestone assessment every 4 weeks</span>
+                <span>Measurable-progress guarantee</span>
+                <span>Alumni community for graduates</span>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The 12-week roadmap</div>
+                <h2 class="section-title">Six phases from baseline to breakthrough</h2>
+            </div>
+            <div class="phase-grid">
+                <div class="phase-card"><div class="phase-num">WEEKS 1-2</div><h4>Fluency floor</h4><p>Clear hesitation markers. Build automaticity on present-tense descriptions. Introduce yourself in 90 seconds without notes.</p></div>
+                <div class="phase-card"><div class="phase-num">WEEKS 3-4</div><h4>Range + confidence</h4><p>Past + future tense under real-time pressure. Opinions with nuance. Compare, contrast, handle follow-up without freezing.</p></div>
+                <div class="phase-card"><div class="phase-num">WEEKS 5-6</div><h4>Real-world deployment</h4><p>Apply frameworks to your specific upcoming scenarios. Build a personalized phrase bank for your deadline goal.</p></div>
+                <div class="phase-card"><div class="phase-num">WEEKS 7-8</div><h4>Precision + accuracy</h4><p>Identify your 3-5 recurring grammar patterns. Target drills. Register matching — same message, different tones.</p></div>
+                <div class="phase-card"><div class="phase-num">WEEKS 9-10</div><h4>Complex communication</h4><p>Nuance, sarcasm, implication. Storytelling with emotional arc. Persuasion techniques. Cultural English.</p></div>
+                <div class="phase-card"><div class="phase-num">WEEKS 11-12</div><h4>Integration + graduation</h4><p>Weak-spot pass. Final assessment vs Week-0 baseline. Cohort graduation with certificate, LinkedIn badge, alumni community access.</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="guarantee">
+                <h2>Measurable progress in 12 weeks. Or we keep coaching you free.</h2>
+                <p>If you don't hit the agreed Week-12 targets — +20% fluency rate, -40% grammar slippage, +1 band on writing, +25% listening comprehension, +3 on self-reported confidence — your programme extends at no additional cost until you do.</p>
+                <p style="font-size:14px; margin-top:18px; font-style:italic; color:var(--navy-light);">Refund-to-credit policy: if you'd rather stop than continue, we'll credit 4 weeks of 1:1 coaching to a friend's account.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">Pay monthly or upfront (save 20%)</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Monthly</h3>
+                    <div class="price-big">$199<span>×3 mo</span></div>
+                    <ul>
+                        <li>12-week programme, 3-month split</li>
+                        <li>Full group cohort + 1:1 + AI</li>
+                        <li>Week-0 / 4 / 8 / 12 milestone assessments</li>
+                        <li>Graduation certificate + alumni community</li>
+                        <li>Measurable-progress guarantee</li>
+                    </ul>
+                    <a href="https://cal.com/elevare/fluency-assessment" target="_blank" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Book Assessment</a>
+                </div>
+                <div class="price-card featured">
+                    <h3>Upfront (save ~20%)</h3>
+                    <div class="price-big">$497<span>/one-time</span></div>
+                    <ul>
+                        <li>12-week programme, paid once</li>
+                        <li>Everything in monthly</li>
+                        <li>Locked-in founding cohort pricing</li>
+                        <li>30-day post-course WhatsApp support</li>
+                        <li>Measurable-progress guarantee</li>
+                    </ul>
+                    <a href="https://cal.com/elevare/fluency-assessment" target="_blank" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Book Assessment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Questions answered</div>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="faq">
+                <details><summary>What's the difference between Fluency and Speak?</summary><p>Speak is monthly, open-ended, general fluency. Fluency is a 12-week intensive with a structured arc, milestone assessments, and a graduation moment. Fluency is for people with a deadline — wedding, visa, move, interview. Speak is for ongoing improvement.</p></details>
+                <details><summary>Do I need to already be at B1?</summary><p>Yes — Fluency assumes intermediate baseline. The programme accelerates learners from B1 → B2+ (or B2 → C1+) in 12 weeks. Below B1 start with Speak.</p></details>
+                <details><summary>What if I can't make every session?</summary><p>One free catch-up session per programme. Beyond that we work around your schedule on the 1:1 side. Group sessions are recorded.</p></details>
+                <details><summary>What's in the graduation package?</summary><p>Certificate, LinkedIn badge, alumni community WhatsApp group, 30 days of post-course support. Many graduates move to Speak as ongoing maintenance.</p></details>
+                <details><summary>How are the milestones measured?</summary><p>5 dimensions: speaking fluency (words/min), grammar accuracy (slips per 100 words), listening comprehension (on native-pace content), writing (rubric-scored), confidence (self-report). You see your scores after every milestone.</p></details>
+                <details><summary>When does the next cohort start?</summary><p>New cohorts start every 4 weeks. Book the assessment to get the current cohort calendar.</p></details>
+                <details><summary>Can I upgrade to Pro or Med after?</summary><p>Yes — many Fluency graduates move to Pro (business English) or Med (medical English). Alumni get a discount on their next programme.</p></details>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your deadline is closer than you think.</h2>
+            <p>12 weeks goes fast. If you're serious about measurable English gains before your event, book the assessment now. Next cohort starts soon.</p>
+            <a href="https://cal.com/elevare/fluency-assessment" target="_blank" class="btn btn-primary">Book Free Assessment</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="../index.html">Elevare</a>. The English Program That Actually Sticks. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevare AI — Your 24/7 English Practice Companion on WhatsApp</title>
+    <meta name="description" content="AI practice companion on WhatsApp. Scenario role-plays, session warm-ups, between-session recaps. $29/month — the entry tier to the Elevare ecosystem.">
+    <link rel="canonical" href="https://darnygirl.github.io/elevare/frontend/ai.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#778da9; --accent:#d08770; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--navy); background:var(--cream); }
+        h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--navy); }
+        .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+        a { color:var(--gold); text-decoration:none; }
+        a:hover { color:var(--gold-dark); }
+        nav { position:sticky; top:0; z-index:100; background:var(--navy); padding:16px 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); font-weight:700; letter-spacing:2px; }
+        .nav-menu { display:flex; gap:28px; list-style:none; align-items:center; }
+        .nav-menu a { color:var(--text); font-weight:500; font-size:14px; }
+        .nav-menu a:hover, .nav-menu a.active { color:var(--gold); }
+        .nav-cta { background:var(--gold); color:var(--navy)!important; padding:10px 20px; border-radius:4px; font-weight:600; }
+        .hamburger { display:none; background:none; border:none; color:var(--gold); font-size:24px; cursor:pointer; }
+        @media (max-width:768px) { .nav-menu { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--navy); padding:20px; gap:16px; } .nav-menu.open { display:flex; } .hamburger { display:block; } }
+        .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); color:var(--white); padding:80px 0 100px; position:relative; overflow:hidden; }
+        .hero::after { content:''; position:absolute; top:0; right:-120px; width:400px; height:400px; background:radial-gradient(circle,rgba(208,135,112,0.15) 0%,transparent 70%); pointer-events:none; }
+        .hero-pre { display:inline-block; background:rgba(208,135,112,0.2); color:#f0bba4; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; letter-spacing:1px; margin-bottom:20px; text-transform:uppercase; }
+        .hero h1 { font-size:56px; color:var(--white); line-height:1.15; margin-bottom:20px; max-width:800px; }
+        .hero h1 span { color:var(--gold); }
+        .hero-sub { font-size:20px; color:var(--text); max-width:720px; margin-bottom:36px; line-height:1.55; }
+        .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+        .btn { display:inline-block; padding:14px 30px; border-radius:4px; font-weight:600; letter-spacing:0.5px; font-size:14px; transition:all 0.2s; cursor:pointer; border:2px solid transparent; }
+        .btn-primary { background:var(--gold); color:var(--navy)!important; }
+        .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+        .btn-secondary { background:transparent; color:var(--white)!important; border-color:var(--white); }
+        .btn-secondary:hover { background:var(--white); color:var(--navy)!important; }
+        .hero-trust { display:flex; gap:24px; flex-wrap:wrap; color:var(--text-light); font-size:14px; }
+        .hero-trust span { display:flex; align-items:center; gap:6px; }
+        .hero-trust span::before { content:'✓'; color:var(--accent); font-weight:bold; }
+        @media (max-width:768px) { .hero { padding:60px 0 80px; } .hero h1 { font-size:36px; } .hero-sub { font-size:17px; } }
+        .section { padding:80px 0; }
+        .section-light { background:var(--cream); }
+        .section-header { text-align:center; max-width:720px; margin:0 auto 50px; }
+        .section-label { color:var(--gold); font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:10px; }
+        .section-title { font-size:40px; margin-bottom:16px; line-height:1.2; }
+        .section-desc { font-size:18px; color:var(--text-light); line-height:1.6; }
+        @media (max-width:768px) { .section { padding:50px 0; } .section-title { font-size:28px; } }
+        .mode-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .mode-card { background:var(--white); padding:32px 28px; border-radius:8px; box-shadow:0 2px 16px rgba(13,27,42,0.05); }
+        .mode-card h3 { color:var(--navy); font-size:22px; margin-bottom:14px; }
+        .mode-card p { color:var(--navy-lighter); line-height:1.6; font-size:15px; }
+        .mode-icon { width:52px; height:52px; border-radius:50%; background:var(--accent); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; font-weight:bold; }
+        @media (max-width:900px) { .mode-grid { grid-template-columns:1fr; } }
+        .price-card { background:var(--white); max-width:460px; margin:0 auto; padding:40px 32px; border-radius:10px; border:2px solid var(--gold); text-align:center; }
+        .price-big { font-family:'Cormorant Garamond',serif; font-size:64px; color:var(--navy); font-weight:700; line-height:1; margin:14px 0; }
+        .price-big span { font-size:18px; color:var(--text-light); font-weight:400; }
+        .price-card ul { list-style:none; padding:0; margin:20px 0; text-align:left; }
+        .price-card li { padding:6px 0 6px 24px; position:relative; color:var(--navy-lighter); font-size:15px; }
+        .price-card li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:bold; }
+        .faq { max-width:820px; margin:0 auto; }
+        details { background:var(--white); margin-bottom:10px; border-radius:6px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+        summary { padding:18px 24px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+        summary::after { content:'+'; font-size:24px; color:var(--gold); font-weight:300; }
+        details[open] summary::after { content:'−'; }
+        details > *:not(summary) { padding:0 24px 20px; color:var(--navy-lighter); line-height:1.65; }
+        .final-cta { background:var(--navy); color:var(--text); padding:80px 0; text-align:center; }
+        .final-cta h2 { color:var(--white); font-size:42px; margin-bottom:16px; max-width:700px; margin-left:auto; margin-right:auto; }
+        .final-cta p { max-width:620px; margin:0 auto 30px; font-size:17px; line-height:1.6; }
+        footer { background:var(--navy); color:var(--text-light); padding:30px 0; border-top:1px solid var(--navy-lighter); text-align:center; font-size:14px; }
+        footer a { color:var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">ELEVARE</a>
+            <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('open')">☰</button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="speak.html">Speak</a></li>
+                <li><a href="fluency.html">Fluency</a></li>
+                <li><a href="pro.html">Pro</a></li>
+                <li><a href="med.html">Med</a></li>
+                <li><a href="ai.html" class="active">AI</a></li>
+                <li><a href="book.html" class="nav-cta">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-pre">The Elevare entry tier</div>
+            <h1>Your 24/7 English practice partner. <span>On WhatsApp.</span></h1>
+            <p class="hero-sub">Safe space to fail. Unlimited scenario role-plays. Session warm-ups before real calls. Between-coach-session recaps. The practice companion that never sleeps — $29/month.</p>
+            <div class="hero-ctas">
+                <a href="https://cal.com/elevare/ai-signup" target="_blank" class="btn btn-primary">Start Your First Week Free</a>
+                <a href="#how" class="btn btn-secondary">See how it works</a>
+            </div>
+            <div class="hero-trust">
+                <span>WhatsApp-native (no new app)</span>
+                <span>3 modes, unlimited sessions</span>
+                <span>7-day free trial</span>
+                <span>Upgrade anytime to coach-led tiers</span>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="how">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">How Elevare AI works</div>
+                <h2 class="section-title">Three modes. One simple WhatsApp bot.</h2>
+            </div>
+            <div class="mode-grid">
+                <div class="mode-card">
+                    <div class="mode-icon">🎭</div>
+                    <h3>Scenario Role-Play</h3>
+                    <p>Pick a real situation you're nervous about — negotiate with a supplier, answer a tough interview question, lead a standup, order in a restaurant. AI plays the counterpart. 10 minutes. You practice where failing has zero cost.</p>
+                </div>
+                <div class="mode-card">
+                    <div class="mode-icon">⚡</div>
+                    <h3>Session Warm-Up</h3>
+                    <p>2 minutes before any real English moment — a meeting, a call, a class. 3 confidence prompts rehearse your opening line and drop your anxiety. Used by Elevare Speak + Fluency + Pro + Med students too.</p>
+                </div>
+                <div class="mode-card">
+                    <div class="mode-icon">📝</div>
+                    <h3>Between-Session Recap</h3>
+                    <p>If you have a coach (any Elevare tier), AI reviews your last session notes and asks 3 recall questions. 5 minutes. Results go back to your coach for next session. Compounds your learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">One tier. Everything unlocked.</h2>
+            </div>
+            <div class="price-card">
+                <h3>Elevare AI</h3>
+                <div class="price-big">$29<span>/month</span></div>
+                <ul>
+                    <li>All 3 modes (Role-Play, Warm-Up, Recap)</li>
+                    <li>30+ scenarios across daily situations</li>
+                    <li>Unlimited sessions</li>
+                    <li>WhatsApp-native — no new app</li>
+                    <li>7-day free trial</li>
+                    <li>Cancel anytime</li>
+                    <li>Upgrade-to-coach-tier discount applies</li>
+                </ul>
+                <a href="https://cal.com/elevare/ai-signup" target="_blank" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Start Free Trial</a>
+                <p style="font-size:13px; color:var(--text-light); margin-top:16px; font-style:italic;">New to Elevare? Start here. Move to Speak ($199), Pro ($449), or Med ($699) when you're ready for a real coach.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Questions answered</div>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="faq">
+                <details><summary>How is this different from ChatGPT?</summary><p>Elevare AI is purpose-built for language practice. It's trained on our methodology (psychology-informed, Rise layer, coach-augmenting), hosts on WhatsApp (not a web tab), and integrates with Elevare coach-led tiers. ChatGPT is a general tool; Elevare AI is a practice companion with a clear learning arc.</p></details>
+                <details><summary>Will it replace my human coach?</summary><p>No — it augments coaches, never replaces. The between-session recap mode literally requires coach input. AI is the gym; the coach is the trainer.</p></details>
+                <details><summary>What level does Elevare AI work for?</summary><p>A2 to B2. Below A2, the AI conversations get too hard. Above B2, you'll outgrow the scenarios in a few weeks and should move to Pro or Fluency. We'll tell you when we see you ready.</p></details>
+                <details><summary>Is it voice or text?</summary><p>Text first (launch version). Voice mode ships in Month 2-3, so all AI tier members get it automatically when ready. Voice uses your account's available minutes per WhatsApp.</p></details>
+                <details><summary>What's in the 30+ scenarios?</summary><p>Daily life (shopping, travel, meetings, small talk), work (presentations, negotiations, interviews), and learning (tutoring role-play, test prep practice). New scenarios added weekly.</p></details>
+                <details><summary>Can I cancel?</summary><p>Yes, anytime. Monthly subscription, no commitment beyond the current month.</p></details>
+                <details><summary>Do I need to be on WhatsApp?</summary><p>Yes — Elevare AI is WhatsApp-native. If you don't use WhatsApp, let us know at signup and we'll work with you.</p></details>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>Try Elevare AI free for 7 days.</h2>
+            <p>No credit card to start. Just your WhatsApp. If it helps, continue at $29/month. If not, walk away — no friction.</p>
+            <a href="https://cal.com/elevare/ai-signup" target="_blank" class="btn btn-primary">Start Free Trial</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="../index.html">Elevare</a>. The English Program That Actually Sticks. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>

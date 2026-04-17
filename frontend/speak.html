@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevare Speak — Conversation Fluency in a Small Cohort</title>
+    <meta name="description" content="Coach-led group cohort for conversation fluency. 90-min weekly group call + bi-weekly 1:1 + AI practice. Built for working adults who want to stop freezing in English conversations.">
+    <link rel="canonical" href="https://darnygirl.github.io/elevare/frontend/speak.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#778da9; --accent:#5e81ac; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--navy); background:var(--cream); }
+        h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--navy); }
+        .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+        a { color:var(--gold); text-decoration:none; }
+        a:hover { color:var(--gold-dark); }
+        nav { position:sticky; top:0; z-index:100; background:var(--navy); padding:16px 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); font-weight:700; letter-spacing:2px; }
+        .nav-menu { display:flex; gap:28px; list-style:none; align-items:center; }
+        .nav-menu a { color:var(--text); font-weight:500; font-size:14px; }
+        .nav-menu a:hover, .nav-menu a.active { color:var(--gold); }
+        .nav-cta { background:var(--gold); color:var(--navy)!important; padding:10px 20px; border-radius:4px; font-weight:600; }
+        .hamburger { display:none; background:none; border:none; color:var(--gold); font-size:24px; cursor:pointer; }
+        @media (max-width:768px) { .nav-menu { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--navy); padding:20px; gap:16px; } .nav-menu.open { display:flex; } .hamburger { display:block; } }
+        .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); color:var(--white); padding:80px 0 100px; position:relative; overflow:hidden; }
+        .hero::after { content:''; position:absolute; top:0; right:-120px; width:400px; height:400px; background:radial-gradient(circle,rgba(94,129,172,0.18) 0%,transparent 70%); pointer-events:none; }
+        .hero-pre { display:inline-block; background:rgba(94,129,172,0.2); color:#a3bde0; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; letter-spacing:1px; margin-bottom:20px; text-transform:uppercase; }
+        .hero h1 { font-size:56px; color:var(--white); line-height:1.15; margin-bottom:20px; max-width:800px; }
+        .hero h1 span { color:var(--gold); }
+        .hero-sub { font-size:20px; color:var(--text); max-width:720px; margin-bottom:36px; line-height:1.55; }
+        .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+        .btn { display:inline-block; padding:14px 30px; border-radius:4px; font-weight:600; letter-spacing:0.5px; font-size:14px; transition:all 0.2s; cursor:pointer; border:2px solid transparent; }
+        .btn-primary { background:var(--gold); color:var(--navy)!important; }
+        .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+        .btn-secondary { background:transparent; color:var(--white)!important; border-color:var(--white); }
+        .btn-secondary:hover { background:var(--white); color:var(--navy)!important; }
+        .hero-trust { display:flex; gap:24px; flex-wrap:wrap; color:var(--text-light); font-size:14px; }
+        .hero-trust span { display:flex; align-items:center; gap:6px; }
+        .hero-trust span::before { content:'✓'; color:var(--accent); font-weight:bold; }
+        @media (max-width:768px) { .hero { padding:60px 0 80px; } .hero h1 { font-size:36px; } .hero-sub { font-size:17px; } }
+        .section { padding:80px 0; }
+        .section-light { background:var(--cream); }
+        .section-navy { background:var(--navy); color:var(--text); }
+        .section-navy h2 { color:var(--gold); }
+        .section-header { text-align:center; max-width:720px; margin:0 auto 50px; }
+        .section-label { color:var(--gold); font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:10px; }
+        .section-title { font-size:40px; margin-bottom:16px; line-height:1.2; }
+        .section-desc { font-size:18px; color:var(--text-light); line-height:1.6; }
+        .section-navy .section-desc { color:var(--text); }
+        @media (max-width:768px) { .section { padding:50px 0; } .section-title { font-size:28px; } }
+        .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .col-card { background:var(--white); padding:32px 28px; border-radius:8px; box-shadow:0 2px 16px rgba(13,27,42,0.05); }
+        .col-card h3 { color:var(--navy); font-size:24px; margin-bottom:14px; }
+        .col-card p { color:var(--navy-lighter); line-height:1.6; }
+        .col-icon { width:48px; height:48px; border-radius:50%; background:var(--accent); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:18px; font-weight:bold; }
+        @media (max-width:768px) { .three-col { grid-template-columns:1fr; } }
+        .week-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:1000px; margin:0 auto; }
+        .week-card { background:var(--white); padding:24px; border-radius:8px; border-top:3px solid var(--gold); }
+        .week-card h4 { color:var(--navy); font-size:20px; margin-bottom:10px; }
+        .week-card p { color:var(--navy-lighter); font-size:15px; line-height:1.55; }
+        .week-num { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--gold); letter-spacing:2px; font-weight:600; margin-bottom:6px; }
+        @media (max-width:900px) { .week-grid { grid-template-columns:1fr 1fr; } }
+        @media (max-width:500px) { .week-grid { grid-template-columns:1fr; } }
+        .price-card { background:var(--white); max-width:460px; margin:0 auto; padding:40px 32px; border-radius:10px; border:2px solid var(--gold); text-align:center; }
+        .price-big { font-family:'Cormorant Garamond',serif; font-size:56px; color:var(--navy); font-weight:700; line-height:1; margin:14px 0; }
+        .price-big span { font-size:18px; color:var(--text-light); font-weight:400; }
+        .price-card ul { list-style:none; padding:0; margin:20px 0; text-align:left; }
+        .price-card li { padding:6px 0 6px 24px; position:relative; color:var(--navy-lighter); font-size:15px; }
+        .price-card li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:bold; }
+        .faq { max-width:820px; margin:0 auto; }
+        details { background:var(--white); margin-bottom:10px; border-radius:6px; padding:0; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+        summary { padding:18px 24px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+        summary::after { content:'+'; font-size:24px; color:var(--gold); font-weight:300; }
+        details[open] summary::after { content:'−'; }
+        details > *:not(summary) { padding:0 24px 20px; color:var(--navy-lighter); line-height:1.65; }
+        .final-cta { background:var(--navy); color:var(--text); padding:80px 0; text-align:center; }
+        .final-cta h2 { color:var(--white); font-size:42px; margin-bottom:16px; max-width:700px; margin-left:auto; margin-right:auto; }
+        .final-cta p { max-width:620px; margin:0 auto 30px; font-size:17px; line-height:1.6; }
+        footer { background:var(--navy); color:var(--text-light); padding:30px 0; border-top:1px solid var(--navy-lighter); text-align:center; font-size:14px; }
+        footer a { color:var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">ELEVARE</a>
+            <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('open')">☰</button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="speak.html" class="active">Speak</a></li>
+                <li><a href="fluency.html">Fluency</a></li>
+                <li><a href="pro.html">Pro</a></li>
+                <li><a href="med.html">Med</a></li>
+                <li><a href="ai.html">AI</a></li>
+                <li><a href="book.html" class="nav-cta">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-pre">For working adults who want to speak freely</div>
+            <h1>Stop freezing in English <span>conversations.</span></h1>
+            <p class="hero-sub">A real coach + a small cohort + daily AI practice. 90 minutes a week with 5 other learners at your level — plus a 15-min 1:1 with your coach every other week.</p>
+            <div class="hero-ctas">
+                <a href="https://cal.com/elevare/speak-assessment" target="_blank" class="btn btn-primary">Book Free Assessment Call</a>
+                <a href="#how" class="btn btn-secondary">See how it works</a>
+            </div>
+            <div class="hero-trust">
+                <span>A2-B2 learners, general fluency</span>
+                <span>6-person cohorts</span>
+                <span>Peer practice partner included</span>
+                <span>Measurable progress every 30 days</span>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="how">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">How Speak works</div>
+                <h2 class="section-title">Small cohort. Real coach. Daily AI practice.</h2>
+            </div>
+            <div class="three-col">
+                <div class="col-card">
+                    <div class="col-icon">👥</div>
+                    <h3>Your cohort of 6</h3>
+                    <p>Weekly 90-min group call with 5 other learners at your level. Peer practice partner rotated every 2 weeks — you practice outside sessions with real humans, not just AI.</p>
+                </div>
+                <div class="col-card">
+                    <div class="col-icon">🎯</div>
+                    <h3>Real coach, bi-weekly 1:1</h3>
+                    <p>15-min 1:1 with your assigned coach every other week. They hear the patterns cohort sessions can't catch. Personalized drills for your specific blockers.</p>
+                </div>
+                <div class="col-card">
+                    <div class="col-icon">🤖</div>
+                    <h3>Elevare AI between sessions</h3>
+                    <p>Daily 10-15 min of AI role-plays on WhatsApp. Safe space to fail. Small talk, storytelling, disagreement, improv — the 4 things that break your fluency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The 4-week rotating curriculum</div>
+                <h2 class="section-title">Master the 4 conversation moves that matter</h2>
+                <p class="section-desc">Every 4 weeks we cycle these themes with new scenarios and deeper challenges. Stay as long as you want — every cycle compounds.</p>
+            </div>
+            <div class="week-grid">
+                <div class="week-card">
+                    <div class="week-num">WEEK 1</div>
+                    <h4>Small talk + introductions</h4>
+                    <p>Hold a 5-min conversation without awkward silence. Active listening phrases. Opening + closing with grace.</p>
+                </div>
+                <div class="week-card">
+                    <div class="week-num">WEEK 2</div>
+                    <h4>Telling stories</h4>
+                    <p>Past tense fluency under pressure. Narrative arc. Emotional language beyond "good" and "bad." Recover when you lose the thread.</p>
+                </div>
+                <div class="week-card">
+                    <div class="week-num">WEEK 3</div>
+                    <h4>Opinions + polite disagreement</h4>
+                    <p>Express strong views without aggression. Disagreement ladder from soft to firm. Hedging + clarification phrases.</p>
+                </div>
+                <div class="week-card">
+                    <div class="week-num">WEEK 4</div>
+                    <h4>Improv + recovery</h4>
+                    <p>Keep speaking when you don't know the word. Recover from misunderstandings. Handle unexpected questions without freezing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">One price. Everything included.</h2>
+            </div>
+            <div class="price-card">
+                <h3>Elevare Speak</h3>
+                <div class="price-big">$199<span>/month</span></div>
+                <ul>
+                    <li>Weekly 90-min group cohort call</li>
+                    <li>Bi-weekly 15-min 1:1 with your coach</li>
+                    <li>Daily AI practice companion on WhatsApp</li>
+                    <li>Peer practice partner (rotated every 2 weeks)</li>
+                    <li>Rise methodology — confidence work built in</li>
+                    <li>Monthly progress assessment</li>
+                </ul>
+                <a href="https://cal.com/elevare/speak-assessment" target="_blank" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Book Free Assessment</a>
+                <p style="font-size:13px; color:var(--text-light); margin-top:16px; font-style:italic;">New cohorts start every 4 weeks. Free to join mid-cycle with a 30-min catch-up session.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Questions answered</div>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="faq">
+                <details><summary>Who is Speak for?</summary><p>Working adults at A2-B2 level who want conversation fluency for work, travel, social life, or family. Not beginners (A0-A1 need a dedicated beginner track). Not test prep (use Fluency or Med for that).</p></details>
+                <details><summary>How is this different from Elevare AI ($29)?</summary><p>Elevare AI is AI-only practice. Speak adds a real human coach + a cohort of peers + personalized drills. The human-in-loop is what moves you out of the intermediate plateau.</p></details>
+                <details><summary>Can I join mid-cycle?</summary><p>Yes — we run a 30-min catch-up session so you're not behind. No prorating needed.</p></details>
+                <details><summary>What if my cohort doesn't feel right?</summary><p>Flag us in the first 2 sessions and we'll move you to a different cohort at no extra cost. Good cohorts are critical to the product.</p></details>
+                <details><summary>Do I need to be on camera?</summary><p>Encouraged but not required. Many students start voice-only for the first few sessions as they build confidence. The Rise methodology meets you where you are.</p></details>
+                <details><summary>What happens after 4 weeks?</summary><p>The curriculum repeats with new, harder variants. Many students stay 6-12+ months as conversation maintenance. Natural graduation is when you stop thinking about frameworks and just talk.</p></details>
+                <details><summary>Is there a commitment?</summary><p>Monthly subscription, cancel anytime. That said, most fluency gains show in month 2, not month 1 — give it a real shot.</p></details>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>Book the call. Stop guessing whether your English is "good enough."</h2>
+            <p>A 5-min conversation tells you where you actually are. You get a personalized 3-week starter plan by email, whether or not you enrol.</p>
+            <a href="https://cal.com/elevare/speak-assessment" target="_blank" class="btn btn-primary">Book Free Assessment</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="../index.html">Elevare</a>. The English Program That Actually Sticks. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>

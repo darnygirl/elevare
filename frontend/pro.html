@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevare Pro — Business English for Professionals</title>
+    <meta name="description" content="Business English coaching for working professionals. Lead meetings, deliver pitches, negotiate, write with precision. 1:1 + small group + AI practice. Meta-compliant copy throughout.">
+    <link rel="canonical" href="https://darnygirl.github.io/elevare/frontend/pro.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#778da9; --accent:#5a4fcf; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--navy); background:var(--cream); }
+        h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--navy); }
+        .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+        a { color:var(--gold); text-decoration:none; }
+        a:hover { color:var(--gold-dark); }
+        nav { position:sticky; top:0; z-index:100; background:var(--navy); padding:16px 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); font-weight:700; letter-spacing:2px; }
+        .nav-menu { display:flex; gap:28px; list-style:none; align-items:center; }
+        .nav-menu a { color:var(--text); font-weight:500; font-size:14px; }
+        .nav-menu a:hover, .nav-menu a.active { color:var(--gold); }
+        .nav-cta { background:var(--gold); color:var(--navy)!important; padding:10px 20px; border-radius:4px; font-weight:600; }
+        .hamburger { display:none; background:none; border:none; color:var(--gold); font-size:24px; cursor:pointer; }
+        @media (max-width:768px) { .nav-menu { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--navy); padding:20px; gap:16px; } .nav-menu.open { display:flex; } .hamburger { display:block; } }
+        .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); color:var(--white); padding:80px 0 100px; position:relative; overflow:hidden; }
+        .hero::after { content:''; position:absolute; top:0; right:-120px; width:400px; height:400px; background:radial-gradient(circle,rgba(90,79,207,0.15) 0%,transparent 70%); pointer-events:none; }
+        .hero-pre { display:inline-block; background:rgba(90,79,207,0.2); color:#b3a6f0; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; letter-spacing:1px; margin-bottom:20px; text-transform:uppercase; }
+        .hero h1 { font-size:56px; color:var(--white); line-height:1.15; margin-bottom:20px; max-width:800px; }
+        .hero h1 span { color:var(--gold); }
+        .hero-sub { font-size:20px; color:var(--text); max-width:720px; margin-bottom:36px; line-height:1.55; }
+        .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+        .btn { display:inline-block; padding:14px 30px; border-radius:4px; font-weight:600; letter-spacing:0.5px; font-size:14px; transition:all 0.2s; cursor:pointer; border:2px solid transparent; }
+        .btn-primary { background:var(--gold); color:var(--navy)!important; }
+        .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+        .btn-secondary { background:transparent; color:var(--white)!important; border-color:var(--white); }
+        .btn-secondary:hover { background:var(--white); color:var(--navy)!important; }
+        .hero-trust { display:flex; gap:24px; flex-wrap:wrap; color:var(--text-light); font-size:14px; }
+        .hero-trust span { display:flex; align-items:center; gap:6px; }
+        .hero-trust span::before { content:'✓'; color:var(--accent); font-weight:bold; }
+        @media (max-width:768px) { .hero { padding:60px 0 80px; } .hero h1 { font-size:36px; } .hero-sub { font-size:17px; } }
+        .section { padding:80px 0; }
+        .section-light { background:var(--cream); }
+        .section-header { text-align:center; max-width:720px; margin:0 auto 50px; }
+        .section-label { color:var(--gold); font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:10px; }
+        .section-title { font-size:40px; margin-bottom:16px; line-height:1.2; }
+        .section-desc { font-size:18px; color:var(--text-light); line-height:1.6; }
+        @media (max-width:768px) { .section { padding:50px 0; } .section-title { font-size:28px; } }
+        .theme-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:1000px; margin:0 auto; }
+        .theme-card { background:var(--white); padding:28px; border-radius:8px; border-top:4px solid var(--accent); }
+        .theme-card h3 { color:var(--navy); font-size:24px; margin-bottom:12px; }
+        .theme-card p { color:var(--navy-lighter); font-size:15px; margin-bottom:10px; }
+        .theme-card ul { padding-left:20px; color:var(--navy-lighter); font-size:14px; }
+        .theme-card li { margin-bottom:4px; }
+        @media (max-width:768px) { .theme-grid { grid-template-columns:1fr; } }
+        .price-card { background:var(--white); max-width:460px; margin:0 auto; padding:40px 32px; border-radius:10px; border:2px solid var(--gold); text-align:center; }
+        .price-big { font-family:'Cormorant Garamond',serif; font-size:56px; color:var(--navy); font-weight:700; line-height:1; margin:14px 0; }
+        .price-big span { font-size:18px; color:var(--text-light); font-weight:400; }
+        .price-card ul { list-style:none; padding:0; margin:20px 0; text-align:left; }
+        .price-card li { padding:6px 0 6px 24px; position:relative; color:var(--navy-lighter); font-size:15px; }
+        .price-card li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:bold; }
+        .faq { max-width:820px; margin:0 auto; }
+        details { background:var(--white); margin-bottom:10px; border-radius:6px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+        summary { padding:18px 24px; cursor:pointer; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+        summary::after { content:'+'; font-size:24px; color:var(--gold); font-weight:300; }
+        details[open] summary::after { content:'−'; }
+        details > *:not(summary) { padding:0 24px 20px; color:var(--navy-lighter); line-height:1.65; }
+        .final-cta { background:var(--navy); color:var(--text); padding:80px 0; text-align:center; }
+        .final-cta h2 { color:var(--white); font-size:42px; margin-bottom:16px; max-width:700px; margin-left:auto; margin-right:auto; }
+        .final-cta p { max-width:620px; margin:0 auto 30px; font-size:17px; line-height:1.6; }
+        footer { background:var(--navy); color:var(--text-light); padding:30px 0; border-top:1px solid var(--navy-lighter); text-align:center; font-size:14px; }
+        footer a { color:var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">ELEVARE</a>
+            <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('open')">☰</button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="speak.html">Speak</a></li>
+                <li><a href="fluency.html">Fluency</a></li>
+                <li><a href="pro.html" class="active">Pro</a></li>
+                <li><a href="med.html">Med</a></li>
+                <li><a href="ai.html">AI</a></li>
+                <li><a href="book.html" class="nav-cta">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-pre">For working professionals</div>
+            <h1>Lead the meeting. Deliver the pitch. <span>Close the deal.</span></h1>
+            <p class="hero-sub">Business English coaching for professionals who need English to work — not just converse. Weekly 1:1 with a senior coach + small-group scenario simulation + AI practice on your specific upcoming high-stakes moments.</p>
+            <div class="hero-ctas">
+                <a href="https://cal.com/elevare/pro-assessment" target="_blank" class="btn btn-primary">Book Free Assessment Call</a>
+                <a href="#themes" class="btn btn-secondary">See the 4-week themes</a>
+            </div>
+            <div class="hero-trust">
+                <span>Senior coaches only</span>
+                <span>60-min 1:1 + 60-min small-group weekly</span>
+                <span>Your actual work scenarios become curriculum</span>
+                <span>Industry variants: tech / finance / medical / real estate</span>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="themes">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The 4-week rotating curriculum</div>
+                <h2 class="section-title">Master the 4 moments that make or break careers</h2>
+                <p class="section-desc">Each theme repeats monthly with harder variants. Your specific upcoming scenarios — real meetings, real pitches, real emails — become the curriculum.</p>
+            </div>
+            <div class="theme-grid">
+                <div class="theme-card">
+                    <h3>Week 1 — High-stakes meetings</h3>
+                    <p>Lead without ceding control. Interject politely when someone else dominates. Disagree firmly without damaging the relationship.</p>
+                    <ul>
+                        <li>PREP framework for opinions</li>
+                        <li>15-phrase interjection bank</li>
+                        <li>Disagreement escalator (soft to firm)</li>
+                        <li>Mid-meeting recovery language</li>
+                    </ul>
+                </div>
+                <div class="theme-card">
+                    <h3>Week 2 — Presentations &amp; pitches</h3>
+                    <p>Structure narrative arcs that land. Handle Q&amp;A without defensive postures. Close with a specific ask, not vague next steps.</p>
+                    <ul>
+                        <li>MOTH storytelling framework</li>
+                        <li>SCQA for openings</li>
+                        <li>Q&amp;A bridge language</li>
+                        <li>Close-with-ask patterns</li>
+                    </ul>
+                </div>
+                <div class="theme-card">
+                    <h3>Week 3 — Negotiation &amp; difficult conversations</h3>
+                    <p>Anchor pricing without apology. Deliver bad news with dignity for both parties. Say "no" as a complete sentence when needed.</p>
+                    <ul>
+                        <li>BATNA positioning</li>
+                        <li>Mirror + label techniques</li>
+                        <li>Bad news sandwich</li>
+                        <li>Silence as strategy</li>
+                    </ul>
+                </div>
+                <div class="theme-card">
+                    <h3>Week 4 — Written communication</h3>
+                    <p>Match tone to context — email, Slack, LinkedIn, client-facing docs. Avoid over-politeness that undermines authority.</p>
+                    <ul>
+                        <li>Register matrix for 6 contexts</li>
+                        <li>BLUF (Bottom Line Up Front)</li>
+                        <li>Polite ≠ effective</li>
+                        <li>Written negotiation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">One price. Everything included.</h2>
+            </div>
+            <div class="price-card">
+                <h3>Elevare Pro</h3>
+                <div class="price-big">$449<span>/month</span></div>
+                <ul>
+                    <li>60-min weekly 1:1 with senior coach</li>
+                    <li>60-min weekly small-group (3-max cohort)</li>
+                    <li>Elevare AI for your scenario practice</li>
+                    <li>Pro Methodology PDF (12 pages)</li>
+                    <li>Personalized scenario thread from intake</li>
+                    <li>Rise methodology — confidence work built in</li>
+                    <li>3-month minimum commitment</li>
+                </ul>
+                <a href="https://cal.com/elevare/pro-assessment" target="_blank" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Book Free Assessment</a>
+                <p style="font-size:13px; color:var(--text-light); margin-top:16px; font-style:italic;">Annual plan: $4,309/yr (save 20%). Executive 1:1 tier at $599/mo for students wanting heavier individual attention.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Questions answered</div>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="faq">
+                <details><summary>How is Pro different from Speak?</summary><p>Speak is cohort-based general fluency ($199). Pro is business-specific, 1:1 heavy, with senior coaches ($449). Pro assumes B1+ and focuses on work scenarios — meetings, pitches, negotiation, written comms. Speak is broader — travel, social, everyday conversation.</p></details>
+                <details><summary>Do I need to be B1+?</summary><p>Yes. Pro assumes conversational fluency. Your assessment call confirms. Below B1 — start with Speak.</p></details>
+                <details><summary>What's the 3-month minimum?</summary><p>Meaningful progress on business-English precision takes at least 12 weeks. We don't want to sell you one month and disappoint you. Typical retention is 4-8 months.</p></details>
+                <details><summary>Is there an industry-specific variant?</summary><p>Yes — tech, finance, medical leadership, real estate, consulting. When 3+ students in an industry enrol, the scenario library gets industry-specific variants. Medical professionals often combine Pro + Med.</p></details>
+                <details><summary>Can my employer reimburse this?</summary><p>Most companies with professional development budgets cover Pro. We provide invoices in your name. Reach out if you need a specific format.</p></details>
+                <details><summary>Can I cancel?</summary><p>After the 3-month minimum, yes — anytime. We don't lock you in beyond that.</p></details>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>The meeting next month. The pitch next quarter. Don't wing it.</h2>
+            <p>A 10-minute assessment tells you what's holding you at "functional but not commanding" — and exactly what to fix first. Personalized plan sent within 24 hours, whether or not you enrol.</p>
+            <a href="https://cal.com/elevare/pro-assessment" target="_blank" class="btn btn-primary">Book Free Assessment</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="../index.html">Elevare</a>. The English Program That Actually Sticks. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+</body>
+</html>
