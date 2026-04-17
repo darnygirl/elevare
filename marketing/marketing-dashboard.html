@@ -519,9 +519,18 @@
                 <div class="form-group">
                     <label>PROGRAM/FOCUS</label>
                     <select id="program">
-                        <option value="lingua">Lingua (Language)</option>
-                        <option value="rise">Rise (Confidence)</option>
-                        <option value="flexnexus">Flex Nexus (Business)</option>
+                        <optgroup label="5-Product Portfolio">
+                            <option value="med">Elevare Med ($699/mo) — OET / Medical English</option>
+                            <option value="pro">Elevare Pro ($449/mo) — Business English</option>
+                            <option value="fluency">Elevare Fluency ($497, 12-wk) — Intensive</option>
+                            <option value="speak">Elevare Speak ($199/mo) — Group Cohort</option>
+                            <option value="ai">Elevare AI ($29/mo) — Practice Companion</option>
+                        </optgroup>
+                        <optgroup label="Legacy Pillars">
+                            <option value="lingua">Lingua (Language)</option>
+                            <option value="rise">Rise (Confidence)</option>
+                            <option value="flexnexus">Flex Nexus (Business)</option>
+                        </optgroup>
                         <option value="general">General Brand</option>
                         <option value="testimonial">Student Success</option>
                     </select>
@@ -627,9 +636,18 @@
                             <div class="form-group" style="margin-bottom: 0;">
                                 <label>PROGRAM</label>
                                 <select id="adProgram">
-                                    <option value="lingua">Lingua (Language)</option>
-                                    <option value="rise">Rise (Confidence)</option>
-                                    <option value="flexnexus">Flex Nexus (Business)</option>
+                                    <optgroup label="5-Product Portfolio">
+                                        <option value="med">Elevare Med ($699/mo)</option>
+                                        <option value="pro">Elevare Pro ($449/mo)</option>
+                                        <option value="fluency">Elevare Fluency ($497, 12-wk)</option>
+                                        <option value="speak">Elevare Speak ($199/mo)</option>
+                                        <option value="ai">Elevare AI ($29/mo)</option>
+                                    </optgroup>
+                                    <optgroup label="Legacy Pillars">
+                                        <option value="lingua">Lingua (Language)</option>
+                                        <option value="rise">Rise (Confidence)</option>
+                                        <option value="flexnexus">Flex Nexus (Business)</option>
+                                    </optgroup>
                                     <option value="general">General Brand</option>
                                 </select>
                             </div>
@@ -728,9 +746,18 @@
                         <div class="form-group">
                             <label>PROGRAM / PRODUCT</label>
                             <select id="voicelessProgram">
-                                <option value="lingua">Lingua - Language Learning</option>
-                                <option value="rise">Rise - Confidence Building</option>
-                                <option value="flexnexus">Flex Nexus - Business Communication</option>
+                                <optgroup label="5-Product Portfolio">
+                                    <option value="med">Elevare Med — OET / Medical English ($699/mo)</option>
+                                    <option value="pro">Elevare Pro — Business English ($449/mo)</option>
+                                    <option value="fluency">Elevare Fluency — 12-wk Intensive ($497)</option>
+                                    <option value="speak">Elevare Speak — Group Cohort ($199/mo)</option>
+                                    <option value="ai">Elevare AI — Practice Companion ($29/mo)</option>
+                                </optgroup>
+                                <optgroup label="Legacy Pillars">
+                                    <option value="lingua">Lingua - Language Learning</option>
+                                    <option value="rise">Rise - Confidence Building</option>
+                                    <option value="flexnexus">Flex Nexus - Business Communication</option>
+                                </optgroup>
                                 <option value="bundle">Complete Bundle</option>
                                 <option value="free">Free Trial / Lead Magnet</option>
                             </select>
@@ -1168,10 +1195,44 @@ python -c "from TTS.api import TTS; tts = TTS('xtts_v2', gpu=False); tts.tts_to_
                         "What's the difference between a good presenter and a great one? It usually comes down to two things: structure and presence.\n\nIn Flex Nexus, we teach both — plus the language skills to match your expertise.\n\nThis week, try this: In your next meeting, lead with a question instead of a statement. See what changes.\n\nElevate your communication. Elevate your career."
                     ]
                 },
+                med: {
+                    professional: [
+                        "Internationally-trained nurses and doctors: you know the medicine. But OET Speaking grades you on performance under a 5-minute clock — and most prep courses teach you *about* the test instead of coaching you *through* it.\n\nElevare Med pairs a real OET-trained coach with an AI practice partner you can run at midnight after your shift. Measurable progress every 2 weeks. Pass-or-we-keep-coaching.\n\n12 weeks. UK NMC / AHPRA / NZ NCNZ / Irish-registration ready.",
+                        "OET Grade B in 12 weeks — or we keep coaching you until you're there.\n\nElevare Med is built for nurses and doctors who have the English, just not the exam-specific reps. 30+ clinical scenarios. Weekly 1:1 coaching. AI role-plays between sessions. Measurable progress every fortnight.\n\nDM for a free 10-min assessment."
+                    ],
+                    motivational: [
+                        "£2,400 is what 3 more months of delayed UK NMC registration costs a skilled nurse. That's not a career gap — that's rent.\n\nElevare Med exists because OET shouldn't be the wall between internationally-trained nurses and the job waiting for them. 12 weeks. Real coach. AI practice. Pass-or-keep-coaching.\n\nBook your free 10-min assessment."
+                    ]
+                },
+                pro: {
+                    professional: [
+                        "Your technical skill got you the interview. Your English is why the promotion stalled.\n\nElevare Pro is 4 weeks of rolling business-English coaching for professionals who need to present, negotiate, and lead meetings in English. Real 1:1 coach. AI practice partner for off-hour reps. Measurable progress or we keep coaching.\n\n$449/mo. Employer reimbursement usually covers it.",
+                        "The meeting you keep quiet in because your English feels slow. The pitch you rewrite 5 times. The promotion that went to the less-qualified colleague who speaks confidently.\n\nElevare Pro coaches business English the way a sparring partner trains a boxer — rep, feedback, rep, feedback. Until the performance matches the competence.\n\n30-day results guarantee."
+                    ]
+                },
+                fluency: {
+                    professional: [
+                        "Elevare Fluency: a 12-week English intensive built for professionals who need real progress, not more apps.\n\nWeekly 1:1 coach + AI practice between sessions + a progress rubric you can see. Graduate confident in meetings, presentations, and negotiations. Measurable progress every 2 weeks or we keep coaching.\n\n$497 total (or $199 × 3 months). Founding cohort now open."
+                    ],
+                    motivational: [
+                        "12 weeks from now you'll either still be stuck on the same English plateau — or you'll have graduated Elevare Fluency and be leading the meetings you used to dread.\n\nWhich 12 weeks do you want to live?\n\nFounding cohort open. DM to claim one of the first seats."
+                    ]
+                },
+                speak: {
+                    professional: [
+                        "Group cohorts beat solo apps because progress is *social*. You show up when the cohort shows up.\n\nElevare Speak: weekly 90-min group call (max 6 students) + 15-min 1:1 + 24/7 WhatsApp Q&A. Cohort accountability + individualized feedback. $199/mo.\n\nCoach-led. AI-supported. 30-day results guarantee.",
+                        "Speaking fluency isn't a vocabulary problem — it's a reps problem. Most apps give you flashcards. Elevare Speak gives you 6 other humans to practice with every single week, plus a coach watching every call.\n\nSmall cohorts. Real feedback. Measurable progress. Or we keep coaching."
+                    ]
+                },
+                ai: {
+                    professional: [
+                        "Elevare AI: $29/mo WhatsApp practice companion. 3 modes — open chat, scenario drill, grammar reps. Runs at midnight when your tutor can't. Unlimited practice, zero judgment.\n\nPairs with any coaching tier (Speak / Pro / Fluency / Med) as the between-sessions layer. Or standalone for learners who just need reps.\n\nFree 7-day trial via WhatsApp."
+                    ]
+                },
                 testimonial: {
                     professional: [
-                        "Student Spotlight: Sarah joined Rise feeling anxious about speaking up in meetings. 6 weeks later, she led her first team presentation.\n\n'The mental-health-informed approach was exactly what I needed. They didn't just teach me techniques — they helped me understand why I was stuck and how to move forward.'\n\nReal transformation. Measurable results.\n\nReady to write your success story?",
-                        "From hesitant speaker to confident communicator — our students prove it's possible.\n\nJames achieved fluency in Spanish in 6 months. Maria built the confidence to lead meetings. Aisha landed her dream job after Flex Nexus.\n\nThe common thread? They chose coaching over apps. Human connection over algorithms.\n\nYour transformation could be next."
+                        "Founding cohort open. We're launching with our first students — their real stories become the proof on this page. Be one of the first to graduate and we'll feature your name + results here.\n\nMeasurable progress every 2 weeks or we keep coaching. DM to join.",
+                        "We're building Elevare with our founding cohort, not selling ahead of it. No Sarahs or Jameses on this feed yet — just real coaching with real students, and a 30-day results guarantee if you're one of them.\n\nBecome testimonial #1."
                     ]
                 }
             },
@@ -1189,6 +1250,27 @@ python -c "from TTS.api import TTS; tts = TTS('xtts_v2', gpu=False); tts.tts_to_
                 flexnexus: [
                     "Professional presence isn't born. It's built. 💼\n\nFlex Nexus gives you the communication skills to lead, persuade, and inspire.\n\n12 weeks. Real results. Career-changing.",
                     "Executive presence = career multiplier. ✅\n\nLearn to command rooms, deliver presentations, and negotiate with authority.\n\nYour next promotion starts here."
+                ],
+                med: [
+                    "Nurses, doctors — you've got the medicine. Let's fix the OET. 🩺\n\nElevare Med: 12 weeks, real coach + AI practice, pass-or-keep-coaching.\n\nBuilt for UK NMC / AHPRA / NZ NCNZ / Irish registration. DM for free assessment.",
+                    "OET Grade B in 12 weeks. Or we keep coaching. 📚\n\nMedical English that sounds like *you* on the exam day — not like a textbook. Weekly 1:1 + AI practice at midnight. $699/mo.",
+                    "£2,400 per delayed registration month. That's what OET Grade C costs a nurse. 💰\n\nElevare Med gets you to B with real coaching, not test-prep theatre. Founding cohort open."
+                ],
+                pro: [
+                    "The meeting you go quiet in because your English feels slow? Let's change that. 💼\n\nElevare Pro: 4-week rolling business English coaching. $449/mo. Employer usually reimburses.",
+                    "Technical skill + English performance = promotion. 📈\n\nElevare Pro is 1:1 business-English coaching paired with AI practice. Measurable progress or we keep coaching."
+                ],
+                fluency: [
+                    "12 weeks. Real coach. AI practice partner. Measurable progress every 2 weeks. ✨\n\nElevare Fluency: $497 (or $199 × 3). Founding cohort open.",
+                    "You've got the grammar. You don't have the reps. Elevare Fluency is 12 weeks of exactly the right reps. 💬"
+                ],
+                speak: [
+                    "Language fluency isn't a vocab problem. It's a reps problem. 🔁\n\nElevare Speak: 6 students + 1 coach + 90-min weekly cohort + 24/7 WhatsApp. $199/mo.",
+                    "Small cohorts (max 6) beat solo apps every time. 👥\n\nWeekly group call + 1:1 + AI practice. Elevare Speak, $199/mo."
+                ],
+                ai: [
+                    "Your tutor sleeps. Elevare AI doesn't. 🌙\n\n$29/mo WhatsApp practice companion. 3 modes — chat, scenarios, grammar. Free 7-day trial.",
+                    "Between-session reps, on WhatsApp, at midnight after your shift. That's Elevare AI. $29/mo or free 7-day trial."
                 ]
             },
             email: {
@@ -1247,8 +1329,13 @@ Elevare Team`
 
         const hashtagBank = {
             lingua: ['#LanguageLearning', '#SpeakConfidently', '#ESL', '#LanguageCoaching', '#FluencyJourney', '#LearnEnglish', '#LanguageSkills', '#Communication', '#Elevare'],
-            rise: ['#ConfidenceBuilding', '#PublicSpeaking', '#MentalHealth', '#PersonalGrowth', '#SelfImprovement', '#CommunicationSkills', '#Mindset', '#ElevateYourLife', '#Rise'],
-            flexnexus: ['#ExecutivePresence', '#BusinessCommunication', '#ProfessionalDevelopment', '#CareerGrowth', '#LeadershipSkills', '#WorkplaceCommunication', '#FlexNexus', '#Elevate'],
+            rise: ['#ConfidenceBuilding', '#PublicSpeaking', '#MentalHealth', '#PersonalGrowth', '#SelfImprovement', '#CommunicationSkills', '#Mindset', '#ElevareRise', '#Rise'],
+            flexnexus: ['#ExecutivePresence', '#BusinessCommunication', '#ProfessionalDevelopment', '#CareerGrowth', '#LeadershipSkills', '#WorkplaceCommunication', '#FlexNexus', '#Elevare'],
+            med: ['#OET', '#OETPrep', '#MedicalEnglish', '#InternationalNurses', '#NMC', '#AHPRA', '#NurseMigration', '#DoctorMigration', '#ElevareMed', '#Elevare'],
+            pro: ['#BusinessEnglish', '#ProfessionalCommunication', '#ExecutiveCoaching', '#CareerGrowth', '#CorporateEnglish', '#LeadershipCommunication', '#ElevarePro', '#Elevare'],
+            fluency: ['#EnglishFluency', '#12WeekIntensive', '#MeasurableProgress', '#ProfessionalEnglish', '#FluencyJourney', '#SpeakConfidently', '#ElevareFluency', '#Elevare'],
+            speak: ['#SpeakingFluency', '#GroupCoaching', '#ConversationPractice', '#ESL', '#LanguageCohort', '#SpeakConfidently', '#ElevareSpeak', '#Elevare'],
+            ai: ['#LanguagePractice', '#AITutor', '#ESL', '#PracticeCompanion', '#EnglishAtMidnight', '#ElevareAI', '#Elevare'],
             general: ['#Elevare', '#CommunicationSkills', '#PersonalGrowth', '#LanguageLearning', '#ConfidenceBuilding', '#Coaching', '#Transformation'],
             testimonial: ['#StudentSuccess', '#TransformationStory', '#RealResults', '#ElevareWorks', '#CommunicationSkills']
         };
