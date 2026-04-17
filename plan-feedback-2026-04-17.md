@@ -456,4 +456,55 @@ The plan's Phase A (Autonomous Client Pipeline), Phase B (Custom Dashboard / GHL
 
 ---
 
-*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Recommendations + kickoff: 2026-04-17 night. Sections 13-17 ADDs + product design: 2026-04-17 late. Live site hero updated to Meta-compliant copy in the same commit stream.*
+---
+
+## 18. Pricing recommendations [Debby locked product ladder, Claude recommends raises]
+
+With the 5-product taxonomy locked (Elevare AI / Speak / Fluency / Pro / Med), revised pricing vs Round-2 proposal:
+
+| Product | Previously proposed | **Recommended** | Delta | Rationale |
+|---|---|---|---|---|
+| Elevare AI | $29/mo | **$29/mo** | — | Entry tier, acquisition-focused. Don't move. |
+| Elevare Speak | $149/mo | **$199/mo** | +$50 | Group cohort economics (6 students × same delivery cost as 1:1). Cambly $99-199, Preply $150-250 — $199 sits premium. |
+| Elevare Fluency | $497 (12wk) | **$497** launch, test **$697** at Month 3 | +$0 now | Competitive for 12-week intensives; raise once you have testimonials. Also offer $199×3 monthly split. |
+| Elevare Pro | $349/mo | **$449/mo** | +$100 | Business English buyers have budget + employer reimbursement. Clear premium vs Speak. |
+| Elevare Med | $499/mo | **$699/mo** | +$200 | Kaplan OET charges $700+, E2 Language $89 self-serve. You're Kaplan-tier + beat their outcomes. Annual price difference ~$2,400 per student. |
+
+**Plus: annual plans at 20% discount** on all core products — reduces churn, locks cash.
+
+**Expected revenue lift vs previous pricing** (same volume):
+- Day 90 target portfolio = 15 Speak + 8 Fluency + some Pro + Med mix
+- Old: 15×$149 + 8×$199 = $3,827/mo core recurring
+- New: 15×$199 + 8×$199 + some Pro $449 + Med $699 = significantly higher per-customer LTV
+- Easier to hit $5k recurring MRR with 20-25 students vs 40+
+
+---
+
+## 19. Course outlines + implementation methodology [shipped in this commit]
+
+All 5 products now have course outline files under `courses/`:
+
+| File | What's in it |
+|---|---|
+| [`courses/implementation-methodology.md`](courses/implementation-methodology.md) | Universal 5-stage delivery loop (Intake → Onboard → Deliver → Measure → Graduate/Renew) + Rise layer spec + tutor curriculum discipline. **Every product conforms to this.** |
+| [`courses/elevare-ai.md`](courses/elevare-ai.md) | $29/mo AI companion — 3-mode WhatsApp bot. Full spec in Section 14. |
+| [`courses/elevare-speak.md`](courses/elevare-speak.md) | $199/mo group cohort conversation training. Skeleton — expand to full 4-week curriculum before launch. |
+| [`courses/elevare-fluency.md`](courses/elevare-fluency.md) | $497 12-week intensive (rebrand from Flex Nexus). Skeleton — expand to full 12-week curriculum. |
+| [`courses/elevare-pro.md`](courses/elevare-pro.md) | $449/mo business English for professionals. Skeleton — expand business scenario library. |
+| [`courses/elevare-med.md`](courses/elevare-med.md) | $699/mo medical English + OET prep. **Full 12-week curriculum shipped.** This is the goldmine — build first. |
+
+### Ship order (priority for the next 30 days)
+
+1. **Elevare Med full build** (Month 1 priority) — diagnostic rubric + first 5 scenarios + OET Pass Playbook PDF + landing page + 1 tutor onboarded
+2. **Elevare AI v0** (Month 1 parallel) — WhatsApp bot, 3 modes, 30 scenarios
+3. **Elevare Pro skeleton → full** (Month 2) — business scenario library + landing page
+4. **Elevare Speak full** (Month 2) — 4-week curriculum + first cohort launches
+5. **Elevare Fluency full** (Month 2-3) — 12-week curriculum + rebrand from Flex Nexus complete
+
+### Curriculum ownership model
+
+Per `implementation-methodology.md` + Section 16: **Debby writes v1 of every product's curriculum, tutors execute consistently.** Tutors can give feedback → revisions monthly → senior tutor can help maintain in Month 3+ under Debby's editorial sign-off. This protects brand + enables tutor replacement without disrupting students.
+
+---
+
+*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Recommendations + kickoff: 2026-04-17 night. Sections 13-17 product design: 2026-04-17 late. Sections 18-19 pricing + courses folder: 2026-04-17 late evening. Live site hero updated to Meta-compliant copy in the same commit stream.*
