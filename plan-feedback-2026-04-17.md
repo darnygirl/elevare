@@ -189,4 +189,73 @@ Round-2 new (5):
 
 ---
 
-*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Live site hero updated to Meta-compliant copy in the same commit.*
+---
+
+## 11. Ten more changes I'd make (beyond the 15 issues above) [Claude recommendation]
+
+A broader editorial pass on the plan surfaced 10 additional changes/additions that would materially reduce risk and speed time-to-$750-MRR. They sit outside the 15 audit findings because they're strategic calls, not contradictions/bloat/gaps. Each needs Debby sign-off before execution.
+
+### Five things to CHANGE
+
+11.1 **Kill the 5-offer homepage grid — lead with ONE CTA.** Confused visitor picks nothing. Make "$1 AI Tutor trial" the single hero CTA; move the 5-offer comparison table to `/pricing`. Plan line 755 ("The 5 Offers Only") contradicts its own principle — a hero should have ONE job.
+
+11.2 **Replace the free trial with a $1 trial.** Free attracts tire-kickers who never convert. Hormozi-style $1 trial filters for intent + collects a payment method, which 3-4x's conversion to paid. Whop supports this natively. Apply to AI Tutor tier only; keep coach tiers at their current price with a free 15-min discovery call.
+
+11.3 **WhatsApp primary CTA, Calendly secondary.** Thai/SEA market converts 3-5x higher on WhatsApp than booking forms. Current site hierarchy is inverted. Make WhatsApp the dominant button; Calendly backup.
+
+11.4 **Kill AI Tutor $29/mo standalone for Month 1.** The tier's math only works at ad-scale (CAC <$80 per `mrr-model-v2.md`), which requires creative that isn't built yet. Month 1 sells coach-gated offers only ($149 Lingua Live / $199 Complete / $497 Flex Nexus). AI Tutor standalone launches Month 2 with ad creative.
+
+11.5 **Define the 30-day "progress" gate BEFORE selling anything.** The guarantee is "measurable progress or we keep coaching" — but measurable *by what*? CEFR B2 conversational? 10 new phrases used unprompted? Tutor sign-off? Without a pre-locked rubric, refunds become arguments. Rubric must exist in writing before first sale.
+
+### Five things to ADD
+
+11.6 **Placement quiz as the SINGLE lead magnet.** Plan treats it as one of several ideas. Ship it Monday, not Week 3. Quizzes convert 2-3x vs email capture + self-segment visitors into correct tier (AI Tutor / Lingua / Flex Nexus). Typeform free tier is 30 minutes to stand up.
+
+11.7 **Real coach photos + 30-sec intro videos BEFORE ads run.** Plan schedules Day 7. Should be Mon Day 1. Faces-in-ads convert 30-50% better than abstract branding. Debby + 4 tutors = 5 photos + 5 clips. One afternoon on a phone with good light.
+
+11.8 **Mine Debby's 10 years of India teaching for testimonials.** Plan says "real testimonials by Week 3." She has 10+ years of alumni. Reach out to 20 former students this week, ask for 1 sentence. Even 3 real quotes kill the biggest cold-traffic objection ("does this actually work?").
+
+11.9 **Wizard-of-Oz the AI tutor for Month 1.** Plan builds the full Stage 4 system over weeks before shipping. Skip that. Month 1 "AI tutor chat" = Debby + tutors manually responding in WhatsApp, transparently badged as "AI-assisted" or "human-augmented coach." Ship the funnel first; automate the product once demand is proven.
+
+11.10 **Refund-to-credit mechanic.** Every refund request gets offered 4 free weeks of extra coaching instead. Saves 30-50% of refunds, keeps cash in, gives the customer a fair second chance. Costs nothing operationally. Write into Terms before first sale.
+
+### The pattern across all ten
+
+The master plan keeps **confusing "what we'll build" with "what to sell tomorrow."** Every recommendation above trims build work and prioritizes sales motion. Month 1 goal is $750 MRR, not product completeness. Every hour spent on Stage 4 Orpheus streaming or the 15-bot taxonomy is an hour not spent on real testimonials, coach photos, and Whop KYC.
+
+---
+
+## 12. Implementation kickoff — next 60 minutes [Debby]
+
+When this commit lands, pull it into your working directory and start Mon Day 1 actions:
+
+```bash
+cd ~/Desktop/elevare-site
+git pull origin master
+cat execution-week-1.md  # read Mon row
+```
+
+Then in parallel (3 actions, no dependencies between them):
+
+1. **Buy `elevare.work` at Cloudflare Registrar** — ~$10, 5 min
+2. **Start Whop KYC** — whop.com signup, upload Uganda passport + Chiang Mai proof-of-address, submit
+3. **Start Meta Business Manager** — business.facebook.com, create, add Elevare page, domain verify
+
+While those verifications run in the background, begin the quick-wins from Section 11:
+- 11.6 Placement quiz — Typeform free tier, draft 5 questions (goal / level / timeframe / budget / preferred format)
+- 11.7 Coach photos — phone call with each tutor, ask for 3 good photos + 1 30-sec "why I teach" clip
+- 11.8 India testimonials — DM/email 20 former students with: "Hey — building something new for English learners. Could you share one sentence about what changed after our sessions? Happy to quote you with just your first name."
+
+End-of-day Monday check (run from terminal):
+
+```bash
+cd ~/Desktop/elevare-site
+cat execution-week-1.md | grep -A4 "## Mon"
+# verify the 3 "pass/fail gate" items all shipped
+```
+
+If any item fails to ship Mon → push to Tue; if two fail → stop and call Donal for unblock.
+
+---
+
+*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Recommendations + kickoff: 2026-04-17 night. Live site hero updated to Meta-compliant copy in the same commit stream.*
