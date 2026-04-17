@@ -48,7 +48,7 @@ Debby gets a Slack alert. Without needing [Donal] online, she can:
 
 ### 1. Confirm it's really down
 - Open Slack #elevare-alerts, check alert card
-- Open her browser, hit `https://elevare.work/admin/m5-status` (public view of the health check, [Donal] ships this Week 1)
+- Open her browser, hit `https://elevaremind.io/admin/m5-status` (public view of the health check, [Donal] ships this Week 1)
 - If both red → M5 is down, proceed to step 2
 
 ### 2. Flip marketing-agent to cloud-only voice

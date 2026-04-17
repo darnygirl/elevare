@@ -1,6 +1,6 @@
 # Elevare Med — Landing Page Copy
 
-> Section-by-section copy for `elevare.work/med`. Ready for Donal (or Debby) to wire into an HTML page matching the existing `frontend/*.html` template style. Keep it Meta-compliant (plan line 1861): no "guaranteed fluent," use "measurable progress" + "or we keep coaching."
+> Section-by-section copy for `elevaremind.io/med`. Ready for Donal (or Debby) to wire into an HTML page matching the existing `frontend/*.html` template style. Keep it Meta-compliant (plan line 1861): no "guaranteed fluent," use "measurable progress" + "or we keep coaching."
 
 ---
 

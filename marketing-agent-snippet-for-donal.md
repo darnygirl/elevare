@@ -57,12 +57,12 @@ const contentTemplates = {
             "I used to dread work calls in English. Then I started warming up with Elevare AI for 2 minutes before each one. Game changed. If you freeze up in meetings, try the 7-day free trial."
         ],
         'instagram-post': [
-            "🗣️ 10 mins a day. WhatsApp only. Safe space to fail.\n\nElevare AI practice companion — $29/mo, 7-day free trial, cancel anytime.\n\nBook free trial → elevare.work/ai",
+            "🗣️ 10 mins a day. WhatsApp only. Safe space to fail.\n\nElevare AI practice companion — $29/mo, 7-day free trial, cancel anytime.\n\nBook free trial → elevaremind.io/ai",
             "Can't find time to practice English? You have WhatsApp. You have 10 minutes. That's all Elevare AI needs.",
             "The gap between intermediate and confident isn't more vocabulary. It's more reps. Elevare AI gives you unlimited reps on the scenarios that matter to you."
         ],
         'email-subject': "The English practice that fits in your WhatsApp",
-        'email-body': "Hey [First Name],\n\nYou've been studying English. You know the grammar. You understand the films. But the moment someone asks you something unexpected, your mind blanks.\n\nThat's not a vocabulary problem. It's a rep problem.\n\nElevare AI is a WhatsApp-native practice companion — $29/mo, 7-day free trial. Three modes: scenario role-plays, session warm-ups before real calls, and weekly recaps.\n\nIt's the gym for your English. The real coach (when you're ready) is the trainer.\n\nStart free: elevare.work/ai",
+        'email-body': "Hey [First Name],\n\nYou've been studying English. You know the grammar. You understand the films. But the moment someone asks you something unexpected, your mind blanks.\n\nThat's not a vocabulary problem. It's a rep problem.\n\nElevare AI is a WhatsApp-native practice companion — $29/mo, 7-day free trial. Three modes: scenario role-plays, session warm-ups before real calls, and weekly recaps.\n\nIt's the gym for your English. The real coach (when you're ready) is the trainer.\n\nStart free: elevaremind.io/ai",
         'whatsapp-message': "Hey! Quick question — would a 10-min daily English practice on WhatsApp be useful for you? We just launched Elevare AI for $29/mo (first week free). Happy to share details if you're curious."
     },
 
@@ -79,8 +79,8 @@ const contentTemplates = {
             "The single highest-leverage thing you can do for your English in 2026? Join a small cohort of learners at your level. Isolation is the enemy of fluency."
         ],
         'email-subject': "Why you still freeze in English conversations (and the fix)",
-        'email-body': "Hi [First Name],\n\nAfter years of apps and occasional tutoring, you can read the newspaper, understand films, even write professional emails. But real-time conversation still trips you up.\n\nThat's because you've trained your input skills for years, but barely trained your output under pressure.\n\nElevare Speak puts you in a cohort of 6 peers at your level, weekly 90-min group call + bi-weekly 1:1 with your coach + daily AI practice between.\n\n$199/month. Book a free 5-min assessment: elevare.work/speak",
-        'whatsapp-message': "Hey! I'm running small English conversation cohorts (6 people max) for working adults. Weekly group call + 1:1 with me. $199/mo. Free assessment call if you're curious — elevare.work/speak"
+        'email-body': "Hi [First Name],\n\nAfter years of apps and occasional tutoring, you can read the newspaper, understand films, even write professional emails. But real-time conversation still trips you up.\n\nThat's because you've trained your input skills for years, but barely trained your output under pressure.\n\nElevare Speak puts you in a cohort of 6 peers at your level, weekly 90-min group call + bi-weekly 1:1 with your coach + daily AI practice between.\n\n$199/month. Book a free 5-min assessment: elevaremind.io/speak",
+        'whatsapp-message': "Hey! I'm running small English conversation cohorts (6 people max) for working adults. Weekly group call + 1:1 with me. $199/mo. Free assessment call if you're curious — elevaremind.io/speak"
     },
 
     // === Elevare Fluency ($497 12-wk intensive) ===
@@ -91,13 +91,13 @@ const contentTemplates = {
             "Most 'learn English fast' programs are either self-paced apps (no accountability) or individual tutoring ($60+/hr). Elevare Fluency is the third option: 12-week cohort, weekly 1:1, graduation, $497 upfront."
         ],
         'instagram-post': [
-            "⏱️ 12 weeks. Baseline → breakthrough. $497 upfront (or 3×$199).\n\nNext cohort: check the calendar at elevare.work/fluency",
+            "⏱️ 12 weeks. Baseline → breakthrough. $497 upfront (or 3×$199).\n\nNext cohort: check the calendar at elevaremind.io/fluency",
             "Graduation. Certificate. LinkedIn badge. Alumni community for life.\n\nElevare Fluency — 12 weeks, 6-person cohort, guaranteed measurable progress.",
             "Deadline-driven English learning. If you need fluency by [date], Fluency is the right tier. If you're just improving ongoing, Speak is better."
         ],
         'email-subject': "12 weeks to measurable fluency — or we keep coaching you",
-        'email-body': "Hi [First Name],\n\nIf you've got a deadline — wedding, visa, move, interview — in the next 3-6 months, Elevare Fluency is built for exactly this.\n\n12-week intensive. Weekly cohort + 1:1 + AI practice. 6 phases from fluency floor to breakthrough. Measurable progress gates every 4 weeks.\n\n$497 upfront (or $199×3). Graduation with certificate + LinkedIn badge.\n\nNext cohort starts soon. Free assessment: elevare.work/fluency",
-        'whatsapp-message': "Hey! Got a date you need to be fluent by? Our 12-week intensive just opened applications for the next cohort. $497 upfront, measurable progress guaranteed. Check elevare.work/fluency"
+        'email-body': "Hi [First Name],\n\nIf you've got a deadline — wedding, visa, move, interview — in the next 3-6 months, Elevare Fluency is built for exactly this.\n\n12-week intensive. Weekly cohort + 1:1 + AI practice. 6 phases from fluency floor to breakthrough. Measurable progress gates every 4 weeks.\n\n$497 upfront (or $199×3). Graduation with certificate + LinkedIn badge.\n\nNext cohort starts soon. Free assessment: elevaremind.io/fluency",
+        'whatsapp-message': "Hey! Got a date you need to be fluent by? Our 12-week intensive just opened applications for the next cohort. $497 upfront, measurable progress guaranteed. Check elevaremind.io/fluency"
     },
 
     // === Elevare Pro ($449/mo) ===
@@ -113,7 +113,7 @@ const contentTemplates = {
             "Business-English buyers: employers often reimburse Elevare Pro. Ask HR. $449/mo is a rounding error on most professional-development budgets."
         ],
         'email-subject': "Lead the meeting. Deliver the pitch. Close the deal.",
-        'email-body': "Hi [First Name],\n\nYou're past 'getting by' in English. You want to command the room. That's a specific kind of work — deploying frameworks under pressure, not just vocabulary.\n\nElevare Pro: 60-min weekly 1:1 with a senior coach + 60-min weekly small group (3 max) + Elevare AI for your scenario practice. Your actual upcoming meetings become the curriculum.\n\n$449/month. 3-month minimum commitment. Most students stay 4-8 months.\n\nBook a 10-min assessment — no obligation: elevare.work/pro",
+        'email-body': "Hi [First Name],\n\nYou're past 'getting by' in English. You want to command the room. That's a specific kind of work — deploying frameworks under pressure, not just vocabulary.\n\nElevare Pro: 60-min weekly 1:1 with a senior coach + 60-min weekly small group (3 max) + Elevare AI for your scenario practice. Your actual upcoming meetings become the curriculum.\n\n$449/month. 3-month minimum commitment. Most students stay 4-8 months.\n\nBook a 10-min assessment — no obligation: elevaremind.io/pro",
         'whatsapp-message': "Hey! If your English is 'functional' but not yet 'commanding' in work situations, we just opened Elevare Pro — senior coach + small group for working pros. $449/mo. Employer-reimbursable in most cases."
     },
 
@@ -125,13 +125,13 @@ const contentTemplates = {
             "The gap between Grade C and Grade B on OET isn't more vocabulary. It's 5 specific rubric dimensions scored by an external coach. Self-study can't get you there."
         ],
         'instagram-post': [
-            "👩‍⚕️ OET Grade B, 12 weeks. Or we keep coaching free.\n\nFor internationally-trained nurses and doctors. UK NMC, AHPRA, NCNZ.\n\nFree assessment → elevare.work/med",
+            "👩‍⚕️ OET Grade B, 12 weeks. Or we keep coaching free.\n\nFor internationally-trained nurses and doctors. UK NMC, AHPRA, NCNZ.\n\nFree assessment → elevaremind.io/med",
             "£2,400 — the cost of delaying UK NMC registration by 3 months. The math on Elevare Med pays for itself.",
             "30 clinical scenarios. 5-dimension rubric scoring. Weekly coach. $699/mo. Or pass-guarantee. Elevare Med."
         ],
         'email-subject': "Why most nurses fail OET speaking twice (and how to fix it in 12 weeks)",
-        'email-body': "Hi [First Name],\n\nYou've studied English for years. You handle patients in English on shift. But OET speaking scored you C+. Maybe twice.\n\nYou're not bad at English. You're under-rehearsed for a very specific 5-minute performance. And no self-study course can coach you out of the patterns you can't hear in yourself.\n\nElevare Med: 12-week programme, OET-trained 1:1 coach, 30+ clinical scenarios, AI practice companion, pass-or-keep-coaching guarantee.\n\n$699/month (or $1,999 upfront saves 15%). Built for UK NMC / AHPRA / NCNZ / Irish NMBI candidates.\n\nBook a free 10-minute assessment — we'll score you against the rubric and send a personalized 3-week plan: elevare.work/med",
-        'whatsapp-message': "Hey! Know any nurses prepping for OET? I just launched Elevare Med — 12-week programme, pass Grade B guarantee or we keep coaching free. $699/mo. Assessment call is free: elevare.work/med"
+        'email-body': "Hi [First Name],\n\nYou've studied English for years. You handle patients in English on shift. But OET speaking scored you C+. Maybe twice.\n\nYou're not bad at English. You're under-rehearsed for a very specific 5-minute performance. And no self-study course can coach you out of the patterns you can't hear in yourself.\n\nElevare Med: 12-week programme, OET-trained 1:1 coach, 30+ clinical scenarios, AI practice companion, pass-or-keep-coaching guarantee.\n\n$699/month (or $1,999 upfront saves 15%). Built for UK NMC / AHPRA / NCNZ / Irish NMBI candidates.\n\nBook a free 10-minute assessment — we'll score you against the rubric and send a personalized 3-week plan: elevaremind.io/med",
+        'whatsapp-message': "Hey! Know any nurses prepping for OET? I just launched Elevare Med — 12-week programme, pass Grade B guarantee or we keep coaching free. $699/mo. Assessment call is free: elevaremind.io/med"
     }
 };
 ```
@@ -143,29 +143,29 @@ const contentTemplates = {
 ```javascript
 const voicelessAds = {
     'elevare-ai': {
-        short: "Hook: Frozen in a meeting?\nSetup: You know the words. The moment just gets you.\nPromise: 10 mins a day on WhatsApp. Elevare AI.\nCTA: 7-day free trial. elevare.work/ai",
-        medium: "OPEN: Close-up of hands typing frantically.\nVO: \"You've studied English for years.\"\nCUT: Person in meeting, jaw tight.\nVO: \"But the moment they turn to you, your mind blanks.\"\nCUT: WhatsApp chat with Elevare AI scrolling through a role-play.\nVO: \"Elevare AI gives you unlimited reps. On WhatsApp. $29 a month. 7-day free trial.\"\nEND: Logo + elevare.work/ai",
-        long: "OPEN: Time-lapse of a laptop, many tabs, Duolingo, grammar books, YouTube.\nVO: \"10 years of apps. 5 years of YouTube. One tutor that didn't stick. Your English is intermediate. Your confidence isn't.\"\nCUT: Person opens WhatsApp. Starts a conversation with Elevare AI.\nVO: \"What if you practiced every day, 10 minutes, with zero stakes?\"\nCUT: Person at a real meeting — speaking, calm.\nVO: \"Elevare AI. $29 a month. 7-day free trial. Cancel any time.\"\nEND: elevare.work/ai"
+        short: "Hook: Frozen in a meeting?\nSetup: You know the words. The moment just gets you.\nPromise: 10 mins a day on WhatsApp. Elevare AI.\nCTA: 7-day free trial. elevaremind.io/ai",
+        medium: "OPEN: Close-up of hands typing frantically.\nVO: \"You've studied English for years.\"\nCUT: Person in meeting, jaw tight.\nVO: \"But the moment they turn to you, your mind blanks.\"\nCUT: WhatsApp chat with Elevare AI scrolling through a role-play.\nVO: \"Elevare AI gives you unlimited reps. On WhatsApp. $29 a month. 7-day free trial.\"\nEND: Logo + elevaremind.io/ai",
+        long: "OPEN: Time-lapse of a laptop, many tabs, Duolingo, grammar books, YouTube.\nVO: \"10 years of apps. 5 years of YouTube. One tutor that didn't stick. Your English is intermediate. Your confidence isn't.\"\nCUT: Person opens WhatsApp. Starts a conversation with Elevare AI.\nVO: \"What if you practiced every day, 10 minutes, with zero stakes?\"\nCUT: Person at a real meeting — speaking, calm.\nVO: \"Elevare AI. $29 a month. 7-day free trial. Cancel any time.\"\nEND: elevaremind.io/ai"
     },
     'elevare-speak': {
-        short: "Hook: Still freezing in English conversations?\nPromise: 6-person cohort, weekly coach, daily AI practice.\nCTA: Free assessment → elevare.work/speak",
-        medium: "OPEN: Person at dinner table, everyone laughing, they freeze.\nVO: \"You're still freezing in English conversations — not because your English is bad.\"\nCUT: Split screen, 6 people on a Zoom call laughing together.\nVO: \"Because you haven't practiced in a cohort of humans at your level, with a coach who hears patterns you can't.\"\nCUT: Elevare logo + pricing.\nVO: \"Elevare Speak. 6-person cohort. $199 a month. Free assessment.\"\nEND: elevare.work/speak",
-        long: "OPEN: Multiple close-ups of people struggling to speak English — pauses, uhs.\nVO: \"A2, B1, B2 — the plateau where English stops getting easier.\"\nCUT: Phone showing Elevare Speak intake call.\nVO: \"Elevare Speak puts you in a cohort of 6 peers, weekly 90-min group call, bi-weekly 1:1 with your coach, and daily AI practice on WhatsApp.\"\nCUT: Testimonial (placeholder — swap when real one lands).\nVO: \"$199 a month. Cancel any time. Next cohort starts [date].\"\nEND: elevare.work/speak"
+        short: "Hook: Still freezing in English conversations?\nPromise: 6-person cohort, weekly coach, daily AI practice.\nCTA: Free assessment → elevaremind.io/speak",
+        medium: "OPEN: Person at dinner table, everyone laughing, they freeze.\nVO: \"You're still freezing in English conversations — not because your English is bad.\"\nCUT: Split screen, 6 people on a Zoom call laughing together.\nVO: \"Because you haven't practiced in a cohort of humans at your level, with a coach who hears patterns you can't.\"\nCUT: Elevare logo + pricing.\nVO: \"Elevare Speak. 6-person cohort. $199 a month. Free assessment.\"\nEND: elevaremind.io/speak",
+        long: "OPEN: Multiple close-ups of people struggling to speak English — pauses, uhs.\nVO: \"A2, B1, B2 — the plateau where English stops getting easier.\"\nCUT: Phone showing Elevare Speak intake call.\nVO: \"Elevare Speak puts you in a cohort of 6 peers, weekly 90-min group call, bi-weekly 1:1 with your coach, and daily AI practice on WhatsApp.\"\nCUT: Testimonial (placeholder — swap when real one lands).\nVO: \"$199 a month. Cancel any time. Next cohort starts [date].\"\nEND: elevaremind.io/speak"
     },
     'elevare-fluency': {
-        short: "Hook: Deadline-driven English?\nPromise: 12-week intensive, measurable progress or we keep coaching.\nCTA: elevare.work/fluency",
-        medium: "OPEN: Calendar flipping. Wedding invitation. Visa paperwork.\nVO: \"Got a deadline? 3 months? 6 months? Elevare Fluency is built for exactly this.\"\nCUT: 12-week roadmap graphic.\nVO: \"6 phases. Milestone assessment every 4 weeks. Graduation with certificate.\"\nCUT: Pricing.\nVO: \"$497 upfront — or $199×3. Measurable progress guaranteed, or we keep coaching.\"\nEND: elevare.work/fluency",
-        long: "OPEN: Montage of real-world deadlines — wedding abroad, visa stamp, job offer, apartment lease in a new country.\nVO: \"You need English by a specific date. Not 'someday' — a date.\"\nCUT: Phone showing Fluency roadmap.\nVO: \"12 weeks. 6 phases. A cohort of 6 peers with the same urgency. Weekly 1:1 with your coach. Daily AI practice.\"\nCUT: Graduation ceremony / certificate.\nVO: \"If you don't hit the agreed progress by Week 12, we keep coaching you free. $497 upfront. Next cohort starts [date].\"\nEND: elevare.work/fluency"
+        short: "Hook: Deadline-driven English?\nPromise: 12-week intensive, measurable progress or we keep coaching.\nCTA: elevaremind.io/fluency",
+        medium: "OPEN: Calendar flipping. Wedding invitation. Visa paperwork.\nVO: \"Got a deadline? 3 months? 6 months? Elevare Fluency is built for exactly this.\"\nCUT: 12-week roadmap graphic.\nVO: \"6 phases. Milestone assessment every 4 weeks. Graduation with certificate.\"\nCUT: Pricing.\nVO: \"$497 upfront — or $199×3. Measurable progress guaranteed, or we keep coaching.\"\nEND: elevaremind.io/fluency",
+        long: "OPEN: Montage of real-world deadlines — wedding abroad, visa stamp, job offer, apartment lease in a new country.\nVO: \"You need English by a specific date. Not 'someday' — a date.\"\nCUT: Phone showing Fluency roadmap.\nVO: \"12 weeks. 6 phases. A cohort of 6 peers with the same urgency. Weekly 1:1 with your coach. Daily AI practice.\"\nCUT: Graduation ceremony / certificate.\nVO: \"If you don't hit the agreed progress by Week 12, we keep coaching you free. $497 upfront. Next cohort starts [date].\"\nEND: elevaremind.io/fluency"
     },
     'elevare-pro': {
-        short: "Hook: Still 'functional' in work meetings?\nPromise: Business English, senior coach, deploy-ready frameworks.\nCTA: elevare.work/pro",
-        medium: "OPEN: Person in conference room, boss asks a question, they freeze.\nVO: \"Functional English isn't career English.\"\nCUT: Senior coach on a call, deploying a framework live.\nVO: \"Elevare Pro: senior coaches, weekly 1:1, small group of 3 peers, business scenarios.\"\nCUT: Pricing + employer-reimbursable note.\nVO: \"$449 a month. Usually employer-reimbursable.\"\nEND: elevare.work/pro",
-        long: "OPEN: Montage — meetings, pitches, negotiations, emails.\nVO: \"The 4 moments that define business careers in English: leading, pitching, negotiating, writing.\"\nCUT: Elevare Pro dashboard showing the 4-week curriculum.\nVO: \"Elevare Pro teaches deployable frameworks for each — and puts you in role-plays of your own upcoming meetings.\"\nCUT: Testimonial placeholder.\nVO: \"Senior coach. Small group. AI practice. $449 a month. 3-month minimum.\"\nEND: elevare.work/pro"
+        short: "Hook: Still 'functional' in work meetings?\nPromise: Business English, senior coach, deploy-ready frameworks.\nCTA: elevaremind.io/pro",
+        medium: "OPEN: Person in conference room, boss asks a question, they freeze.\nVO: \"Functional English isn't career English.\"\nCUT: Senior coach on a call, deploying a framework live.\nVO: \"Elevare Pro: senior coaches, weekly 1:1, small group of 3 peers, business scenarios.\"\nCUT: Pricing + employer-reimbursable note.\nVO: \"$449 a month. Usually employer-reimbursable.\"\nEND: elevaremind.io/pro",
+        long: "OPEN: Montage — meetings, pitches, negotiations, emails.\nVO: \"The 4 moments that define business careers in English: leading, pitching, negotiating, writing.\"\nCUT: Elevare Pro dashboard showing the 4-week curriculum.\nVO: \"Elevare Pro teaches deployable frameworks for each — and puts you in role-plays of your own upcoming meetings.\"\nCUT: Testimonial placeholder.\nVO: \"Senior coach. Small group. AI practice. $449 a month. 3-month minimum.\"\nEND: elevaremind.io/pro"
     },
     'elevare-med': {
-        short: "Hook: OET Grade C+ stuck?\nPromise: Grade B in 12 weeks, or we keep coaching free.\nCTA: elevare.work/med",
-        medium: "OPEN: Nurse in scrubs, staring at OET result slip, C+.\nVO: \"Your English isn't the problem. Your rehearsal is.\"\nCUT: Close-up of OET rubric, 5 dimensions scored.\nVO: \"Most OET prep teaches you about the test. Elevare Med coaches you through it — 5-dimension rubric scoring, weekly, by an OET-trained coach.\"\nCUT: Pricing.\nVO: \"Grade B in 12 weeks, or we keep coaching free. $699 a month.\"\nEND: elevare.work/med",
-        long: "OPEN: Montage — Filipino, Indian, African nurses prepping internationally.\nVO: \"You've been a nurse for years. You've cared for English-speaking patients on every shift. Your OET still scored C+.\"\nCUT: Elevare Med 12-week roadmap.\nVO: \"Because you've never had someone score your speaking against the real 5-dimension rubric. Every week. Elevare Med fixes that.\"\nCUT: Guarantee graphic.\nVO: \"Grade B in 12 weeks, on all 4 papers, or we keep coaching you free until you pass. $699/mo — or $1,999 upfront, save 15%.\"\nEND: elevare.work/med"
+        short: "Hook: OET Grade C+ stuck?\nPromise: Grade B in 12 weeks, or we keep coaching free.\nCTA: elevaremind.io/med",
+        medium: "OPEN: Nurse in scrubs, staring at OET result slip, C+.\nVO: \"Your English isn't the problem. Your rehearsal is.\"\nCUT: Close-up of OET rubric, 5 dimensions scored.\nVO: \"Most OET prep teaches you about the test. Elevare Med coaches you through it — 5-dimension rubric scoring, weekly, by an OET-trained coach.\"\nCUT: Pricing.\nVO: \"Grade B in 12 weeks, or we keep coaching free. $699 a month.\"\nEND: elevaremind.io/med",
+        long: "OPEN: Montage — Filipino, Indian, African nurses prepping internationally.\nVO: \"You've been a nurse for years. You've cared for English-speaking patients on every shift. Your OET still scored C+.\"\nCUT: Elevare Med 12-week roadmap.\nVO: \"Because you've never had someone score your speaking against the real 5-dimension rubric. Every week. Elevare Med fixes that.\"\nCUT: Guarantee graphic.\nVO: \"Grade B in 12 weeks, on all 4 papers, or we keep coaching you free until you pass. $699/mo — or $1,999 upfront, save 15%.\"\nEND: elevaremind.io/med"
     }
 };
 ```

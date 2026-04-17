@@ -115,7 +115,7 @@ Tonight will add on top:
 
 ## Monday morning action list (non-negotiable, ≤ 2 hrs total)
 
-1. Buy `elevare.work` on Cloudflare Registrar (5 min)
+1. Buy `elevaremind.io` on Cloudflare Registrar (5 min)
 2. Submit Whop KYC with Uganda passport + Chiang Mai lease (10 min)
 3. Create Meta Business Manager + start domain verify (15 min)
 4. DM 20 former India students for testimonials (15 min)

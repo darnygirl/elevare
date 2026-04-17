@@ -273,7 +273,7 @@ Speak coaches need:
 3. Pair/group activity library (~30 activities across the 4 weeks) — 12 hrs work
 4. Cohort intake cadence + Calendly setup — 2 hrs
 5. Tutor training module + onboarding doc — 1 day
-6. Landing page: `elevare.work/speak` — copy needed
+6. Landing page: `elevaremind.io/speak` — copy needed
 7. Peer practice partner matching logic (Google Form + manual match initially, automate later) — 2 hrs
 
 **Launch gate:** first Speak cohort of 6 by end of Month 2.

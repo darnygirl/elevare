@@ -222,7 +222,7 @@ Scenarios get delivered through Elevare AI's role-play mode (Section 14) + live 
 2. Diagnostic rubric (OET-aligned, 5-skill scoring) — 2-4 hrs work
 3. First 5 scenarios (history-take) — 8 hrs work
 4. OET Pass Playbook PDF (lead magnet + welcome pack) — 1 day
-5. Landing page: `elevare.work/med` — copy + 3 testimonials required
+5. Landing page: `elevaremind.io/med` — copy + 3 testimonials required
 6. First Med-specialist tutor onboarded (ideal: ex-OET examiner or senior nurse educator)
 7. AI scenario prompts wired into Elevare AI role-play mode
 8. One ad creative set (3 variants × 3 countries)

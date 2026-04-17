@@ -255,7 +255,7 @@ Each variant is a 20-scenario library + 10 written templates. Build when 3+ stud
 1. ✅ This course outline (done)
 2. Pro Methodology PDF (welcome pack, 12 pages, similar to OET Pass Playbook) — 2 days work
 3. First 20 scenarios across 4 themes (meetings / pitches / negotiation / writing) — 1 week
-4. Landing page: `elevare.work/pro` — copy needed
+4. Landing page: `elevaremind.io/pro` — copy needed
 5. Senior coach identified + onboarded (must be business-context familiar, not just ESL)
 6. Scenario prompts wired into Elevare AI for Pro-tier students
 7. LinkedIn founder content plan (Debby's thought-leadership cadence)

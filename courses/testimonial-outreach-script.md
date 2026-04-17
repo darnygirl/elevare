@@ -46,7 +46,7 @@
 >
 > Warm regards,
 > Debby
-> elevare.work
+> elevaremind.io
 
 ---
 

@@ -18,7 +18,7 @@ const API_KEYS = {
     // SendGrid API - https://app.sendgrid.com/settings/api_keys
     sendgrid: {
         apiKey: 'YOUR_SENDGRID_API_KEY',
-        fromEmail: 'hello@elevare.work',
+        fromEmail: 'hello@elevaremind.io',
         fromName: 'Elevare'
     },
 
@@ -299,7 +299,7 @@ class MarketingAgent {
                 settings: {
                     subject_line: subject,
                     from_name: 'Elevare',
-                    reply_to: 'hello@elevare.work'
+                    reply_to: 'hello@elevaremind.io'
                 }
             })
         }).then(r => r.json());

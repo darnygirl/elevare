@@ -7,7 +7,7 @@
 ## The lead magnet flow at a glance
 
 ```
-Visitor lands on elevare.work/med
+Visitor lands on elevaremind.io/med
   ↓
 Scrolls to Playbook form OR clicks "Download the OET Pass Playbook" CTA
   ↓
@@ -259,7 +259,7 @@ If user hasn't booked by Email 5, move to monthly touchpoints:
 > Elevare Med • Coaching Services
 > [Physical address — use a PO box if working from home]
 >
-> You received this because you downloaded the OET Pass Playbook at elevare.work/med. [Unsubscribe](unsub-link) anytime. [Privacy](privacy-link).
+> You received this because you downloaded the OET Pass Playbook at elevaremind.io/med. [Unsubscribe](unsub-link) anytime. [Privacy](privacy-link).
 
 ---
 

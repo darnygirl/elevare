@@ -41,7 +41,7 @@
 | # | Risk | Status | Debby initial + date | Notes / acceptance reason |
 |---|------|---|---|---|
 | W1 | Site still has WhatsApp placeholder, 14 fake open positions, Rise mental-health framing | ☐ RESOLVED ☐ ACCEPTED | `____ / ____-__-__` | Per plan line 1819 — MUST be RESOLVED before ads. Acceptance not allowed. |
-| W2 | `elevare.work` DNS + Zoho Mail not verified | ☐ RESOLVED ☐ ACCEPTED | `____ / ____-__-__` | MUST be RESOLVED before ads (landing-page deliverability). |
+| W2 | `elevaremind.io` DNS + Zoho Mail not verified | ☐ RESOLVED ☐ ACCEPTED | `____ / ____-__-__` | MUST be RESOLVED before ads (landing-page deliverability). |
 | W3 | Meta ad account under Debby's name not set up | ☐ RESOLVED ☐ ACCEPTED | `____ / ____-__-__` | MUST be RESOLVED before ads (Donal's banned). |
 
 ---

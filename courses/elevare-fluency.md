@@ -325,7 +325,7 @@ Since Fluency promises "measurable progress in 12 weeks or we keep coaching," he
 3. Diagnostic + milestone rubrics (rubric-graded, scoring sheet) — 8 hrs
 4. Cohort intake cadence + roster management — 4 hrs
 5. Graduation package (certificate template, LinkedIn badge design, testimonial capture script) — 4 hrs
-6. Landing page: `elevare.work/fluency` — copy needed
+6. Landing page: `elevaremind.io/fluency` — copy needed
 7. Alumni community setup (WhatsApp group + moderation norms)
 
 **Launch gate:** first Fluency cohort of 6 starts by end of Month 2-3. Graduates by end of Month 5-6. First round of testimonials locked by Month 6.

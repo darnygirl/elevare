@@ -6,8 +6,8 @@
 
 ## Success criteria at end of Week 1
 
-- [ ] Domain `elevare.work` purchased + DNS resolving
-- [ ] Zoho Mail live at `debby@elevare.work`
+- [ ] Domain `elevaremind.io` purchased + DNS resolving
+- [ ] Zoho Mail live at `debby@elevaremind.io`
 - [ ] At least one payment rail verified + tested ($1 self-transaction)
 - [ ] Honesty fixes deployed (no fake testimonials, real WhatsApp number, real coach count)
 - [ ] Privacy + Terms pages live at `/privacy` and `/terms`
@@ -23,7 +23,7 @@ If any unchecked by Sun EOD → do not start Week 2 paid-ad work.
 
 | Action | Owner | Pass/fail gate | Fallback |
 |---|---|---|---|
-| Buy `elevare.work` at Cloudflare Registrar | [Debby] | Domain owned in Debby's CF account | If CF Registrar can't process Uganda card → use Namecheap, point NS to Cloudflare |
+| Buy `elevaremind.io` at Cloudflare Registrar | [Debby] | Domain owned in Debby's CF account | If CF Registrar can't process Uganda card → use Namecheap, point NS to Cloudflare |
 | Submit Whop KYC (upload Uganda passport + proof of address) | [Debby] | Whop "verification pending" email received | Flag for Wed check (see `payment-contingency.md`) |
 | Submit Meta Business Manager setup + domain verify | [Debby] | BM created, domain verify row pending | No fallback — MUST ship Mon |
 | Optional 60-min pair with [Donal] to unblock R2 keys OR Debby does solo | [Debby] + [Donal] | R2 keys generated + stored in 1Password | If [Donal] unavailable → Debby generates in her own CF account |
@@ -36,12 +36,12 @@ If any unchecked by Sun EOD → do not start Week 2 paid-ad work.
 
 | Action | Owner | Pass/fail gate | Fallback |
 |---|---|---|---|
-| DNS: point `@` + `www` to GitHub Pages | [Debby] | `elevare.work` loads the current site | — |
-| Zoho Mail Free signup + domain verify (MX/SPF/DKIM via Cloudflare) | [Debby] | Send + receive test from `debby@elevare.work` | If Zoho rejects → use Cloudflare Email Routing → Gmail |
+| DNS: point `@` + `www` to GitHub Pages | [Debby] | `elevaremind.io` loads the current site | — |
+| Zoho Mail Free signup + domain verify (MX/SPF/DKIM via Cloudflare) | [Debby] | Send + receive test from `debby@elevaremind.io` | If Zoho rejects → use Cloudflare Email Routing → Gmail |
 | Email signature block v1 (logo + tagline + WhatsApp + site) | [Debby] | Paste into Gmail + Zoho; test-send to personal | — |
 | Brand lockup v1 (wordmark + monogram + favicon) | [Debby] solo OR [Donal] via Claude Code | Assets in `brand/` folder, pushed to repo | Delegate to Fiverr $50 if stuck |
 
-**Gate:** `debby@elevare.work` sends + receives. 1/1 = PASS.
+**Gate:** `debby@elevaremind.io` sends + receives. 1/1 = PASS.
 
 ---
 
@@ -62,9 +62,9 @@ If any unchecked by Sun EOD → do not start Week 2 paid-ad work.
 
 | Action | Owner | Pass/fail gate | Fallback |
 |---|---|---|---|
-| Honesty fixes: remove fake testimonials + fix WA number + real coach count | [Debby] | PR merged + live on `elevare.work` | Already partially shipped (commit `2acd4f6`) — audit remaining |
+| Honesty fixes: remove fake testimonials + fix WA number + real coach count | [Debby] | PR merged + live on `elevaremind.io` | Already partially shipped (commit `2acd4f6`) — audit remaining |
 | Privacy + Terms: generate via Termly → deploy to `/privacy` + `/terms` + link in footer | [Debby] | Both pages live + linked | Already exist per frontend/ — verify content matches new brand |
-| Apply Round-2 Meta-compliant hero copy (done tonight) | [Debby] | `elevare.work` H1 = "Measurable English Progress in 30 Days" | Done — verify after push |
+| Apply Round-2 Meta-compliant hero copy (done tonight) | [Debby] | `elevaremind.io` H1 = "Measurable English Progress in 30 Days" | Done — verify after push |
 | Draft first 10 warm-contact DMs in Hormozi referral style (plan line 2034) | [Debby] | 10 drafts saved to Google Doc | Review with [Donal] if stuck on tone |
 
 **Gate:** Honesty fixes live + Privacy/Terms live + 10 DMs drafted. 3/3 = PASS.

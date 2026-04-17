@@ -96,7 +96,7 @@ Line 1448 explicitly admits "I haven't deep-dived `frontend/book.html`, `tutors.
 **Fix:** [Donal] crawls the existing `darnygirl.github.io/elevare/frontend/*` pages before freezing widget spec. OR widget spec gets marked DRAFT-pending-site-audit.
 
 ### Issue 3 — "Your coach doesn't sleep" wedge contradicts hero copy 🔴
-Session learnings (line 2393+) claim the one-line wedge "Your coach doesn't sleep. Your tutor doesn't forget." becomes the lead on `elevare.work`. Hero Section spec at line 750 has different copy ("Speak English with Confidence — in 30 Days…"). Round-1 applied yet another version ("Measurable English Progress in 30 Days").
+Session learnings (line 2393+) claim the one-line wedge "Your coach doesn't sleep. Your tutor doesn't forget." becomes the lead on `elevaremind.io`. Hero Section spec at line 750 has different copy ("Speak English with Confidence — in 30 Days…"). Round-1 applied yet another version ("Measurable English Progress in 30 Days").
 **Fix:** pick one. Recommend hero stays with the Meta-compliant "Measurable progress" H1 (just applied to the live site); the "coach doesn't sleep" wedge becomes **ad headline copy only** (paid creative), not site copy.
 
 ### Issue 11 — Niche-Decision ads split contradicts Pillar-Ranking 🔴
@@ -237,7 +237,7 @@ cat execution-week-1.md  # read Mon row
 
 Then in parallel (3 actions, no dependencies between them):
 
-1. **Buy `elevare.work` at Cloudflare Registrar** — ~$10, 5 min
+1. **Buy `elevaremind.io` at Cloudflare Registrar** — ~$10, 5 min
 2. **Start Whop KYC** — whop.com signup, upload Uganda passport + Chiang Mai proof-of-address, submit
 3. **Start Meta Business Manager** — business.facebook.com, create, add Elevare page, domain verify
 
