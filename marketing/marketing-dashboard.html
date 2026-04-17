@@ -480,6 +480,7 @@
             <button class="tab active" onclick="showSection('create')">Content Create</button>
             <button class="tab" onclick="showSection('voiceover')">🎙️ Voiceover</button>
             <button class="tab" onclick="showSection('voiceless')">📱 Voiceless Ads</button>
+            <button class="tab" onclick="showSection('med')">🩺 Med Marketing</button>
             <button class="tab" onclick="showSection('calendar')">Post Calendar</button>
             <button class="tab" onclick="showSection('analytics')">Analytics</button>
             <button class="tab" onclick="showSection('settings')">Settings</button>
@@ -855,6 +856,113 @@
                                 <div style="font-size: 11px; opacity: 0.7; margin-top: 4px;">Before → After story</div>
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Content Section: Med Marketing (Elevare Med — $699/mo premium) -->
+                <div class="content-section" id="section-med">
+                    <div class="card" style="margin-bottom: 24px; border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <div class="card-header">
+                            <span class="card-title">🩺 Elevare Med — Premium Marketing</span>
+                            <span class="status-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;">$699/mo · Highest LTV</span>
+                        </div>
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 0;">
+                            OET prep for internationally-trained nurses &amp; doctors. Separate from Speak/Pro/Fluency to signal premium positioning. All copy is Meta-compliant — uses <em>"measurable progress / pass-or-keep-coaching"</em>, never <em>"guaranteed pass"</em>.
+                        </p>
+                    </div>
+
+                    <!-- Quick ad templates by audience -->
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">📝 Quick Ad Templates by Audience</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px;">
+                            <button class="btn-secondary" onclick="setMedAdText('nurses')" style="padding: 16px; text-align: left; cursor: pointer;">
+                                <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">👩‍⚕️ For Internationally-Trained Nurses</div>
+                                <div style="font-size: 11px; opacity: 0.75;">UK NMC / AHPRA / NZ NCNZ / Irish NMBI registration. OET Grade B coaching.</div>
+                            </button>
+                            <button class="btn-secondary" onclick="setMedAdText('doctors')" style="padding: 16px; text-align: left; cursor: pointer;">
+                                <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">👨‍⚕️ For Foreign-Trained Doctors</div>
+                                <div style="font-size: 11px; opacity: 0.75;">Post-graduate medical English, case presentations, clinical scenarios.</div>
+                            </button>
+                            <button class="btn-secondary" onclick="setMedAdText('healthcare')" style="padding: 16px; text-align: left; cursor: pointer;">
+                                <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">🏥 For Allied Healthcare Pros</div>
+                                <div style="font-size: 11px; opacity: 0.75;">Physiotherapists, pharmacists, dentists — OET prep + patient-facing English.</div>
+                            </button>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>AD SCRIPT</label>
+                            <textarea id="medAdScript" rows="8" placeholder="Click a template above to pre-fill, or write your own. Keep Meta-compliant: use 'measurable progress' and 'pass-or-keep-coaching' — avoid 'guaranteed pass' or 'fluent'." style="width: 100%; padding: 12px; background: var(--navy); color: var(--cream); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 13px; resize: vertical;"></textarea>
+                        </div>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn" onclick="copyMedAdScript()">📋 Copy to clipboard</button>
+                            <button class="btn-secondary" onclick="saveMedAdToCalendar()">📅 Save to calendar</button>
+                        </div>
+                    </div>
+
+                    <!-- Voiceless Med ad templates -->
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">📱 Voiceless Med Ad Templates</span>
+                            <span class="status-badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">High Engagement</span>
+                        </div>
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 16px;">
+                            3 text-overlay templates for IG/TikTok. Each opens with a pattern-interrupt hook, states the problem clinically, and ends with a pass-or-keep-coaching CTA.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+                            <div style="background: var(--navy); border-radius: 12px; padding: 16px; border-left: 4px solid #60a5fa;">
+                                <div style="font-size: 13px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">Template 1: "£2,400 per month"</div>
+                                <div style="font-size: 12px; color: var(--text); line-height: 1.6;">
+                                    <strong>Hook (0-3s):</strong> "Your OET retake just cost you £2,400."<br>
+                                    <strong>Body (3-8s):</strong> "That's what 3 more months of delayed NMC registration costs an internationally-trained nurse."<br>
+                                    <strong>Reveal (8-12s):</strong> "Elevare Med: 12 weeks, real coach + AI practice, pass-or-keep-coaching."<br>
+                                    <strong>CTA (12-15s):</strong> "DM 'NURSE' for a free 10-min assessment."
+                                </div>
+                            </div>
+                            <div style="background: var(--navy); border-radius: 12px; padding: 16px; border-left: 4px solid #60a5fa;">
+                                <div style="font-size: 13px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">Template 2: "C+ again"</div>
+                                <div style="font-size: 12px; color: var(--text); line-height: 1.6;">
+                                    <strong>Hook:</strong> "You scored C+ on OET Speaking. Again."<br>
+                                    <strong>Body:</strong> "You know medicine. You handle patients in English. So why does the speaking paper feel like a different language?"<br>
+                                    <strong>Reveal:</strong> "You're not bad at English. You're under-rehearsed for a 5-minute performance."<br>
+                                    <strong>CTA:</strong> "Elevare Med — real OET coaching, not test-prep theatre."
+                                </div>
+                            </div>
+                            <div style="background: var(--navy); border-radius: 12px; padding: 16px; border-left: 4px solid #60a5fa;">
+                                <div style="font-size: 13px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">Template 3: "Practice at midnight"</div>
+                                <div style="font-size: 12px; color: var(--text); line-height: 1.6;">
+                                    <strong>Hook:</strong> "Who's going to coach you at midnight after a 12-hour shift?"<br>
+                                    <strong>Body:</strong> "Your tutor sleeps. So does your study group."<br>
+                                    <strong>Reveal:</strong> "Elevare Med pairs a real OET coach with an AI practice partner that runs on WhatsApp — 30+ clinical scenarios, unlimited reps."<br>
+                                    <strong>CTA:</strong> "Measurable progress every 2 weeks. Or we keep coaching."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Record Med Intro -->
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <span class="card-title">🎙️ Record Med Intro (separate from Speak/Pro flow)</span>
+                        </div>
+                        <p style="color: var(--text); font-size: 13px; margin-bottom: 16px;">
+                            Kept separate from the general voice-clone flow to avoid brand confusion. Med needs a clinical, measured tone — different cadence than Speak/Pro. Pre-written script below: 30-second read, no medical advice, Meta-compliant.
+                        </p>
+                        <textarea id="medIntroScript" rows="6" readonly style="width: 100%; padding: 12px; background: var(--navy); color: var(--cream); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 13px;">Hi, I'm Debby. Elevare Med is built for internationally-trained nurses and doctors preparing for OET — the English exam that stands between you and your UK, Australian, New Zealand, or Irish registration. We pair you with a real OET-trained coach, plus an AI practice partner you can run on WhatsApp at midnight after your shift. Twelve weeks. Measurable progress every two weeks. Pass-or-we-keep-coaching. Free ten-minute assessment in the link below.</textarea>
+                        <div style="display: flex; gap: 12px; margin-top: 12px;">
+                            <button class="btn" onclick="copyMedIntroScript()">📋 Copy script</button>
+                            <button class="btn-secondary" onclick="showSection('clone'); setTimeout(() => document.getElementById('cloneText').value = document.getElementById('medIntroScript').value, 100);">🎤 Open in Voice Clone Studio →</button>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial empty state -->
+                    <div class="card" style="text-align: center; border: 2px dashed rgba(201, 162, 39, 0.4);">
+                        <div style="font-size: 48px; margin-bottom: 12px;">🩺</div>
+                        <h3 style="color: var(--cream); margin-bottom: 12px;">Med Student Testimonials — Coming Soon</h3>
+                        <p style="color: var(--text); font-size: 14px; max-width: 560px; margin: 0 auto 16px;">
+                            No Med testimonials shipped yet — we launch with the founding cohort and publish real stories once students complete their first OET round. Until then: empty-state only. Don't fabricate.
+                        </p>
+                        <p style="color: var(--text-light); font-size: 12px;">Plan: capture one 60-second video + one written blurb per Month-1 student. Gate: successful OET re-take or demonstrable 2-grade improvement.</p>
                     </div>
                 </div>
 
@@ -1748,6 +1856,55 @@ Generated by Elevare Marketing Agent
 
         function saveVoicelessToCalendar() {
             alert('Ad saved to calendar! (Feature coming soon - for now, use the Download option)');
+        }
+
+        // Med Marketing tab helpers
+        const medAdTemplates = {
+            nurses: `For internationally-trained nurses working toward UK NMC, AHPRA, NZ NCNZ, or Irish NMBI registration.
+
+You know the medicine. You handle patients in English every shift. But OET Speaking graded you C+ — twice. That's not an English problem. That's a 5-minute-exam-rehearsal problem.
+
+Elevare Med: 12 weeks, OET-trained coach + AI practice partner you can run at midnight after your shift. 30+ clinical scenarios. Measurable progress every 2 weeks. Pass-or-we-keep-coaching.
+
+Book your free 10-minute assessment — we'll score your current baseline and send a personalised 3-week plan.
+
+£2,400. That's what 3 more months of delayed NMC costs. Let's not do that.`,
+            doctors: `For foreign-trained doctors preparing for English-speaking registration or post-graduate training.
+
+The clinical reasoning isn't the problem. The case-presentation fluency under a registrar's eye is. Elevare Med trains exactly that gap — structured handover, patient history-taking, and clinical-scenario coaching with an OET-familiar coach.
+
+12 weeks. Weekly 1:1 session + AI practice on WhatsApp. Measurable progress every 2 weeks. Pass-or-we-keep-coaching.
+
+Book a free 10-min assessment. We'll score your baseline and draft a personalised 12-week plan.`,
+            healthcare: `For allied healthcare professionals — physiotherapists, pharmacists, dentists, occupational therapists — preparing for OET.
+
+You've spent years building clinical expertise. OET shouldn't be the wall between you and the registration that unlocks the job waiting for you.
+
+Elevare Med: 12 weeks of real coaching + AI practice between sessions. OET-aligned curriculum. Profession-specific scenarios (not generic medical English). Measurable progress every 2 weeks.
+
+Pass-or-we-keep-coaching. Free 10-min assessment to score your baseline.`
+        };
+
+        function setMedAdText(audience) {
+            const txt = medAdTemplates[audience] || '';
+            document.getElementById('medAdScript').value = txt;
+        }
+
+        function copyMedAdScript() {
+            const txt = document.getElementById('medAdScript').value;
+            if (!txt) { alert('Pick a template first or write your own.'); return; }
+            navigator.clipboard.writeText(txt);
+            alert('Ad script copied to clipboard.');
+        }
+
+        function copyMedIntroScript() {
+            const txt = document.getElementById('medIntroScript').value;
+            navigator.clipboard.writeText(txt);
+            alert('Intro script copied to clipboard.');
+        }
+
+        function saveMedAdToCalendar() {
+            alert('Ad saved to calendar! (Feature coming soon — use Copy to clipboard for now.)');
         }
 
         function saveApiSettings() {
