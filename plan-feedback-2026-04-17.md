@@ -258,4 +258,202 @@ If any item fails to ship Mon → push to Tue; if two fail → stop and call Don
 
 ---
 
-*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Recommendations + kickoff: 2026-04-17 night. Live site hero updated to Meta-compliant copy in the same commit stream.*
+---
+
+## 13. Six ADDs — the business I'd actually run [Claude recommendation]
+
+Asked directly "if this were your business, what would you add or deduct." This section is the ADD half. (The DEDUCT half is captured by Sections 6 + 11 bloat cuts — the AI tutor deferral, Flex Nexus consolidation, $29 tier kill, content-flywheel kill, 4-tutor over-hire, Ambitious Phase deletion. Noted for Donal visibility but not repeated here.)
+
+### 13.1 Niche 10× harder — ONE audience, ONE problem
+"Business English for Chiang Mai expats who need to close deals in English." Everything else waits 6 months. You cannot dominate 3 pillars × 3 audiences on $200/mo ad budget. Concentration wins against Preply/Cambly/Speak precisely because *they* have to serve everyone.
+
+**Action:** update homepage H2 + about page + all ad copy to this single positioning. Remove Lingua/Rise/Flex Nexus cross-linking from hero; they live on `/programs` as sub-paths.
+
+### 13.2 Raise prices to $299-349/mo for the core
+$149 is underpriced for what's inside (4 coaching sessions + AI + library). Price signals quality, filters for serious buyers, funds real 1:1 time, repels tire-kickers who increase support load and churn. Test $299 for 2 weeks; if close rate holds, move to $349.
+
+**Action:** swap `index.html` pricing block from `$149` → `$299` on Lingua Live. Update Whop product + overview sheet.
+
+### 13.3 Group coaching cohorts, not 1:1
+One 90-min cohort call with 6 students replaces six separate 1:1 sessions. Higher margin, cohort effect boosts retention, students refer inside their cohort. This is the unlock that takes you from $2k → $10k MRR without adding tutors.
+
+**Action:** convert Lingua Live format: weekly 90-min group call (max 6) + weekly 15-min 1:1 + 24/7 WhatsApp Q&A. Keep 1:1-only as a $599/mo premium tier for those who want it.
+
+### 13.4 You on camera — one 30-sec video per day
+Hardest behavioral change, biggest growth lever. The plan's entire "25-posts-a-day AI content flywheel" is a workaround for your discomfort with the camera. Fix the root problem, not the symptom. Founder-led organic beats any amount of AI-generated content in 2026 (algorithms downrank detected-AI).
+
+**Action:** one phone video per day. No script. 30 seconds. Answer a question a student asked recently. Post to TikTok + IG Reels. That's the content strategy. Weeks 1-4 will feel awful; by Week 8 you'll be a different person.
+
+### 13.5 Coworking partnerships — not coworking flyers
+Walk into Punspace / Yellow / Alt this week. Pitch: *"Free 30-min English assessment for every member. In exchange: I'm your featured English coach on your community board."* Zero-cost distribution directly into your exact audience. Each space is 100-300 members of your ICP.
+
+**Action:** Mon-Tue visit 3 coworking spaces. Goal: one partnership locked by Fri. Community-manager conversations, not poster drops.
+
+### 13.6 One killer lead magnet — 5-min assessment call
+Kill the placement quiz as lead magnet; demote it to onboarding tool. The actual lead magnet is: *"Book a free 5-min English fluency assessment — I'll tell you exactly where you are and send a personalized 3-week plan."* Converts 10× better because humans respond to humans. Doubles as warm-up for the sales call.
+
+**Action:** dedicated Calendly: `https://cal.com/elevare/assessment`. 5-min slots only. Post-call: you + Claude draft the 3-week plan, email within 24 hrs with offer.
+
+---
+
+### The business this becomes
+
+| Element | Specification |
+|---|---|
+| One product | $299/mo "Boardroom English Cohort" — 90-min group call (6 max) + 15-min 1:1 + 24/7 WhatsApp |
+| One premium | $599/mo "Executive 1:1" — weekly 60-min private + 24/7 WhatsApp (for the few who need it) |
+| One lead magnet | Free 5-min assessment call + personalized 3-week plan |
+| One channel (M1) | Coworking partnerships + your founder TikTok — no ads |
+| One promise | "Confident in English meetings in 30 days. Measurable by [rubric]. Or we keep coaching until you're there." |
+
+**Math:** $299 × 20 students × 2 active cohorts = $11,960 MRR with 2 coaches (you + 1). Simpler, higher-margin, defensible. One-tenth the plan's complexity. Probably 2-3× the Year-1 revenue ceiling.
+
+### Decision needed from [Debby] before executing 13.x
+
+- [ ] Do you accept narrowing to Chiang Mai Business English as the sole Month-1 positioning (13.1)?
+- [ ] Do you accept the price move from $149 → $299 on Lingua Live (13.2)?
+- [ ] Do you commit to one 30-sec phone video per day from Week 2 onward (13.4)?
+
+Ship all three = the new business. Ship zero = keep the existing plan. Shipping partial (e.g., group cohort without the price raise) erodes the margin that makes group work.
+
+---
+
+---
+
+## 14. AI Tutor v0 — "Elevare AI Practice Companion" [Debby approved]
+
+Replaces the 280-line Stage 4 build (plan lines 1488-1770) which deferred first paying student by weeks. v0 ships in 1 week, aligns with your methodology (psychology-informed, hybrid coach + AI, augments not replaces), and becomes the $29/mo entry tier — **Elevare AI** in the new product taxonomy.
+
+> Assumes **Option B**: Elevare AI is a standalone $29/mo product, not a tech layer. If you pick Option A (tech layer only, no standalone tier), drop the pricing + funnel framing below and treat the three modes as features embedded inside Speak/Fluency/Pro/Med. Lock this before commit.
+
+### Scope — three modes, nothing else
+
+1. **Scenario Role-Play** (10 min max)
+   Student picks a real-life situation they're nervous about: negotiate price with supplier, answer a tough interview question, lead a standup, order in a restaurant, handle a patient handover (for Med). AI plays the counterpart. Student practices in a safe space where failing has zero cost. Session transcript saved to student history.
+
+2. **Session Warm-Up** (2 min)
+   Ran right before a live coach session. 3 confidence prompts: "What's one sentence you wish you could say fluently today? → let's rehearse it → how did that feel?" Drops anxiety, primes the coach call. Coach sees warm-up output before the session starts.
+
+3. **Between-Session Recap** (5 min)
+   Coach's session notes (in a shared Google Sheet) feed into the AI's prompt. AI asks 3 recall questions based on what the coach covered, plus 1 application prompt. Results sent back to coach for next session personalisation loop.
+
+### Stack — ship-in-1-week list
+
+- **Channel:** WhatsApp (not site widget). Thai/SEA market lives in WhatsApp.
+- **Bot framework:** Typebot (free, open-source) or Chatfuel (free tier). Pick based on WhatsApp Business API cost.
+- **LLM:** `anthropic/claude-haiku-4.5` via OpenRouter. ~$0.001 per exchange. 5-minute role-play ≈ $0.02 cost.
+- **Voice (optional v0.5):** 11Labs Free tier, on-demand only (not streaming). Voice clone comes in v1 once 30-min sample is recorded.
+- **Coach notes:** shared Google Sheet, one tab per student, Zapier pipes into bot prompts.
+- **Student history:** Airtable free tier, one row per session.
+- **No M5, no Orpheus, no Stage-4 streaming, no voice clone, no Cloudflare Workers.** All that waits for v1+.
+
+### Methodology alignment
+
+- **Psychology-informed:** system prompt enforces non-judgmental, encouraging, celebrates effort not outcome. Never marks student wrong — reframes as "let's try another way."
+- **Mental-health-aware:** detects distress language (via Haiku classifier), soft-routes to coach ("I can tell this is hard — let's have your coach check in with you"). Never pretends to be therapy.
+- **Coach-augmenting, not replacing:** every session ends with "bring this to your coach on [next call date]." AI is the gym; coach is the trainer.
+- **Measurable progress:** each session tags 1-3 skills practiced. Weekly roll-up visible to student + coach.
+
+### Positioning copy
+
+> "Your Elevare coach doesn't sleep. Between your weekly sessions, **Elevare AI** is the practice companion that keeps you speaking — safe to fail, always available, always encouraging. The gym, not the trainer. $29/month."
+
+Matches the "coach doesn't sleep, tutor doesn't forget" wedge from plan line 2401.
+
+### Launch gate
+
+Ship v0 (text-only, 3 modes, WhatsApp) by **end of Week 2**. First paying student on Elevare AI tier by **end of Week 4**. Voice mode (v0.5) ships when it stops blocking signups; upper bound Week 6. Stage-4 ambition (streaming, voice clone, real-time) defers to Month 3+ pending $2k MRR.
+
+### What gets DELETED from the master plan
+
+Plan lines 1488-1770 (Stage-4 Deep-Dive) compress to the above ~60 lines. Orpheus, RVC, Coqui XTTS, streaming TTS, 2.5s latency targets, grammar classifiers, Oxford-grammar JSON cross-check — all deferred to post-$2k-MRR v1+ work. Referenced in a footer appendix `stage-4-deferred.md` for when revenue earns the right to build them.
+
+---
+
+## 15. Content — hybrid AI + human split [Debby approved]
+
+**Paid (AI-generated, Meta / TikTok / Google):**
+- 2 short video variants + 1 carousel per week
+- Built from voice clone + stock footage via your marketing-agent
+- Rotation: swap creative every 48 hrs (plan line 2022)
+- Budget: $200 Month 1 split across 4 channels per plan line 2001
+
+**Organic (human-led, Debby-led):**
+- **3 posts per week.** Your face, phone camera, 30-60 sec each. One story per post: student win / teaching insight / behind-the-scenes.
+- **1 long-form per week:** LinkedIn article OR 3-5 min YouTube video, pulling from the 3 short posts.
+- Platform priority: TikTok (#1, highest organic reach) + IG Reels (#2) + LinkedIn (#3 for Pro niche).
+
+**What gets KILLED:**
+- The 25-posts-per-day steady-state number (plan line 2099). AI slop at that volume, platforms downrank detected-AI content.
+- The "Debby doesn't post, the system does" framing (plan line 2079). You DO post — it's the moat.
+
+### Why the split works
+
+AI is acceptable and required for paid creative (volume + rotation). Organic now demands authenticity signals that AI content can't fake — platform algorithms reward faces, voice cadence, "messy" over-polish. Founder-led organic + AI-scaled paid is the right split for 2026.
+
+---
+
+## 16. Tutor model — agency (standard rate) + pay-per-lesson [Debby approved]
+
+### Pricing (student-facing)
+Standard **Elevare** rate per product. Students never see different tutor prices — protects brand consistency + simplifies pricing pages. Products per Section 13 + image taxonomy: Elevare Speak $149 / Fluency $497 (12wk) / Pro $349 / Med $499. All paid monthly (or upfront for Fluency).
+
+### Tutor compensation (internal)
+Pay-per-lesson flat rate. Proposed schedule:
+
+| Product | Student pays | Tutor per-lesson pay | Platform margin |
+|---|---|---|---|
+| Elevare Speak (group, 90 min weekly) | $149/mo ÷ 4 sessions ≈ $37/session | **$20/session** | 46% |
+| Elevare Fluency (12wk cohort) | $497 ÷ 12 weeks ÷ sessions-in-cohort | **$25/session** | 50% |
+| Elevare Pro (1:1 + group) | $349/mo ÷ ~6 sessions ≈ $58/session | **$35/session** | 40% |
+| Elevare Med (1:1 specialist) | $499/mo ÷ ~6 sessions ≈ $83/session | **$50/session** (specialist premium) | 40% |
+| Elevare AI | N/A (no tutor) | — | ~95% |
+
+Rationale: platform margin covers R2/Whop/SaaS/CAC. Tutor pay is high enough to retain quality coaches in Chiang Mai + Philippines (standard rates $15-25/hr), premium for Med specialization. Pay weekly via Wise/PayPal/LINE depending on tutor's country.
+
+### Tutor obligations (what agency model requires them to do)
+
+- Teach to the Elevare curriculum (not their own). You write + maintain the per-product lesson plans.
+- Use the Elevare booking + progress tracking tools (Calendly + Google Sheet → Airtable eventually).
+- Log session notes within 24 hrs (feeds AI Practice Companion per Section 14).
+- Availability minimum: 10 hours/week per tutor, reservable on Calendly.
+
+### What agency model requires from YOU
+
+- **Curriculum ownership.** You write/maintain the lesson framework for each product. Tutors execute; they don't freelance methodology. This is ~20-30 hrs of upfront work, then 2-4 hrs/week maintenance.
+- **Quality control.** Spot-check 1 session per tutor per month (recorded + reviewed). Consistency signal to students.
+- **Tutor pipeline.** Per Round-2 recommendation, aim for 6 tutors by Day 60 (not 4). Agency model makes replacement easier since students don't form a hard bond with "their specific tutor's rate."
+
+### Tutor contract template (Donal to draft)
+
+Needs: (a) revenue-per-lesson terms, (b) curriculum adherence clause, (c) 2-week notice on availability changes, (d) IP assignment for any session recordings used in marketing (voice-clone/testimonials), (e) non-compete on direct-to-student poaching.
+
+---
+
+## 17. Ambitious Phase framing [Debby approved — keep as motivation]
+
+The plan's Phase A (Autonomous Client Pipeline), Phase B (Custom Dashboard / GHL-killer), and Phase C (Multi-Language Marketplace) at lines 2179-2216 stay in the master plan as a **north-star vision**, not a Month-1 execution surface.
+
+### Proposed header to add to the master plan's Ambitious Phase section
+
+> **North-star vision — motivation, not Month-1 scope. Trigger to activate: $5k MRR sustained for 2 consecutive months.**
+>
+> *This section paints the 12-24 month horizon. It exists to remind us what we're building toward, not to pull execution gravity into Month 1-3. No work in Phase A/B/C is in scope until the trigger hits. If it pulls at your attention before then, treat that as a signal to refocus on the `execution-week-1.md` grid, not a signal to start Phase A early.*
+
+### Why keep it
+
+- Motivation compounds — looking at a bold horizon makes the drudgery of Week 1 Whop-KYC easier to endure
+- Investors/partners/visa officers ask "where is this going?" — Phases A/B/C answer that in one read
+- Recruiting future tutors/team: the vision matters as much as the current MRR
+
+### What it's NOT for
+
+- Any decision you make before Day 60
+- Any code written before Day 90
+- Any resource allocation today
+
+**Maintenance cost:** zero. Leave the section as written. Just add the header.
+
+---
+
+*Drafted by Claude for [Debby] × [Donal]. Round 1: 2026-04-17 afternoon. Round 2: 2026-04-17 evening. Recommendations + kickoff: 2026-04-17 night. Sections 13-17 ADDs + product design: 2026-04-17 late. Live site hero updated to Meta-compliant copy in the same commit stream.*
