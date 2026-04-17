@@ -25,20 +25,36 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- 5-product taxonomy (2026-04-17 migration). lingua.html + flexnexus.html are noindex redirect stubs and intentionally excluded. -->
   <url>
-    <loc>https://darnygirl.github.io/elevare/frontend/lingua.html</loc>
+    <loc>https://darnygirl.github.io/elevare/frontend/med.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/pro.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/fluency.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/speak.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://darnygirl.github.io/elevare/frontend/ai.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://darnygirl.github.io/elevare/frontend/rise.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://darnygirl.github.io/elevare/frontend/flexnexus.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://darnygirl.github.io/elevare/frontend/tutors.html</loc>
