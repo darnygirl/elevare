@@ -39,4 +39,4 @@ Elevare is a language learning and personal development coaching platform with t
 - All changes pushed to GitHub auto-deploy to GitHub Pages
 - Voice cloning works locally (XTTS v2 on Python 3.11)
 - AI Tutor uses OpenAI for responses (requires API key in settings)
-- WhatsApp: +601111612082
+- WhatsApp: +66 94 969 0869 (Thai)
