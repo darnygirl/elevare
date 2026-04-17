@@ -1234,14 +1234,29 @@ cd /home/debby/voice-cloning && source xtts-env/bin/activate && python voice_ser
                                 <span class="card-title">📝 Quick Ad Scripts</span>
                             </div>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                                <button class="btn-secondary" onclick="setCloneText('Lingua ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
-                                    <strong>Lingua Ad:</strong> "Master any language with human coaching..."
+                                <button class="btn-secondary" onclick="setCloneText('Med ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; border-left: 3px solid #06b6d4;">
+                                    <strong>🩺 Med Ad:</strong> "Pass OET Grade B in 12 weeks..."
                                 </button>
-                                <button class="btn-secondary" onclick="setCloneText('Rise ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
-                                    <strong>Rise Ad:</strong> "Confidence is a skill you can build..."
+                                <button class="btn-secondary" onclick="setCloneText('Pro ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; border-left: 3px solid #64748b;">
+                                    <strong>💼 Pro Ad:</strong> "Your technical skill got you the interview..."
                                 </button>
-                                <button class="btn-secondary" onclick="setCloneText('Flex ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left;">
-                                    <strong>Flex Nexus Ad:</strong> "Technical skills get you the interview..."
+                                <button class="btn-secondary" onclick="setCloneText('Fluency ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; border-left: 3px solid #10b981;">
+                                    <strong>🎯 Fluency Ad:</strong> "12 weeks, measurable progress every 2..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Speak ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; border-left: 3px solid #f43f5e;">
+                                    <strong>💬 Speak Ad:</strong> "Group cohorts beat solo apps..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('AI ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; border-left: 3px solid #6366f1;">
+                                    <strong>🤖 AI Ad:</strong> "Your tutor sleeps. Elevare AI doesn't..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Lingua ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; opacity: 0.7;">
+                                    <strong>Lingua Ad (legacy):</strong> "Master any language..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Rise ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; opacity: 0.7;">
+                                    <strong>Rise Ad (legacy):</strong> "Confidence is a skill..."
+                                </button>
+                                <button class="btn-secondary" onclick="setCloneText('Flex ad', 'en')" style="width: auto; padding: 12px 16px; text-align: left; opacity: 0.7;">
+                                    <strong>Flex Ad (legacy):</strong> "Technical skills get you the interview..."
                                 </button>
                             </div>
                         </div>
@@ -2465,11 +2480,18 @@ async function toggleAdRecording() {
         // Voice Clone Functions
         function setCloneText(type, lang) {
             const scripts = {
+                // 5-product portfolio — all Meta-compliant (measurable progress, pass-or-keep-coaching)
+                'Med ad': 'Pass OET Grade B in twelve weeks, or we keep coaching you. Elevare Med is built for internationally-trained nurses and doctors preparing for U K, Australian, New Zealand, or Irish registration. Real O E T coach plus an A I practice partner you can run on WhatsApp at midnight after your shift. Measurable progress every two weeks. Book your free ten-minute assessment.',
+                'Pro ad': 'Your technical skill got you the interview. Your English is why the promotion stalled. Elevare Pro is four weeks of rolling business-English coaching for professionals who present, negotiate, and lead meetings in English. Real one-on-one coach, A I practice partner for off-hour reps. Measurable progress or we keep coaching. Employer reimbursement usually covers it.',
+                'Fluency ad': 'Twelve weeks. Real coach. A I practice partner. Measurable progress every two weeks — or we keep coaching. Elevare Fluency is the intensive for professionals who need real English progress, not more apps. Four-ninety-seven total, or one-ninety-nine times three months. Founding cohort open now.',
+                'Speak ad': 'Speaking fluency is not a vocabulary problem. It is a reps problem. Elevare Speak gives you six other humans to practice with every week, plus a coach watching every call. Ninety-minute weekly cohort, fifteen-minute one-on-one, twenty-four seven WhatsApp. One-ninety-nine a month. Small cohorts. Real feedback. Measurable progress.',
+                'AI ad': 'Your tutor sleeps. Elevare A I does not. Twenty-nine a month WhatsApp practice companion. Three modes — open chat, scenario drill, grammar reps. Runs at midnight when your tutor cannot. Pairs with any coaching tier as the between-sessions layer. Free seven-day trial.',
+                // Legacy pillars kept for any existing recordings / backward compat
                 'Lingua ad': 'Master any language in thirty days with human coaching that actually works. At Elevare, our native speaking tutors help you achieve fluency through personalized coaching. Whether you are learning for business, travel, or personal growth, we build real communication skills, not just textbook phrases. Your fluency journey starts today.',
-                'Rise ad': 'Confidence is not a personality trait. It is a skill you can build. At Elevare Rise, we address the psychology behind communication anxiety, not just the mechanics. Our mental health informed approach helps you rewire the inner critic that has been holding you back. Real results. Evidence based methods. Thirty day confidence guarantee.',
+                'Rise ad': 'Confidence is not a personality trait. It is a skill you can build. At Elevare Rise, we address the psychology behind communication anxiety, not just the mechanics. Our mental health informed approach helps you rewire the inner critic that has been holding you back. Real results. Evidence based methods. Thirty-day confidence guarantee.',
                 'Flex ad': 'Technical skills will get you the interview. Communication skills will get you the promotion. Elevare Flex Nexus bridges language learning with executive presence, so you can lead meetings, land deals, and present with authority. Industry experts, real world skills, measurable results. Your next career milestone starts here.'
             };
-            document.getElementById('cloneText').value = scripts[type] || scripts['Lingua ad'];
+            document.getElementById('cloneText').value = scripts[type] || scripts['Med ad'];
             document.getElementById('cloneLanguage').value = lang;
         }
 
