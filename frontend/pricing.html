@@ -233,6 +233,12 @@
         .program-badge.rise { background: rgba(245,158,11,0.1); color: var(--rise); }
         .program-badge.flexnexus { background: rgba(139,92,246,0.1); color: var(--flexnexus); }
         .program-badge.bundle { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); }
+        /* 5-product taxonomy (Nord-ish palette — matches tutor-dashboard) */
+        .program-badge.med { background: rgba(27,158,119,0.15); color: #7cd4b4; }
+        .program-badge.pro { background: rgba(90,79,207,0.15); color: #b3a6f0; }
+        .program-badge.fluency { background: rgba(191,97,106,0.15); color: #e8a5ab; }
+        .program-badge.speak { background: rgba(94,129,172,0.15); color: #a3bde0; }
+        .program-badge.ai { background: rgba(208,135,112,0.15); color: #f0bba4; }
 
         .price {
             font-family: 'Cormorant Garamond', serif;
@@ -540,7 +546,7 @@
             </div>
 
             <div class="pricing-grid">
-                <!-- Free 5-Day Course -->
+                <!-- Free 5-Day Course (lead magnet) -->
                 <div class="pricing-card">
                     <span class="program-badge bundle">🆓 Free</span>
                     <h3 class="program-name">5-Day Confidence Course</h3>
@@ -555,80 +561,98 @@
                         <li><span class="check">✓</span> Day 5: Create your action plan</li>
                         <li><span class="check">✓</span> Instant access</li>
                     </ul>
-                    <a href="#signup" class="cta-btn secondary">Start Free Now</a>
+                    <a href="../index.html#signup" class="cta-btn secondary">Start Free Now</a>
                 </div>
 
-                <!-- AI Tutor Buddy -->
+                <!-- Elevare AI — entry tier -->
                 <div class="pricing-card">
-                    <span class="program-badge lingua">🤖 AI Buddy</span>
-                    <h3 class="program-name">AI Tutor Buddy</h3>
-                    <p class="program-tagline">Practice anytime, 24/7</p>
+                    <span class="program-badge ai">🤖 Elevare AI</span>
+                    <h3 class="program-name">Elevare AI</h3>
+                    <p class="program-tagline">24/7 WhatsApp practice companion</p>
                     <div class="price">$29<span>/month</span></div>
-                    <p class="price-period">Self-serve, cancel anytime</p>
+                    <p class="price-period">7-day free trial, cancel anytime</p>
                     <ul class="features-list">
-                        <li><span class="check">✓</span> AI conversation practice</li>
-                        <li><span class="check">✓</span> Instant pronunciation feedback</li>
-                        <li><span class="check">✓</span> Vocabulary building</li>
-                        <li><span class="check">✓</span> Grammar correction</li>
-                        <li><span class="check">✓</span> Progress tracking</li>
-                        <li><span class="check">✓</span> Available 24/7</li>
+                        <li><span class="check">✓</span> WhatsApp-native AI chat</li>
+                        <li><span class="check">✓</span> 3 modes: open chat / scenarios / grammar reps</li>
+                        <li><span class="check">✓</span> Runs at midnight after your shift</li>
+                        <li><span class="check">✓</span> 30+ practice scenarios</li>
+                        <li><span class="check">✓</span> Pairs with any coaching tier</li>
+                        <li><span class="check">✓</span> Measurable progress reports</li>
                     </ul>
-                    <a href="#signup" class="cta-btn secondary">Start Free Trial</a>
+                    <a href="ai.html" class="cta-btn secondary">Start $1 Trial</a>
                 </div>
 
-                <!-- Lingua Live -->
+                <!-- Elevare Speak — group cohort -->
                 <div class="pricing-card featured">
                     <span class="popular-badge">Most Popular</span>
-                    <span class="program-badge rise">🌍 Lingua Live</span>
-                    <h3 class="program-name">Lingua Coaching</h3>
-                    <p class="program-tagline">Human coaches + AI practice</p>
-                    <div class="price">$149<span>/month</span></div>
+                    <span class="program-badge speak">💬 Elevare Speak</span>
+                    <h3 class="program-name">Elevare Speak</h3>
+                    <p class="program-tagline">Group cohort + coach + AI practice</p>
+                    <div class="price">$199<span>/month</span></div>
                     <p class="price-period">Billed monthly, cancel anytime</p>
                     <ul class="features-list">
-                        <li><span class="check">✓</span> 4 live coaching sessions/month</li>
-                        <li><span class="check">✓</span> AI Tutor Buddy included</li>
-                        <li><span class="check">✓</span> Personalized lesson plans</li>
-                        <li><span class="check">✓</span> WhatsApp support</li>
-                        <li><span class="check">✓</span> Progress tracking</li>
-                        <li><span class="check">✓</span> Cultural immersion focus</li>
+                        <li><span class="check">✓</span> Weekly 90-min group call (max 6)</li>
+                        <li><span class="check">✓</span> Weekly 15-min 1:1 with your coach</li>
+                        <li><span class="check">✓</span> Elevare AI included</li>
+                        <li><span class="check">✓</span> 24/7 WhatsApp Q&amp;A</li>
+                        <li><span class="check">✓</span> Measurable progress every 2 weeks</li>
+                        <li><span class="check">✓</span> Or we keep coaching</li>
                     </ul>
-                    <a href="book.html?program=lingua" class="cta-btn primary">Start Free Trial</a>
+                    <a href="speak.html" class="cta-btn primary">Join the Cohort</a>
                 </div>
 
-                <!-- Flex Nexus -->
+                <!-- Elevare Fluency — 12-week intensive -->
                 <div class="pricing-card">
-                    <span class="program-badge flexnexus">💼 Flex Nexus</span>
-                    <h3 class="program-name">Flex Nexus Intensive</h3>
-                    <p class="program-tagline">12-Week Career Transformation</p>
+                    <span class="program-badge fluency">🎯 Elevare Fluency</span>
+                    <h3 class="program-name">Elevare Fluency</h3>
+                    <p class="program-tagline">12-week fluency intensive</p>
                     <div class="price">$497<span>/12 weeks</span></div>
-                    <p class="price-period">One-time or 3 installments</p>
+                    <p class="price-period">One-time or $199 × 3 months</p>
                     <ul class="features-list">
-                        <li><span class="check">✓</span> 24 intensive sessions</li>
-                        <li><span class="check">✓</span> Executive presence training</li>
-                        <li><span class="check">✓</span> Professional communication</li>
-                        <li><span class="check">✓</span> Negotiation & presentation</li>
-                        <li><span class="check">✓</span> Interview preparation</li>
-                        <li><span class="check">✓</span> Career roadmap</li>
+                        <li><span class="check">✓</span> Weekly 1:1 coaching sessions</li>
+                        <li><span class="check">✓</span> Elevare AI practice partner</li>
+                        <li><span class="check">✓</span> Progress rubric you can see</li>
+                        <li><span class="check">✓</span> Presentations, meetings, negotiations</li>
+                        <li><span class="check">✓</span> Measurable progress every 2 weeks</li>
+                        <li><span class="check">✓</span> Or we keep coaching</li>
                     </ul>
-                    <a href="book.html?program=flexnexus" class="cta-btn secondary">Start Free Trial</a>
+                    <a href="fluency.html" class="cta-btn secondary">Start Fluency Intensive</a>
                 </div>
 
-                <!-- Complete Bundle -->
+                <!-- Elevare Pro — business English -->
                 <div class="pricing-card">
-                    <span class="program-badge bundle">🎯 Best Value</span>
-                    <h3 class="program-name">Complete Bundle</h3>
-                    <p class="program-tagline">All programs, maximum transformation</p>
-                    <div class="price">$199<span>/month</span></div>
-                    <p class="price-period">Everything included, cancel anytime</p>
+                    <span class="program-badge pro">💼 Elevare Pro</span>
+                    <h3 class="program-name">Elevare Pro</h3>
+                    <p class="program-tagline">Business English for professionals</p>
+                    <div class="price">$449<span>/month</span></div>
+                    <p class="price-period">Employer reimbursement usually covers it</p>
                     <ul class="features-list">
-                        <li><span class="check">✓</span> 8 coaching sessions/month</li>
-                        <li><span class="check">✓</span> AI Tutor Buddy included</li>
-                        <li><span class="check">✓</span> Rise + Lingua + Flex Nexus</li>
-                        <li><span class="check">✓</span> Priority scheduling</li>
-                        <li><span class="check">✓</span> VIP WhatsApp support</li>
-                        <li><span class="check">✓</span> Quarterly strategy calls</li>
+                        <li><span class="check">✓</span> Weekly 1:1 with business-English coach</li>
+                        <li><span class="check">✓</span> Elevare AI practice partner</li>
+                        <li><span class="check">✓</span> Meetings, presentations, negotiations</li>
+                        <li><span class="check">✓</span> Email + Slack/Teams communication</li>
+                        <li><span class="check">✓</span> Measurable progress every 2 weeks</li>
+                        <li><span class="check">✓</span> Or we keep coaching</li>
                     </ul>
-                    <a href="book.html?program=bundle" class="cta-btn secondary">Start Free Trial</a>
+                    <a href="pro.html" class="cta-btn secondary">Start Pro Coaching</a>
+                </div>
+
+                <!-- Elevare Med — highest-LTV (the goldmine) -->
+                <div class="pricing-card">
+                    <span class="program-badge med">🩺 Elevare Med</span>
+                    <h3 class="program-name">Elevare Med</h3>
+                    <p class="program-tagline">OET prep for nurses &amp; doctors</p>
+                    <div class="price">$699<span>/month</span></div>
+                    <p class="price-period">12-week programme, pass-or-keep-coaching</p>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> OET-trained coach 1:1</li>
+                        <li><span class="check">✓</span> Elevare AI — 30+ clinical scenarios</li>
+                        <li><span class="check">✓</span> UK NMC / AHPRA / NZ / Irish prep</li>
+                        <li><span class="check">✓</span> OET Grade B target</li>
+                        <li><span class="check">✓</span> Measurable progress every 2 weeks</li>
+                        <li><span class="check">✓</span> Or we keep coaching</li>
+                    </ul>
+                    <a href="med.html" class="cta-btn secondary">Book Free Assessment</a>
                 </div>
             </div>
         </div>
@@ -686,7 +710,7 @@
                         <span>+</span>
                     </div>
                     <div class="faq-answer hidden">
-                        We accept credit cards (Stripe), Whop, and LINE Pay. Monthly programs bill on the same day each month. Flex Nexus can be paid upfront or in 3 installments.
+                        We accept credit cards (Stripe), Whop, and LINE Pay. Monthly programs bill on the same day each month. Elevare Fluency can be paid upfront or in 3 installments of $199.
                     </div>
                 </div>
 
