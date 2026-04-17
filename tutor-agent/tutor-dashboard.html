@@ -18,6 +18,11 @@
             --lingua: #3b82f6;
             --rise: #f59e0b;
             --flexnexus: #8b5cf6;
+            --med: #06b6d4;
+            --pro: #64748b;
+            --fluency: #10b981;
+            --speak: #f43f5e;
+            --ai: #6366f1;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,6 +105,36 @@
             border: 1px solid rgba(139, 92, 246, 0.5);
         }
 
+        .user-badge.med {
+            background: rgba(6, 182, 212, 0.3);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.5);
+        }
+
+        .user-badge.pro {
+            background: rgba(100, 116, 139, 0.3);
+            color: #94a3b8;
+            border: 1px solid rgba(100, 116, 139, 0.5);
+        }
+
+        .user-badge.fluency {
+            background: rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .user-badge.speak {
+            background: rgba(244, 63, 94, 0.3);
+            color: #fb7185;
+            border: 1px solid rgba(244, 63, 94, 0.5);
+        }
+
+        .user-badge.ai {
+            background: rgba(99, 102, 241, 0.3);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.5);
+        }
+
         .progress-ring {
             width: 50px;
             height: 50px;
@@ -162,6 +197,16 @@
         .program-tab.rise.active { background: var(--rise); color: white; }
         .program-tab.flexnexus { background: rgba(139, 92, 246, 0.2); color: var(--flexnexus); }
         .program-tab.flexnexus.active { background: var(--flexnexus); color: white; }
+        .program-tab.med { background: rgba(6, 182, 212, 0.2); color: var(--med); }
+        .program-tab.med.active { background: var(--med); color: white; }
+        .program-tab.pro { background: rgba(100, 116, 139, 0.2); color: var(--pro); }
+        .program-tab.pro.active { background: var(--pro); color: white; }
+        .program-tab.fluency { background: rgba(16, 185, 129, 0.2); color: var(--fluency); }
+        .program-tab.fluency.active { background: var(--fluency); color: white; }
+        .program-tab.speak { background: rgba(244, 63, 94, 0.2); color: var(--speak); }
+        .program-tab.speak.active { background: var(--speak); color: white; }
+        .program-tab.ai { background: rgba(99, 102, 241, 0.2); color: var(--ai); }
+        .program-tab.ai.active { background: var(--ai); color: white; }
 
         /* Module Grid */
         .modules-grid {
@@ -558,7 +603,7 @@
                     <div class="user-welcome-main">Welcome back!</div>
                     <div class="user-welcome-sub">
                         <span id="studentType">Lingua</span> Student
-                        <span class="user-badge lingua" id="programBadge">🌍</span>
+                        <span class="user-badge med" id="programBadge">🩺</span>
                     </div>
                 </div>
                 <div class="progress-ring">
@@ -583,7 +628,12 @@
         <!-- Learn Tab -->
         <div class="tab-content active" id="tab-learn">
             <div class="program-tabs">
-                <button class="program-tab lingua active" onclick="selectProgram('lingua')">🌍 Lingua</button>
+                <button class="program-tab med active" onclick="selectProgram('med')">🩺 Med</button>
+                <button class="program-tab pro" onclick="selectProgram('pro')">💼 Pro</button>
+                <button class="program-tab fluency" onclick="selectProgram('fluency')">🎯 Fluency</button>
+                <button class="program-tab speak" onclick="selectProgram('speak')">💬 Speak</button>
+                <button class="program-tab ai" onclick="selectProgram('ai')">🤖 AI</button>
+                <button class="program-tab lingua" onclick="selectProgram('lingua')">🌍 Lingua</button>
                 <button class="program-tab rise" onclick="selectProgram('rise')">💪 Rise</button>
                 <button class="program-tab flexnexus" onclick="selectProgram('flexnexus')">💼 Flex Nexus</button>
             </div>
@@ -1088,10 +1138,15 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
             if (tabName === 'settings') checkServerStatus();
         }
 
-        // Program selection
-        let currentProgram = 'lingua';
-        
+        // Program selection (5-product portfolio + legacy pillars)
+        let currentProgram = 'med';
+
         const programData = {
+            med: { name: 'Elevare Med', icon: '🩺', badge: 'med', color: '#06b6d4' },
+            pro: { name: 'Elevare Pro', icon: '💼', badge: 'pro', color: '#64748b' },
+            fluency: { name: 'Elevare Fluency', icon: '🎯', badge: 'fluency', color: '#10b981' },
+            speak: { name: 'Elevare Speak', icon: '💬', badge: 'speak', color: '#f43f5e' },
+            ai: { name: 'Elevare AI', icon: '🤖', badge: 'ai', color: '#6366f1' },
             lingua: { name: 'Lingua', icon: '🌍', badge: 'lingua', color: '#3b82f6' },
             rise: { name: 'Rise', icon: '💪', badge: 'rise', color: '#f59e0b' },
             flexnexus: { name: 'Flex Nexus', icon: '💼', badge: 'flexnexus', color: '#8b5cf6' }
