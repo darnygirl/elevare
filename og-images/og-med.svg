@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background: navy -->
+  <rect fill="#0d1b2a" width="1200" height="630"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid-med" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1b9e77" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="goldGrad-med" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#f0d875"/>
+    </linearGradient>
+    <linearGradient id="accentGrad-med" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1b9e77" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1b9e77" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid-med)"/>
+
+  <!-- Left accent stripe in product color -->
+  <rect x="0" y="0" width="8" height="630" fill="#1b9e77"/>
+
+  <!-- Small Elevare wordmark (top-left) -->
+  <text x="80" y="95" font-family="Georgia, 'Cormorant Garamond', serif" font-size="28" font-weight="600" fill="url(#goldGrad-med)" letter-spacing="6">ELEVARE</text>
+  <line x1="80" y1="110" x2="220" y2="110" stroke="#1b9e77" stroke-width="2" opacity="0.7"/>
+
+  <!-- Product name (hero) -->
+  <text x="80" y="290" font-family="Georgia, 'Cormorant Garamond', serif" font-size="96" font-weight="600" fill="#faf8f5" letter-spacing="-1">Elevare Med</text>
+
+  <!-- Accent underline -->
+  <rect x="80" y="310" width="180" height="4" fill="url(#accentGrad-med)"/>
+
+  <!-- Tagline -->
+  <text x="80" y="410" font-family="Arial, 'Montserrat', sans-serif" font-size="36" font-weight="400" fill="#e0e1dd">OET Grade B in 12 weeks. Or we keep coaching you.</text>
+
+  <!-- Bottom-right: URL -->
+  <text x="1120" y="580" font-family="Arial, 'Montserrat', sans-serif" font-size="22" fill="#778da9" text-anchor="end">elevaremind.io</text>
+
+  <!-- Bottom-left: tagline / brand promise -->
+  <text x="80" y="580" font-family="Arial, 'Montserrat', sans-serif" font-size="22" fill="#1b9e77">Coach-led · AI-supported · Measurable progress</text>
+</svg>
