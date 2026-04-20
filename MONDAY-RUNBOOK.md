@@ -264,11 +264,11 @@ Thank you! 🎯
 ### Verification:
 
 - Visit each URL in a private browser window:
-  - `cal.com/elevare/med-assessment`
-  - `cal.com/elevare/pro-assessment`
-  - `cal.com/elevare/speak-assessment`
-  - `cal.com/elevare/fluency-assessment`
-  - `cal.com/elevare/ai-signup`
+  - `cal.com/elevaremind/med-assessment`
+  - `cal.com/elevaremind/pro-assessment`
+  - `cal.com/elevaremind/speak-assessment`
+  - `cal.com/elevaremind/fluency-assessment`
+  - `cal.com/elevaremind/ai-signup`
 - All 5 should show the booking page, not 404
 
 **Gate:** 5 Cal.com links live.
@@ -284,7 +284,7 @@ cd ~/Desktop/elevare-site
 git pull
 open https://elevaremind.io                    # or paste URL in browser
 open https://elevaremind.io/frontend/med.html
-open https://cal.com/elevare/med-assessment
+open https://cal.com/elevaremind/med-assessment
 ```
 
 Also check:

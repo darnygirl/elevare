@@ -206,7 +206,7 @@ What you get afterwards (within 24 hours):
 
 No obligation. The 24-hour plan is yours whether or not you enrol.
 
-**Book your call:** [cal.com/elevare/med-assessment](https://cal.com/elevare/med-assessment)
+**Book your call:** [cal.com/elevaremind/med-assessment](https://cal.com/elevaremind/med-assessment)
 
 ---
 

@@ -25,7 +25,7 @@
 > Real 1:1 coaching + AI practice partner + clinical scenarios that match the exam. Built for nurses and doctors working toward UK NMC, AHPRA, NZ NCNZ or Irish registration.
 
 **Primary CTA button:** `Book Your Free 10-Minute Assessment`
-(links to: `cal.com/elevare/med-assessment`)
+(links to: `cal.com/elevaremind/med-assessment`)
 
 **Secondary CTA button:** `Download the OET Pass Playbook (PDF)`
 (links to: email capture → auto-send PDF)

@@ -79,7 +79,7 @@ Pick ONE of:
 > [Your name]
 > Elevare Med
 >
-> P.S. If you'd rather skip ahead: book a free 10-minute assessment and I'll tell you exactly where you are in the 5 scoring dimensions. [Book here →](https://cal.com/elevare/med-assessment)
+> P.S. If you'd rather skip ahead: book a free 10-minute assessment and I'll tell you exactly where you are in the 5 scoring dimensions. [Book here →](https://cal.com/elevaremind/med-assessment)
 
 **Attachments:** OET-Pass-Playbook-v1.pdf (exported from `oet-pass-playbook.md` via Pandoc or Google Docs export)
 
@@ -114,7 +114,7 @@ Pick ONE of:
 >
 > **That's what Elevare Med is built for.** 12 weeks, 1:1 OET-trained coach, scored every session. $699/mo or $1,999 upfront. Or the $0 free assessment first so you know where you actually are.
 >
-> [Book your free 10-minute assessment →](https://cal.com/elevare/med-assessment)
+> [Book your free 10-minute assessment →](https://cal.com/elevaremind/med-assessment)
 >
 > [Your name]
 
@@ -150,7 +150,7 @@ Pick ONE of:
 >
 > If your exam is close, don't bet on 4-6 weeks:
 >
-> [Book your free 10-minute assessment →](https://cal.com/elevare/med-assessment)
+> [Book your free 10-minute assessment →](https://cal.com/elevaremind/med-assessment)
 >
 > [Your name]
 >
@@ -184,7 +184,7 @@ Pick ONE of:
 >
 > That's what the free 10-minute assessment does.
 >
-> [Book yours here →](https://cal.com/elevare/med-assessment)
+> [Book yours here →](https://cal.com/elevaremind/med-assessment)
 >
 > Next cohort start: [date]. We're at [X/20] founding-member spots.
 >
@@ -216,7 +216,7 @@ Pick ONE of:
 >
 > If any of those sounds like you — book the free 10-minute assessment:
 >
-> [Book here →](https://cal.com/elevare/med-assessment)
+> [Book here →](https://cal.com/elevaremind/med-assessment)
 >
 > If not — genuinely no hard feelings. You have the Playbook, you have the 3-week plan, you have my best thinking. Go pass the test. Come back if you get stuck.
 >

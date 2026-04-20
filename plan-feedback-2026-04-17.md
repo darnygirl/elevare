@@ -292,7 +292,7 @@ Walk into Punspace / Yellow / Alt this week. Pitch: *"Free 30-min English assess
 ### 13.6 One killer lead magnet — 5-min assessment call
 Kill the placement quiz as lead magnet; demote it to onboarding tool. The actual lead magnet is: *"Book a free 5-min English fluency assessment — I'll tell you exactly where you are and send a personalized 3-week plan."* Converts 10× better because humans respond to humans. Doubles as warm-up for the sales call.
 
-**Action:** dedicated Calendly: `https://cal.com/elevare/assessment`. 5-min slots only. Post-call: you + Claude draft the 3-week plan, email within 24 hrs with offer.
+**Action:** dedicated Calendly: `https://cal.com/elevaremind/assessment`. 5-min slots only. Post-call: you + Claude draft the 3-week plan, email within 24 hrs with offer.
 
 ---
 

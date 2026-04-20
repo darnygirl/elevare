@@ -86,7 +86,7 @@ Tonight will add on top:
 
 8. **Elevare Med first tutor onboarded** — landing page goes live, assessment calls happen, no OET-specialist coach exists yet. Can Debby cover intake + first-week herself? Yes. But for actual delivery need 1 dedicated Med coach. Effort: ongoing recruiting. Owner: [Debby].
 
-9. **Calendly setup for `cal.com/elevare/med-assessment`** — med.html references this URL. It may not exist yet. Create the 10-min slot type with the intake-rubric prompt. Effort: 30 min. Owner: [Debby].
+9. **Calendly setup for `cal.com/elevaremind/med-assessment`** — med.html references this URL. It may not exist yet. Create the 10-min slot type with the intake-rubric prompt. Effort: 30 min. Owner: [Debby].
 
 ### P2 — Should close by end of Month 1 (6 items)
 
