@@ -1,6 +1,6 @@
 # Elevare Marketing Agent
 
-AI-powered content generation for social media, email marketing, and voice ads.
+Content generation for social media, email marketing, and voice ads — wired to the current 3-tier taxonomy (General / Pro / Med) + 3 add-ons.
 
 ## Quick Start
 
@@ -14,6 +14,8 @@ AI-powered content generation for social media, email marketing, and voice ads.
 
 - `marketing-dashboard.html` - Main dashboard with all features
 - `api-config.js` - API key configuration (you fill in your keys)
+- `pitch-scripts/` - Source-of-truth pitch scripts (6 .docx files, General + Med × 30s/2min/5min)
+- `TODO-marketing-agent-rebuild.md` - Rebuild spec (Phase 1 shipped, Phase 3 Buffer integration still to wire)
 
 ## Features
 
@@ -24,12 +26,12 @@ Generate marketing copy for:
 - WhatsApp Messages
 - Ad Copy
 
-### Voice Studio Tab (NEW! - 100% FREE)
-Record YOUR OWN voice for ads - no external services needed!
+### Voice Studio Tab
+Record YOUR OWN voice for ads — no external services needed.
 
 **How it works:**
-1. **Record Sample** - Click to record a 10-30 second voice sample
-2. **Generate Script** - AI creates ad scripts for Lingua, Rise, or Flex Nexus
+1. **Record Sample** - Record a 10-30 second voice sample
+2. **Generate Script** - Pick an ad script (General, Pro, or Med)
 3. **Record Ad** - Use the script to record your ad with YOUR voice
 4. **Save & Download** - Keep recordings in your library or download
 
@@ -40,17 +42,16 @@ Record YOUR OWN voice for ads - no external services needed!
 - Your voice stays private (stored in browser)
 
 ### Quick Ad Scripts
-Pre-written ads for:
-- Lingua (Language Learning) - 15-90 second versions
-- Rise (Confidence Building) - 15-90 second versions
-- Flex Nexus (Business Communication) - 15-90 second versions
-- General Brand - 15-90 second versions
+Pre-written ads for the current 3 tiers — 15-90 second versions:
+- **Elevare General** ($99/$199) — group speaking, stop-freezing hook
+- **Elevare Pro** ($299/mo) — business English, employer-reimbursable
+- **Elevare Med** ($699/mo) — OET pass guarantee for internationally-trained nurses + doctors
 
 ### 📱 Voiceless Video Ads Tab (NEW!)
 Perfect for Instagram Reels, TikTok, LinkedIn, Facebook - where 80% watch with sound OFF!
 
 **How it works:**
-1. Select your program (Lingua, Rise, Flex Nexus, Bundle, or Free trial)
+1. Select your program (General, Pro, Med, AI Practice Bot, Extra 1:1, or Free trial)
 2. Choose ad length (5-10s, 15-30s, or 30-60s)
 3. Pick your platform (Instagram, TikTok, LinkedIn, Facebook, YouTube)
 4. Add optional key message/offer
