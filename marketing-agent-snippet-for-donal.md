@@ -1,5 +1,7 @@
 # Marketing-Agent JS Snippet for Donal — Drop-in 5-Product Taxonomy Update
 
+> ⚠️ **SUPERSEDED 2026-04-24** — site repositioned to 3-tier + add-ons taxonomy. The 5 products in this snippet (AI/Speak/Fluency) no longer exist. **Do NOT paste this as-is.** See [marketing/TODO-marketing-agent-rebuild.md](marketing/TODO-marketing-agent-rebuild.md) for the current snippet.
+>
 > Closes priority #1 in `marketing-agent-improvement-plan.md`. This is a ready-to-paste JavaScript block that Donal can drop into `marketing/marketing-dashboard.html` to wire in the 5-product taxonomy (Elevare AI / Speak / Fluency / Pro / Med). Saves ~4 hours of the 9-hr Week-1 critical path.
 
 ---

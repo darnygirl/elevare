@@ -1,5 +1,7 @@
 # Marketing Agent — Improvement Plan (2026-04-17)
 
+> ⚠️ **SUPERSEDED 2026-04-24** — site repositioned from 5-product (AI/Speak/Fluency/Pro/Med) to 3-tier + add-ons (General/Pro/Med + AI Bot/1:1/OET Bundle). The taxonomy in this doc is dead. See [marketing/TODO-marketing-agent-rebuild.md](marketing/TODO-marketing-agent-rebuild.md) for current scope.
+>
 > Audit of `/home/debby/Desktop/elevare-site/marketing/marketing-dashboard.html` + related config against the new 5-product taxonomy (Elevare AI / Speak / Fluency / Pro / Med). Owner: [Donal] to implement, [Debby] to supply new product copy from `courses/*.md`.
 
 ---
