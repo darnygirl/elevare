@@ -1,7 +1,57 @@
 # Marketing Agent — Improvement Plan (2026-04-17)
 
 > ⚠️ **SUPERSEDED 2026-04-24** — site repositioned from 5-product (AI/Speak/Fluency/Pro/Med) to 3-tier + add-ons (General/Pro/Med + AI Bot/1:1/OET Bundle). The taxonomy in this doc is dead. See [marketing/TODO-marketing-agent-rebuild.md](marketing/TODO-marketing-agent-rebuild.md) for current scope.
->
+
+---
+
+## Current Status (2026-04-24, after commit `c46c081`)
+
+This audit was written 2026-04-17 against a now-dead taxonomy. Most of the gaps it identified have since been closed by the rebuild plan in `marketing/TODO-marketing-agent-rebuild.md`. Status of every original finding:
+
+### Broken / stub-only items
+
+| Original finding | Status now | Evidence |
+|---|---|---|
+| API keys are `YOUR_xxx` placeholders (Mailchimp / Buffer / SendGrid / Resemble / 11Labs / Play.ht) | ❌ **Still true** | Phase 3 work — needs Buffer signup + token paste |
+| Save Settings button does nothing — no localStorage persistence | ✅ **Already fixed** (pre-session) | `localStorage` save at `marketing-dashboard.html:1914`, load at `:2305` |
+| Voice clone functions (Resemble / 11Labs / Play.ht) are uncalled stubs | ❌ **Still true** | Plus pre-existing JS parse bug at `marketing-dashboard.html:2192` (orphaned `try` block from prior refactor). Voice Studio doesn't run at all. |
+| Analytics dashboard hardcoded fake numbers (2.4K reach / 4.8% engagement / 156 clicks) | ✅ **Fixed in `c46c081`** | All stat values replaced with `—` placeholders + orange banner: *"Do not use any number on this page until it's live"* |
+| Calendar shows fake scheduled posts | ⚠️ **Partially fixed in `c46c081`** | Placeholder text updated to current tier names + disclaimer added: *"Real scheduling ships with Buffer (Phase 3)"*. UI still cosmetic but no longer misleading. |
+| Content queue lives in browser memory only | ❌ **Still true** | Phase 5+ work — explicit defer in TODO |
+| `postToPlatform()` just alerts "copy/paste manually" | ❌ **Still true** | Phase 3 work — needs Buffer access token |
+
+### Critical taxonomy gap
+
+| Original finding | Status now | Evidence |
+|---|---|---|
+| Dashboard only knows Lingua / Rise / Flex Nexus | ✅ **Fixed in `c46c081`** | `grep -c "Lingua\|Rise\|Flex Nexus"` returns **0** |
+| Zero references to Elevare AI / Speak / Fluency / Pro / Med | ✅ **N/A** — that 5-product taxonomy is also dead | Current taxonomy is General / Pro / Med + 3 add-ons (74 references confirmed) |
+| Pricing references `$149` (old Lingua), not `$199` (old Speak) | ✅ **Fixed in `c46c081`** | Now $99/$199 (General), $299 (Pro), $699 (Med) — matches current site at `index.html:1958-2047` |
+| No OET-related content, no medical-English templates — cannot pitch the highest-margin product | ✅ **Fixed in `c46c081`** | Full Elevare Med templates wired across LinkedIn, Instagram, voiceless ads, and voice clone scripts. Source: `marketing/pitch-scripts/elevare-pitch-med-*.docx` |
+
+### Net score (5 phases from rebuild plan)
+
+| Phase | Status | Commit |
+|---|---|---|
+| Phase 1 — taxonomy + content rewrite | ✅ **100% shipped** | `c46c081` (pushed to `origin/master`) |
+| Phase 2 — settings persistence + demo banner | ✅ Already shipped pre-session | (pre-existing) |
+| Phase 3 — Buffer integration / real posting | ❌ **Queued** — blocked on Buffer signup | — |
+| Phase 4 — kill fake analytics | ✅ **Shipped** | `c46c081` |
+| Phase 5 — real Meta analytics, voice clone, scheduling | ❌ **Deferred** per TODO scope lock | — |
+
+### What's left (real work)
+
+Two items are still live blockers, in priority order:
+
+1. **Buffer integration** (~3 hrs Donal time, after Debby signs up at buffer.com and pastes access token into Settings) — see Phase 3 in [marketing/TODO-marketing-agent-rebuild.md](marketing/TODO-marketing-agent-rebuild.md).
+2. **Pre-existing JS parse bug** at `marketing/marketing-dashboard.html:2192` — orphaned `try { const stream = await ... }` outside any function. ~5 min fix. Flagged in commit `c46c081` body.
+
+Everything else (voice clone, real analytics, Mailchimp, content queue persistence) is Phase 5+ and explicitly deferred until either MRR > $2k or Buffer-driven traffic proves the dashboard ROI.
+
+---
+
+## Original audit (2026-04-17 — kept for historical context)
+
 > Audit of `/home/debby/Desktop/elevare-site/marketing/marketing-dashboard.html` + related config against the new 5-product taxonomy (Elevare AI / Speak / Fluency / Pro / Med). Owner: [Donal] to implement, [Debby] to supply new product copy from `courses/*.md`.
 
 ---
