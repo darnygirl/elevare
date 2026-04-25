@@ -192,7 +192,7 @@ In Crisp or Tidio dashboard:
 Hi! 👋 Welcome to Elevare! I'm Luna, your virtual assistant.
 
 I can help you with:
-• Learning about our programs (Lingua, Rise, Flex Nexus)
+• Learning about our tiers (Elevare General, Pro, Med)
 • Booking a session or consultation
 • Becoming a tutor
 • Answering questions about pricing

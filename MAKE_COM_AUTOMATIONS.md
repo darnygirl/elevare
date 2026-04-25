@@ -31,8 +31,8 @@
      ┌────────────┼────────────┐
      ▼            ▼            ▼
 ┌─────────┐ ┌─────────┐ ┌─────────┐
-│ Lingua  │ │  Rise   │ │  Flex   │
-│ Path    │ │  Path   │ │  Nexus  │
+│ General │ │   Pro   │ │   Med   │
+│ Path    │ │  Path   │ │  Path   │
 └────┬────┘ └────┬────┘ └────┬────┘
      │            │            │
      ▼            ▼            ▼
@@ -65,7 +65,7 @@
 - Form: [Select your enrollment form]
 
 **Module 2: Router**
-- Condition: `{{Program}}` equals "Lingua" / "Rise" / "Flex Nexus"
+- Condition: `{{Program}}` equals "General" / "Pro" / "Med"
 - Each route adds different tags
 
 **Module 3: Google Sheets - Add Row**
