@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darnygirl.github.io/elevare/sitemap.xml
+Sitemap: https://elevaremind.io/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
