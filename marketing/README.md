@@ -15,7 +15,7 @@ Content generation for social media, email marketing, and voice ads — wired to
 - `marketing-dashboard.html` - Main dashboard with all features
 - `api-config.js` - API key configuration (you fill in your keys)
 - `pitch-scripts/` - Source-of-truth pitch scripts (6 .docx files, General + Med × 30s/2min/5min)
-- `TODO-marketing-agent-rebuild.md` - Rebuild spec (Phase 1 shipped, Phase 3 Buffer integration still to wire)
+- `TODO-marketing-agent-rebuild.md` - Rebuild spec (Phases 1, 2, 4 shipped; Phase 3 Buffer integration shipped 2026-04-25, awaiting live test with real Buffer token)
 
 ## Features
 
@@ -76,19 +76,23 @@ Perfect for Instagram Reels, TikTok, LinkedIn, Facebook - where 80% watch with s
 
 ## API Setup (Optional)
 
-These are optional - Voice Studio works WITHOUT any API keys!
+Voice Studio works WITHOUT any API keys. The integrations below unlock auto-posting.
 
-### Mailchimp (Email Marketing)
+### Buffer (Social Media Scheduling) — **wired**
+1. Get Access Token: buffer.com/developers/apps → Create App → access token
+2. Settings tab in dashboard → paste into "Buffer Access Token" → Save
+3. Make sure your social accounts (LinkedIn / Instagram / Twitter) are connected at buffer.com/app/account/channels
+4. Generate a post in Create tab → click the platform icon (LinkedIn / IG / X) → it queues to Buffer for review
+
+### Mailchimp (Email Marketing) — token storage only, sending not yet wired
 1. Get API key: mailchimp.com → Account → API keys
 2. Audience ID: Audience → Settings → Audience name and defaults
+3. Stored in localStorage but no auto-send yet — use Buffer for now
 
-### Buffer (Social Media Scheduling)
-1. Get Access Token: buffer.com → Apps → Create App
-2. Select which profiles to access
-
-### SendGrid (Email Sending)
+### SendGrid (Email Sending) — token storage only, sending not yet wired
 1. Get API Key: sendgrid.com → Settings → API Keys
 2. Create with "Full Access" permissions
+3. Stored but inactive — same as Mailchimp
 
 ## Best Posting Times (Based on Research)
 
