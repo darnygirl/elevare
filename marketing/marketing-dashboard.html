@@ -479,7 +479,7 @@
 
         <div class="tabs">
             <button class="tab active" onclick="showSection('create')">Content Create</button>
-            <button class="tab" onclick="showSection('voiceover')">🎙️ Voiceover</button>
+            <button class="tab" onclick="showSection('voiceover')">🎙️ Voice Studio</button>
             <button class="tab" onclick="showSection('voiceless')">📱 Voiceless Ads</button>
             <button class="tab" onclick="showSection('med')">🩺 Med Marketing</button>
             <button class="tab" onclick="showSection('calendar')">Post Calendar</button>
@@ -1459,49 +1459,63 @@ Debby & the Elevare Team`
             document.getElementById('loading').classList.add('show');
 
             setTimeout(() => {
-                let content = '';
-                let hashtags = hashtagBank[program].slice(0, 5).join(' ');
+                try {
+                    // Safe lookups: every program key falls back through professional → general
+                    const programTemplates = contentTemplates.linkedin[program] || contentTemplates.linkedin.general;
+                    const programTags = hashtagBank[program] || hashtagBank.general;
 
-                // Generate content based on templates or AI-like generation
-                if (contentType === 'social') {
-                    const templates = contentTemplates.linkedin[program]?.[tone] || contentTemplates.linkedin.general;
-                    content = templates[Math.floor(Math.random() * templates.length)];
-                    
-                    if (platform === 'instagram') {
-                        content = content.substring(0, 200) + '...\n\n' + content.substring(0, 100);
+                    let content = '';
+                    let hashtags = programTags.slice(0, 5).join(' ');
+
+                    if (contentType === 'social') {
+                        const templates = programTemplates[tone] || programTemplates.professional || contentTemplates.linkedin.general.professional;
+                        content = templates[Math.floor(Math.random() * templates.length)];
+
+                        if (platform === 'instagram') {
+                            // Instagram: pull from instagram object if available, else trim LinkedIn copy
+                            const igCopy = contentTemplates.instagram[program] || contentTemplates.instagram.general;
+                            content = Array.isArray(igCopy) && igCopy.length
+                                ? igCopy[Math.floor(Math.random() * igCopy.length)]
+                                : content.substring(0, 200);
+                        }
+                    } else if (contentType === 'email') {
+                        content = contentTemplates.email.weekly(program);
+                    } else if (contentType === 'whatsapp') {
+                        content = `Hey! 👋 Elevare here with your [${program}] update!\n\n${customPrompt || 'Check out our latest resources and tips for improving your communication skills.'}\n\nReply STOP to unsubscribe`;
+                    } else if (contentType === 'ad') {
+                        const adHooks = {
+                            general: 'Stop freezing in English conversations',
+                            pro: 'Lead the meeting. Deliver the pitch. Close the deal',
+                            med: 'OET Grade B in 12 weeks — or we keep coaching free',
+                            'ai-bot': 'Your English coach doesn\'t sleep',
+                            'tutor-1to1': 'Private 1:1 coaching on top of your group',
+                            'oet-bundle': 'Exam-month intensive + mock OET on the real rubric',
+                            testimonial: 'Real students, real progress, measured every 2 weeks'
+                        };
+                        content = `${adHooks[program] || 'Speak English with confidence'} — with Elevare's AI-facilitated peer groups.\n\n✓ Small-group speaking (4-8 people)\n✓ AI facilitator in every session\n✓ Progress measured every 2 weeks\n\n5-day free trial, no card: elevaremind.io`;
+                    } else {
+                        // Story or other unknown type
+                        const storyTemplates = programTemplates[tone] || programTemplates.professional || contentTemplates.linkedin.general.professional;
+                        content = storyTemplates[0] || 'Elevate your communication with Elevare.';
                     }
-                } else if (contentType === 'email') {
-                    content = contentTemplates.email.weekly(program);
-                } else if (contentType === 'whatsapp') {
-                    content = `Hey! 👋 Elevare here with your [${program}] update!\n\n${customPrompt || 'Check out our latest resources and tips for improving your communication skills.'}\n\nReply STOP to unsubscribe`;
-                } else if (contentType === 'ad') {
-                    const adHooks = {
-                        general: 'Stop freezing in English conversations',
-                        pro: 'Lead the meeting. Deliver the pitch. Close the deal',
-                        med: 'OET Grade B in 12 weeks — or we keep coaching free',
-                        'ai-bot': 'Your English coach doesn\'t sleep',
-                        'tutor-1to1': 'Private 1:1 coaching on top of your group',
-                        'oet-bundle': 'Exam-month intensive + mock OET on the real rubric',
-                        testimonial: 'Real students, real progress, measured every 2 weeks'
-                    };
-                    content = `${adHooks[program] || 'Speak English with confidence'} — with Elevare's AI-facilitated peer groups.\n\n✓ Small-group speaking (4-8 people)\n✓ AI facilitator in every session\n✓ Progress measured every 2 weeks\n\n5-day free trial, no card: elevaremind.io`;
-                } else {
-                    content = contentTemplates.linkedin[program]?.[tone]?.[0] || 'Elevate your communication with Elevare.';
+
+                    // Add custom prompt influence if provided
+                    if (customPrompt && contentType === 'social') {
+                        content += '\n\n' + customPrompt;
+                    }
+
+                    currentContent = content;
+                    currentHashtags = hashtags;
+
+                    document.getElementById('outputContent').textContent = content;
+                    document.getElementById('hashtags').innerHTML = '<span style="font-size: 11px; color: var(--text); display: block; margin-bottom: 8px;">Suggested Hashtags:</span>' +
+                        programTags.map(h => `<span class="hashtag-tag">${h}</span>`).join('');
+                } catch (err) {
+                    console.error('generateContent error:', err);
+                    document.getElementById('outputContent').textContent = 'Error generating content. Check the browser console (F12) and report the error message.';
+                } finally {
+                    document.getElementById('loading').classList.remove('show');
                 }
-
-                // Add custom prompt influence if provided
-                if (customPrompt && contentType === 'social') {
-                    content += '\n\n' + customPrompt;
-                }
-
-                currentContent = content;
-                currentHashtags = hashtags;
-
-                document.getElementById('outputContent').textContent = content;
-                document.getElementById('hashtags').innerHTML = '<span style="font-size: 11px; color: var(--text); display: block; margin-bottom: 8px;">Suggested Hashtags:</span>' +
-                    hashtagBank[program].map(h => `<span class="hashtag-tag">${h}</span>`).join('');
-
-                document.getElementById('loading').classList.remove('show');
             }, 1200);
         }
 
