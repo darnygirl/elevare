@@ -1008,7 +1008,7 @@
                 <!-- Content Section: Analytics -->
                 <div class="content-section" id="section-analytics">
                     <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fbbf24; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px;">
-                        📊 <strong>Analytics placeholders.</strong> Real weekly reach, engagement, and lead numbers will populate once Buffer integration ships (Phase 3). Do not use — and don't report — any number on this page until it's live.
+                        📊 <strong>Analytics placeholders.</strong> Reach, engagement, and lead numbers will populate once Buffer reporting is wired (next pass — Buffer posting itself is now live). Do not use — and don't report — any number on this page until it's live.
                     </div>
                     <div class="analytics-grid">
                         <div class="stat-card">
@@ -1555,8 +1555,65 @@ Debby & the Elevare Team`
             }
         }
 
-        function postToPlatform(platform) {
-            alert(`To enable auto-posting:\n\n1. Go to Settings\n2. Add your ${platform.charAt(0).toUpperCase() + platform.slice(1)} API key\n3. Click Connect\n\nFor now, copy the content and post manually!`);
+        let _postInFlight = false;
+        async function postToPlatform(platform) {
+            if (_postInFlight) return;
+
+            const stored = localStorage.getItem('elevare_marketing_api');
+            const token = stored ? JSON.parse(stored).bufferToken : null;
+
+            if (!token) {
+                alert(`Buffer not connected.\n\n1. Settings tab → paste Buffer access token → Save\n2. Get a token: buffer.com/developers/api/oauth\n\nFor now, copy and post manually.`);
+                return;
+            }
+
+            const content = document.getElementById('outputContent')?.innerText?.trim();
+            if (!content) {
+                alert('No content to post — generate something in the Create tab first.');
+                return;
+            }
+
+            _postInFlight = true;
+            try {
+                const profilesRes = await fetch(
+                    `https://api.bufferapp.com/1/profiles.json?access_token=${encodeURIComponent(token)}`
+                );
+                if (!profilesRes.ok) throw new Error(`Buffer profile fetch returned ${profilesRes.status}`);
+                const profiles = await profilesRes.json();
+
+                if (!Array.isArray(profiles)) {
+                    throw new Error(profiles.error || 'Buffer returned an unexpected response — token may be invalid');
+                }
+
+                const match = profiles.find(p => p.service === platform);
+                if (!match) {
+                    alert(`No ${platform} account connected to Buffer.\n\nConnect it at buffer.com/app/account/channels, then retry.`);
+                    return;
+                }
+
+                const body = new URLSearchParams();
+                body.append('text', content);
+                body.append('profile_ids[]', match.id);
+                body.append('access_token', token);
+
+                const postRes = await fetch('https://api.bufferapp.com/1/updates/create.json', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: body.toString()
+                });
+                const result = await postRes.json();
+
+                if (!postRes.ok || !result.success) {
+                    throw new Error(result.error || result.message || `Buffer rejected the post (HTTP ${postRes.status})`);
+                }
+
+                alert(`Queued to Buffer (${platform}).\n\nReview & approve at buffer.com/app/profile/${match.id}/queue/list`);
+            } catch (err) {
+                console.error('postToPlatform error:', err);
+                alert(`Buffer post failed: ${err.message}\n\nCheck:\n- Token is valid (Settings tab)\n- ${platform} account connected at buffer.com/app/account/channels\n- Network connection`);
+            } finally {
+                _postInFlight = false;
+            }
         }
 
         // Voiceless Video Ad Generator — 3-tier taxonomy
@@ -2180,114 +2237,6 @@ async function toggleAdRecording() {
                 } catch (err) {
                     alert('Please allow microphone access to record your ad.');
                     console.error(err);
-                }
-            } else {
-                mediaRecorder.stop();
-                isRecordingAd = false;
-                document.getElementById('recordAdIcon').textContent = '●';
-                document.getElementById('recordAdIcon').style.color = 'var(--gold)';
-                document.getElementById('recordAdText').textContent = 'Record Ad';
-                document.getElementById('recordAdBtn').classList.remove('recording');
-            }
-        }
-                
-                try {
-                    const stream = await navigator.mediaDevices.getUserMedia({ 
-                        audio: {
-                            echoCancellation: false,
-                            noiseSuppression: false,
-                            autoGainControl: true,
-                            sampleRate: 44100,
-                            channelCount: 1
-                        }
-                    });
-                    mediaRecorder = new MediaRecorder(stream, {
-                        mimeType: 'audio/webm;codecs=opus'
-                    });
-                    audioChunks = [];
-                    recordingSeconds = 0;
-
-                    mediaRecorder.ondataavailable = (e) => {
-                        audioChunks.push(e.data);
-                    };
-
-                    mediaRecorder.onstop = () => {
-                        const blob = new Blob(audioChunks, { type: 'audio/webm' });
-                        currentAdBlob = blob;
-                        currentAdUrl = URL.createObjectURL(blob);
-                        
-                        document.getElementById('adPlayback').src = currentAdUrl;
-                        document.getElementById('adPlaybackArea').style.display = 'block';
-                        
-                        stream.getTracks().forEach(track => track.stop());
-                        
-                        if (recordingTimer) {
-                            clearInterval(recordingTimer);
-                            recordingTimer = null;
-                        }
-                    };
-
-                    mediaRecorder.start();
-                    isRecordingAd = true;
-                    document.getElementById('recordAdIcon').textContent = '■';
-                    document.getElementById('recordAdIcon').style.color = '#ef4444';
-                    document.getElementById('recordAdText').textContent = 'Stop';
-                    document.getElementById('recordAdBtn').classList.add('recording');
-                    document.getElementById('recordingTimer').style.display = 'block';
-                    
-                    recordingTimer = setInterval(() => {
-                        recordingSeconds++;
-                        const mins = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
-                        const secs = (recordingSeconds % 60).toString().padStart(2, '0');
-                        document.getElementById('recordingTimer').textContent = `${mins}:${secs}`;
-                    }, 1000);
-                    
-                } catch (err) {
-                    // Fallback to default if high quality fails
-                    try {
-                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                        mediaRecorder = new MediaRecorder(stream);
-                        audioChunks = [];
-                        recordingSeconds = 0;
-
-                        mediaRecorder.ondataavailable = (e) => {
-                            audioChunks.push(e.data);
-                        };
-
-                        mediaRecorder.onstop = () => {
-                            const blob = new Blob(audioChunks, { type: 'audio/webm' });
-                            currentAdBlob = blob;
-                            currentAdUrl = URL.createObjectURL(blob);
-                            
-                            document.getElementById('adPlayback').src = currentAdUrl;
-                            document.getElementById('adPlaybackArea').style.display = 'block';
-                            
-                            stream.getTracks().forEach(track => track.stop());
-                            
-                            if (recordingTimer) {
-                                clearInterval(recordingTimer);
-                                recordingTimer = null;
-                            }
-                        };
-
-                        mediaRecorder.start();
-                        isRecordingAd = true;
-                        document.getElementById('recordAdIcon').textContent = '■';
-                        document.getElementById('recordAdIcon').style.color = '#ef4444';
-                        document.getElementById('recordAdText').textContent = 'Stop';
-                        document.getElementById('recordAdBtn').classList.add('recording');
-                        document.getElementById('recordingTimer').style.display = 'block';
-                        
-                        recordingTimer = setInterval(() => {
-                            recordingSeconds++;
-                            const mins = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
-                            const secs = (recordingSeconds % 60).toString().padStart(2, '0');
-                            document.getElementById('recordingTimer').textContent = `${mins}:${secs}`;
-                        }, 1000);
-                    } catch (fallbackErr) {
-                        alert('Please allow microphone access to record your ad.');
-                        console.error(fallbackErr);
-                    }
                 }
             } else {
                 mediaRecorder.stop();
