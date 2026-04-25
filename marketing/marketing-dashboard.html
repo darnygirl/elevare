@@ -505,7 +505,7 @@
             <button class="tab" onclick="showSection('clone')">🎤 Voice Clone</button>
         </div>
 
-        <div class="grid">
+        <div class="content-section active" id="section-create">
             <div class="card">
                 <div class="card-header">
                     <span class="card-title">Content Generator</span>
@@ -602,7 +602,7 @@
                         </button>
                     </div>
 </div>
-            </div><!-- end .grid -->
+            </div><!-- end #section-create -->
 
             <!-- Content Section: Voice Studio -->
             <div class="content-section" id="section-voiceover">
@@ -728,9 +728,8 @@
                     </div>
                 </div>
 
-                <!-- Content Section: Create -->
-                <div class="content-section active" id="section-create">
-                    <div class="card">
+                <!-- Content Queue widget (inside Voice Studio section) -->
+                <div class="card">
                         <div class="card-header">
                             <span class="card-title">Content Queue</span>
                             <button class="btn-secondary" style="width: auto; padding: 8px 16px;" onclick="saveToQueue()">Save to Queue</button>
