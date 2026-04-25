@@ -1419,7 +1419,11 @@ Debby & the Elevare Team`
 
         let currentContent = '';
         let currentHashtags = '';
-        let savedContent = [];
+        let savedContent = JSON.parse(localStorage.getItem('elevare_content_queue') || '[]');
+
+        function persistQueue() {
+            localStorage.setItem('elevare_content_queue', JSON.stringify(savedContent));
+        }
 
         function showSection(section) {
             // Hide all sections
@@ -1526,6 +1530,7 @@ Debby & the Elevare Team`
             };
 
             savedContent.push(content);
+            persistQueue();
             renderContentQueue();
 
             alert('Content saved to queue!');
@@ -2368,6 +2373,7 @@ async function toggleAdRecording() {
         window.onload = function() {
             renderCalendar();
             renderAdLibrary();
+            renderContentQueue();
 
             const savedApi = localStorage.getItem('elevare_marketing_api');
             let hasAnyKey = false;
