@@ -312,10 +312,7 @@
         }
 
         .hero-card-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block;
             background: var(--gold);
             color: var(--navy);
             font-size: 12px;
@@ -323,6 +320,8 @@
             padding: 6px 20px;
             border-radius: 20px;
             letter-spacing: 2px;
+            width: fit-content;
+            margin: 0 auto 16px;
         }
 
         .hero-card h3 {
@@ -330,7 +329,7 @@
             color: var(--cream);
             margin-bottom: 12px;
             text-align: center;
-            margin-top: 8px;
+            margin-top: 0;
         }
 
         .hero-card > p {
@@ -1883,6 +1882,8 @@
                     <li><a href="frontend/pro.html">Pro</a></li>
                     <li><a href="frontend/med.html">Med</a></li>
                     <li><a href="frontend/pricing.html">Pricing</a></li>
+                    <li><a href="frontend/blog.html">Blog</a></li>
+                    <li><a href="frontend/careers.html">Careers</a></li>
                     <li><a href="https://wa.me/66949690869?text=Hi%20Elevare!%20I%27d%20like%20to%20learn%20more" class="nav-cta" target="_blank" rel="noopener">💬 WhatsApp</a></li>
                 </ul>
             </div>
@@ -3123,55 +3124,48 @@
             }
         }
 
-        /* Exit Intent Popup */
+        /* Exit Intent Slide-in (bottom-right, non-blocking) */
         .exit-popup-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            bottom: 24px;
+            right: 24px;
+            max-width: 360px;
+            width: calc(100% - 48px);
             z-index: 10000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.35s ease, opacity 0.35s ease;
         }
 
         .exit-popup-overlay.show {
-            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .exit-popup-overlay { transition: opacity 0.2s ease; transform: none; }
         }
 
         .exit-popup {
             background: var(--navy);
-            border: 2px solid var(--gold);
-            border-radius: 24px;
-            padding: 48px;
-            max-width: 500px;
-            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+            text-align: left;
             position: relative;
-            animation: popupSlideIn 0.3s ease;
-        }
-
-        @keyframes popupSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .exit-popup-close {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 10px;
+            right: 12px;
             background: none;
             border: none;
             color: var(--text-light);
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             padding: 4px;
             line-height: 1;
@@ -3182,29 +3176,31 @@
         }
 
         .exit-popup h3 {
-            font-size: 28px;
+            font-size: 18px;
             color: var(--cream);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+            padding-right: 24px;
         }
 
         .exit-popup p {
             color: var(--text);
-            margin-bottom: 24px;
-            font-size: 15px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .exit-popup .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 10px;
         }
 
         .exit-popup input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 11px 13px;
             border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 8px;
             background: var(--navy-light);
             color: var(--cream);
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .exit-popup input:focus {
@@ -3212,27 +3208,38 @@
             border-color: var(--gold);
         }
 
-        .exit-popup button {
+        .exit-popup button[type="submit"] {
             width: 100%;
-            padding: 16px;
+            padding: 12px;
             background: var(--gold);
             color: var(--navy);
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.2s;
         }
 
-        .exit-popup button:hover {
+        .exit-popup button[type="submit"]:hover {
             background: var(--gold-light);
         }
 
         .exit-popup .note {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-light);
-            margin-top: 12px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .exit-popup-overlay {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                width: auto;
+                max-width: none;
+            }
         }
 
         .whatsapp-float svg {
@@ -3285,27 +3292,37 @@
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
+    <!-- Typebot chat bubble (replaces Tidio 2026-05-05) -->
+    <script type="module">
+      import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+      Typebot.initBubble({
+        typebot: "elevare-site-chat-08xihpw",
+        theme: {
+          button: { backgroundColor: "#c9a227", iconColor: "#0d1b2a" },
+          chatWindow: { backgroundColor: "#fffaf0" }
+        }
+      })
+    </script>
 
-    <!-- Exit Intent Popup -->
-    <div class="exit-popup-overlay" id="exitPopup">
+    <!-- Exit Intent Slide-in -->
+    <aside class="exit-popup-overlay" id="exitPopup" role="dialog" aria-labelledby="exitPopupTitle" aria-hidden="true">
         <div class="exit-popup">
-            <button class="exit-popup-close" onclick="closeExitPopup()">&times;</button>
-            <h3>Wait! Don't Leave Empty-Handed</h3>
-            <p>Get our FREE 5-Day Confidence Kickstart before you go. Drawing on 10+ years teaching English, we're building something new — and you're invited.</p>
+            <button class="exit-popup-close" onclick="closeExitPopup()" aria-label="Close">&times;</button>
+            <h3 id="exitPopupTitle">Before you go — a note from Deborah</h3>
+            <p>Drawing on 10+ years teaching English, I'm building something new with a small founding cohort. Want the 5-day starter?</p>
             <form id="exitPopupForm" action="https://formspree.io/f/xwpkvgpn" method="POST">
                 <div class="form-group">
-                    <input type="text" name="First Name" placeholder="First Name" required>
+                    <input type="text" name="First Name" placeholder="First name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="Email" placeholder="Your email address" required>
+                    <input type="email" name="Email" placeholder="Your email" required>
                 </div>
                 <input type="hidden" name="_subject" value="Exit Popup Signup: 5-Day Confidence Kickstart">
-                <button type="submit" onclick="closeExitPopup()">Get Free Access →</button>
+                <button type="submit">Send me the starter →</button>
             </form>
-            <p class="note">🔒 No credit card required. Unsubscribe anytime.</p>
+            <p class="note">No credit card. Unsubscribe anytime.</p>
         </div>
-    </div>
+    </aside>
 
     <script>
         // Sticky Header on Scroll
@@ -3325,35 +3342,71 @@
             lastScrollY = currentScrollY;
         });
 
-        // Exit Intent Popup
-        let exitPopupShown = false;
-        const exitPopup = document.getElementById('exitPopup');
+        // Exit Intent — engagement-gated, 30-day suppression, soft trigger
+        (function () {
+            const exitPopup = document.getElementById('exitPopup');
+            const STORAGE_KEY = 'exitPopupDismissed';
+            const SUPPRESS_DAYS = 30;
+            const ENGAGEMENT_DWELL_MS = 25000;
+            const ENGAGEMENT_SCROLL_PCT = 0.4;
+            const TRIGGER_DELAY_MS = 300;
 
-        function closeExitPopup() {
-            exitPopup.classList.remove('show');
-        }
+            try {
+                const dismissed = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+                if (dismissed && (Date.now() - dismissed) < SUPPRESS_DAYS * 86400000) return;
+            } catch (e) { /* storage blocked — proceed */ }
 
-        // Show exit popup when mouse leaves viewport (desktop only)
-        document.addEventListener('mouseout', (e) => {
-            if (!exitPopupShown && e.clientY <= 0 && window.innerWidth > 768) {
-                exitPopupShown = true;
+            let shown = false;
+            let triggerTimer = null;
+            const startedAt = Date.now();
+
+            function suppress() {
+                try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+            }
+
+            function close() {
+                exitPopup.classList.remove('show');
+                exitPopup.setAttribute('aria-hidden', 'true');
+                suppress();
+            }
+
+            function engaged() {
+                // If user already scrolled past the inline 5-day signup, skip — don't double-ask.
+                const inline = document.getElementById('signup');
+                if (inline && inline.getBoundingClientRect().bottom < 0) return false;
+                const dwellOk = (Date.now() - startedAt) >= ENGAGEMENT_DWELL_MS;
+                const docH = document.documentElement.scrollHeight || 1;
+                const scrollPct = (window.scrollY + window.innerHeight) / docH;
+                return dwellOk || scrollPct >= ENGAGEMENT_SCROLL_PCT;
+            }
+
+            function maybeShow() {
+                if (shown || !engaged()) return;
+                shown = true;
                 exitPopup.classList.add('show');
+                exitPopup.setAttribute('aria-hidden', 'false');
             }
-        });
 
-        // Close popup on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeExitPopup();
-            }
-        });
+            document.addEventListener('mouseout', (e) => {
+                if (shown || e.clientY > 0 || window.innerWidth <= 768) return;
+                clearTimeout(triggerTimer);
+                triggerTimer = setTimeout(maybeShow, TRIGGER_DELAY_MS);
+            });
 
-        // Close popup on overlay click
-        exitPopup.addEventListener('click', (e) => {
-            if (e.target === exitPopup) {
-                closeExitPopup();
-            }
-        });
+            document.addEventListener('mouseover', () => {
+                clearTimeout(triggerTimer);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && exitPopup.classList.contains('show')) close();
+            });
+
+            const form = document.getElementById('exitPopupForm');
+            if (form) form.addEventListener('submit', suppress);
+
+            // Expose for inline onclick handlers
+            window.closeExitPopup = close;
+        })();
 
     </script>
 </body>

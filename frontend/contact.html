@@ -581,7 +581,17 @@
             </div>
         </div>
     </footer>
-    <script src="https://code.tidio.co/txkx1eo6d9blr90qld9pg2gpyqzhdhwh.js" async></script>
+    <!-- Typebot chat bubble (replaces Tidio 2026-05-05) -->
+    <script type="module">
+      import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+      Typebot.initBubble({
+        typebot: "elevare-site-chat-08xihpw",
+        theme: {
+          button: { backgroundColor: "#c9a227", iconColor: "#0d1b2a" },
+          chatWindow: { backgroundColor: "#fffaf0" }
+        }
+      })
+    </script>
     <script>
         const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
