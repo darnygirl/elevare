@@ -16,9 +16,6 @@
             --cream: #faf8f5;
             --text: #e0e1dd;
             --success: #22c55e;
-            --lingua: #3b82f6;
-            --rise: #f59e0b;
-            --flexnexus: #8b5cf6;
             /* 5-product taxonomy — Nord-ish palette matching the user-badge design */
             --med: #1b9e77;
             --pro: #5a4fcf;
@@ -185,12 +182,6 @@
             border-color: var(--gold);
         }
 
-        .program-tab.lingua { background: rgba(59, 130, 246, 0.2); color: var(--lingua); }
-        .program-tab.lingua.active { background: var(--lingua); color: white; }
-        .program-tab.rise { background: rgba(245, 158, 11, 0.2); color: var(--rise); }
-        .program-tab.rise.active { background: var(--rise); color: white; }
-        .program-tab.flexnexus { background: rgba(139, 92, 246, 0.2); color: var(--flexnexus); }
-        .program-tab.flexnexus.active { background: var(--flexnexus); color: white; }
         .program-tab.med { background: rgba(6, 182, 212, 0.2); color: var(--med); }
         .program-tab.med.active { background: var(--med); color: white; }
         .program-tab.pro { background: rgba(100, 116, 139, 0.2); color: var(--pro); }
@@ -338,7 +329,7 @@
         }
 
         .message.ai .message-avatar { background: var(--gold); }
-        .message.user .message-avatar { background: var(--lingua); }
+        .message.user .message-avatar { background: var(--gold); }
 
         .message-content {
             max-width: 70%;
@@ -355,7 +346,7 @@
         }
 
         .message.user .message-content {
-            background: var(--lingua);
+            background: var(--gold);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -596,7 +587,7 @@
                 <div class="user-welcome">
                     <div class="user-welcome-main">Welcome back!</div>
                     <div class="user-welcome-sub">
-                        <span id="studentType">Lingua</span> Student
+                        <span id="studentType">Elevare Med</span> Student
                         <span class="user-badge med" id="programBadge">🩺</span>
                     </div>
                 </div>
@@ -627,9 +618,6 @@
                 <button class="program-tab fluency" onclick="selectProgram('fluency')">🎯 Fluency</button>
                 <button class="program-tab speak" onclick="selectProgram('speak')">💬 Speak</button>
                 <button class="program-tab ai" onclick="selectProgram('ai')">🤖 AI</button>
-                <button class="program-tab lingua" onclick="selectProgram('lingua')">🌍 Lingua</button>
-                <button class="program-tab rise" onclick="selectProgram('rise')">💪 Rise</button>
-                <button class="program-tab flexnexus" onclick="selectProgram('flexnexus')">💼 Flex Nexus</button>
             </div>
 
             <!-- Course Progress Overview -->
@@ -799,15 +787,15 @@
                     <div>
                         <div class="module-number">MODULE 8</div>
                         <div class="module-title">🚀 Program-Specific Mastery</div>
-                        <div class="module-lessons">4 Tracks: Lingua, Rise, Flex Nexus, Bundle Integration</div>
+                        <div class="module-lessons">4 Tracks: General, Med, Pro, Bundle Integration</div>
                     </div>
                     <div style="font-size: 24px;" id="module8Arrow">▼</div>
                 </div>
                 <div id="module8Content" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="display: grid; gap: 8px;">
-                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,1)">🌍 8.1 Lingua Track: Language Learning</div>
-                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,2)">💪 8.2 Rise Track: Confidence Building</div>
-                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,3)">💼 8.3 Flex Nexus Track: Professional Communication</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,1)">🌍 8.1 General Track: Fluency + Confidence</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,2)">⚕️ 8.2 Med Track: OET + Clinical English</div>
+                        <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,3)">💼 8.3 Pro Track: Business + Professional Communication</div>
                         <div class="lesson-item" onclick="event.stopPropagation(); openLesson(8,4)">🎯 8.4 Bundle: Complete Integration</div>
                     </div>
                 </div>
@@ -1088,12 +1076,12 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px;">
                     <div class="feedback-card">
-                        <div class="feedback-score" style="color: var(--lingua);">42%</div>
+                        <div class="feedback-score" style="color: #3b82f6;">42%</div>
                         <div class="feedback-label">Group A: AI Only</div>
                         <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
                     </div>
                     <div class="feedback-card">
-                        <div class="feedback-score" style="color: var(--rise);">58%</div>
+                        <div class="feedback-score" style="color: #f59e0b;">58%</div>
                         <div class="feedback-label">Group B: Human Only</div>
                         <div style="font-size: 11px; color: var(--text); margin-top: 4px;">Progress Score</div>
                     </div>
@@ -1140,10 +1128,7 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
             pro: { name: 'Elevare Pro', icon: '💼', badge: 'pro', color: '#64748b' },
             fluency: { name: 'Elevare Fluency', icon: '🎯', badge: 'fluency', color: '#10b981' },
             speak: { name: 'Elevare Speak', icon: '💬', badge: 'speak', color: '#f43f5e' },
-            ai: { name: 'Elevare AI', icon: '🤖', badge: 'ai', color: '#6366f1' },
-            lingua: { name: 'Lingua', icon: '🌍', badge: 'lingua', color: '#3b82f6' },
-            rise: { name: 'Rise', icon: '💪', badge: 'rise', color: '#f59e0b' },
-            flexnexus: { name: 'Flex Nexus', icon: '💼', badge: 'flexnexus', color: '#8b5cf6' }
+            ai: { name: 'Elevare AI', icon: '🤖', badge: 'ai', color: '#6366f1' }
         };
 
         function selectProgram(program) {
@@ -1238,9 +1223,9 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
                 '7.3': 'Handling Difficult Questions',
                 '7.4': 'Debate & Argumentation',
                 '7.5': 'Public Speaking Foundations',
-                '8.1': 'Lingua Track: Language Learning',
-                '8.2': 'Rise Track: Confidence Building',
-                '8.3': 'Flex Nexus Track: Professional Communication',
+                '8.1': 'General Track: Fluency + Confidence',
+                '8.2': 'Med Track: OET + Clinical English',
+                '8.3': 'Pro Track: Business + Professional Communication',
                 '8.4': 'Bundle: Complete Integration'
             };
             const lessonId = module + '.' + lesson;
