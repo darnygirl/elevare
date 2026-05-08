@@ -1,6 +1,8 @@
 # Recording Pack — Tomorrow
 
-> 4 tutors × (3 photos + 1× 30-sec clip) · ~30 min per tutor with prep · anchored to current 3-tier taxonomy (General / Pro / Med)
+> 5 angle clips · 30 sec each · recorded by Debby today · anchored to current 3-tier taxonomy (General / Pro / Med)
+>
+> Tutor variants come Phase 2 once coaches are confirmed — swap into the same Hook / Promise / Proof / CTA structure.
 
 ---
 
@@ -41,58 +43,48 @@ Every clip follows the same 4-beat structure. 30 sec ≈ 75 words.
 
 ---
 
-## Script 1 — Amara M. · Speaking & Fluency Coach · Elevare General ($99/mo)
+## Script 1 — General angle · Debby · $99/mo speaking groups
 
-Scaffold only — adapt to your own voice.
-
-- **Hook**: "You've studied English for years — and you still freeze when someone talks to you."
-- **Promise**: "I run the speaking groups at Elevare. Small — 4 to 8 people. Twice a week. An AI facilitator that won't let anyone hide."
-- **Proof**: "Last week a student who hadn't spoken in a month ran the whole closing round. That's what the group does."
-- **CTA**: "If you're tired of apps that don't talk back — come talk back. Elevare General. Five days free."
-
-Retake tip: if you trip on "facilitator," say "AI co-host."
+- **Hook**: "You've studied English for years. You still freeze when someone talks to you."
+- **Promise**: "I'm Debby. I built Elevare. I run the first General groups myself — four to eight people, twice a week, sixty minutes."
+- **Proof**: "Ten years teaching English has shown me one thing: the breakthrough doesn't come from better grammar. It comes from more reps, with stakes."
+- **CTA**: "Five days free, no card. Sit in a real session. Link in the description."
 
 ---
 
-## Script 2 — James C. · Confidence & Presence Coach · Cross-tier
+## Script 2 — Confidence angle · Debby · cross-tier
 
 - **Hook**: "Most people don't have an English problem. They have a confidence problem wearing an English costume."
-- **Promise**: "I work on what apps can't fix — the pause before you speak, the backing down, the shrinking."
-- **Proof**: "I had a nurse last month who ran out of words in interviews. Not because she didn't have them — because she didn't trust them. Six sessions later, she landed the job."
-- **CTA**: "If that's you — come find your voice at Elevare. Five days free, no card."
-
-Retake tip: pause a beat after "English costume." It lands better slow.
+- **Promise**: "I'm Debby. Elevare exists for what apps can't fix — the pause before you speak, the backing down, the shrinking."
+- **Proof**: "You don't fix that by drilling grammar. You fix it the way you fix anything performative — reps, with real people, with someone who corrects you in real time."
+- **CTA**: "Come find your voice. Five days free, no card. Link in the description."
 
 ---
 
-## Script 3 — David K. · Business English Coach · Elevare Pro ($299/mo)
+## Script 3 — Pro angle · Debby · $299/mo business English
 
-- **Hook**: "You're functional in English meetings. You want to be commanding. Those are different kinds of work."
-- **Promise**: "I coach Pro students through the four moments that decide careers in English — leading, pitching, negotiating, writing."
-- **Proof**: "Your real upcoming meetings become the curriculum. Last quarter one of mine closed a six-figure deal — deck and English, tuned over three weeks."
-- **CTA**: "If you want the room to listen when you talk — Elevare Pro. Two ninety-nine a month. Most employers reimburse."
-
-Retake tip: say dollars slow. "Two-ninety-nine" > "two hundred ninety-nine."
+- **Hook**: "You're 'fluent' in English. So why are you still nervous in meetings?"
+- **Promise**: "I'm Debby. I built Elevare Pro for the gap between functional and commanding — two different kinds of work."
+- **Proof**: "Weekly senior-coach drop, small-group scenario practice, AI drilling between sessions. Your real upcoming meeting is the lesson."
+- **CTA**: "Two ninety-nine a month, often employer-reimbursed. Free ten-minute assessment. WhatsApp link in the description."
 
 ---
 
-## Script 4 — 4th tutor (or Amara doubling as OET specialist) · Elevare Med ($699/mo)
+## Script 4 — Med angle · Debby · $699/mo OET for nurses & doctors
 
-- **Hook**: "Sixty percent of international nurses fail OET speaking on the first attempt. Not on knowledge — on rehearsal."
-- **Promise**: "I coach nurses and doctors through the twelve-week path to OET Grade B. One-to-one. Clinical role-plays every week."
-- **Proof**: "The gap between C-plus and B isn't more vocabulary — it's rubric-specific coaching. That's what the twelve weeks give you."
-- **CTA**: "Grade B in twelve weeks, or we keep coaching free. Elevare Med. Book your assessment."
-
-Retake tip: say the guarantee flat, not cheerful. It hits harder.
+- **Hook**: "Nurse or doctor trying to register in the UK, Australia, New Zealand, or Ireland? Your English isn't the problem. OET is."
+- **Promise**: "I'm Debby. Nurse, TESOL-qualified, founder of Elevare Med. Twelve-week OET path."
+- **Proof**: "Weekly one-to-one with an OET coach. Group practice with peers. Clinical scenarios on WhatsApp. You pass, or we keep coaching free."
+- **CTA**: "Five days free, no card. WhatsApp link in the description. Let's get you registered."
 
 ---
 
-## Founder intro — Debby (optional, if time)
+## Script 5 — Founder intro · Debby · overall
 
 - **Hook**: "I've taught English online for ten years."
-- **Promise**: "Most of my students weren't stuck on grammar — they were stuck on reps. So I built Elevare around reps."
-- **Proof**: "Three tiers. One AI facilitator nobody hides from. One 12-week OET path. That's it."
-- **CTA**: "Come build your English with me."
+- **Promise**: "Most of my students weren't stuck on grammar. They were stuck on reps. So I built Elevare around reps."
+- **Proof**: "Three tiers — General, Pro, Med. Small groups. AI facilitation that pulls every voice in. For nurses prepping OET, a twelve-week path with a pass-or-keep-coaching guarantee."
+- **CTA**: "Five days free on any tier. Come build the reps. Link in the description."
 
 ---
 

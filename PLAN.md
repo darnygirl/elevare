@@ -122,7 +122,7 @@ Depends on Saturday list status. Best case:
 |---|---|---|
 | 2026-04-18 | Pricing rethink: AI $19, Pro $549, Fluency $175×3 | Was 5-product taxonomy — **superseded** by 3-tier pivot |
 | 2026-04-24 | Site pivoted to 3 tiers + 3 add-ons | Commit `4613f52` |
-| 2026-04-24 | Marketing agent rebuild scope = 9hr handed to Donal | Rebuild spec in `marketing/TODO-marketing-agent-rebuild.md` |
+| 2026-04-24 | Marketing agent rebuild scope = 9hr (Debby owns build) | Rebuild spec in `marketing/TODO-marketing-agent-rebuild.md` |
 | 2026-04-24 | Buffer chosen over Mailchimp | Attacks avoidance #2 (posting) directly |
 
 ---

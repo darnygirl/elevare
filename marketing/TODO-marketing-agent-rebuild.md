@@ -1,6 +1,6 @@
 # TODO — Marketing Agent Rebuild (current 3-tier taxonomy)
 
-**Created:** 2026-04-24 by Nick (Claude) for Donal × Debby
+**Created:** 2026-04-24 by Nick (Claude) for Debby (builder; Donal not involved on this one)
 **Supersedes:** `../marketing-agent-improvement-plan.md` + `../marketing-agent-snippet-for-donal.md` (both targeted dead 5-product taxonomy)
 **Goal:** Move marketing dashboard from non-functional demo → real tool that Debby can post from.
 **Estimated effort:** 9-12 hrs across 4 phases. Ship Phase 1 + 2 first (~5 hrs) — that alone unblocks Debby.
