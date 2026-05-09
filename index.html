@@ -3278,20 +3278,15 @@
     -->
 
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,es,fr,de,zh-CN,ja,ko,pt,ar,hi,ru,nl,pl,tr,vi,th,id,ms,sv,da,no,fi',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-
         function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Google Translate widget removed 2026-05-09 — was overlapping the
+         site header. Modern browsers (Chrome, Edge, Safari) provide native
+         translation built-in, so the widget is redundant. -->
+
     <!-- Typebot chat bubble (replaces Tidio 2026-05-05) -->
     <script type="module">
       import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'

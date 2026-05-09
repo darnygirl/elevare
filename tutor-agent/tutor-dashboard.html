@@ -186,12 +186,8 @@
         .program-tab.med.active { background: var(--med); color: white; }
         .program-tab.pro { background: rgba(100, 116, 139, 0.2); color: var(--pro); }
         .program-tab.pro.active { background: var(--pro); color: white; }
-        .program-tab.fluency { background: rgba(16, 185, 129, 0.2); color: var(--fluency); }
-        .program-tab.fluency.active { background: var(--fluency); color: white; }
-        .program-tab.speak { background: rgba(244, 63, 94, 0.2); color: var(--speak); }
-        .program-tab.speak.active { background: var(--speak); color: white; }
-        .program-tab.ai { background: rgba(99, 102, 241, 0.2); color: var(--ai); }
-        .program-tab.ai.active { background: var(--ai); color: white; }
+        .program-tab.general { background: rgba(16, 185, 129, 0.2); color: var(--fluency); }
+        .program-tab.general.active { background: var(--fluency); color: white; }
 
         /* Module Grid */
         .modules-grid {
@@ -615,9 +611,7 @@
             <div class="program-tabs">
                 <button class="program-tab med active" onclick="selectProgram('med')">🩺 Med</button>
                 <button class="program-tab pro" onclick="selectProgram('pro')">💼 Pro</button>
-                <button class="program-tab fluency" onclick="selectProgram('fluency')">🎯 Fluency</button>
-                <button class="program-tab speak" onclick="selectProgram('speak')">💬 Speak</button>
-                <button class="program-tab ai" onclick="selectProgram('ai')">🤖 AI</button>
+                <button class="program-tab general" onclick="selectProgram('general')">🎯 General</button>
             </div>
 
             <!-- Course Progress Overview -->
@@ -1126,9 +1120,7 @@ cd /home/debby/Desktop/Mytravels/tutor-agent && pip install openai flask && OPEN
         const programData = {
             med: { name: 'Elevare Med', icon: '🩺', badge: 'med', color: '#06b6d4' },
             pro: { name: 'Elevare Pro', icon: '💼', badge: 'pro', color: '#64748b' },
-            fluency: { name: 'Elevare Fluency', icon: '🎯', badge: 'fluency', color: '#10b981' },
-            speak: { name: 'Elevare Speak', icon: '💬', badge: 'speak', color: '#f43f5e' },
-            ai: { name: 'Elevare AI', icon: '🤖', badge: 'ai', color: '#6366f1' }
+            general: { name: 'Elevare General', icon: '🎯', badge: 'general', color: '#10b981' }
         };
 
         function selectProgram(program) {
