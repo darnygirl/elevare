@@ -896,14 +896,14 @@
                                 </div>
                             </div>
                         </div>
-                        <p style="color: var(--text); font-size: 11px; margin-top: 8px; opacity: 0.7;">Placeholder schedule. Real scheduling ships with Buffer integration (Phase 3).</p>
+                        <p style="color: var(--text); font-size: 11px; margin-top: 8px; opacity: 0.7;">Placeholder schedule. Real scheduling happens in Publer — this dashboard generates content; click "Post" to copy + open Publer.</p>
                     </div>
                 </div>
 
                 <!-- Content Section: Analytics -->
                 <div class="content-section" id="section-analytics">
                     <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fbbf24; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px;">
-                        📊 <strong>Analytics placeholders.</strong> Reach, engagement, and lead numbers will populate once Buffer reporting is wired (next pass — Buffer posting itself is now live). Do not use — and don't report — any number on this page until it's live.
+                        📊 <strong>Analytics placeholders — DO NOT USE.</strong> The numbers shown are example data, not real metrics. Real metrics live in Publer's dashboard (publer.com/analytics) and each platform's native analytics (LinkedIn / Instagram). Until those are aggregated here in a future build, treat all numbers on this page as illustrative only.
                     </div>
                     <div class="analytics-grid">
                         <div class="stat-card">
@@ -969,7 +969,7 @@
 
                         <div class="api-status">
                             <div class="api-dot" id="bufferStatus"></div>
-                            <span>Buffer - Not Connected</span>
+                            <span>Publer (manual handoff via Post buttons)</span>
                         </div>
 
                         <div class="form-group">
@@ -1471,62 +1471,34 @@ Debby & the Elevare Team`
 
         let _postInFlight = false;
         async function postToPlatform(platform) {
-            if (_postInFlight) return;
-
-            const stored = localStorage.getItem('elevare_marketing_api');
-            const token = stored ? JSON.parse(stored).bufferToken : null;
-
-            if (!token) {
-                alert(`Buffer not connected.\n\n1. Settings tab → paste Buffer access token → Save\n2. Get a token: buffer.com/developers/api/oauth\n\nFor now, copy and post manually.`);
-                return;
-            }
-
             const content = document.getElementById('outputContent')?.innerText?.trim();
             if (!content) {
                 alert('No content to post — generate something in the Create tab first.');
                 return;
             }
 
-            _postInFlight = true;
             try {
-                const profilesRes = await fetch(
-                    `https://api.bufferapp.com/1/profiles.json?access_token=${encodeURIComponent(token)}`
+                await navigator.clipboard.writeText(content);
+                window.open('https://app.publer.com/#/posts/new', '_blank');
+                alert(
+                    `✓ Content copied to clipboard.\n\n` +
+                    `Publer is opening in a new tab.\n\n` +
+                    `1. Pick the ${platform} channel\n` +
+                    `2. Paste (Ctrl+V) into the post body\n` +
+                    `3. Adjust if needed\n` +
+                    `4. Schedule the time you want\n` +
+                    `5. Save / Schedule\n\n` +
+                    `(Marketing dashboard generates content. Publer handles publishing.)`
                 );
-                if (!profilesRes.ok) throw new Error(`Buffer profile fetch returned ${profilesRes.status}`);
-                const profiles = await profilesRes.json();
-
-                if (!Array.isArray(profiles)) {
-                    throw new Error(profiles.error || 'Buffer returned an unexpected response — token may be invalid');
-                }
-
-                const match = profiles.find(p => p.service === platform);
-                if (!match) {
-                    alert(`No ${platform} account connected to Buffer.\n\nConnect it at buffer.com/app/account/channels, then retry.`);
-                    return;
-                }
-
-                const body = new URLSearchParams();
-                body.append('text', content);
-                body.append('profile_ids[]', match.id);
-                body.append('access_token', token);
-
-                const postRes = await fetch('https://api.bufferapp.com/1/updates/create.json', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: body.toString()
-                });
-                const result = await postRes.json();
-
-                if (!postRes.ok || !result.success) {
-                    throw new Error(result.error || result.message || `Buffer rejected the post (HTTP ${postRes.status})`);
-                }
-
-                alert(`Queued to Buffer (${platform}).\n\nReview & approve at buffer.com/app/profile/${match.id}/queue/list`);
             } catch (err) {
-                console.error('postToPlatform error:', err);
-                alert(`Buffer post failed: ${err.message}\n\nCheck:\n- Token is valid (Settings tab)\n- ${platform} account connected at buffer.com/app/account/channels\n- Network connection`);
-            } finally {
-                _postInFlight = false;
+                console.error('Clipboard copy failed:', err);
+                alert(
+                    `Clipboard access blocked.\n\n` +
+                    `Copy the content manually:\n` +
+                    `1. Click into the generated content area\n` +
+                    `2. Select all (Ctrl+A) → Copy (Ctrl+C)\n` +
+                    `3. Open Publer → New Post → Paste`
+                );
             }
         }
 
