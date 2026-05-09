@@ -1,6 +1,24 @@
 # Irish Ltd Registration Prep — Elevare
 
-> **Status:** Pre-registration checklist. Ready to execute when Donal confirms.
+> **STATUS (2026-05-09):** ARCHIVED — Path A is dead.
+> Donal declined the director role on 2026-05-01.
+> Active path is now **UK Ltd** (solo Debby director, bridge) +
+> **Estonia e-Residency / OÜ** (long-term EU presence).
+> Bangkok Hospital said "kind no" 2026-05-07, so the May-12 proposal
+> deadline that was driving urgency is gone — UK Ltd is no longer
+> blocking anything in May 2026.
+>
+> This doc is preserved as a reference: if a future Ireland-based
+> director ever joins (or Donal revisits), the checklist below is
+> still accurate.
+>
+> See `marketing/registration/uk-ltd-prep.md` (TODO — not yet drafted)
+> and PROGRESS.md "CRITICAL OPEN ITEMS" for the current path.
+>
+> ---
+>
+> **Original framing (kept for reference):**
+> Pre-registration checklist. Ready to execute when Donal confirms.
 > **Path:** Path A from earlier triage — Donal as primary director (Ireland-based).
 > **Backup:** Path B (US Wyoming LLC) if Donal declines — separate doc.
 > **Effort if Donal says yes:** ~30 min of online filing → 1-3 day approval.
