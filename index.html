@@ -23,17 +23,18 @@
     <meta name="twitter:image" content="https://elevaremind.io/og-image.svg">
     
     <title>Elevare — Speak With Confidence. Coach-Led. AI-Supported</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230d1b2a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%231d3e4f' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0d1b2a;
-            --navy-light: #1b263b;
-            --navy-lighter: #415a77;
-            --cream: #faf8f5;
-            --gold: #c9a227;
+            /* Brand v2 — diamond logo palette (2026-05-09) */
+            --navy: #1d3e4f;             /* teal-navy from diamond body */
+            --navy-light: #2a5266;        /* slightly lighter navy variant */
+            --navy-lighter: #4a7088;      /* mid-tone navy */
+            --cream: #f5efe0;             /* warm cream from diamond bg */
+            --gold: #c9a227;              /* gold from diamond band */
             --gold-light: #d4af37;
             --gold-dark: #a88b1c;
             --white: #ffffff;
@@ -96,7 +97,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(13, 27, 42, 0.95);
+            background: rgba(29, 62, 79, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(201, 162, 39, 0.2);
             padding: 16px 0;
@@ -1376,7 +1377,7 @@
         .testimonial-card:hover {
             border-color: var(--gold);
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.15);
+            box-shadow: 0 20px 40px rgba(29, 62, 79, 0.15);
         }
 
         .testimonial-card.featured {
@@ -1585,7 +1586,7 @@
 
         .faq-item:hover {
             border-color: var(--gold);
-            box-shadow: 0 15px 40px rgba(13, 27, 42, 0.12);
+            box-shadow: 0 15px 40px rgba(29, 62, 79, 0.12);
             transform: translateY(-4px);
         }
 
@@ -1718,7 +1719,7 @@
         .progress-card:hover {
             border-color: var(--gold);
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.12);
+            box-shadow: 0 20px 40px rgba(29, 62, 79, 0.12);
         }
 
         .progress-card .number {
@@ -1845,27 +1846,19 @@
             <div class="nav-inner">
                 <a href="index.html" class="logo">
                     <span class="logo-icon">
-                        <svg viewBox="0 0 280 70" fill="none">
-                            <defs>
-                                <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#c9a227"/>
-                                    <stop offset="50%" stop-color="#f0d875"/>
-                                    <stop offset="100%" stop-color="#c9a227"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Elegant crown -->
-                            <path d="M100 8 L110 20 L125 10 L140 25 L155 10 L170 20 L180 8 L175 30 L105 30 Z" stroke="url(#goldShine)" stroke-width="2" fill="none" stroke-linejoin="round"/>
-                            <!-- Crown jewels -->
-                            <circle cx="125" cy="15" r="3" fill="#c9a227"/>
-                            <circle cx="140" cy="12" r="2.5" fill="#c9a227"/>
-                            <circle cx="155" cy="15" r="3" fill="#c9a227"/>
-                            <!-- Elegant ELEVARE text -->
-                            <text x="55" y="58" font-family="Cormorant Garamond, serif" font-size="38" font-weight="600" fill="url(#goldShine)" letter-spacing="8">ELEVARE</text>
-                            <!-- Elegant underline flourish -->
-                            <path d="M55 65 Q140 68 225 65" stroke="url(#goldShine)" stroke-width="1.5" fill="none"/>
-                            <!-- Small decorative elements -->
-                            <circle cx="48" cy="52" r="2" fill="#c9a227"/>
-                            <circle cx="232" cy="52" r="2" fill="#c9a227"/>
+                        <svg viewBox="0 0 280 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- DIAMOND LOGO (left side) — brand v2 (2026-05-09) -->
+                            <!-- Top half of kite (shorter) -->
+                            <polygon points="22,8 38,28 6,28" fill="#1d3e4f"/>
+                            <!-- Gold chevron band -->
+                            <polygon points="6,28 22,33 38,28 38,34 22,40 6,34" fill="#c9a227"/>
+                            <!-- Bottom half of kite (longer) -->
+                            <polygon points="6,34 22,40 38,34 22,64" fill="#1d3e4f"/>
+
+                            <!-- ELEVARE wordmark (right of diamond) -->
+                            <text x="60" y="44" font-family="Cormorant Garamond, serif" font-size="28" font-weight="600" fill="#c9a227" letter-spacing="6">ELEVARE</text>
+                            <!-- Subtle gold underline flourish -->
+                            <path d="M60 52 Q160 55 250 52" stroke="#c9a227" stroke-width="1" fill="none"/>
                         </svg>
                     </span>
                 </a>
@@ -3049,7 +3042,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(13, 27, 42, 0.98);
+            background: rgba(29, 62, 79, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(201, 162, 39, 0.3);
             padding: 12px 0;
