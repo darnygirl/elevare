@@ -960,9 +960,9 @@
             transition: all 0.3s;
         }
 
+        /* "featured" treatment removed — all 3 tutor cards now equal weight */
         .tutor-preview-card.featured {
-            border-color: var(--gold);
-            background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201, 162, 39, 0.1) 100%);
+            /* intentionally identical to .tutor-preview-card */
         }
 
         .tutor-preview-avatar {
@@ -1007,10 +1007,10 @@
         .tutor-preview-focus {
             font-size: 11px;
             color: var(--text-light);
-            padding: 6px 12px;
-            background: rgba(201, 162, 39, 0.1);
-            border-radius: 20px;
-            display: inline-block;
+            letter-spacing: 1px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            display: block;
         }
 
         /* Tutor Consultancy Section */
