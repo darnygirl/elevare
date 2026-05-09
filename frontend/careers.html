@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230d1b2a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <title>Careers — Elevare</title>
+    <meta name="description" content="Open roles at Elevare. We're a small founding team building structured English coaching for working professionals. Honest scope, clear pay, real outcomes.">
+    <link rel="canonical" href="https://elevaremind.io/frontend/careers.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        .nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
+
+        .page-header {
+            padding: 160px 0 80px;
+            background: var(--navy);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .page-header h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .page-header p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+
+        .section { padding: 100px 0; }
+        .section.navy { background: var(--navy); }
+        .section.cream { background: var(--cream); }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .intro-card {
+            background: var(--cream);
+            border: 1px solid rgba(13, 27, 42, 0.1);
+            border-left: 3px solid var(--gold);
+            border-radius: 12px;
+            padding: 32px;
+        }
+        .intro-card h3 {
+            font-size: 22px;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+        .intro-card p {
+            font-size: 15px;
+            color: var(--navy-lighter);
+        }
+
+        .roles-list { max-width: 880px; margin: 0 auto; }
+
+        .role-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 24px;
+        }
+        .role-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .role-tag {
+            background: rgba(201, 162, 39, 0.12);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+        .role-card h3 {
+            font-size: 28px;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        .role-card .lede {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .role-card h4 {
+            font-size: 16px;
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 24px 0 12px;
+        }
+        .role-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .role-card li {
+            font-size: 15px;
+            color: var(--text);
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .role-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .role-cta {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 24px;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+        .role-cta:hover { background: var(--gold-light); }
+
+        .interest-block {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .interest-block h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+        .interest-block p {
+            font-size: 16px;
+            color: var(--navy-lighter);
+            margin-bottom: 24px;
+        }
+        .interest-block .email-cta {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cream);
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+        .interest-block .email-cta:hover { background: var(--navy-lighter); }
+
+        .principles {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .principles h2 {
+            font-size: 36px;
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .principles ol {
+            counter-reset: principle;
+            list-style: none;
+            padding: 0;
+        }
+        .principles li {
+            counter-increment: principle;
+            position: relative;
+            padding: 20px 0 20px 56px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--text);
+            font-size: 16px;
+        }
+        .principles li:last-child { border-bottom: none; }
+        .principles li::before {
+            content: counter(principle, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        @media (max-width: 992px) {
+            .intro-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .role-card { padding: 28px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="general.html">General</a></li>
+                    <li><a href="pro.html">Pro</a></li>
+                    <li><a href="med.html">Med</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="book.html" class="nav-cta">Book</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Build Elevare With Us</h1>
+            <p>We're a small founding team building structured English coaching for working professionals. Honest scope. Clear pay. Real outcomes.</p>
+        </div>
+    </header>
+
+    <!-- WHY JOIN -->
+    <section class="section cream">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <h3>Founding-team work</h3>
+                    <p>You shape the methodology, not run someone else's script. Your voice is in the curriculum and the cohort experience.</p>
+                </div>
+                <div class="intro-card">
+                    <h3>Honest scope</h3>
+                    <p>Every role has a clear deliverable, a clear pay structure, and a clear exit. We don't sell hype to clients, and we don't sell it to teammates.</p>
+                </div>
+                <div class="intro-card">
+                    <h3>Outcomes &gt; vanity</h3>
+                    <p>The metric is the student's outcome — exam pass, fluency milestone, confidence gain. Engagement metrics aren't the goal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPEN ROLES -->
+    <section class="section navy">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 56px;">
+                <h2 style="font-size: 42px; color: var(--cream); margin-bottom: 12px;">Open roles</h2>
+                <p style="color: var(--text); max-width: 560px; margin: 0 auto;">One role open right now. Listed honestly — full pay, scope, and process visible before you apply.</p>
+            </div>
+
+            <div class="roles-list">
+                <article class="role-card">
+                    <div class="role-meta">
+                        <span class="role-tag">Contract</span>
+                        <span class="role-tag">Remote</span>
+                        <span class="role-tag">Per-cohort</span>
+                        <span class="role-tag">Healthcare</span>
+                    </div>
+                    <h3>OET Lead Instructor</h3>
+                    <p class="lede">
+                        Lead delivery of our 12-week OET preparation programme for a corporate hospital cohort (first cohort: June 2026, Bangkok). Cohorts are capped at 10 to preserve individualised feedback. Reports to founder; works alongside our consulting clinical SME.
+                    </p>
+
+                    <h4>What you'll do</h4>
+                    <ul>
+                        <li>Deliver 2 × 90-minute live group sessions per week (online, evening Bangkok time)</li>
+                        <li>Provide one individualised written or spoken audit per participant per week</li>
+                        <li>Administer 3 full mock tests under exam conditions (Weeks 4, 8, 11) with structured analysis</li>
+                        <li>Track individual progress against OET sub-test benchmarks; flag plateaus early</li>
+                        <li>Coordinate weekly with founder and clinical SME on curriculum and cohort progress</li>
+                    </ul>
+
+                    <h4>Required</h4>
+                    <ul>
+                        <li>Recognised TESOL / CELTA / Trinity / TEFL certification (120hr+, named issuer)</li>
+                        <li>Native or near-native English proficiency</li>
+                        <li>Demonstrated experience teaching adult learners in professional contexts</li>
+                        <li>Reliable internet, professional video setup, quiet delivery environment</li>
+                        <li>Available evenings (Bangkok time, UTC+7) for cohort sessions</li>
+                    </ul>
+
+                    <h4>Strongly preferred</h4>
+                    <ul>
+                        <li>OET-specific experience — teaching, examining, or test-taking</li>
+                        <li>Healthcare background — nurse, doctor, midwife, paramedic, or allied health</li>
+                        <li>Track record with measurable outcomes (pass rates, score improvements) you can speak to</li>
+                    </ul>
+
+                    <h4>Pay &amp; structure</h4>
+                    <ul>
+                        <li>Per-cohort flat fee, USD via Wise (full figure shared at first interview)</li>
+                        <li>Payment milestones: kickoff (Week 1), midpoint (Week 6), completion (Week 12)</li>
+                        <li>Performance bonus possible on cohort pass rate (Grade B threshold)</li>
+                        <li>Path to ongoing engagement across subsequent cohorts based on mutual fit</li>
+                    </ul>
+
+                    <h4>Application</h4>
+                    <ul>
+                        <li>Email <strong>careers@elevaremind.io</strong> with subject line <em>OET Lead Instructor — [Your Name]</em></li>
+                        <li>Include CV, brief cover letter, optional teaching artefact (5–10 min video, lesson plan, or feedback sample), and 2 professional references</li>
+                        <li>Process: clinical-fit interview (30 min) → pedagogy interview with founder (45 min) → reference check → offer within 5 business days. ~2 weeks application to offer.</li>
+                    </ul>
+
+                    <a class="role-cta" href="mailto:careers@elevaremind.io?subject=OET%20Lead%20Instructor%20%E2%80%94%20%5BYour%20Name%5D">Apply by email →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PRINCIPLES -->
+    <section class="section navy" style="padding-top: 0;">
+        <div class="container">
+            <div class="principles">
+                <h2>How we work</h2>
+                <ol>
+                    <li>We sell what we can deliver. No hype. The promise on the website is the experience in the cohort.</li>
+                    <li>The student's outcome is the metric — exam pass, fluency milestone, confidence gain. Not engagement vanity, not session counts.</li>
+                    <li>Clinical and professional context matters. Generic English coaching does not pass OET, and does not move careers.</li>
+                    <li>Cohorts are capped (10 for OET, 4–8 for General groups) to preserve individualised feedback. We don't scale by diluting.</li>
+                    <li>Recruitment is on credentials, capability, and integrity — not nationality, age, or background.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENERAL INTEREST -->
+    <section class="section cream">
+        <div class="container">
+            <div class="interest-block">
+                <h2>No role open that fits?</h2>
+                <p>We're early. New roles open as cohorts grow — facilitators for General groups, curriculum collaborators, B2B partnership leads. If your background fits the work above, write a short note. We read everything; we reply when there's something real to discuss.</p>
+                <a class="email-cta" href="mailto:careers@elevaremind.io?subject=Expression%20of%20interest%20%E2%80%94%20%5BYour%20Name%5D">Send an expression of interest</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Speak With Confidence. Coach-Led. AI-Supported. | <a href="../index.html">Back to Home</a> | <a href="blog.html">Blog</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

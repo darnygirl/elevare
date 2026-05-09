@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230d1b2a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <title>Notes — Elevare</title>
+    <meta name="description" content="Notes from the Elevare founding team — how we teach, what we're building, and what we're learning. Honest essays, no clickbait.">
+    <link rel="canonical" href="https://elevaremind.io/frontend/blog.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-light: #1b263b;
+            --navy-lighter: #415a77;
+            --cream: #faf8f5;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1c;
+            --white: #ffffff;
+            --text: #e0e1dd;
+            --text-light: #778da9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px 0;
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo-icon svg { width: 24px; height: 24px; color: var(--navy); }
+        .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 2px; }
+        .logo-text span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--cream); font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        .nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
+
+        .page-header {
+            padding: 160px 0 80px;
+            background: var(--navy);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .page-header h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .page-header p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+
+        .section { padding: 100px 0; }
+        .section.navy { background: var(--navy); }
+        .section.cream { background: var(--cream); }
+
+        /* Honest empty-state */
+        .first-post {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--cream);
+            border: 1px solid rgba(13, 27, 42, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 48px;
+        }
+        .first-post .meta {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .first-post h2 {
+            font-size: 32px;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+        .first-post p {
+            color: var(--navy-lighter);
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+        .first-post .signature {
+            font-style: italic;
+            color: var(--navy);
+            margin-top: 24px;
+        }
+
+        /* Roadmap of upcoming notes */
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .upcoming-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 28px;
+        }
+        .upcoming-card .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            background: rgba(201, 162, 39, 0.12);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+        .upcoming-card h3 {
+            font-size: 22px;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+        .upcoming-card p {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* Email signup */
+        .signup-block {
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .signup-block h2 {
+            font-size: 36px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        .signup-block p {
+            font-size: 16px;
+            color: var(--navy-lighter);
+            margin-bottom: 28px;
+        }
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .signup-form input {
+            flex: 1;
+            min-width: 220px;
+            padding: 14px 16px;
+            border: 1px solid rgba(13, 27, 42, 0.2);
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--navy);
+            font-size: 15px;
+            font-family: inherit;
+        }
+        .signup-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .signup-form button {
+            padding: 14px 28px;
+            background: var(--navy);
+            color: var(--cream);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .signup-form button:hover { background: var(--navy-lighter); }
+        .signup-note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 16px;
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        @media (max-width: 992px) {
+            .upcoming-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .first-post { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ELEVARE<span>.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="general.html">General</a></li>
+                    <li><a href="pro.html">Pro</a></li>
+                    <li><a href="med.html">Med</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="book.html" class="nav-cta">Book</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Notes from Elevare</h1>
+            <p>Essays on how we teach, what we're building, and what we're learning. Slow cadence, honest writing.</p>
+        </div>
+    </header>
+
+    <!-- HONEST EMPTY STATE / FIRST POST PLACEHOLDER -->
+    <section class="section cream">
+        <div class="container">
+            <article class="first-post">
+                <div class="meta">First post · coming soon</div>
+                <h2>Why we built Elevare around small groups, not 1-on-1s</h2>
+                <p>Most language schools sell private lessons because that's what students think they want. After ten years of teaching, I'm convinced it's the wrong default.</p>
+                <p>Speaking with a tutor isn't the same as speaking with peers. The social pressure is different. The vocabulary register is different. The mistakes you make and recover from are different. Confidence — the thing students actually pay for — is built by talking to people who are not your teacher.</p>
+                <p>Small groups, held together by an AI facilitator that keeps every voice in the room, was what fell out of that observation. The first essay walks through how the model came together, what we got wrong in the first three iterations, and what the founding cohort is testing right now.</p>
+                <p class="signature">— Deborah, founder</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section navy">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2 style="font-size: 36px; color: var(--cream); margin-bottom: 12px;">Coming up</h2>
+                <p style="color: var(--text); max-width: 560px; margin: 0 auto;">Topics we're writing toward. Real essays, not SEO bait — published when they're worth reading.</p>
+            </div>
+            <div class="upcoming-grid">
+                <div class="upcoming-card">
+                    <span class="tag">Methodology</span>
+                    <h3>What an AI facilitator actually does in a group session</h3>
+                    <p>The role is narrower than people assume. It's not a teacher; it's a turn-taking referee with memory.</p>
+                </div>
+                <div class="upcoming-card">
+                    <span class="tag">OET / Med</span>
+                    <h3>The two mistakes that block nurses from passing OET Grade B</h3>
+                    <p>Vocabulary isn't the problem. Register-shifting under exam pressure is.</p>
+                </div>
+                <div class="upcoming-card">
+                    <span class="tag">Business English</span>
+                    <h3>Why we won't sell &ldquo;CV polish&rdquo; products</h3>
+                    <p>Short-term tactics that ladder into long-term mediocrity. We sell coaching, not cosmetics.</p>
+                </div>
+                <div class="upcoming-card">
+                    <span class="tag">Building Elevare</span>
+                    <h3>Day 7: how a cold email turned into our first corporate cohort conversation</h3>
+                    <p>One outbound note. One reply. A working hypothesis about how B2B language training actually moves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL SIGNUP -->
+    <section class="section cream">
+        <div class="container">
+            <div class="signup-block">
+                <h2>Get notes when they ship</h2>
+                <p>One email per essay. No drip sequences, no upsell ladders. Unsubscribe anytime.</p>
+                <form class="signup-form" action="https://formspree.io/f/xwpkvgpn" method="POST">
+                    <label for="blog-email" class="visually-hidden" style="position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden;">Your email</label>
+                    <input type="email" id="blog-email" name="Email" placeholder="Your email address" required>
+                    <input type="hidden" name="_subject" value="Blog Subscription — Elevare Notes">
+                    <input type="hidden" name="Source" value="blog.html">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p class="signup-note">Or follow along: <a href="careers.html" style="color: var(--navy); font-weight: 600;">we're hiring</a> · <a href="../index.html" style="color: var(--navy); font-weight: 600;">see the programmes</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 <a href="../index.html">Elevare</a>. Speak With Confidence. Coach-Led. AI-Supported. | <a href="../index.html">Back to Home</a> | <a href="careers.html">Careers</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
