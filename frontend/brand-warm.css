@@ -1,0 +1,108 @@
+/* ============================================================
+   Elevare — warm-light brand overlay (2026-05-30)
+   Loaded AFTER each subpage's own <style> so it wins the cascade.
+   Brings every subpage into the homepage look:
+   cream base · navy text · rose accent · navy/footer as dark anchors.
+   One source of truth — tweak here, every page updates.
+   ============================================================ */
+
+:root {
+  --navy: #15334a;
+  --navy-light: #25446e;
+  --navy-lighter: #4a7088;
+  --cream: #f5efe0;
+  --white: #ffffff;
+  /* accent repointed to warm rose (was gold) */
+  --gold: #c0395b;
+  --gold-light: #d14e6f;
+  --gold-dark: #9e2547;
+  --rose: #c0395b;
+  --rose-dark: #9e2547;
+  --rose-soft: #f6e3e8;
+  --ink: #15334a;
+  --ink-soft: #4a5a66;
+  --accent: #c0395b;
+  --muted: #45555f;     /* was a faint grey on some pages (e.g. Rise resources) — darken for legibility */
+  /* NOTE: --text-light is intentionally NOT repointed — pages use it as light text
+     on dark sections. Light-section muted text is handled via .section-desc below. */
+}
+
+body { background: var(--cream); color: var(--ink); }
+h1, h2, h3, h4 { color: var(--ink); }
+a { color: var(--rose); }
+a:hover { color: var(--rose-dark); }
+
+/* ---- Navigation -> warm light (covers .nav-menu and .nav-links variants) ---- */
+nav {
+  background: rgba(250, 246, 236, 0.92) !important;
+  border-bottom: 1px solid rgba(21, 51, 74, 0.08) !important;
+  box-shadow: 0 2px 20px rgba(21, 51, 74, 0.05);
+}
+.logo { color: var(--ink) !important; }
+.nav-menu a, .nav-links a { color: var(--ink) !important; }
+.nav-menu a:hover, .nav-menu a.active,
+.nav-links a:hover, .nav-links a.active { color: var(--rose) !important; }
+.hamburger, .mobile-menu-toggle { color: var(--rose) !important; }
+.nav-cta { background: var(--rose) !important; color: #fff !important; border-color: var(--rose) !important; }
+.nav-cta:hover { background: var(--rose-dark) !important; }
+@media (max-width: 768px) {
+  .nav-menu, .nav-menu.open { background: #faf6ec !important; }
+}
+
+/* ---- Hero -> warm light ---- */
+.hero {
+  background: linear-gradient(160deg, #faf6ec 0%, #f5efe0 55%, #efe7d6 100%) !important;
+  color: var(--ink) !important;
+}
+.hero h1, .hero h2 { color: var(--ink) !important; }
+.hero h1 span, .hero h2 span { color: var(--rose) !important; }
+.hero p, .hero-sub { color: var(--ink-soft) !important; }
+.hero-pre { background: var(--rose-soft) !important; color: var(--rose-dark) !important; }
+.hero-trust { color: var(--ink-soft) !important; }
+.hero-trust span::before { color: var(--rose) !important; }
+.hero::after, .hero::before { opacity: 0.4; }
+
+/* ---- Buttons ---- */
+.btn-primary { background: var(--rose) !important; color: #fff !important; border-color: var(--rose) !important; }
+.btn-primary:hover { background: var(--rose-dark) !important; }
+.btn-secondary { background: transparent !important; color: var(--ink) !important; border-color: var(--ink) !important; }
+.btn-secondary:hover { background: var(--ink) !important; color: var(--cream) !important; }
+
+/* ---- Section headers on light ---- */
+.section-label { color: var(--rose) !important; }
+.section-desc { color: var(--ink-soft) !important; }
+.section-light { background: var(--cream) !important; }
+
+/* ---- Keep navy sections / final CTA / footer as intentional DARK anchors ---- */
+.section-navy { background: var(--navy) !important; color: #e6ebf0 !important; }
+.section-navy h1, .section-navy h2, .section-navy h3, .section-navy .section-title { color: var(--rose) !important; }
+.section-navy .section-desc, .section-navy p { color: #cdd7e0 !important; }
+.final-cta { background: var(--navy) !important; }
+.final-cta h2 { color: #ffffff !important; }
+.final-cta p { color: #cdd7e0 !important; }
+footer { background: var(--navy) !important; border-top: 1px solid rgba(192, 57, 91, 0.25); }
+footer, footer a { color: #cdd7e0; }
+footer a:hover { color: var(--rose) !important; }
+
+/* ---- Cards stay light; force dark text where pages used light-on-dark ---- */
+.col-card h3, .week-card h4, .price-card h3 { color: var(--ink) !important; }
+.price-card { border-color: var(--rose) !important; }
+.price-card li::before, .hero-trust span::before { color: var(--rose) !important; }
+.week-card { border-top-color: var(--rose) !important; }
+.week-num, .col-icon { color: #fff; }
+.col-icon { background: var(--rose) !important; }
+details summary::after { color: var(--rose) !important; }
+
+/* Faint muted text on light pages -> readable (Rise resources etc.) */
+.muted, .resource-desc, .resource-card p, .resource-card .desc, .card p, .resource-meta { color: #45555f !important; }
+
+/* Inline dark-background blocks (style="...background:var(--navy)..."): keep text light */
+[style*="background:var(--navy)"], [style*="background: var(--navy)"],
+[style*="background:var(--navy-light)"], [style*="background: var(--navy-light)"],
+[style*="background:#0d1b2a"], [style*="background: #0d1b2a"],
+[style*="background:#1b263b"], [style*="background: #1b263b"],
+[style*="background:#15334a"], [style*="background: #15334a"],
+[style*="background:linear-gradient(135deg,var(--navy)"],
+[style*="background: linear-gradient(135deg, var(--navy)"] {
+  color: #e6ebf0 !important;
+}
