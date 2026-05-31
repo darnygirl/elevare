@@ -812,7 +812,7 @@
     </style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
-<body>
+<body class="warm-convert">
     <nav>
         <div class="container">
             <div class="nav-inner">
@@ -862,6 +862,26 @@
             </div>
             
             <div class="tab-content active" id="join-tab">
+                <!-- BETA ACCESS GATE -->
+                <div id="betaCard" style="max-width:620px; margin:0 auto 40px; background:#fff; border:1px solid rgba(192,57,91,0.25); border-radius:18px; padding:32px; text-align:center; box-shadow:0 14px 40px rgba(21,51,74,0.10);">
+                    <div style="display:inline-block; background:var(--rose,#c0395b); color:#fff; font-size:11px; font-weight:700; letter-spacing:2px; padding:5px 14px; border-radius:20px; margin-bottom:14px;">BETA</div>
+                    <h3 style="color:#15334a; margin-bottom:8px;">You're invited to the Elevare beta</h3>
+                    <p style="color:#4a5a66; font-size:15px; margin-bottom:20px;">Got a beta code from your tutor? Enter it for free access to live classes — no payment, no card. Help us make Elevare better.</p>
+                    <div style="display:flex; gap:10px; max-width:380px; margin:0 auto; flex-wrap:wrap;">
+                        <input type="text" id="betaCode" placeholder="Enter beta code" style="flex:1; min-width:180px; padding:14px 16px; border:1px solid rgba(21,51,74,0.2); border-radius:8px; font-size:15px;">
+                        <button onclick="checkBetaCode()" class="btn btn-primary" style="padding:14px 24px;">Unlock</button>
+                    </div>
+                    <p id="betaMsg" style="font-size:13px; margin:14px 0 0; min-height:18px;"></p>
+                    <p style="font-size:12px; color:#4a5a66; margin:8px 0 0;">No code? <a href="https://wa.me/66949690869?text=Hi%20Elevare!%20I%27d%20like%20to%20join%20the%20beta" target="_blank" rel="noopener" style="color:var(--rose,#c0395b); font-weight:600;">Ask us on WhatsApp →</a></p>
+                </div>
+
+                <!-- Beta welcome (revealed after valid code) -->
+                <div id="betaWelcome" style="display:none; max-width:620px; margin:0 auto 40px; background:#f6e3e8; border-radius:18px; padding:28px; text-align:center;">
+                    <h3 style="color:#15334a; margin-bottom:8px;">✓ Beta access active — welcome!</h3>
+                    <p style="color:#4a5a66; font-size:15px; margin-bottom:18px;">You're all set. Join a class below for free. After your session, please tell us how it went — your feedback shapes Elevare.</p>
+                    <a href="beta-feedback.html" class="btn btn-primary" style="padding:12px 26px;">📝 Share session feedback</a>
+                </div>
+
                 <div class="classroom-grid">
                     <div class="join-card">
                         <h3>Join a Group Session</h3>
@@ -875,6 +895,7 @@
                             Join Classroom
                         </button>
                         <p style="font-size: 12px; color: var(--text-light); margin-top: 16px; margin-bottom: 0;">Free group sessions • Browser-based • No account required</p>
+                        <p style="font-size: 12px; color: var(--ink-soft); margin-top: 12px; margin-bottom: 0; background: var(--rose-soft, #f6e3e8); padding: 10px 12px; border-radius: 8px;">🌍 In some regions (including mainland China), a VPN may be needed to connect. <a href="https://wa.me/66949690869?text=Hi%20Elevare!%20I%20may%20have%20trouble%20joining%20the%20classroom%20from%20my%20region.%20Can%20you%20help%3F" target="_blank" rel="noopener" style="color: var(--rose, #c0395b); font-weight: 600;">Message us</a> and we'll arrange an alternative.</p>
                     </div>
                 <div class="schedule-card">
                     <h3>
@@ -1253,6 +1274,28 @@
     <script>
         const roomInput = document.getElementById('roomName');
         const roomPreview = document.getElementById('roomPreview');
+
+        // --- Beta access gate ---
+        var BETA_CODES = ['ELEVAREBETA', 'ELEVARE2026', 'TUTORBETA'];
+        function checkBetaCode() {
+            var input = document.getElementById('betaCode');
+            var msg = document.getElementById('betaMsg');
+            var code = (input.value || '').trim().toUpperCase();
+            if (BETA_CODES.indexOf(code) !== -1) {
+                try { localStorage.setItem('elevareBeta', code); } catch (e) {}
+                revealBeta();
+            } else {
+                msg.style.color = '#c0395b';
+                msg.textContent = code ? 'That code isn’t valid — check with your tutor, or ask us on WhatsApp.' : 'Please enter your beta code.';
+            }
+        }
+        function revealBeta() {
+            var card = document.getElementById('betaCard');
+            var welcome = document.getElementById('betaWelcome');
+            if (card) card.style.display = 'none';
+            if (welcome) welcome.style.display = 'block';
+        }
+        try { if (BETA_CODES.indexOf((localStorage.getItem('elevareBeta') || '')) !== -1) { document.addEventListener('DOMContentLoaded', revealBeta); } } catch (e) {}
 
         function joinRoom() {
             const roomName = document.getElementById('roomName').value.trim();

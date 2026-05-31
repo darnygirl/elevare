@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2315334a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <title>Beta Feedback — Elevare</title>
+    <meta name="description" content="Tell us how your Elevare beta class went. Your feedback shapes the product.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#15334a; --cream:#f5efe0; --cream-hi:#faf6ec; --rose:#c0395b; --rose-dark:#9e2547; --rose-soft:#f6e3e8; --ink:#15334a; --ink-soft:#4a5a66; --white:#fff; --gold:#c9a227; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--ink); background:linear-gradient(160deg,var(--cream-hi) 0%,var(--rose-soft) 100%); min-height:100vh; padding:40px 20px; }
+        h1,h2,h3 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--ink); }
+        .card { max-width:600px; margin:0 auto; background:var(--white); border-radius:20px; padding:44px 40px; box-shadow:0 24px 60px rgba(21,51,74,0.14); }
+        .badge { display:inline-block; background:var(--rose); color:#fff; font-size:11px; font-weight:700; letter-spacing:2px; padding:5px 14px; border-radius:20px; margin-bottom:16px; }
+        h1 { font-size:clamp(28px,4vw,38px); line-height:1.1; margin-bottom:10px; }
+        .sub { color:var(--ink-soft); font-size:16px; margin-bottom:30px; }
+        label { display:block; font-weight:600; font-size:15px; margin:22px 0 10px; color:var(--ink); }
+        input[type=text], input[type=email], textarea, select { width:100%; padding:13px 15px; border:1px solid rgba(21,51,74,0.2); border-radius:8px; font-size:15px; font-family:inherit; color:var(--ink); }
+        textarea { min-height:90px; resize:vertical; }
+        input:focus, textarea:focus, select:focus { outline:none; border-color:var(--rose); }
+        .scale { display:flex; gap:8px; flex-wrap:wrap; }
+        .scale input { display:none; }
+        .scale label { flex:1; min-width:54px; margin:0; text-align:center; padding:14px 0; border:1px solid rgba(21,51,74,0.2); border-radius:10px; cursor:pointer; font-weight:600; transition:all .2s; }
+        .scale input:checked + label { background:var(--rose); color:#fff; border-color:var(--rose); }
+        .scale-ends { display:flex; justify-content:space-between; font-size:12px; color:var(--ink-soft); margin-top:6px; }
+        .btn { width:100%; margin-top:30px; padding:16px; background:var(--rose); color:#fff; border:none; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer; transition:background .2s; font-family:inherit; }
+        .btn:hover { background:var(--rose-dark); }
+        .foot { text-align:center; margin-top:22px; font-size:13px; color:var(--ink-soft); }
+        .foot a { color:var(--rose); font-weight:600; text-decoration:none; }
+        .thanks { display:none; text-align:center; padding:20px 0; }
+        .thanks .big { font-size:54px; margin-bottom:10px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <form id="fbForm" action="https://formspree.io/f/xwpkvgpn" method="POST">
+            <div class="badge">BETA FEEDBACK</div>
+            <h1>How was your class?</h1>
+            <p class="sub">Thank you for testing Elevare 🙏 Two minutes of honest feedback helps us build something genuinely worth it. Nothing is too small.</p>
+
+            <input type="hidden" name="_subject" value="Elevare Beta — Session Feedback">
+
+            <label>1. Do you feel more confident speaking after this session?</label>
+            <div class="scale">
+                <input type="radio" id="c1" name="Confidence (1-5)" value="1" required><label for="c1">1</label>
+                <input type="radio" id="c2" name="Confidence (1-5)" value="2"><label for="c2">2</label>
+                <input type="radio" id="c3" name="Confidence (1-5)" value="3"><label for="c3">3</label>
+                <input type="radio" id="c4" name="Confidence (1-5)" value="4"><label for="c4">4</label>
+                <input type="radio" id="c5" name="Confidence (1-5)" value="5"><label for="c5">5</label>
+            </div>
+            <div class="scale-ends"><span>Not really</span><span>Much more</span></div>
+
+            <label>2. How smooth was the tech (joining, video, audio)?</label>
+            <div class="scale">
+                <input type="radio" id="t1" name="Tech smoothness (1-5)" value="1" required><label for="t1">1</label>
+                <input type="radio" id="t2" name="Tech smoothness (1-5)" value="2"><label for="t2">2</label>
+                <input type="radio" id="t3" name="Tech smoothness (1-5)" value="3"><label for="t3">3</label>
+                <input type="radio" id="t4" name="Tech smoothness (1-5)" value="4"><label for="t4">4</label>
+                <input type="radio" id="t5" name="Tech smoothness (1-5)" value="5"><label for="t5">5</label>
+            </div>
+            <div class="scale-ends"><span>Lots of issues</span><span>Flawless</span></div>
+
+            <label for="helped">3. What helped you most today?</label>
+            <textarea id="helped" name="What helped most" placeholder="The conversation practice, the tutor, the group, the feedback..."></textarea>
+
+            <label for="confusing">4. What was confusing or could be better?</label>
+            <textarea id="confusing" name="What could be better" placeholder="Be honest — this is the most useful part for us."></textarea>
+
+            <label for="pay">5. Would you pay for this once it launches?</label>
+            <select id="pay" name="Would pay?">
+                <option value="">Choose one…</option>
+                <option>Yes, definitely</option>
+                <option>Maybe, depends on price</option>
+                <option>Probably not yet</option>
+                <option>No</option>
+            </select>
+
+            <label for="name">Your name (optional)</label>
+            <input type="text" id="name" name="Name" placeholder="So we can thank you properly">
+
+            <label for="tutor">Which tutor ran your class? (optional)</label>
+            <input type="text" id="tutor" name="Tutor" placeholder="Tutor name">
+
+            <button type="submit" class="btn">Send feedback</button>
+            <p class="foot">Prefer to chat? <a href="https://wa.me/66949690869?text=Hi%20Elevare!%20Here%27s%20my%20beta%20feedback%3A" target="_blank" rel="noopener">Tell us on WhatsApp →</a></p>
+        </form>
+
+        <div class="thanks" id="thanks">
+            <div class="big">💛</div>
+            <h2>Thank you, truly.</h2>
+            <p class="sub" style="margin-top:10px;">Your feedback goes straight to the founder. This is how Elevare gets better — because of testers like you.</p>
+            <p class="foot"><a href="live-classroom.html">← Back to the classroom</a></p>
+        </div>
+    </div>
+
+    <script>
+        var form = document.getElementById('fbForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var data = new FormData(form);
+            fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+                .then(function(r){
+                    form.style.display = 'none';
+                    document.getElementById('thanks').style.display = 'block';
+                })
+                .catch(function(){
+                    // Fallback: let the form submit normally
+                    form.submit();
+                });
+        });
+    </script>
+</body>
+</html>

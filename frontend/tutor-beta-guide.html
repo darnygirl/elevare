@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2315334a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
+    <title>Run an Elevare Beta Class — Tutor Guide</title>
+    <meta name="description" content="A simple step-by-step guide for tutors running their first Elevare beta class.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#15334a; --cream:#f5efe0; --cream-hi:#faf6ec; --rose:#c0395b; --rose-dark:#9e2547; --rose-soft:#f6e3e8; --ink:#15334a; --ink-soft:#4a5a66; --white:#fff; --gold:#c9a227; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.75; color:var(--ink); background:var(--cream); }
+        h1,h2,h3 { font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--ink); }
+        .hero { background:linear-gradient(160deg,var(--cream-hi) 0%,var(--rose-soft) 100%); padding:70px 20px 50px; text-align:center; }
+        .badge { display:inline-block; background:var(--rose); color:#fff; font-size:11px; font-weight:700; letter-spacing:2px; padding:5px 14px; border-radius:20px; margin-bottom:16px; }
+        .hero h1 { font-size:clamp(32px,5vw,52px); line-height:1.05; margin-bottom:12px; }
+        .hero p { color:var(--ink-soft); font-size:18px; max-width:600px; margin:0 auto; }
+        .wrap { max-width:760px; margin:0 auto; padding:50px 24px 80px; }
+        .step { background:var(--white); border-radius:16px; padding:28px 30px; margin-bottom:20px; box-shadow:0 10px 30px rgba(21,51,74,0.08); border:1px solid rgba(21,51,74,0.06); display:flex; gap:22px; align-items:flex-start; }
+        .num { flex-shrink:0; width:46px; height:46px; border-radius:50%; background:var(--rose-soft); color:var(--rose); font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+        .step h3 { font-size:22px; margin-bottom:6px; }
+        .step p { color:var(--ink-soft); font-size:15px; }
+        .step code { background:var(--cream); padding:2px 8px; border-radius:5px; font-size:13px; color:var(--rose-dark); }
+        .callout { background:var(--navy); color:#e6ebf0; border-radius:16px; padding:28px 30px; margin:34px 0; }
+        .callout h3 { color:var(--gold); margin-bottom:8px; }
+        .callout p, .callout li { color:#cdd7e0; font-size:15px; }
+        .callout ul { margin:10px 0 0 20px; }
+        .tip { font-size:14px; color:var(--ink-soft); background:var(--rose-soft); border-left:3px solid var(--rose); padding:14px 18px; border-radius:0 8px 8px 0; margin-top:14px; }
+        .codes { text-align:center; background:var(--white); border:1px dashed var(--rose); border-radius:14px; padding:24px; margin:30px 0; }
+        .codes strong { font-size:20px; color:var(--rose-dark); letter-spacing:2px; }
+        a.btn { display:inline-block; background:var(--rose); color:#fff; padding:14px 30px; border-radius:8px; font-weight:600; text-decoration:none; margin-top:8px; }
+        .center { text-align:center; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="badge">FOR TUTORS · BETA</div>
+        <h1>Run your first Elevare class</h1>
+        <p>You already know how to teach. This is just where the class happens. Five minutes to read, then you're ready.</p>
+    </div>
+
+    <div class="wrap">
+        <div class="step">
+            <div class="num">1</div>
+            <div>
+                <h3>Open the classroom</h3>
+                <p>Go to <code>elevaremind.io/frontend/live-classroom.html</code> and click the <strong>"Host as Tutor"</strong> tab. No login, no install — it runs in any browser (works great on phone too).</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="num">2</div>
+            <div>
+                <h3>Create your room</h3>
+                <p>Pick a session type — it generates a room name like <code>elevare-med-101</code>. You can rename it to anything memorable. This is your private classroom for the session.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="num">3</div>
+            <div>
+                <h3>Share the link with your students</h3>
+                <p>Tap <strong>"Share on WhatsApp"</strong> — it writes the message for you with the join link. Send it to your students (the same ones you already teach on Zoom/Meet). They click and they're in. No account, no payment.</p>
+                <div class="tip">💡 Send the link 10 minutes before class so everyone arrives on time. Pin it in your group chat.</div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="num">4</div>
+            <div>
+                <h3>Teach like you always do</h3>
+                <p>You have HD video, screen-share, and chat — everything Zoom gives you. Teach your normal lesson. The only difference: your students are now experiencing <strong>Elevare</strong>.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="num">5</div>
+            <div>
+                <h3>Ask for 2 minutes of feedback</h3>
+                <p>At the end, send your students the feedback link: <code>elevaremind.io/frontend/beta-feedback.html</code> — or just tell them to tap "Share session feedback" on the classroom page. This is the whole point of the beta: we learn what to fix.</p>
+            </div>
+        </div>
+
+        <div class="codes">
+            <p style="margin-bottom:10px; color:var(--ink-soft); font-size:14px;">Your students unlock free beta access with this code:</p>
+            <strong>ELEVAREBETA</strong>
+        </div>
+
+        <div class="callout">
+            <h3>What we're trying to learn</h3>
+            <p>Three things from this beta — keep them in mind:</p>
+            <ul>
+                <li><strong>Does the tech work?</strong> Could everyone join, hear, and see clearly?</li>
+                <li><strong>Is it valuable?</strong> Did students leave feeling more confident?</li>
+                <li><strong>Would you use it again?</strong> Honestly — would you run your classes here instead of Zoom?</li>
+            </ul>
+        </div>
+
+        <div class="tip" style="margin-bottom:30px;">
+            🔒 <strong>A note on privacy:</strong> beta rooms are open to anyone with the name, so use a unique room name each session and don't reuse old ones. Password-protected rooms are coming.
+        </div>
+
+        <div class="center">
+            <p style="color:var(--ink-soft); margin-bottom:6px;">Questions? Message Deborah directly.</p>
+            <a class="btn" href="https://wa.me/66949690869?text=Hi%20Deborah!%20I%27m%20a%20tutor%20running%20an%20Elevare%20beta%20class%20and%20have%20a%20question." target="_blank" rel="noopener">💬 Ask on WhatsApp</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -106,3 +106,72 @@ details summary::after { color: var(--rose) !important; }
 [style*="background: linear-gradient(135deg, var(--navy)"] {
   color: #e6ebf0 !important;
 }
+
+/* ============================================================
+   FULL warm-light conversion for bespoke dark pages
+   (rise.html, live-classroom.html, tutor-portal.html via body.warm-convert)
+   Flips navy SECTIONS to cream and forces readable dark text, while
+   preserving coloured decorative icons and rose/gold/green buttons.
+   ============================================================ */
+.warm-convert { background: var(--cream) !important; color: var(--ink) !important; }
+
+/* Section + card backgrounds that were navy -> light */
+.warm-convert section,
+.warm-convert .section,
+.warm-convert .section.navy,
+.warm-convert [class*="-section"],
+.warm-convert [style*="background:var(--navy)"],
+.warm-convert [style*="background: var(--navy)"],
+.warm-convert [style*="background:var(--navy-light)"],
+.warm-convert [style*="background: var(--navy-light)"],
+.warm-convert [style*="background:linear-gradient(135deg,var(--navy"],
+.warm-convert [style*="background: linear-gradient(135deg, var(--navy"] {
+  background: var(--cream) !important;
+}
+
+/* Cards on those sections -> white with soft border */
+.warm-convert .card,
+.warm-convert .pricing-card,
+.warm-convert .feature-card,
+.warm-convert .classroom-card,
+.warm-convert .module-card,
+.warm-convert [style*="background: var(--navy-light)"]:not(section) {
+  background: var(--white) !important;
+  border: 1px solid rgba(21,51,74,0.08) !important;
+}
+
+/* Force readable dark text across converted areas */
+.warm-convert section, .warm-convert .section,
+.warm-convert section p, .warm-convert .section p,
+.warm-convert section li, .warm-convert .section li,
+.warm-convert section span, .warm-convert .section span,
+.warm-convert .card p, .warm-convert .card li, .warm-convert .card span,
+.warm-convert .pricing-card p, .warm-convert .pricing-card li {
+  color: var(--ink) !important;
+}
+.warm-convert h1, .warm-convert h2, .warm-convert h3, .warm-convert h4,
+.warm-convert .section-title, .warm-convert .card-name {
+  color: var(--ink) !important;
+}
+/* but headings inside the dark hero/page-header stay light (overlay handles hero) */
+.warm-convert .hero h1, .warm-convert .hero h2, .warm-convert .hero p,
+.warm-convert .page-header h1, .warm-convert .page-header p { color: var(--ink) !important; }
+
+/* Muted/secondary text -> readable */
+.warm-convert [style*="var(--text-light)"],
+.warm-convert [style*="color: var(--text)"],
+.warm-convert [style*="color:var(--text)"] { color: #45555f !important; }
+
+/* Section labels / accents that were gold -> rose */
+.warm-convert .section-label { color: var(--rose) !important; }
+
+/* Keep buttons legible: rose/gold buttons get white text */
+.warm-convert .btn-primary,
+.warm-convert .btn[style*="background: var(--gold)"],
+.warm-convert .btn[style*="background:var(--gold)"] { color: #fff !important; }
+
+/* Badges that were navy bg + gold text -> rose bg + white */
+.warm-convert [style*="background: var(--navy)"][style*="color: var(--gold)"],
+.warm-convert [style*="background:var(--navy)"][style*="color:var(--gold)"] {
+  background: var(--rose) !important; color: #fff !important;
+}
