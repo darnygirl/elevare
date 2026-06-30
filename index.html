@@ -2108,7 +2108,7 @@
     <style>
         /* Reusable photo placeholder — drop a file with the labelled name to fill it */
         .ph-frame { position: relative; overflow: hidden; background: var(--rose-soft); display: flex; align-items: center; justify-content: center; }
-        .ph-frame .ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .ph-frame .ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
         .ph-frame .ph-label { position: relative; z-index: 0; text-align: center; color: var(--rose-dark); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.75; padding: 16px; line-height: 1.8; }
         .ph-frame .ph-label code { display: inline-block; margin-top: 6px; font-weight: 500; opacity: 0.7; text-transform: none; letter-spacing: 0; }
 
@@ -2353,27 +2353,27 @@
             </div>
             <div class="gallery-grid">
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-1.jpg" alt="A live Elevare session" onerror="this.remove()"><span class="ph-label">In the session<code>gallery-1.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-1.jpg" alt="A live Elevare session" onerror="this.remove()"><span class="ph-label">In the session</span></div>
                     <figcaption>In the session</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-2.jpg" alt="The Elevare community online" onerror="this.remove()"><span class="ph-label">Our community<code>gallery-2.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-2.jpg" alt="The Elevare community online" onerror="this.remove()"><span class="ph-label">Our community</span></div>
                     <figcaption>Our global community</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-3.jpg" alt="A learner speaking with confidence" onerror="this.remove()"><span class="ph-label">Speaking up<code>gallery-3.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-3.jpg" alt="A learner speaking with confidence" onerror="this.remove()"><span class="ph-label">Speaking up</span></div>
                     <figcaption>Finding their voice</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-4.jpg" alt="A small group practising together" onerror="this.remove()"><span class="ph-label">Small groups<code>gallery-4.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-4.jpg" alt="A small group practising together" onerror="this.remove()"><span class="ph-label">Small groups</span></div>
                     <figcaption>Small groups, real reps</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-5.jpg" alt="One-to-one coaching" onerror="this.remove()"><span class="ph-label">One to one<code>gallery-5.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-5.jpg" alt="One-to-one coaching" onerror="this.remove()"><span class="ph-label">One to one</span></div>
                     <figcaption>One-to-one coaching</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <div class="ph-frame"><img class="ph-img" src="gallery-6.jpg" alt="A learner celebrating progress" onerror="this.remove()"><span class="ph-label">Celebrating<code>gallery-6.jpg</code></span></div>
+                    <div class="ph-frame"><img class="ph-img" src="gallery-6.jpg" alt="A learner celebrating progress" onerror="this.remove()"><span class="ph-label">Celebrating</span></div>
                     <figcaption>Celebrating progress</figcaption>
                 </figure>
             </div>
