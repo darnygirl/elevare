@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#778da9; --accent:#5a4fcf; }
+        :root { --navy:#0d1b2a; --navy-light:#1b263b; --navy-lighter:#415a77; --cream:#faf8f5; --gold:#c9a227; --gold-light:#d4af37; --gold-dark:#a88b1c; --white:#ffffff; --text:#e0e1dd; --text-light:#55646f; --accent:#5a4fcf; }
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
         body { font-family:'Montserrat',sans-serif; line-height:1.7; color:var(--navy); background:var(--cream); }
@@ -110,7 +110,9 @@
             height: 32px;
             color: white;
         }
-    </style>
+            /* contrast fix: dark muted text on light bg; re-scope lighter inside dark contexts */
+        .hero, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"] { --text-light: #b0c2d4; }
+</style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
 <body>

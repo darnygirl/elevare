@@ -17,7 +17,7 @@
             --cream: #f5efe0;
             --gold: #c9a227;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -165,7 +165,9 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
         }
-    </style>
+            /* contrast fix: dark muted text on light bg; re-scope lighter inside dark contexts */
+        .hero, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"] { --text-light: #b0c2d4; }
+</style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
 <body>

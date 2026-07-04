@@ -31,7 +31,7 @@
             --gold-dark: #a88b1c;
             --white: #ffffff;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
             --med-accent: #1b9e77;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -196,7 +196,9 @@
             height: 32px;
             color: white;
         }
-    </style>
+            /* contrast fix: dark muted text on light bg; re-scope lighter inside dark contexts */
+        .hero, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"] { --text-light: #b0c2d4; }
+</style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
 <body>
