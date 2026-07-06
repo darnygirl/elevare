@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2315334a' width='100' height='100' rx='20'/%3E%3Cpath fill='%23c9a227' d='M50 15L20 35l30 15 30-15L50 15zm-30 35l30 15 30-15v20l-30 15-30-15V50z'/%3E%3C/svg%3E">
-    <title>Complete Grammar Guide | Elevare Language Library</title>
+    <title>Complete Grammar Guide | Elevare Language Resources</title>
     <meta name="description" content="Free grammar guide for language learners. Understand essential grammar rules and structures for fluent communication.">
     <link rel="canonical" href="https://elevaremind.io/frontend/language-grammar-guide.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
             --gold-light: #d4af37;
             --gold-dark: #a88b1c;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -170,13 +170,15 @@
             .chapter { padding: 32px 24px; }
             .header h1 { font-size: 36px; }
         }
-    </style>
+            /* contrast: dark muted text on light bg; lighter inside dark containers */
+        .hero, .page-header, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"], .example { --text-light: #b0c2d4; }
+</style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
 <body>
     <div class="header">
         <div class="container">
-            <h1>Language Library <span>Grammar Guide</span></h1>
+            <h1>Language Resources <span>Grammar Guide</span></h1>
             <p>Your comprehensive guide to mastering English grammar</p>
         </div>
     </div>

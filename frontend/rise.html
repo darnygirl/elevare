@@ -21,7 +21,7 @@
             --gold-dark: #a88b1c;
             --white: #ffffff;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -671,7 +671,9 @@
             padding-top: 24px;
             border-top: 1px solid rgba(201, 162, 39, 0.1);
         }
-    </style>
+            /* contrast: dark muted text on light bg; lighter inside dark containers */
+        .hero, .page-header, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"], .hero-card { --text-light: #b0c2d4; }
+</style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
 <body class="warm-convert">

@@ -21,7 +21,7 @@
             --green: #4caf50;
             --red: #e53935;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -525,7 +525,9 @@
             .stats-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
-    </style>
+            /* contrast: dark muted text on light bg; lighter inside dark containers */
+        .hero, .page-header, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"], .dashboard-header, .org-box, .org-section, .stat-card { --text-light: #b0c2d4; }
+</style>
 </head>
 <body>
     <nav>

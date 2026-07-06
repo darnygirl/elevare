@@ -21,7 +21,7 @@
             --gold-dark: #a88b1c;
             --white: #ffffff;
             --text: #e0e1dd;
-            --text-light: #778da9;
+            --text-light: #55646f;
             --success: #22c55e;
         }
 
@@ -567,6 +567,8 @@
         }
             /* contrast: darken muted text inside white cards */
         .pricing-card, .value-item { --text-light: #55646f; }
+        /* contrast: dark muted text on light bg; lighter inside dark containers */
+        .hero, .page-header, [class*="navy"], [class*="dark"], footer, .footer, .footer-nav, .site-footer, [class*="cta-band"] { --text-light: #b0c2d4; }
 </style>
   <link rel="stylesheet" href="brand-warm.css">
 </head>
